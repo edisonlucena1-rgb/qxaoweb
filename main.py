@@ -6,10 +6,6 @@ from sqlalchemy import create_engine, Column, Integer, String, Boolean
 from sqlalchemy.orm import declarative_base, sessionmaker
 import hashlib
 from typing import Optional
-import os 
-
-# --- NUEVO: Obtener la ruta exacta del servidor (El GPS) ---
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 # 1. Configuración de Base de Datos SQLite
 SQLALCHEMY_DATABASE_URL = "sqlite:///./qxao.db"
@@ -35,14 +31,6 @@ def hash_password(password: str):
 
 app = FastAPI()
 
-# --- RUTA PRINCIPAL MEJORADA ---
-@app.get("/")
-def mostrar_inicio():
-    ruta_index = os.path.join(BASE_DIR, "index.html")
-    if os.path.exists(ruta_index):
-        return FileResponse(ruta_index)
-    return {"error": "Error: No se encontró el archivo index.html en el servidor."}
-
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -50,6 +38,50 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# =======================================================
+# RUTAS VISUALES (TUS PÁGINAS WEB - MODO MANUAL INFALIBLE)
+# =======================================================
+
+@app.get("/")
+def mostrar_inicio():
+    return FileResponse("index.html")
+
+@app.get("/index.html")
+def mostrar_index_directo():
+    return FileResponse("index.html")
+
+@app.get("/login.html")
+def mostrar_login():
+    return FileResponse("login.html")
+
+@app.get("/soluciones.html")
+def mostrar_soluciones():
+    return FileResponse("soluciones.html")
+
+@app.get("/preguntasfrecuentes.html")
+def mostrar_preguntas():
+    return FileResponse("preguntasfrecuentes.html")
+
+@app.get("/dashboard.html")
+def mostrar_dashboard():
+    return FileResponse("dashboard.html")
+
+@app.get("/admin.html")
+def mostrar_admin():
+    return FileResponse("admin.html")
+
+@app.get("/plantilla-base.html")
+def mostrar_plantilla():
+    return FileResponse("plantilla-base.html")
+
+@app.get("/prueba.html")
+def mostrar_prueba():
+    return FileResponse("prueba.html")
+
+# =======================================================
+# RUTAS DE LA BASE DE DATOS Y API (BACKEND)
+# =======================================================
 
 class LoginRequest(BaseModel):
     email: str
@@ -78,7 +110,6 @@ def login(request: LoginRequest):
     finally:
         db.close()
 
-# --- RUTAS DE ADMINISTRACIÓN ---
 @app.get("/api/admin/users")
 def get_all_users():
     db = SessionLocal()
@@ -126,7 +157,6 @@ def create_new_user(request: CreateUserRequest):
     finally:
         db.close()
 
-# RUTA PARA EDITAR USUARIO
 class UpdateUserRequest(BaseModel):
     full_name: str
     company_name: str
@@ -153,7 +183,6 @@ def update_user(user_id: int, request: UpdateUserRequest):
     finally:
         db.close()
 
-# RUTA PARA BLOQUEAR/DESBLOQUEAR
 @app.put("/api/admin/users/{user_id}/toggle-block")
 def toggle_block_user(user_id: int):
     db = SessionLocal()
@@ -167,18 +196,3 @@ def toggle_block_user(user_id: int):
         return {"success": True, "is_active": user.is_active}
     finally:
         db.close()
-
-# --- RUTA DINÁMICA MEJORADA CON RUTAS ABSOLUTAS ---
-@app.get("/{nombre_archivo}")
-def cargar_archivos_extra(nombre_archivo: str):
-    extensiones_permitidas = (".html", ".css", ".js", ".png", ".jpg", ".jpeg", ".ico")
-    
-    if nombre_archivo.endswith(extensiones_permitidas):
-        ruta_archivo = os.path.join(BASE_DIR, nombre_archivo)
-        if os.path.exists(ruta_archivo):
-            return FileResponse(ruta_archivo)
-        else:
-            # Mensaje en español: si ves esto, significa que el código SÍ se actualizó
-            raise HTTPException(status_code=404, detail=f"Falta el archivo: {nombre_archivo}")
-            
-    raise HTTPException(status_code=404, detail="Acceso denegado a este archivo")
