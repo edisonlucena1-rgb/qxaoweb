@@ -1,11 +1,12 @@
 from fastapi import FastAPI, HTTPException
-from fastapi.responses import FileResponse # <--- NUEVO: Importación para mostrar archivos
+from fastapi.responses import FileResponse
 from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy import create_engine, Column, Integer, String, Boolean
 from sqlalchemy.orm import declarative_base, sessionmaker
 import hashlib
 from typing import Optional
+import os # <--- NUEVO: Lo necesitamos para verificar que el archivo HTML exista
 
 # 1. Configuración de Base de Datos SQLite
 SQLALCHEMY_DATABASE_URL = "sqlite:///./qxao.db"
@@ -31,7 +32,7 @@ def hash_password(password: str):
 
 app = FastAPI()
 
-# --- NUEVA RUTA PRINCIPAL: Carga el index.html al entrar al link ---
+# --- RUTA PRINCIPAL: Carga el index.html al entrar al link ---
 @app.get("/")
 def mostrar_inicio():
     return FileResponse("index.html")
@@ -120,12 +121,12 @@ def create_new_user(request: CreateUserRequest):
     finally:
         db.close()
 
-# RUTA PARA EDITAR USUARIO (Ahora permite cambiar contraseña)
+# RUTA PARA EDITAR USUARIO
 class UpdateUserRequest(BaseModel):
     full_name: str
     company_name: str
     email: str
-    password: Optional[str] = None # <--- Puede venir vacía
+    password: Optional[str] = None 
 
 @app.put("/api/admin/users/{user_id}")
 def update_user(user_id: int, request: UpdateUserRequest):
@@ -139,7 +140,6 @@ def update_user(user_id: int, request: UpdateUserRequest):
         user.company_name = request.company_name
         user.email = request.email
         
-        # Si enviaste algo en el campo de contraseña, la actualiza
         if request.password and request.password.strip() != "":
             user.hashed_password = hash_password(request.password)
             
@@ -162,3 +162,15 @@ def toggle_block_user(user_id: int):
         return {"success": True, "is_active": user.is_active}
     finally:
         db.close()
+
+# --- NUEVO: RUTA DINÁMICA PARA CARGAR EL RESTO DE TUS PÁGINAS ---
+# Esto permite que login.html, soluciones.html, etc., abran correctamente.
+@app.get("/{nombre_archivo}")
+def cargar_archivos_extra(nombre_archivo: str):
+    # Por seguridad, solo permitimos archivos web (no dejamos que nadie descargue tu código o base de datos)
+    extensiones_permitidas = (".html", ".css", ".js", ".png", ".jpg", ".jpeg", ".ico")
+    
+    if nombre_archivo.endswith(extensiones_permitidas) and os.path.exists(nombre_archivo):
+        return FileResponse(nombre_archivo)
+        
+    raise HTTPException(status_code=404, detail="Página no encontrada")
