@@ -6,7 +6,10 @@ from sqlalchemy import create_engine, Column, Integer, String, Boolean
 from sqlalchemy.orm import declarative_base, sessionmaker
 import hashlib
 from typing import Optional
-import os # <--- NUEVO: Lo necesitamos para verificar que el archivo HTML exista
+import os 
+
+# --- NUEVO: Obtener la ruta exacta del servidor (El GPS) ---
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 # 1. Configuración de Base de Datos SQLite
 SQLALCHEMY_DATABASE_URL = "sqlite:///./qxao.db"
@@ -32,10 +35,13 @@ def hash_password(password: str):
 
 app = FastAPI()
 
-# --- RUTA PRINCIPAL: Carga el index.html al entrar al link ---
+# --- RUTA PRINCIPAL MEJORADA ---
 @app.get("/")
 def mostrar_inicio():
-    return FileResponse("index.html")
+    ruta_index = os.path.join(BASE_DIR, "index.html")
+    if os.path.exists(ruta_index):
+        return FileResponse(ruta_index)
+    return {"error": "Error: No se encontró el archivo index.html en el servidor."}
 
 app.add_middleware(
     CORSMiddleware,
@@ -73,7 +79,6 @@ def login(request: LoginRequest):
         db.close()
 
 # --- RUTAS DE ADMINISTRACIÓN ---
-
 @app.get("/api/admin/users")
 def get_all_users():
     db = SessionLocal()
@@ -163,14 +168,17 @@ def toggle_block_user(user_id: int):
     finally:
         db.close()
 
-# --- NUEVO: RUTA DINÁMICA PARA CARGAR EL RESTO DE TUS PÁGINAS ---
-# Esto permite que login.html, soluciones.html, etc., abran correctamente.
+# --- RUTA DINÁMICA MEJORADA CON RUTAS ABSOLUTAS ---
 @app.get("/{nombre_archivo}")
 def cargar_archivos_extra(nombre_archivo: str):
-    # Por seguridad, solo permitimos archivos web (no dejamos que nadie descargue tu código o base de datos)
     extensiones_permitidas = (".html", ".css", ".js", ".png", ".jpg", ".jpeg", ".ico")
     
-    if nombre_archivo.endswith(extensiones_permitidas) and os.path.exists(nombre_archivo):
-        return FileResponse(nombre_archivo)
-        
-    raise HTTPException(status_code=404, detail="Página no encontrada")
+    if nombre_archivo.endswith(extensiones_permitidas):
+        ruta_archivo = os.path.join(BASE_DIR, nombre_archivo)
+        if os.path.exists(ruta_archivo):
+            return FileResponse(ruta_archivo)
+        else:
+            # Mensaje en español: si ves esto, significa que el código SÍ se actualizó
+            raise HTTPException(status_code=404, detail=f"Falta el archivo: {nombre_archivo}")
+            
+    raise HTTPException(status_code=404, detail="Acceso denegado a este archivo")
