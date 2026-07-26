@@ -1,10 +1,11 @@
 from fastapi import FastAPI, HTTPException
+from fastapi.responses import FileResponse # <--- NUEVO: Importación para mostrar archivos
 from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy import create_engine, Column, Integer, String, Boolean
 from sqlalchemy.orm import declarative_base, sessionmaker
 import hashlib
-from typing import Optional # <--- NUEVO: Para permitir que la clave sea opcional al editar
+from typing import Optional
 
 # 1. Configuración de Base de Datos SQLite
 SQLALCHEMY_DATABASE_URL = "sqlite:///./qxao.db"
@@ -29,6 +30,11 @@ def hash_password(password: str):
     return hashlib.sha256(password.encode()).hexdigest()
 
 app = FastAPI()
+
+# --- NUEVA RUTA PRINCIPAL: Carga el index.html al entrar al link ---
+@app.get("/")
+def mostrar_inicio():
+    return FileResponse("index.html")
 
 app.add_middleware(
     CORSMiddleware,
