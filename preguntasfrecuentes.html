@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Qxao - Agentes de Inteligencia Artificial Conversacional.">
+    <title>Preguntas Frecuentes | Qxao</title>
+
+    <!-- LIBRERÍAS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;500;600&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+
+    <!-- CONFIGURACIÓN TAILWIND -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#690991',
+                        darkBg: '#0f172a',
+                        darkCard: '#1e293b'
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- ESTILOS GLOBALES MAESTROS -->
+    <style>
+        :root { --primary: #690991; }
+        
+        /* Cursor Clásico con Borde Morado */
+        body { 
+            cursor: url("data:image/svg+xml,%3Csvg width='24' height='24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4 2v16l4-4 3 7 2-1-3-7h5L4 2z' fill='black' stroke='%23690991' stroke-width='1.5' stroke-linejoin='round'/%3E%3C/svg%3E"), auto;
+            font-family: 'Open Sans', system-ui, sans-serif; 
+        }
+        a, button, [onclick], input, select, textarea, label { cursor: pointer; }
+        h1, h2, h3 { font-family: 'Montserrat', sans-serif; }
+        .font-mono { font-family: 'Fira Code', monospace; }
+
+        /* Scrollbar general */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f5f9; }
+        .dark ::-webkit-scrollbar-track { background: #0f172a; }
+        ::-webkit-scrollbar-thumb { background-color: #cbd5e1; border-radius: 10px; }
+        .dark ::-webkit-scrollbar-thumb { background-color: #334155; }
+        ::-webkit-scrollbar-thumb:hover { background-color: #690991; }
+
+        /* Scrollbar del chat flotante */
+        #chat-messages::-webkit-scrollbar { width: 6px; }
+        #chat-messages::-webkit-scrollbar-thumb { background-color: #cbd5e1; border-radius: 10px; }
+        .dark #chat-messages::-webkit-scrollbar-thumb { background-color: #475569; }
+
+        /* Bucle infinito para fondos Qxao */
+        @keyframes mover-patron {
+            0% { background-position: 0 0; }
+            100% { background-position: -420px -300px; }
+        }
+
+        /* Secciones Claras: Patrón morado con opacidad rebajada a 0.025 */
+        .bg-grid-light {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='84' height='60' viewBox='0 -30.22 42.44 30.22'%3E%3Cpath fill='%23690991' fill-opacity='0.025' d='M18.33-5.39c1.6-0.64,2.98-1.55,4.16-2.72c1.18-1.17,2.1-2.53,2.76-4.09c0.66-1.56,0.99-3.26,0.99-5.12c0-1.85-0.33-3.56-0.99-5.12c-0.66-1.56-1.58-2.92-2.76-4.09c-1.18-1.17-2.57-2.08-4.16-2.72c-1.6-0.64-3.33-0.97-5.21-0.97c-1.88,0-3.61,0.32-5.21,0.97c-1.6,0.65-2.98,1.55-4.16,2.72-1.18,1.17-2.1,2.54-2.76,4.09C0.33-20.88,0-19.17,0-17.32c0,1.85,0.33,3.56,0.99,5.12c0.66,1.56,1.58,2.92,2.76,4.09s2.57,2.08,4.16,2.72c1.6,0.65,3.33,0.97,5.21,0.97C14.99-4.42,16.73-4.74,18.33-5.39z M8.22-6.05C6.71-6.67,5.4-7.53,4.27-8.64s-1.99-2.4-2.61-3.88c-0.62-1.47-0.93-3.08-0.93-4.81s0.31-3.33,0.93-4.81C2.28-23.6,3.15-24.89,4.27-26c1.12-1.11,2.44-1.97,3.95-2.59c1.51-0.62,3.14-0.93,4.9-0.93c1.75,0,3.39,0.31,4.9,0.93c1.51,0.62,2.83,1.49,3.95,2.59c1.12,1.11,1.99,2.4,2.61,3.87c0.62,1.47,0.93,3.08,0.93,4.81s-0.31,3.33-0.93,4.81c-0.62,1.48-1.49,2.77-2.61,3.88s-2.44,1.97-3.95,2.59c-1.51,0.62-3.14,0.93-4.9,0.93C11.37-5.12,9.73-5.43,8.22-6.05z M27.33-2.78l-0.51-0.51c-1.44,1.73-3.2,2.59-5.3,2.59c-0.76,0-1.53-0.15-2.32-0.46c-0.79-0.3-1.6-0.77-2.41-1.39c-0.81-0.62-1.64-1.38-2.46-2.28l-0.95,0.18c0.78,0.8,1.52,1.5,2.21,2.08c0.69,0.59,1.38,1.07,2.05,1.44c0.67,0.38,1.32,0.66,1.95,0.84C20.22-0.09,20.87,0,21.52,0C23.89,0,25.82-0.93,27.33-2.78z M27.2-2.63l7.24-9.35h-0.18l7.24,9.35h0.95l-7.82-9.98l-0.04,0.44l7.31-9.36h-0.88l-6.83,8.77h0.29l-6.83-8.77h-0.91l7.23,9.21L34-12.57l-7.71,9.94H27.2z'/%3E%3C/svg%3E");
+            background-size: 84px 60px;
+            animation: mover-patron 100s linear infinite;
+        }
+
+        /* Secciones Oscuras: Patrón blanco con opacidad bajada a 0.015 */
+        .dark .bg-grid-light {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='84' height='60' viewBox='0 -30.22 42.44 30.22'%3E%3Cpath fill='%23ffffff' fill-opacity='0.015' d='M18.33-5.39c1.6-0.64,2.98-1.55,4.16-2.72c1.18-1.17,2.1-2.53,2.76-4.09c0.66-1.56,0.99-3.26,0.99-5.12c0-1.85-0.33-3.56-0.99-5.12c-0.66-1.56-1.58-2.92-2.76-4.09c-1.18-1.17-2.57-2.08-4.16-2.72c-1.6-0.64-3.33-0.97-5.21-0.97c-1.88,0-3.61,0.32-5.21,0.97c-1.6,0.65-2.98,1.55-4.16,2.72-1.18,1.17-2.1,2.54-2.76,4.09C0.33-20.88,0-19.17,0-17.32c0,1.85,0.33,3.56,0.99,5.12c0.66,1.56,1.58,2.92,2.76,4.09s2.57,2.08,4.16,2.72c1.6,0.65,3.33,0.97,5.21,0.97C14.99-4.42,16.73-4.74,18.33-5.39z M8.22-6.05C6.71-6.67,5.4-7.53,4.27-8.64s-1.99-2.4-2.61-3.88c-0.62-1.47-0.93-3.08-0.93-4.81s0.31-3.33,0.93-4.81C2.28-23.6,3.15-24.89,4.27-26c1.12-1.11,2.44-1.97,3.95-2.59c1.51-0.62,3.14-0.93,4.9-0.93c1.75,0,3.39,0.31,4.9,0.93c1.51,0.62,2.83,1.49,3.95,2.59c1.12,1.11,1.99,2.4,2.61,3.87c0.62,1.47,0.93,3.08,0.93,4.81s-0.31,3.33-0.93,4.81c-0.62,1.48-1.49,2.77-2.61,3.88s-2.44,1.97-3.95,2.59c-1.51,0.62-3.14,0.93-4.9,0.93C11.37-5.12,9.73-5.43,8.22-6.05z M27.33-2.78l-0.51-0.51c-1.44,1.73-3.2,2.59-5.3,2.59c-0.76,0-1.53-0.15-2.32-0.46c-0.79-0.3-1.6-0.77-2.41-1.39c-0.81-0.62-1.64-1.38-2.46-2.28l-0.95,0.18c0.78,0.8,1.52,1.5,2.21,2.08c0.69,0.59,1.38,1.07,2.05,1.44c0.67,0.38,1.32,0.66,1.95,0.84C20.22-0.09,20.87,0,21.52,0C23.89,0,25.82-0.93,27.33-2.78z M27.2-2.63l7.24-9.35h-0.18l7.24,9.35h0.95l-7.82-9.98l-0.04,0.44l7.31-9.36h-0.88l-6.83,8.77h0.29l-6.83-8.77h-0.91l7.23,9.21L34-12.57l-7.71,9.94H27.2z'/%3E%3C/svg%3E");
+        }
+
+        /* Animaciones Scroll */
+        .animate-on-scroll { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1); }
+        .animate-on-scroll.visible { opacity: 1; transform: translateY(0); }
+        
+        /* Efecto Magnético Glow (Premium UI) */
+        .glow-card { position: relative; overflow: hidden; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+        .glow-card::before {
+            content: ''; position: absolute; top: var(--mouse-y, 50%); left: var(--mouse-x, 50%);
+            transform: translate(-50%, -50%); width: 500px; height: 500px;
+            background: radial-gradient(circle, rgba(105, 9, 145, 0.08) 0%, transparent 60%);
+            opacity: 0; transition: opacity 0.3s; pointer-events: none; z-index: 0;
+        }
+        .dark .glow-card::before { background: radial-gradient(circle, rgba(199, 92, 237, 0.12) 0%, transparent 60%); }
+        .glow-card:hover::before { opacity: 1; }
+        .glow-card:hover { transform: translateY(-10px); box-shadow: 0 25px 50px -12px rgb(105 9 145 / 0.15); }
+        .dark .glow-card:hover { box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); }
+        .glow-card > * { position: relative; z-index: 1; }
+
+        /* Animación suave para el acordeón de FAQ */
+        details > summary { list-style: none; }
+        details > summary::-webkit-details-marker { display: none; }
+        details[open] summary ~ * { animation: sweep .3s ease-in-out; }
+        @keyframes sweep { 0% {opacity: 0; transform: translateY(-10px)} 100% {opacity: 1; transform: translateY(0)} }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 dark:bg-darkBg dark:text-gray-100 transition-colors duration-300 pt-24 flex flex-col min-h-screen">
+
+    <!-- HEADER / NAVEGACIÓN GLOBAL -->
+    <header class="fixed top-0 w-full z-40 bg-white/90 dark:bg-darkBg/90 backdrop-blur-md border-b border-gray-100 dark:border-gray-800 shadow-sm transition-colors">
+        <nav class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <!-- LOGO QXAO -->
+            <a href="index.html" class="flex items-center gap-3 cursor-pointer group">
+                <div class="w-10 h-10 flex items-center justify-center transform group-hover:scale-110 transition-transform">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 671.14 514.29" class="w-full h-full fill-current text-[#690991] dark:text-white transition-colors">
+                        <path d="M517.17,230.82,620.56,94.91a5.48,5.48,0,0,0-4.37-8.8H536.61a5.47,5.47,0,0,0-4.4,2.21l-59.66,80.2a5.48,5.48,0,0,1-8.84-.05s-26.53-35.94-49.29-67.71c-6.48-9.05-16.38-12-27.42-13.47-21.43-2.86-53.74,1.27-53.86,1.28-193.59,24.5-296.23,135.12-317,158a5.49,5.49,0,0,0,.49,7.83c128.48,111.9,275.62,131.39,345.21,134.45,0,0,33.44.47,39.19-5.87.49-.54,1-1.06,1.43-1.64,6.59-8.79,58.92-79.17,58.92-79.17a5.48,5.48,0,0,1,8.86.08l60.27,84.29A5.48,5.48,0,0,0,535,388.8h76.61a10,10,0,0,0,8-16.07L517.16,237.45A5.49,5.49,0,0,1,517.17,230.82ZM351.73,322.93a5.35,5.35,0,0,1-6.22,1.72l0,0a84.63,84.63,0,0,1-29.27-19.37,89.65,89.65,0,0,1-19.38-30.12A102.31,102.31,0,0,1,289.88,237q0-21.06,6.94-38.33a90.09,90.09,0,0,1,19.38-29.9,84.05,84.05,0,0,1,25.07-17.57c1-.46,2.09-.93,3.16-1.35s2.06-.8,3.11-1.17a5.51,5.51,0,0,1,6.24,1.87l61.67,82.23a5.49,5.49,0,0,1,0,6.62Z"/>
+                    </svg>
+                </div>
+                <div class="flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 726.86 325.71" class="w-24 h-auto fill-current text-[#690991] dark:text-white transition-colors">
+                        <path class="cls-1" d="M209.06,234.3a23,23,0,0,1-9.71-2.1,31.34,31.34,0,0,1-9.23-7l-.12-.13c.31-.11.63-.21.94-.33A86.24,86.24,0,0,0,219.58,207a82.3,82.3,0,0,0,25.94-61,82.3,82.3,0,0,0-25.94-61,86.37,86.37,0,0,0-28.64-17.76,100.85,100.85,0,0,0-36.35-6.31,101.14,101.14,0,0,0-36.24,6.31A86.5,86.5,0,0,0,89.48,85a82.33,82.33,0,0,0-19,27,83.37,83.37,0,0,0-6.78,33.9,83.29,83.29,0,0,0,6.78,33.89,82.12,82.12,0,0,0,19,27,86.36,86.36,0,0,0,28.87,17.89,94.92,94.92,0,0,0,18.46,4.9q8.41,8.61,15.56,15a105.35,105.35,0,0,0,18.23,13.32A71.12,71.12,0,0,0,188.48,265a82.9,82.9,0,0,0,19.64,2.22q28.75,0,45.82-20.57l-20.11-23.84Q222.61,234.3,209.06,234.3ZM113.8,165.11a52.15,52.15,0,0,1-3.39-19.17,51.9,51.9,0,0,1-3.39-19.29,44.7,44.7,0,0,1,9.35-14.73,40.32,40.32,0,0,1,14-9.46,47.87,47.87,0,0,1,34.83,0,40.27,40.27,0,0,1,14,9.46,45,45,0,0,1,9.35,14.73,51.9,51.9,0,0,1,3.39,19.29,52.15,52.15,0,0,1-3.39,19.17A44.7,44.7,0,0,1,186,180a40.16,40.16,0,0,1-14,9.47,48,48,0,0,1-34.83,0,40.21,40.21,0,0,1-14-9.47A44.38,44.38,0,0,1,113.8,165.11Z"/>
+                        <polygon class="cls-1" points="387.89 101.06 340.9 101.06 317.56 133.1 295.08 101.06 245.06 101.06 291.91 164.38 243.65 227.76 291.81 227.76 316.04 194.59 338.8 227.76 389.52 227.76 341.14 162.86 387.89 101.06"/>
+                        <path class="cls-2" d="M495.53,113.09Q478.58,99,447.73,99a120.84,120.84,0,0,0-30,3.86,85.76,85.76,0,0,0-25.83,10.87l15,30.15a49.38,49.38,0,0,1,15.89-8.06,61.65,61.65,0,0,1,18.47-2.92q14,0,20.46,5.72c3.89,3.48,6,8.28,6.35,14.38H442.82q-19.63,0-32,4.56T392.44,170.6a34.44,34.44,0,0,0-6,20.22A37,37,0,0,0,392,210.69a37.65,37.65,0,0,0,16,14q10.51,5.13,25.71,5.14,16.59,0,26.77-6.66a31,31,0,0,0,10.63-11.89v16.45h41.38V157.39Q512.48,127.24,495.53,113.09ZM459.3,198.18a24.93,24.93,0,0,1-13.21,3.63q-7.71,0-12.16-3.51a11.31,11.31,0,0,1-4.44-9.35,11.42,11.42,0,0,1,4.33-9.35q4.32-3.51,15.08-3.51h19.16v11A21.11,21.11,0,0,1,459.3,198.18Z"/>
+                        <path class="cls-2" d="M657.18,130.28a62.6,62.6,0,0,0-25.36-23Q615.56,99,594.76,99t-36.93,8.3a63.67,63.67,0,0,0-25.37,23q-9.23,14.72-9.23,33.89t9.23,34a64.21,64.21,0,0,0,25.37,23.26q16.13,8.42,36.93,8.42t37.06-8.42a63.13,63.13,0,0,0,25.36-23.26q9.12-14.84,9.12-34T657.18,130.28Zm-39.27,50.37a24.62,24.62,0,0,1-9.47,10.4,26.46,26.46,0,0,1-13.68,3.51,26,26,0,0,1-13.44-3.51,25.3,25.3,0,0,1-9.58-10.4,34.92,34.92,0,0,1-3.63-16.48q0-9.58,3.63-16.25a25.64,25.64,0,0,1,9.58-10.16,26,26,0,0,1,13.44-3.51,26.46,26.46,0,0,1,13.68,3.51,24.92,24.92,0,0,1,9.47,10.16q3.5,6.68,3.5,16.25A36,36,0,0,1,617.91,180.65Z"/>
+                    </svg>
+                </div>
+            </a>
+            
+            <div class="hidden md:flex gap-8 text-sm font-medium">
+                <a href="index.html#servicios" data-i18n="nav-servicios" class="hover:text-[#690991] dark:hover:text-[#c75ced] transition">Servicios</a>
+                <a href="index.html#arquitectura" data-i18n="nav-tecnologia" class="hover:text-[#690991] dark:hover:text-[#c75ced] transition">Tecnología</a>
+                <a href="index.html#precios" data-i18n="nav-precios" class="hover:text-[#690991] dark:hover:text-[#c75ced] transition">Precios</a>
+            </div>
+            
+            <div class="hidden md:flex items-center gap-4">
+                <a href="index.html" data-i18n="nav-back" class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-[#690991] dark:hover:text-[#c75ced] transition mr-4">Volver al Inicio</a>
+                
+                <!-- Botón Idioma -->
+                <button id="lang-toggle" class="text-xs font-bold text-gray-500 dark:text-gray-400 hover:text-[#690991] dark:hover:text-white transition-colors px-2 py-1.5 rounded border border-gray-200 dark:border-gray-700">
+                    ES <span class="opacity-40">|</span> EN
+                </button>
+                
+                <!-- Theme Toggle -->
+                <button id="theme-toggle" class="text-gray-500 dark:text-gray-400 hover:text-[#690991] dark:hover:text-white focus:outline-none transition-colors mr-2">
+                    <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+                    <svg id="theme-toggle-light-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"></path></svg>
+                </button>
+
+                <!-- Botón Login Premium -->
+                <button onclick="window.location.href='login.html'" data-i18n="btn-login" class="bg-[#690991] text-white px-6 py-2.5 rounded-full font-semibold hover:bg-[#4a0066] transition shadow-lg shadow-[#690991]/30">Iniciar Sesión</button>
+            </div>
+
+            <button id="menu-btn" class="block md:hidden text-gray-700 dark:text-gray-200 focus:outline-none">
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            </button>
+        </nav>
+
+        <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-darkCard px-6 py-6 space-y-4 shadow-xl border-t border-gray-100 dark:border-gray-800">
+            <a href="index.html#servicios" data-i18n="nav-servicios" class="block text-gray-700 dark:text-gray-300 font-medium py-2 close-menu">Servicios</a>
+            <a href="index.html#arquitectura" data-i18n="nav-tecnologia" class="block text-gray-700 dark:text-gray-300 font-medium py-2 close-menu">Tecnología</a>
+            <a href="index.html#precios" data-i18n="nav-precios" class="block text-gray-700 dark:text-gray-300 font-medium py-2 close-menu">Precios</a>
+            <div class="pt-4 border-t border-gray-100 dark:border-gray-700 flex flex-col gap-3">
+                <button onclick="window.location.href='login.html'" data-i18n="btn-login" class="w-full bg-[#690991] text-white px-6 py-3 rounded-full font-semibold hover:bg-[#4a0066] transition shadow-lg shadow-[#690991]/30">Iniciar Sesión</button>
+            </div>
+        </div>
+    </header>
+
+<main class="flex-grow w-full relative overflow-hidden bg-white dark:bg-[#151e2f] bg-grid-light transition-colors pb-24">
+        
+        <div class="max-w-4xl mx-auto px-6 py-20 relative z-10">
+            <!-- Título -->
+            <div class="text-center animate-on-scroll mb-16">
+                <h1 data-i18n="faq-title" class="text-4xl md:text-5xl font-bold text-[#690991] dark:text-[#c75ced] mb-4 mt-8">Centro de Ayuda Corporativo</h1>
+                <p data-i18n="faq-subtitle" class="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto text-lg">Respuestas detalladas sobre seguridad, infraestructura y escalabilidad de los Agentes Qxao.</p>
+            </div>
+            
+            <!-- EL CONTENEDOR CLAVE DONDE SE INYECTAN LOS ACORDEONES -->
+            <div id="faq-container" class="space-y-4 animate-on-scroll mb-20"></div>
+
+            <!-- NUEVO LLAMADO A LA ACCIÓN (CTA FINAL) -->
+            <div class="text-center animate-on-scroll glow-card bg-white/80 dark:bg-darkCard/80 backdrop-blur-sm p-10 rounded-3xl border border-gray-200 dark:border-gray-700 shadow-xl relative overflow-hidden">
+                <div class="absolute inset-0 bg-grid-light opacity-40 pointer-events-none z-0"></div>
+                <div class="relative z-10">
+                    <h3 data-i18n="faq-cta-final-title" class="text-3xl font-bold text-gray-900 dark:text-white mb-4">¿Listo para escalar tu empresa?</h3>
+                    <p data-i18n="faq-cta-final-desc" class="text-gray-600 dark:text-gray-400 mb-8 max-w-xl mx-auto">Deja de perder ventas por respuestas lentas. Despliega tu propio Agente Qxao hoy mismo y transforma tu atención al cliente.</p>
+                    <a href="index.html#precios" data-i18n="faq-final-btn" class="inline-block bg-[#690991] text-white px-10 py-4 rounded-full font-bold hover:scale-105 hover:bg-[#4a0066] transition-all duration-300 shadow-[0_10px_25px_rgba(105,9,145,0.4)]">Ver Planes y Precios</a>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+<!-- FOOTER GLOBAL -->
+<footer class="bg-gray-900 border-t border-gray-800 text-white py-16 transition-colors mt-auto relative z-20">
+    <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-12 gap-10">
+        
+        <!-- Columna 1 -->
+        <div class="md:col-span-5 pr-0 md:pr-8">
+            <div class="mb-6 w-48">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1383.43 502.29" class="w-full h-auto" fill="white">
+                    <path d="M832.9,305.26a22.91,22.91,0,0,1-9.7-2.11,31.17,31.17,0,0,1-9.23-7l-.12-.14c.31-.11.63-.21.94-.33a86.19,86.19,0,0,0,28.63-17.77,84,84,0,0,0,0-122,86.35,86.35,0,0,0-28.63-17.77,107.54,107.54,0,0,0-72.59,0A86.26,86.26,0,0,0,713.33,156a82.12,82.12,0,0,0-19.05,27,88.12,88.12,0,0,0,0,67.79,82.33,82.33,0,0,0,19.05,27,86.4,86.4,0,0,0,28.87,17.88,94.73,94.73,0,0,0,18.46,4.9q8.4,8.61,15.56,15a106,106,0,0,0,18.23,13.33A71.35,71.35,0,0,0,812.33,336,83.42,83.42,0,0,0,832,338.22q28.75,0,45.82-20.57L857.68,293.8Q846.46,305.25,832.9,305.26Zm-95.26-69.2a56.36,56.36,0,0,1,0-38.45A44.78,44.78,0,0,1,747,182.88a40.26,40.26,0,0,1,14-9.47,48,48,0,0,1,34.83,0,40.39,40.39,0,0,1,14,9.47,44.92,44.92,0,0,1,9.35,14.73,56.21,56.21,0,0,1,0,38.45,44.5,44.5,0,0,1-9.35,14.84,40.12,40.12,0,0,1-14,9.47,48,48,0,0,1-34.83,0,40,40,0,0,1-14-9.47A44.36,44.36,0,0,1,737.64,236.06Z"/>
+                    <polygon points="1011.74 172.01 964.75 172.01 941.41 204.05 918.93 172.01 868.9 172.01 915.76 235.33 867.5 298.71 915.66 298.71 939.88 265.55 962.64 298.71 1013.37 298.71 964.99 233.81 1011.74 172.01"/>
+                    <path d="M1119.38,184.05q-17-14.15-47.8-14.15a120.84,120.84,0,0,0-30,3.86,85.9,85.9,0,0,0-25.83,10.87l15,30.16a49.19,49.19,0,0,1,15.89-8.07A61.91,61.91,0,0,1,1065,203.8q14,0,20.45,5.73c3.9,3.47,6,8.27,6.36,14.37h-25.17q-19.64,0-32,4.56t-18.35,13.09a34.47,34.47,0,0,0-6,20.22,37.07,37.07,0,0,0,5.49,19.88,37.63,37.63,0,0,0,16,14q10.52,5.15,25.71,5.14,16.59,0,26.77-6.66A31,31,0,0,0,1095,282.27v16.44h41.38V228.35Q1136.33,198.19,1119.38,184.05Zm-36.23,85.09a24.92,24.92,0,0,1-13.21,3.62q-7.71,0-12.16-3.5a12.17,12.17,0,0,1-.11-18.71q4.32-3.5,15.07-3.5h19.17v11A21.17,21.17,0,0,1,1083.15,269.14Z"/>
+                    <path d="M1281,201.23a62.7,62.7,0,0,0-25.37-23q-16.25-8.3-37.05-8.3t-36.93,8.3a63.67,63.67,0,0,0-25.37,23q-9.24,14.73-9.23,33.9t9.23,34a64.14,64.14,0,0,0,25.37,23.26q16.13,8.42,36.93,8.41t37.05-8.41A63.16,63.16,0,0,0,1281,269.14q9.12-14.85,9.11-34T1281,201.23Zm-39.27,50.38a24.67,24.67,0,0,1-9.47,10.4,26.46,26.46,0,0,1-13.68,3.51,26,26,0,0,1-13.44-3.51,25.36,25.36,0,0,1-9.58-10.4,35,35,0,0,1-3.63-16.48q0-9.58,3.63-16.25a25.21,25.21,0,0,1,23-13.68,26.46,26.46,0,0,1,13.68,3.51,25,25,0,0,1,9.47,10.17q3.49,6.66,3.5,16.25A36.08,36.08,0,0,1,1241.76,251.61Z"/>
+                    <path d="M859.37,379.19a13.79,13.79,0,0,1-6.57-1.5,10.26,10.26,0,0,1-4.37-4.62,17.59,17.59,0,0,1-1.55-7.85,17.4,17.4,0,0,1,1.66-8.1,10.56,10.56,0,0,1,4.59-4.66,14.39,14.39,0,0,1,6.71-1.51,18.4,18.4,0,0,1,4.17.44,14.72,14.72,0,0,1,3.26,1.11l-1.49,4a24.81,24.81,0,0,0-3-1,11.87,11.87,0,0,0-3-.42,7.62,7.62,0,0,0-4.34,1.15,7,7,0,0,0-2.59,3.38,15.36,15.36,0,0,0-.86,5.49,14.81,14.81,0,0,0,.85,5.36,6.94,6.94,0,0,0,2.53,3.32,7.2,7.2,0,0,0,4.16,1.14,14.59,14.59,0,0,0,4-.5,16,16,0,0,0,3.24-1.26v4.38a11.82,11.82,0,0,1-3.16,1.19A19.39,19.39,0,0,1,859.37,379.19Z"/>
+                    <path d="M896.28,351.44V378.7h-4l-.69-3.73h-.27a7.74,7.74,0,0,1-2.18,2.34,9.88,9.88,0,0,1-3,1.42,12.89,12.89,0,0,1-3.51.46,12.42,12.42,0,0,1-5.33-1,7.05,7.05,0,0,1-3.31-3.23,12.34,12.34,0,0,1-1.13-5.65V351.44h5v17.14a7.33,7.33,0,0,0,1.42,4.93,5.49,5.49,0,0,0,4.34,1.63,8,8,0,0,0,4.52-1.13,6.22,6.22,0,0,0,2.4-3.29,16.91,16.91,0,0,0,.73-5.3v-14Z"/>
+                    <path d="M915.21,351q5,0,7.54,2.24c1.67,1.49,2.5,3.85,2.5,7.06V378.7h-3.56l-1-4h-.2a13.69,13.69,0,0,1-2.37,2.47,8.39,8.39,0,0,1-2.86,1.49,13.62,13.62,0,0,1-3.94.49,10.34,10.34,0,0,1-4.41-.89,6.85,6.85,0,0,1-3-2.68,8.63,8.63,0,0,1-1.1-4.56,7.14,7.14,0,0,1,3.19-6.31q3.19-2.16,9.68-2.35l4.7-.2v-1.53c0-2.13-.48-3.63-1.43-4.51a5.64,5.64,0,0,0-4-1.31,13.52,13.52,0,0,0-4,.61,29.13,29.13,0,0,0-3.71,1.45l-1.58-3.61a22.07,22.07,0,0,1,4.39-1.66A19.41,19.41,0,0,1,915.21,351Zm5.12,14.5-3.81.17c-3.15.12-5.37.64-6.64,1.57a4.55,4.55,0,0,0-1.92,3.9,3.77,3.77,0,0,0,1.31,3.19,5.54,5.54,0,0,0,3.46,1,8,8,0,0,0,5.46-1.87,6.94,6.94,0,0,0,2.14-5.52Z"/>
+                    <path d="M947.09,351q4.73,0,7.26,2.37t2.54,7.62V378.7H952V361.61a7.25,7.25,0,0,0-1.43-4.91,5.52,5.52,0,0,0-4.4-1.65q-4.23,0-5.93,2.5c-1.13,1.67-1.69,4.08-1.69,7.25v13.9h-5V351.44h3.93l.72,3.83h.27a8.27,8.27,0,0,1,2.2-2.4,9.69,9.69,0,0,1,3-1.44A12.29,12.29,0,0,1,947.09,351Z"/>
+                    <path d="M974.6,379.19a9.9,9.9,0,0,1-8-3.53q-3-3.54-3-10.49t3-10.63a10,10,0,0,1,8.05-3.59,11.18,11.18,0,0,1,3.69.56,9.69,9.69,0,0,1,2.73,1.51,9.18,9.18,0,0,1,1.92,2.13h.3c-.09-.51-.17-1.23-.25-2.15s-.13-1.73-.13-2.43V340.21h5V378.7H984l-.81-3.78H983a9.12,9.12,0,0,1-1.89,2.16,8.49,8.49,0,0,1-2.74,1.54A11,11,0,0,1,974.6,379.19Zm1.16-4.05q4,0,5.7-2.33c1.12-1.55,1.68-3.85,1.7-6.9v-.77c0-3.24-.53-5.74-1.6-7.48s-3-2.61-5.85-2.61a5.81,5.81,0,0,0-5.22,2.71,13.75,13.75,0,0,0-1.75,7.51q0,4.74,1.75,7.31A6,6,0,0,0,975.76,375.14Z"/>
+                    <path d="M1020.26,365a18.84,18.84,0,0,1-.88,6,12.07,12.07,0,0,1-2.54,4.45,11.06,11.06,0,0,1-4,2.77,14,14,0,0,1-5.32.95,13.18,13.18,0,0,1-5.09-.95,11.12,11.12,0,0,1-4-2.77,12.46,12.46,0,0,1-2.6-4.45,18.27,18.27,0,0,1-.91-6,17.36,17.36,0,0,1,1.53-7.63,10.9,10.9,0,0,1,4.39-4.8,13.43,13.43,0,0,1,6.82-1.64,12.93,12.93,0,0,1,6.6,1.65,11.33,11.33,0,0,1,4.43,4.8A16.76,16.76,0,0,1,1020.26,365ZM1000,365a16.09,16.09,0,0,0,.81,5.41,7.12,7.12,0,0,0,13.54,0,16.38,16.38,0,0,0,.79-5.41,15.9,15.9,0,0,0-.79-5.34,6.92,6.92,0,0,0-2.46-3.42,7.33,7.33,0,0,0-4.34-1.18q-3.91,0-5.73,2.61T1000,365Z"/>
+                    <path d="M1049.72,379.19a9.9,9.9,0,0,1-8-3.53q-3-3.54-3-10.49t3-10.63a10,10,0,0,1,8.06-3.59,11.08,11.08,0,0,1,3.68.56,9.61,9.61,0,0,1,2.74,1.51,9.37,9.37,0,0,1,1.91,2.13h.3c-.08-.51-.17-1.23-.25-2.15s-.12-1.73-.12-2.43V340.21h5V378.7h-3.93l-.82-3.78h-.22a9.59,9.59,0,0,1-1.89,2.16,8.64,8.64,0,0,1-2.75,1.54A10.87,10.87,0,0,1,1049.72,379.19Zm1.17-4.05c2.68,0,4.59-.78,5.7-2.33s1.68-3.85,1.69-6.9v-.77c0-3.24-.53-5.74-1.59-7.48s-3-2.61-5.85-2.61a5.81,5.81,0,0,0-5.22,2.71,13.75,13.75,0,0,0-1.76,7.51q0,4.74,1.76,7.31A6,6,0,0,0,1050.89,375.14Z"/>
+                    <path d="M1074.09,341.13a3.15,3.15,0,0,1,2,.69,2.72,2.72,0,0,1,.85,2.25,2.76,2.76,0,0,1-.85,2.26,3.11,3.11,0,0,1-2,.71,3,3,0,0,1-2-.71,2.82,2.82,0,0,1-.83-2.26,2.78,2.78,0,0,1,.83-2.25A3.07,3.07,0,0,1,1074.09,341.13Zm2.45,10.31V378.7h-5V351.44Z"/>
+                    <path d="M1092.74,390.87q-5.46,0-8.4-2a6.41,6.41,0,0,1-2.93-5.59A6.2,6.2,0,0,1,1083,379a8.16,8.16,0,0,1,4.5-2.39,4.85,4.85,0,0,1-1.87-1.52,3.69,3.69,0,0,1-.77-2.31,4.11,4.11,0,0,1,.85-2.61,9.36,9.36,0,0,1,2.56-2.14,7.37,7.37,0,0,1-3.47-3,8.84,8.84,0,0,1-1.31-4.83,9.59,9.59,0,0,1,1.25-5,8,8,0,0,1,3.6-3.17,13.48,13.48,0,0,1,5.72-1.09q.74,0,1.53.06c.53,0,1,.11,1.51.19a9.73,9.73,0,0,1,1.16.25h9.4v2.94l-4.85.74a8,8,0,0,1,1.17,2.23,8.78,8.78,0,0,1,.44,2.82,8.14,8.14,0,0,1-2.83,6.56q-2.83,2.42-7.83,2.42a18.79,18.79,0,0,1-2.35-.2,5.17,5.17,0,0,0-1.61,1.35,2.73,2.73,0,0,0-.54,1.67,1.51,1.51,0,0,0,.48,1.16,3,3,0,0,0,1.4.66,10.08,10.08,0,0,0,2.22.21h4.75c3,0,5.25.62,6.83,1.88a6.59,6.59,0,0,1,2.38,5.49,8,8,0,0,1-3.77,7Q1099.82,390.88,1092.74,390.87Zm.17-3.64a18.72,18.72,0,0,0,5.33-.64,7,7,0,0,0,3.23-1.83,4,4,0,0,0,1.09-2.82,3.25,3.25,0,0,0-.7-2.26,3.75,3.75,0,0,0-2.09-1.06,18.36,18.36,0,0,0-3.42-.27h-4.5a7.79,7.79,0,0,0-3,.55,4.45,4.45,0,0,0-2,1.57,4.29,4.29,0,0,0-.72,2.53,3.49,3.49,0,0,0,1.77,3.15A9.71,9.71,0,0,0,1092.91,387.23Zm1.09-21.49a5.37,5.37,0,0,0,4.11-1.45,5.79,5.79,0,0,0,1.36-4.14,6.11,6.11,0,0,0-1.39-4.36,5.4,5.4,0,0,0-4.1-1.46,5.26,5.26,0,0,0-4,1.5,6.2,6.2,0,0,0-1.39,4.37,5.61,5.61,0,0,0,1.41,4.09A5.36,5.36,0,0,0,1094,365.74Z"/>
+                        <path d="M1123.24,351c3.36,0,5.88.75,7.54,2.24s2.5,3.85,2.5,7.06V378.7h-3.56l-1-4h-.2a13.73,13.73,0,0,1-2.38,2.47,8.25,8.25,0,0,1-2.85,1.49,13.69,13.69,0,0,1-3.95.49,10.26,10.26,0,0,1-4.4-.89,6.74,6.74,0,0,1-3-2.68,8.53,8.53,0,0,1-1.1-4.56,7.12,7.12,0,0,1,3.19-6.31q3.2-2.16,9.67-2.35l4.7-.2v-1.53c0-2.13-.48-3.63-1.42-4.51a5.66,5.66,0,0,0-4-1.31,13.47,13.47,0,0,0-4,.61,28.7,28.7,0,0,0-3.72,1.45l-1.58-3.61a22.31,22.31,0,0,1,4.39-1.66A19.41,19.41,0,0,1,1123.24,351Zm5.12,14.5-3.81.17q-4.72.18-6.64,1.57a4.55,4.55,0,0,0-1.92,3.9,3.8,3.8,0,0,0,1.31,3.19,5.57,5.57,0,0,0,3.47,1,8,8,0,0,0,5.45-1.87,6.91,6.91,0,0,0,2.14-5.52Z"/>
+                        <path d="M1159.55,371.08a7.45,7.45,0,0,1-1.3,4.47,7.77,7.77,0,0,1-3.77,2.73,17.15,17.15,0,0,1-5.93.91,24.43,24.43,0,0,1-5-.43,15.81,15.81,0,0,1-3.76-1.25v-4.4a25.18,25.18,0,0,0,4.18,1.53,16.92,16.92,0,0,0,4.65.67,8.15,8.15,0,0,0,4.61-1,3.21,3.21,0,0,0,1.43-2.75,3,3,0,0,0-.57-1.79,6.08,6.08,0,0,0-2-1.56,33.31,33.31,0,0,0-4.06-1.79,38.19,38.19,0,0,1-4.44-2,7.92,7.92,0,0,1-2.81-2.45,6.47,6.47,0,0,1-1-3.71,6.09,6.09,0,0,1,2.84-5.41,13.41,13.41,0,0,1,7.48-1.86,21.08,21.08,0,0,1,4.66.49,21.91,21.91,0,0,1,4.19,1.39l-1.6,3.83a26.08,26.08,0,0,0-3.67-1.27,14.55,14.55,0,0,0-3.83-.51,7.55,7.55,0,0,0-3.9.82,2.5,2.5,0,0,0-1.34,2.25,2.75,2.75,0,0,0,.63,1.85,6.24,6.24,0,0,0,2.11,1.45c1,.47,2.33,1,4,1.67a33.7,33.7,0,0,1,4.32,1.95,8,8,0,0,1,2.8,2.48A6.49,6.49,0,0,1,1159.55,371.08Z"/>
+                        <path d="M569.72,234.59,673.11,98.68a5.48,5.48,0,0,0-4.36-8.8H589.16a5.47,5.47,0,0,0-4.4,2.21l-59.66,80.2a5.47,5.47,0,0,1-8.83,0S489.73,136.3,467,104.53c-6.48-9-16.38-12-27.42-13.48-21.42-2.85-53.74,1.28-53.85,1.29-193.59,24.5-296.24,135.12-317,158a5.48,5.48,0,0,0,.49,7.83C197.67,370,344.81,389.53,414.41,392.59c0,0,33.43.46,39.19-5.87.49-.54,1-1.06,1.42-1.64,6.6-8.79,58.92-79.17,58.92-79.17a5.49,5.49,0,0,1,8.87.07l60.27,84.3a5.48,5.48,0,0,0,4.46,2.29h76.61a10,10,0,0,0,8-16.07L569.72,241.22A5.48,5.48,0,0,1,569.72,234.59ZM404.28,326.7a5.33,5.33,0,0,1-6.22,1.71h0A84.46,84.46,0,0,1,368.75,309a89.58,89.58,0,0,1-19.37-30.11,102.12,102.12,0,0,1-6.95-38.12q0-21.06,6.95-38.33a90.07,90.07,0,0,1,19.37-29.9A84.05,84.05,0,0,1,393.82,155c1.05-.46,2.09-.93,3.16-1.36s2.07-.79,3.11-1.16a5.51,5.51,0,0,1,6.24,1.87L468,236.57a5.49,5.49,0,0,1,0,6.62Z"/>
+                    </svg>
+                </div>
+                
+                <div class="text-gray-400 leading-relaxed mb-8">
+                    <span class="text-white font-bold mb-2 block text-lg" data-i18n="hero-title">Cuando digas.</span>
+                    <span data-i18n="foot-desc-text">Transformamos tu negocio con Agentes de IA. Automatizamos tus ventas, atención al cliente y gestión de inventario 24/7. Sin pausas, sin errores.</span>
+                </div>
+                
+                <div class="flex items-center gap-4">
+                    <!-- AQUI VAN TUS ICONOS DE REDES SOCIALES -->
+                </div>
+            </div>
+
+            <!-- Columna 2: Producto -->
+            <div class="md:col-span-2">
+                <h4 data-i18n="head-product" class="font-bold mb-6 text-white text-lg tracking-wide">Producto</h4>
+                <ul class="space-y-3 text-gray-400 font-medium text-sm">
+                    <li><a href="index.html#servicios" data-i18n="nav-servicios" class="hover:text-[#c75ced] transition-colors">Servicios</a></li>
+                    <li><a href="index.html#arquitectura" data-i18n="nav-tecnologia" class="hover:text-[#c75ced] transition-colors">Tecnología</a></li>
+                    <li><a href="index.html#precios" data-i18n="nav-precios" class="hover:text-[#c75ced] transition-colors">Precios</a></li>
+                    <li><a href="index.html#integraciones" data-i18n="nav-integrations" class="hover:text-[#c75ced] transition-colors">Integraciones</a></li>
+                    <li><a href="preguntasfrecuentes.html" data-i18n="nav-faq" class="hover:text-[#c75ced] transition-colors">Preguntas Frecuentes</a></li>
+                    <li><a href="#" data-i18n="nav-success" class="hover:text-[#c75ced] transition-colors">Casos de Éxito</a></li>
+                    <li><a href="#" data-i18n="nav-blog" class="hover:text-[#c75ced] transition-colors">Blog</a></li>
+                </ul>
+            </div>
+
+            <!-- Columna 3: Empresa -->
+            <div class="md:col-span-2">
+                <h4 data-i18n="head-company" class="font-bold mb-6 text-white text-lg tracking-wide">Empresa</h4>
+                <ul class="space-y-3 text-gray-400 font-medium text-sm">
+                    <li><a href="#" data-i18n="foot-about" class="hover:text-[#c75ced] transition-colors">Sobre nosotros</a></li>
+                    <li><a href="#" data-i18n="foot-mission" class="hover:text-[#c75ced] transition-colors">Nuestra Misión</a></li>
+                    <li><a href="#" data-i18n="foot-partners" class="hover:text-[#c75ced] transition-colors">Partners</a></li>
+                    <li><a href="#" data-i18n="foot-contact" class="hover:text-[#c75ced] transition-colors">Contacto</a></li>
+                </ul>
+            </div>
+
+            <!-- Columna 4: Legal -->
+            <div class="md:col-span-3">
+                <h4 data-i18n="head-legal" class="font-bold mb-6 text-white text-lg tracking-wide">Legal</h4>
+                <ul class="space-y-3 text-gray-400 font-medium text-sm">
+                    <li><a href="#" data-i18n="foot-terms" class="hover:text-[#c75ced] transition-colors">Términos y Condiciones</a></li>
+                    <li><a href="#" data-i18n="foot-privacy" class="hover:text-[#c75ced] transition-colors">Política de Privacidad</a></li>
+                    <li><a href="#" data-i18n="foot-cookies" class="hover:text-[#c75ced] transition-colors">Política de Cookies</a></li>
+                    <li><a href="#" data-i18n="foot-dpa" class="hover:text-[#c75ced] transition-colors">Acuerdo de Datos (DPA)</a></li>
+                    <li><a href="#" data-i18n="foot-security" class="hover:text-[#c75ced] transition-colors">Seguridad y Cumplimiento</a></li>
+                </ul>
+            </div>
+
+        </div> <!-- Cierre correcto del contenedor Grid -->
+
+        <!-- Línea inferior -->
+        <div class="max-w-7xl mx-auto px-6 mt-16 pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="text-gray-500 text-sm font-medium" data-i18n="foot-copyright">
+                © 2026 Qxao. Todos los derechos reservados.
+            </div>
+            
+            <div class="flex items-center gap-4 text-sm text-gray-400 font-medium">
+                <a href="mailto:hola@qxao.com" class="hover:text-white transition-colors">hola@qxao.com</a>
+                <span class="text-gray-700">•</span>
+                <span class="flex items-center gap-2">
+                    &#x1F1FB;&#x1F1EA; <span data-i18n="foot-designed">Diseñado para el mundo</span>
+                </span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- CHATBOT FLOTANTE GLOBAL -->
+    <div class="fixed bottom-6 right-6 z-50 flex flex-col items-end">
+        <div id="chat-window" class="hidden w-[320px] bg-white dark:bg-darkCard border border-gray-200 dark:border-gray-700 rounded-2xl shadow-2xl mb-4 overflow-hidden flex-col transition-all duration-300 transform origin-bottom-right">
+            <div class="bg-[#690991] text-white px-4 py-4 flex justify-between items-center shadow-sm z-10">
+                <div class="flex items-center gap-3">
+                    <div class="w-2.5 h-2.5 bg-green-400 rounded-full animate-pulse shadow-[0_0_8px_#4ade80]"></div>
+                    <div>
+                        <span data-i18n="chat-bot" class="font-semibold block text-sm tracking-wide">Asistente Qxao</span>
+                        <span data-i18n="chat-on" class="text-[10px] text-white/70 uppercase tracking-widest">En línea</span>
+                    </div>
+                </div>
+                <button id="close-chat" class="text-white hover:text-gray-300 focus:outline-none transition">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
+            
+            <div id="chat-messages" class="p-4 h-72 overflow-y-auto bg-gray-50 dark:bg-darkBg flex flex-col gap-3 text-sm transition-colors">
+                <div data-i18n="chat-msg" class="bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 text-gray-700 dark:text-gray-200 p-3 rounded-2xl rounded-tl-sm self-start max-w-[85%] shadow-sm">
+                    ¡Hola! 👋 Soy el agente de demostración de Qxao.<br><br>Estoy programado con estrictos guardrails. ¿En qué te puedo ayudar hoy?
+                </div>
+            </div>
+            
+            <div class="p-3 bg-white dark:bg-darkCard border-t border-gray-100 dark:border-gray-700 flex gap-2 items-center transition-colors">
+                <input id="chat-input" data-i18n="chat-ph" type="text" class="flex-1 px-4 py-2 bg-gray-100 dark:bg-gray-800 border-transparent rounded-full focus:ring-2 focus:ring-[#690991] dark:text-white outline-none text-sm transition" placeholder="Escribe un mensaje...">
+                <button id="send-chat" class="bg-[#690991] text-white p-2.5 rounded-full hover:bg-[#4a0066] transition flex-shrink-0 shadow-md">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path></svg>
+                </button>
+            </div>
+        </div>
+
+        <button id="chat-toggle" class="w-14 h-14 bg-[#690991] text-white rounded-full flex items-center justify-center shadow-[0_10px_25px_rgba(105,9,145,0.5)] hover:scale-110 transition-transform duration-300 focus:outline-none">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path></svg>
+        </button>
+    </div>
+
+    <!-- SCRIPT MAESTRO UNIFICADO -->
+    <script>
+        // 1. DICCIONARIO GLOBAL (Textos del Menú y Footer)
+        const globalTranslations = {
+            es: {
+                "nav-servicios": "Servicios", "nav-tecnologia": "Tecnología", "nav-precios": "Precios",
+                "nav-back": "Volver al Inicio",
+                "btn-login": "Iniciar Sesión",
+                "faq-title": "Centro de Ayuda Corporativo",
+                "faq-subtitle": "Respuestas detalladas sobre seguridad, infraestructura y escalabilidad de los Agentes Qxao.",
+                "faq-cta-final-title": "¿Listo para escalar tu empresa?",
+                "faq-cta-final-desc": "Deja de perder ventas por respuestas lentas. Despliega tu propio Agente Qxao hoy mismo y transforma tu atención al cliente.",
+                "faq-final-btn": "Ver Planes y Precios",
+                "hero-title": "Cuando digas.",
+                "foot-desc-text": "Transformamos tu negocio con Agentes de IA. Automatizamos tus ventas, atención al cliente y gestión de inventario 24/7. Sin pausas, sin errores.",
+                "head-product": "Producto", "head-company": "Empresa", "head-legal": "Legal",
+                "nav-integrations": "Integraciones", "nav-faq": "Preguntas Frecuentes", "nav-success": "Casos de Éxito", "nav-blog": "Blog",
+                "foot-about": "Sobre nosotros", "foot-mission": "Nuestra Misión", "foot-partners": "Partners", "foot-contact": "Contacto",
+                "foot-terms": "Términos y Condiciones", "foot-privacy": "Política de Privacidad", "foot-cookies": "Política de Cookies", 
+                "foot-dpa": "Acuerdo de Datos (DPA)", "foot-security": "Seguridad y Cumplimiento",
+                "foot-copyright": "© 2026 Qxao. Todos los derechos reservados.",
+                "foot-designed": "Diseñado para el mundo",
+                "chat-bot": "Asistente Qxao", "chat-on": "En línea", "chat-ph": "Escribe un mensaje...",
+                "chat-msg": "¡Hola! 👋 Soy el agente de demostración de Qxao.<br><br>Estoy programado con estrictos guardrails. ¿En qué te puedo ayudar hoy?"
+            },
+            en: {
+                "nav-servicios": "Services", "nav-tecnologia": "Technology", "nav-precios": "Pricing",
+                "nav-back": "Back to Home",
+                "btn-login": "Login",
+                "faq-title": "Corporate Help Center",
+                "faq-subtitle": "Detailed answers about security, infrastructure, and scalability of Qxao Agents.",
+                "faq-cta-final-title": "Ready to scale your business?",
+                "faq-cta-final-desc": "Stop losing sales due to slow responses. Deploy your own Qxao Agent today and transform your customer service.",
+                "faq-final-btn": "View Plans & Pricing",
+                "hero-title": "Just say it.",
+                "foot-desc-text": "We transform your business with AI Agents. We automate your sales, customer support, and inventory management 24/7. No pauses, no mistakes.",
+                "head-product": "Product", "head-company": "Company", "head-legal": "Legal",
+                "nav-integrations": "Integrations", "nav-faq": "FAQ", "nav-success": "Success Stories", "nav-blog": "Blog",
+                "foot-about": "About us", "foot-mission": "Our Mission", "foot-partners": "Partners", "foot-contact": "Contact",
+                "foot-terms": "Terms and Conditions", "foot-privacy": "Privacy Policy", "foot-cookies": "Cookie Policy", 
+                "foot-dpa": "Data Processing (DPA)", "foot-security": "Security & Compliance",
+                "foot-copyright": "© 2026 Qxao. All rights reserved.",
+                "foot-designed": "Designed for the world",
+                "chat-bot": "Qxao Assistant", "chat-on": "Online", "chat-ph": "Type a message...",
+                "chat-msg": "Hello! 👋 I'm the Qxao demo agent.<br><br>I'm programmed with strict guardrails. How can I help you today?"
+            }
+        };
+
+        // 2. DICCIONARIO DE PREGUNTAS (ES y EN) COMPLETADO - 33 PREGUNTAS
+        const faqData = [
+            {
+                id: 1,
+                q_es: "¿El Agente de IA puede inventar precios o dar información falsa a mis clientes?",
+                a_es: "Absolutamente no. El mayor diferenciador de Qxao es nuestra Arquitectura Anti-Alucinaciones. Implementamos Guardrails (barreras de seguridad) y System Prompts estrictos que obligan a la IA a responder única y exclusivamente con los datos de tu empresa. Si no sabe algo, no lo inventa.",
+                q_en: "Can the AI Agent invent prices or give false information to my clients?",
+                a_en: "Absolutely not. Qxao's biggest differentiator is our Anti-Hallucination Architecture. We implement strict Guardrails and System Prompts that force the AI to respond solely based on your company's approved data. If it doesn't know, it won't guess."
+            },
+            {
+                id: 2,
+                q_es: "¿Tengo que cambiar mi software actual o mi CRM para usar Qxao?",
+                a_es: "No, en absoluto. Nuestro sistema está diseñado para integrarse a tu ecosistema actual. Orquestamos la conexión de la IA con las herramientas que ya usas (bases de datos, CRMs, calendarios, pasarelas de pago) para que todo funcione de manera centralizada sin que tengas que aprender a usar software nuevo.",
+                q_en: "Do I need to change my current software or CRM to use Qxao?",
+                a_en: "Not at all. Our system is designed to integrate into your existing ecosystem. We orchestrate the AI's connection with the tools you already use (databases, CRMs, calendars, payment gateways) so everything works centralized without you having to learn new software."
+            },
+            {
+                id: 3,
+                q_es: "¿Qué pasa si un cliente hace una pregunta muy compleja o quiere hablar con un humano?",
+                a_es: "Nuestro agente está programado para reconocer sus propios límites. Si una solicitud requiere empatía humana, aprobación especial o se sale de sus reglas, la IA transfiere el chat automáticamente a tu equipo de soporte, entregándoles un resumen completo del contexto para que cierren la gestión sin fricción.",
+                q_en: "What happens if a client asks a complex question or wants to speak to a human?",
+                a_en: "Our agent is programmed to recognize its limits. If a request requires human empathy, special approval, or falls outside its rules, the AI automatically transfers the chat to your support team, providing them with a full context summary for a frictionless handoff."
+            },
+            {
+                id: 4,
+                q_es: "¿Mis datos corporativos y las conversaciones están seguros?",
+                a_es: "Privacidad total. A diferencia de los bots genéricos, en nuestros planes Enterprise operamos con despliegues aislados en servidores dedicados. Tus bases de datos corporativas (RAG) y los chats de tus clientes jamás se cruzan con otras empresas ni se utilizan para entrenar modelos públicos.",
+                q_en: "Are my corporate data and conversations secure?",
+                a_en: "Total privacy. Unlike generic bots, our Enterprise plans operate with isolated deployments on dedicated servers. Your corporate databases (RAG) and client chats never cross with other companies or train public models."
+            },
+            {
+                id: 5,
+                q_es: "¿Cuánto tiempo tarda la implementación en mi negocio?",
+                a_es: "Dependiendo de la complejidad de tus flujos y bases de datos, un despliegue estándar toma entre 2 y 4 semanas. Nosotros nos encargamos de todo el trabajo técnico: configuración del servidor, entrenamiento del modelo, integración de APIs y pruebas de estrés. Te entregamos un sistema llave en mano.",
+                q_en: "How long does the implementation take for my business?",
+                a_en: "Depending on the complexity of your flows and databases, a standard deployment takes between 2 to 4 weeks. We handle all the technical heavy lifting: server configuration, model training, API integration, and stress testing. We deliver a turnkey system."
+            },
+            {
+                id: 6,
+                q_es: "¿Realmente esto me va a ahorrar dinero?",
+                a_es: "Nuestros clientes reducen su carga operativa manual hasta en un 80%. Un solo Agente Qxao puede atender a miles de clientes simultáneamente, 24/7, en múltiples idiomas, calificando leads y cerrando ventas. El retorno de inversión (ROI) suele ser visible desde el primer mes al no tener que inflar tu nómina para escalar tu atención.",
+                q_en: "Will this truly save me money?",
+                a_en: "Our clients reduce their manual operational workload by up to 80%. A single Qxao Agent can handle thousands of clients simultaneously, 24/7, in multiple languages, qualifying leads and closing sales. The ROI is typically visible in the first month as you won't need to bloat your payroll to scale your customer service."
+            },
+            {
+                id: 7,
+                q_es: "¿Qué pasa si mis precios, catálogo o stock cambian? ¿Tengo que reprogramar la IA?",
+                a_es: "No necesitas tocar ni una línea de código. Conectamos la IA directamente a tu base de datos (Excel, Google Sheets, Notion o tu ERP). Si cambias un precio o el stock de un producto en tu sistema, el agente de Qxao lo aprende en tiempo real y actualiza sus respuestas al instante.",
+                q_en: "What if my prices, catalog, or stock change? Do I have to reprogram the AI?",
+                a_en: "You don't need to touch a single line of code. We connect the AI directly to your database (Excel, Google Sheets, Notion, or your ERP). If you change a price or product stock in your system, the Qxao agent learns it in real-time and updates its responses instantly."
+            },
+            {
+                id: 8,
+                q_es: "¿El bot solo responde texto o puede enviar notas de voz?",
+                a_es: "Nuestro ecosistema permite interacciones hiperrealistas. El Agente Qxao puede procesar audios que le envíen tus clientes, entender la intención, y si tu estrategia comercial lo requiere, puede responder con notas de voz clonadas o generadas dinámicamente para humanizar el cierre de ventas.",
+                q_en: "Does the bot only reply with text, or can it send voice notes?",
+                a_en: "Our ecosystem allows for hyper-realistic interactions. The Qxao Agent can process audio messages sent by your clients, understand the intent, and if your sales strategy requires it, respond with dynamically generated voice notes to humanize the sales closing."
+            },
+            {
+                id: 9,
+                q_es: "¿La IA sonará como un robot aburrido y genérico?",
+                a_es: "Nunca. Clonamos tu identidad corporativa. A través de la ingeniería de System Prompts, calibramos el tono de voz exacto de tu marca: puede ser estoico y profesional para una firma de abogados, o fresco y dinámico para un e-commerce. Tu agente sonará como tu mejor vendedor.",
+                q_en: "Will the AI sound like a boring, generic robot?",
+                a_en: "Never. We clone your corporate identity. Through System Prompts engineering, we calibrate your brand's exact tone of voice: it can be stoic and professional for a law firm, or fresh and dynamic for an e-commerce. Your agent will sound like your top performer."
+            },
+            {
+                id: 10,
+                q_es: "¿Qué pasa si tengo un pico de ventas masivo, como en Black Friday?",
+                a_es: "Infraestructura de escalabilidad elástica. Un humano colapsa con 10 chats al mismo tiempo; nuestros servidores dedicados pueden procesar 10 o 10,000 interacciones por segundo sin latencia. Tu negocio nunca dejará a un cliente en espera, ni siquiera en tus días de mayor tráfico.",
+                q_en: "What happens if I have a massive sales spike, like on Black Friday?",
+                a_en: "Elastic scalability infrastructure. A human collapses with 10 simultaneous chats; our dedicated servers can process 10 or 10,000 interactions per second with zero latency. Your business will never leave a client waiting, not even on your highest traffic days."
+            },
+            {
+                id: 11,
+                q_es: "¿Funciona solo en WhatsApp o en otras plataformas?",
+                a_es: "Qxao es omnicanal. Desarrollamos un único 'cerebro' inteligente que se conecta en simultáneo a WhatsApp Business, Instagram Direct, Facebook Messenger y el chat de tu sitio web. Un ecosistema centralizado donde el agente atiende todas tus sucursales digitales a la vez.",
+                q_en: "Does it only work on WhatsApp or other platforms too?",
+                a_en: "Qxao is omnichannel. We develop a single intelligent 'brain' that connects simultaneously to WhatsApp Business, Instagram Direct, Facebook Messenger, and your website chat. A centralized ecosystem where the agent manages all your digital branches at once."
+            },
+            {
+                id: 12,
+                q_es: "¿El Agente puede atender a clientes extranjeros?",
+                a_es: "Sí, cuenta con soporte multilingüe nativo. La IA detecta automáticamente el idioma en el que el cliente le escribe y le responde con fluidez nativa en ese mismo idioma, aplicando el mismo proceso de ventas sin necesidad de instalar bots paralelos.",
+                q_en: "Can the Agent assist foreign clients?",
+                a_en: "Yes, it features native multilingual support. The AI automatically detects the language the client is writing in and responds with native fluency in that same language, applying the same sales process without the need to install parallel bots."
+            },
+            {
+                id: 13,
+                q_es: "¿Hay riesgo de que WhatsApp bloquee mi número corporativo?",
+                a_es: "La seguridad es nuestra prioridad. Trabamos con integraciones oficiales y APIs de grado empresarial (como Evolution API o Meta Cloud) configuradas con protocolos de warm-up (calentamiento de líneas) y control de tasas de envío para cumplir estrictamente con las políticas de Meta y blindar tus canales.",
+                q_en: "Is there a risk of WhatsApp banning my corporate number?",
+                a_en: "Security is our priority. We work with official integrations and enterprise-grade APIs configured with warm-up protocols and send-rate controls to strictly comply with Meta's policies and shield your channels."
+            },
+            {
+                id: 14,
+                q_es: "¿Cómo sé si el Agente realmente está generando resultados?",
+                a_es: "No te dejamos a ciegas. Tagueamos y registramos cada interacción. Te conectamos un dashboard analítico o enviamos los datos directo a tu CRM para que puedas medir en tiempo real cuántos leads se calificaron, cuántas citas se agendaron y cuánto dinero cerró la IA.",
+                q_en: "How do I know if the Agent is actually driving results?",
+                a_en: "We don't leave you in the dark. We tag and log every interaction. We connect you to an analytical dashboard or send the data directly to your CRM so you can measure in real-time how many leads were qualified, appointments booked, and revenue closed by the AI."
+            },
+            {
+                id: 15,
+                q_es: "¿El agente puede validar comprobantes de pago o procesar cobros reales?",
+                a_es: "Totalmente. No solo enviamos enlaces de pago. Gracias a la integración de visión artificial, el Agente Qxao puede recibir capturas de pantalla o fotos de transferencias, leer el monto y el número de referencia, y cruzarlo con tu estado de cuenta. También generamos links dinámicos de Stripe, PayPal o pasarelas locales para un cierre de ventas 100% autónomo.",
+                q_en: "Can the agent validate payment receipts or process real charges?",
+                a_en: "Absolutely. We don't just send payment links. Thanks to computer vision integration, the Qxao Agent can receive screenshots of transfers, read the amount and reference number, and cross-check it with your bank records. We also generate dynamic links for Stripe, PayPal, or local gateways for a 100% autonomous checkout."
+            },
+            {
+                id: 16,
+                q_es: "La información de mi empresa está desordenada en PDFs y Word. ¿Sirve?",
+                a_es: "Perfectamente. No necesitas perder semanas reestructurando tu información. Nuestra tecnología de Bases de Datos Vectoriales (RAG) procesa datos no estructurados: manuales en PDF pesados, historiales de chat, documentos de Word o catálogos web. La IA los lee, los procesa y extrae la respuesta exacta en milisegundos.",
+                q_en: "My company's information is messy and scattered across PDFs and Word docs. Does it work?",
+                a_en: "Perfectly. You don't need to waste weeks restructuring your info. Our Vector Database (RAG) technology processes unstructured data: heavy PDF manuals, chat histories, Word documents, or web catalogs. The AI reads them, processes them, and extracts the exact answer in milliseconds."
+            },
+            {
+                id: 17,
+                q_es: "Una vez implementado, ¿qué pasa si algo falla o quiero cambiar mi estrategia?",
+                a_es: "Tu éxito es nuestra responsabilidad. Nuestros planes incluyen gobernanza y monitoreo 24/7. Si Meta actualiza sus políticas, necesitas agregar una nueva sucursal o cambiar los flujos de respuesta, nuestro equipo gestiona la actualización técnica en la nube para que tu operatividad nunca se detenga.",
+                q_en: "Once implemented, what happens if something fails or I want to change my strategy?",
+                a_en: "Your success is our responsibility. Our plans include 24/7 governance and monitoring. If Meta updates its policies, you need to add a new branch, or change response flows, our team manages the technical update in the cloud so your operations never stop."
+            },
+            {
+                id: 18,
+                q_es: "¿Estoy atado a un contrato anual o plazos forzosos?",
+                a_es: "Creemos en retener a nuestros clientes por resultados, no por contratos. Ofrecemos planes mensuales flexibles y transparentes. Eres libre de escalar tu infraestructura en temporadas altas y ajustar tu plan cuando lo desees, sin penalizaciones ocultas ni letras pequeñas.",
+                q_en: "Am I locked into an annual contract or forced terms?",
+                a_en: "We believe in retaining our clients through results, not contracts. We offer flexible and transparent monthly plans. You are free to scale your infrastructure during peak seasons and adjust your plan whenever you want, with no hidden penalties or fine print."
+            },
+            {
+                id: 19,
+                q_es: "¿Qué pasa si mis clientes tienen mala ortografía, usan jergas o envían audios desde la calle con ruido?",
+                a_es: "La IA de Qxao está entrenada con modelos de lenguaje natural (NLP) hiper-avanzados. Entiende errores tipográficos severos, modismos locales (slang) y transcribe notas de voz incluso con ruido de tráfico de fondo. El agente no exige que el cliente hable perfecto; se adapta y comprende la intención de compra sin frustrar al usuario.",
+                q_en: "What if my clients have bad spelling, use slang, or send voice notes from a noisy street?",
+                a_en: "Qxao's AI is trained on hyper-advanced Natural Language Processing (NLP) models. It understands severe typos, local slang, and transcribes voice notes even with background traffic noise. The agent doesn't demand the client speak perfectly; it adapts and grasps the purchasing intent without frustrating the user."
+            },
+            {
+                id: 20,
+                q_es: "¿La IA puede hacer seguimiento (follow-up) o solo responde cuando le escriben?",
+                a_es: "Qxao no es un bot pasivo, es un agente comercial proactivo. Si un cliente solicita una cotización y te deja 'en visto', nuestro sistema puede programar automáticamente un mensaje de seguimiento persuasivo a las 24 o 48 horas. Recuperamos ventas perdidas mientras tú duermes.",
+                q_en: "Can the AI do follow-ups, or does it only reply when written to?",
+                a_en: "Qxao is not a passive bot; it is a proactive sales agent. If a client requests a quote and stops responding, our system can automatically schedule a persuasive follow-up message 24 or 48 hours later. We recover lost sales while you sleep."
+            },
+            {
+                id: 21,
+                q_es: "¿Puede mi competencia intentar engañar a la IA para robar mis precios o gastar mi saldo?",
+                a_es: "Contamos con blindaje anti-hackeo (Prompt Injection Security). Si el sistema detecta a un usuario haciendo preguntas trampa para extraer configuraciones, enviando spam masivo o intentando confundir al bot, nuestra capa de seguridad bloquea la intención, responde de forma neutral o banea temporalmente al contacto para proteger tu infraestructura y tu presupuesto.",
+                q_en: "Can competitors try to trick the AI into stealing my pricing logic or running up my server bill?",
+                a_en: "We have anti-hacking shielding (Prompt Injection Security). If the system detects a user asking trick questions to extract configurations, sending massive spam, or trying to confuse the bot, our security layer blocks the intent, responds neutrally, or temporarily bans the contact to protect your infrastructure and budget."
+            },
+            {
+                id: 22,
+                q_es: "Los latinos somos de 'regatear', ¿puede el cliente convencer a la IA de darle un descuento no autorizado?",
+                a_es: "Jamás. En Qxao definimos 'líneas rojas' comerciales inquebrantables. Tú decides: puedes darle al agente autoridad para negociar un 5% de descuento condicionado a compras grandes, o puedes bloquear los descuentos al 100%. La IA será el vendedor más persuasivo, pero también el más disciplinado de tu empresa.",
+                q_en: "Clients love to negotiate. Can they manipulate the AI into giving unauthorized discounts?",
+                a_en: "Never. At Qxao, we define unbreakable commercial 'red lines'. You decide: you can authorize the agent to negotiate a 5% discount conditioned on bulk purchases, or you can block discounts entirely. The AI will be your most persuasive salesperson, but also the most disciplined."
+            },
+            {
+                id: 23,
+                q_es: "¿Puedo supervisar lo que dice el bot en tiempo real o pierdo el control de mis ventas?",
+                a_es: "Tienes el control absoluto. Contamos con un 'Modo Sombra' (Shadow Mode). Puedes ver en vivo cada conversación desde tu celular o dashboard corporativo. Si ves que el Agente está manejando un cliente VIP y quieres tomar el control, con un solo clic pausas la IA y entras tú. El cliente nunca notará la transición.",
+                q_en: "Can I monitor what the bot says in real-time, or do I lose control of my sales?",
+                a_en: "You have absolute control. We feature a 'Shadow Mode'. You can watch every conversation live from your phone or corporate dashboard. If you see the Agent handling a VIP client and you want to step in, with a single click you pause the AI and take over. The client will never notice the transition."
+            },
+            {
+                id: 24,
+                q_es: "¿Quién es el dueño de los datos, los leads y el historial de chats?",
+                a_es: "Tú eres el único dueño. A diferencia de plataformas cerradas que 'secuestran' tu información, nosotros desarrollamos infraestructuras transparentes. Tus bases de datos, el historial de clientes y los leads generados son 100% tuyos, privados y extraíbles en el momento que lo desees.",
+                q_en: "Who owns the data, the leads, and the chat history?",
+                a_en: "You are the sole owner. Unlike closed platforms that hold your data hostage, we build transparent infrastructures. Your databases, client history, and generated leads are 100% yours, private, and exportable whenever you want."
+            },
+            {
+                id: 25,
+                q_es: "¿Mi equipo de ventas se va a sentir amenazado o les costará usar esto?",
+                a_es: "Al contrario, te amarán. Qxao no reemplaza a tus mejores vendedores, los libera de la 'basura operativa' (responder horarios, agendar citas, cobrar). Tu equipo humano entrará descansado solo a cerrar negocios complejos y relaciones públicas. La curva de aprendizaje es cero, porque la IA trabaja en segundo plano.",
+                q_en: "Will my sales team feel threatened or find it hard to adapt?",
+                a_en: "On the contrary, they will love you. Qxao doesn't replace your top closers; it frees them from operational trash (answering schedules, booking, billing). Your human team will step in fully rested only to close complex deals and build PR. The learning curve is zero because the AI works in the background."
+            },
+            {
+                id: 26,
+                q_es: "¿Por qué debería pagarles a ustedes si puedo conectar la API de ChatGPT yo mismo?",
+                a_es: "Conectar ChatGPT es fácil; evitar que destruya tu marca es lo difícil. Si lo haces tú mismo, la IA alucinará, prometerá cosas que no vendes y se saldrá del rol. Nosotros no te vendemos 'un bot', te implementamos una arquitectura de ingeniería empresarial con filtros de seguridad, memoria persistente, integración de pagos y soporte continuo. Con Qxao compras tranquilidad, no un experimento.",
+                q_en: "Why should I pay you if I can just plug in the ChatGPT API myself?",
+                a_en: "Connecting ChatGPT is easy; stopping it from destroying your brand is the hard part. If you do it yourself, the AI will hallucinate, promise things you don't sell, and break character. We don't sell you 'a bot', we implement an enterprise engineering architecture with security filters, persistent memory, payment integration, and continuous support. With Qxao, you buy peace of mind, not an experiment."
+            },
+            {
+                id: 27,
+                q_es: "¿Necesito pasar meses entrenando a la IA antes de que pueda vender?",
+                a_es: "En absoluto. Utilizamos aprendizaje Few-Shot e integración RAG. Solo necesitamos tu manual de marca, preguntas frecuentes actuales y catálogo de servicios. La IA digiere esta información en horas, no en meses. En menos de una semana, tienes un experto configurado y listo para integrarse a producción.",
+                q_en: "Do I need to spend months training the AI before it can sell?",
+                a_en: "Not at all. We use Few-Shot learning and RAG integration. We only need your brand manual, current FAQs, and service catalog. The AI digests this information in hours, not months. In less than a week, you have an expert configured and ready for production deployment."
+            },
+            {
+                id: 28,
+                q_es: "¿El agente puede enviar fotos, videos o PDFs de mis productos?",
+                a_es: "Totalmente. La experiencia no se limita a texto plano. Si un cliente pide ver 'el menú', 'el modelo en color rojo' o 'el brochure corporativo', el agente extrae dinámicamente el archivo multimedia de la base de datos y lo envía directamente por WhatsApp o Instagram para una experiencia visual completa.",
+                q_en: "Can the agent send photos, videos, or PDFs of my products?",
+                a_en: "Completely. The experience is not limited to plain text. If a client asks to see 'the menu,' 'the red model,' or 'the corporate brochure,' the agent dynamically retrieves the rich media file from the database and sends it directly via WhatsApp or Instagram for a full visual experience."
+            },
+            {
+                id: 29,
+                q_es: "Una vez que el bot está funcionando, ¿aprende y mejora con el tiempo?",
+                a_es: "Sí. Entregamos tableros de análisis semántico. Evaluamos las conversaciones reales para identificar nuevas objeciones o preguntas recurrentes de tus clientes que no estaban en el catálogo original, iterando el System Prompt para que el agente sea cada vez más letal cerrando ventas cada mes.",
+                q_en: "Once the bot is running, does it learn and improve over time?",
+                a_en: "Yes. We provide semantic analysis dashboards. We evaluate real conversations to identify new objections or recurring client questions not in the original catalog, iterating the System Prompt so the agent becomes increasingly lethal at closing sales month over month."
+            },
+            {
+                id: 30,
+                q_es: "¿Qué pasa si mi empresa usa un sistema viejo (Legacy) que no tiene API moderna?",
+                a_es: "No te preocupes. Nuestra infraestructura de orquestación avanzada nos permite crear automatizaciones a medida. Si tu sistema no tiene API, podemos conectarnos mediante webhooks, bases de datos SQL directas, lectura de correos automatizada, o incluso scraping interno. Hacemos que la tecnología de punta hable el mismo idioma que tu sistema actual.",
+                q_en: "What if my company uses an old legacy system that lacks a modern API?",
+                a_en: "Don't worry. Our advanced orchestration infrastructure allows us to build custom automations. If your system lacks an API, we can connect via webhooks, direct SQL databases, automated email parsing, or even internal scraping. We make cutting-edge technology speak the same language as your current system."
+            },
+            {
+                id: 31,
+                q_es: "¿El sistema se limita a chat o pueden hacer agentes telefónicos?",
+                a_es: "Llevamos la automatización al siguiente nivel. Además de dominar canales escritos, diseñamos Agentes de Voz (Voice AI) capaces de hacer o recibir llamadas telefónicas reales, agendar citas por voz y enviar el resumen escrito a tu CRM, hablando con una naturalidad y latencia que asombran a cualquier cliente.",
+                q_en: "Is the system limited to chat, or can you build phone agents?",
+                a_en: "We take automation to the next level. Besides mastering written channels, we design Voice AI agents capable of making or receiving actual phone calls, booking appointments by voice, and sending the written summary to your CRM, speaking with a naturalness and low latency that amazes any client."
+            },
+            {
+                id: 32,
+                q_es: "Si decido intervenir en un chat en vivo, ¿el bot me va a interrumpir mientras hablo con el cliente?",
+                a_es: "Nunca. El 'Modo Sombra' tiene una directiva de anulación automática (Override). Al momento en que un agente humano envía un mensaje manual en el hilo de conversación desde el dashboard, la IA se pausa silenciosamente en el acto. Solo volverá a intervenir cuando tú se lo ordenes.",
+                q_en: "If I decide to intervene in a live chat, will the bot interrupt me while I talk to the client?",
+                a_en: "Never. The 'Shadow Mode' features an automatic override directive. The moment a human agent sends a manual message in the conversation thread from the dashboard, the AI pauses silently on the spot. It will only step back in when you command it to."
+            },
+            {
+                id: 33,
+                q_es: "Tengo miedo de hacer la inversión. ¿En cuánto tiempo recupero mi dinero?",
+                a_es: "La tecnología se paga sola. Al eliminar las ventas perdidas por falta de atención rápida, recuperar leads fuera de horario laboral automáticamente y reducir la necesidad de contratar personal extra, el 90% de nuestros clientes corporativos logran un Retorno de Inversión (ROI) positivo entre los primeros 30 a 60 días de operación.",
+                q_en: "I'm afraid to make the investment. How quickly will I get my money back?",
+                a_en: "The technology pays for itself. By eliminating lost sales due to slow response times, automatically recovering leads outside business hours, and reducing the need to hire extra staff, 90% of our corporate clients achieve a positive Return on Investment (ROI) within the first 30 to 60 days of operation."
+            }
+        ];
+
+        // VARIABLES GLOBALES
+        let currentLang = 'es';
+        const langToggleBtn = document.getElementById('lang-toggle');
+
+        // FUNCIÓN QUE INYECTA LAS PREGUNTAS EN EL HTML
+        function renderFAQs(lang) {
+            const container = document.getElementById('faq-container');
+            container.innerHTML = ''; 
+
+            faqData.forEach(item => {
+                const question = lang === 'es' ? item.q_es : item.q_en;
+                const answer = lang === 'es' ? item.a_es : item.a_en;
+
+                const detailsHTML = `
+                    <details class="glow-card group border border-gray-200 dark:border-gray-700 rounded-2xl bg-white dark:bg-darkCard overflow-hidden transition-all duration-300 shadow-sm">
+                        <summary class="flex cursor-pointer items-center justify-between gap-4 p-6 text-gray-900 dark:text-white font-bold hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
+                            <span class="flex-1 text-left">${item.id}. ${question}</span>
+                            <span class="relative h-5 w-5 shrink-0 text-[#690991] dark:text-[#c75ced]">
+                                <svg class="absolute inset-0 h-5 w-5 opacity-100 group-open:opacity-0 transition-opacity duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
+                                <svg class="absolute inset-0 h-5 w-5 opacity-0 group-open:opacity-100 transition-opacity duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M20 12H4"/></svg>
+                            </span>
+                        </summary>
+                        <div class="px-6 pb-6 text-gray-600 dark:text-gray-400 leading-relaxed text-sm border-t border-gray-100 dark:border-gray-800 pt-4 bg-gray-50/50 dark:bg-gray-900/20">
+                            <p>${answer}</p>
+                        </div>
+                    </details>
+                `;
+                container.innerHTML += detailsHTML;
+            });
+            
+            applyGlowEffect();
+        }
+
+        // FUNCIÓN MAESTRA DE TRADUCCIÓN
+        function translatePage() {
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (globalTranslations[currentLang][key]) {
+                    if (key === "chat-ph") el.placeholder = globalTranslations[currentLang][key];
+                    else el.innerHTML = globalTranslations[currentLang][key];
+                }
+            });
+            renderFAQs(currentLang);
+        }
+
+        // BOTÓN DE IDIOMA
+        if (langToggleBtn) {
+            langToggleBtn.addEventListener('click', () => {
+                currentLang = currentLang === 'es' ? 'en' : 'es';
+                langToggleBtn.innerHTML = currentLang === 'es' ? 'ES <span class="opacity-40">|</span> EN' : '<span class="opacity-40">ES |</span> EN';
+                translatePage();
+            });
+        }
+
+        // EFECTO DARK MODE
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+        const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+            if(themeToggleLightIcon) themeToggleLightIcon.classList.remove('hidden');
+        } else {
+            document.documentElement.classList.remove('dark');
+            if(themeToggleDarkIcon) themeToggleDarkIcon.classList.remove('hidden');
+        }
+
+        if(themeToggleBtn) {
+            themeToggleBtn.addEventListener('click', function() {
+                if(themeToggleDarkIcon) themeToggleDarkIcon.classList.toggle('hidden');
+                if(themeToggleLightIcon) themeToggleLightIcon.classList.toggle('hidden');
+                if (document.documentElement.classList.contains('dark')) {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('color-theme', 'light');
+                } else {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('color-theme', 'dark');
+                }
+            });
+        }
+
+        // MENÚ MÓVIL
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const closeLinks = document.querySelectorAll('.close-menu');
+
+        if(menuBtn && mobileMenu) {
+            menuBtn.addEventListener('click', () => { mobileMenu.classList.toggle('hidden'); });
+            closeLinks.forEach(link => { link.addEventListener('click', () => { mobileMenu.classList.add('hidden'); }); });
+        }
+
+        // EFECTO MAGNÉTICO (GLOW)
+        function applyGlowEffect() {
+            document.querySelectorAll('.glow-card').forEach(card => {
+                card.addEventListener('mousemove', e => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    card.style.setProperty('--mouse-x', `${x}px`);
+                    card.style.setProperty('--mouse-y', `${y}px`);
+                });
+            });
+        }
+
+        // ANIMACIONES DE SCROLL
+        function handleScroll() {
+            document.querySelectorAll('.animate-on-scroll').forEach(el => {
+                const elRect = el.getBoundingClientRect();
+                if (elRect.top <= window.innerHeight * 0.8) {
+                    el.classList.add('visible');
+                }
+            });
+        }
+        window.addEventListener('scroll', handleScroll);
+        
+        // LÓGICA DEL CHATBOT FLOTANTE
+        const chatToggle = document.getElementById('chat-toggle');
+        const chatWindow = document.getElementById('chat-window');
+        const closeChat = document.getElementById('close-chat');
+        const chatInput = document.getElementById('chat-input');
+        const sendChat = document.getElementById('send-chat');
+        const chatMessages = document.getElementById('chat-messages');
+
+        function toggleChat() {
+            if (chatWindow.classList.contains('hidden')) {
+                chatWindow.classList.remove('hidden');
+                chatWindow.classList.add('flex');
+                setTimeout(() => chatInput.focus(), 100);
+            } else {
+                chatWindow.classList.add('hidden');
+                chatWindow.classList.remove('flex');
+            }
+        }
+        if(chatToggle) chatToggle.addEventListener('click', toggleChat);
+        if(closeChat) closeChat.addEventListener('click', toggleChat);
+
+        function handleSendMessage() {
+            if(!chatInput) return;
+            const text = chatInput.value.trim();
+            if (!text) return;
+
+            const userMsg = document.createElement('div');
+            userMsg.className = 'bg-[#690991] text-white p-3 rounded-2xl rounded-tr-sm self-end max-w-[85%] shadow-sm break-words mt-2';
+            userMsg.textContent = text;
+            chatMessages.appendChild(userMsg);
+            
+            chatInput.value = '';
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+
+            setTimeout(() => {
+                const botMsg = document.createElement('div');
+                botMsg.className = 'bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 text-gray-700 dark:text-gray-200 p-3 rounded-2xl rounded-tl-sm self-start max-w-[85%] shadow-sm mt-2';
+                botMsg.textContent = "¡Excelente pregunta! Esta es una de nuestras inquietudes más comunes. Si revisas la pregunta #4 en la lista, verás que garantizamos privacidad total mediante despliegues aislados.";
+                chatMessages.appendChild(botMsg);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }, 1200);
+        }
+        if(sendChat) sendChat.addEventListener('click', handleSendMessage);
+        if(chatInput) chatInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') handleSendMessage(); });
+
+        // AL CARGAR LA PÁGINA
+        window.addEventListener('load', () => {
+            translatePage(); 
+            handleScroll();
+        });
+    </script>
+</body>
+</html>
