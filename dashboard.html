@@ -15,17 +15,14 @@
     <!-- LIBRERÍAS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
     <!-- CONFIGURACIÓN TAILWIND -->
     <script>
         tailwind.config = {
             darkMode: 'class',
             theme: {
                 extend: {
-                    colors: {
-                        primary: '#690991',
-                        darkBg: '#0f172a',
-                        darkCard: '#1e293b'
-                    }
+                    colors: { primary: '#690991', darkBg: '#0f172a', darkCard: '#1e293b' }
                 }
             }
         }
@@ -88,7 +85,7 @@
             <!-- Saludo de Usuario -->
             <span id="user-greeting" class="text-sm font-semibold text-gray-700 dark:text-gray-200 hidden sm:inline">Cargando...</span>
             
-            <!-- Botón Bilingüe ES / EN (NUEVO) -->
+            <!-- Botón Bilingüe ES / EN -->
             <button id="lang-toggle" class="text-xs font-bold text-gray-500 dark:text-gray-400 hover:text-[#690991] dark:hover:text-white transition-colors px-2.5 py-1.5 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-darkCard shadow-sm">
                 ES <span class="opacity-40">|</span> EN
             </button>
@@ -145,9 +142,8 @@
             </div>
         </div>
 
-        <!-- SECCIÓN DE CHATS EN VIVO CON EL CLIENTE / AGENTE -->
+        <!-- SECCIÓN DE CHATS EN VIVO -->
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            <!-- Lista de Conversaciones Recientes -->
             <div class="bg-white dark:bg-darkCard p-6 rounded-2xl border border-gray-200 dark:border-gray-700 shadow-sm lg:col-span-1">
                 <h3 data-i18n="dash-active-conv" class="font-bold text-lg mb-4 text-gray-900 dark:text-white">Conversaciones Activas</h3>
                 <div class="space-y-3">
@@ -168,7 +164,6 @@
                 </div>
             </div>
 
-            <!-- Ventana de Chat en Vivo -->
             <div class="bg-white dark:bg-darkCard p-6 rounded-2xl border border-gray-200 dark:border-gray-700 shadow-sm lg:col-span-2 flex flex-col h-[350px]">
                 <h3 data-i18n="dash-ai-flow" class="font-bold text-lg mb-4 text-gray-900 dark:text-white">Flujo del Agente IA (En Vivo)</h3>
                 <div class="flex-1 bg-gray-50 dark:bg-gray-800/50 rounded-xl p-4 overflow-y-auto space-y-3 border border-gray-100 dark:border-gray-700/50">
@@ -192,6 +187,17 @@
         </div>
 
     </main>
+
+    <!-- BARRA FLOTANTE DE RETORNO MAESTRO (SOLO EN MODO IMPERSONACIÓN) -->
+    <div id="admin-return-bar" class="hidden fixed bottom-6 right-6 z-[999] bg-[#690991] text-white px-5 py-3 rounded-2xl shadow-2xl border border-purple-400 flex items-center gap-4 animate-bounce">
+        <div class="flex flex-col">
+            <span class="text-[10px] font-bold uppercase tracking-wider text-purple-200">Modo Impersonación</span>
+            <span id="impersonate-info" class="text-xs font-semibold">Viendo como cliente</span>
+        </div>
+        <button onclick="regresarAlAdmin()" class="bg-white text-[#690991] hover:bg-gray-100 px-4 py-2 rounded-xl text-xs font-bold transition shadow-md">
+            Volver al Panel Maestro
+        </button>
+    </div>
 
     <!-- SCRIPT DE VALIDACIÓN, IDIOMA Y CONTROL DE SESIÓN -->
     <script>
@@ -255,7 +261,6 @@
                     el.textContent = translations[currentLang][key];
                 }
             });
-            // Update the user greeting safely
             const userName = localStorage.getItem('user_name');
             document.getElementById('user-greeting').textContent = currentLang === 'es' ? `Hola, ${userName || 'Administrador'}` : `Hello, ${userName || 'Admin'}`;
         }
@@ -268,29 +273,43 @@
             });
         }
 
-        // VALIDACIÓN DE SESIÓN Y CARGA DE DATOS
+        // VALIDACIÓN DE SESIÓN, DATOS Y MODO IMPERSONACIÓN
         window.addEventListener('DOMContentLoaded', () => {
-            const token = localStorage.getItem('qxao_token');
+            const token = localStorage.getItem('qxao_token') || localStorage.getItem('user_email');
             const userName = localStorage.getItem('user_name');
             const companyName = localStorage.getItem('company');
 
             if (!token) {
-                // Si no hay token, lo devuelve al login
                 window.location.href = 'login.html';
                 return;
             }
 
-            // Aplicar nombre de usuario al cargar
             document.getElementById('user-greeting').textContent = `Hola, ${userName || 'Administrador'}`;
             document.getElementById('company-badge').textContent = companyName || 'Corporativo Qxao';
             document.getElementById('user-greeting').classList.remove('hidden');
+
+            // --- DETECCIÓN DE IMPERSONACIÓN ---
+            const isAdminSession = localStorage.getItem('is_admin') === 'true';
+            const impersonatingEmail = localStorage.getItem('user_email');
+            
+            if (!isAdminSession && impersonatingEmail) {
+                const bar = document.getElementById('admin-return-bar');
+                const info = document.getElementById('impersonate-info');
+                info.textContent = `Cuenta: ${impersonatingEmail}`;
+                bar.classList.remove('hidden');
+            }
         });
+
+        function regresarAlAdmin() {
+            localStorage.setItem('is_admin', 'true');
+            localStorage.setItem('user_name', 'Administrador Qxao');
+            localStorage.setItem('user_email', 'admin@qxao.com');
+            window.location.href = "admin.html";
+        }
 
         // FUNCIÓN CERRAR SESIÓN
         function logout() {
-            localStorage.removeItem('qxao_token');
-            localStorage.removeItem('user_name');
-            localStorage.removeItem('company');
+            localStorage.clear();
             window.location.href = 'login.html';
         }
 
