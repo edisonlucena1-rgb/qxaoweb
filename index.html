@@ -1296,17 +1296,39 @@
     
 <!-- SECCIÓN INTEGRACIÓN -->
 <section id="integraciones" class="py-24 bg-gray-50 dark:bg-darkBg transition-colors relative overflow-hidden">
-    <!-- PEGA LA LÍNEA AQUÍ -->
     <div class="absolute inset-0 bg-cuadricula-animada pointer-events-none z-0"></div>
+
+    <!-- ESTILOS PARA LAS ANIMACIONES DE DATOS (PC Y MÓVIL) -->
+    <style>
+        /* Flujo horizontal para PC */
+        .flow-line {
+            stroke-dasharray: 8 8;
+            animation: flujo-datos 1s linear infinite reverse;
+        }
+        @keyframes flujo-datos {
+            to { stroke-dashoffset: 16; }
+        }
+        
+        /* Rayo láser vertical para Móvil */
+        .laser-beam {
+            animation: flujo-vertical 2.5s ease-in-out infinite;
+        }
+        @keyframes flujo-vertical {
+            0% { top: -20%; opacity: 0; }
+            20% { opacity: 1; }
+            80% { opacity: 1; }
+            100% { top: 120%; opacity: 0; }
+        }
+    </style>
 
     <div class="max-w-6xl mx-auto px-6 text-center relative z-10">
         <h2 data-i18n="int-title" class="text-4xl font-bold mb-4 text-[#690991] dark:text-[#c75ced] animate-on-scroll">Integración inteligente con tu negocio</h2>
         <p data-i18n="int-desc" class="text-gray-600 dark:text-gray-400 mb-16 max-w-2xl mx-auto animate-on-scroll">Qxao se conecta nativamente con tu configuración existente, centralizando tus documentos, inventario, reservas y pagos directamente en el chat.</p>
 
         <!-- CONTENEDOR PRINCIPAL -->
-        <div class="relative flex flex-col md:flex-row items-center justify-center gap-12 md:gap-24 animate-on-scroll">
+        <div class="relative flex flex-col md:flex-row items-center justify-center gap-8 md:gap-24 animate-on-scroll">
             
-            <!-- SISTEMA DE LÍNEAS SVG -->
+            <!-- SISTEMA DE LÍNEAS SVG (Solo visible en PC) -->
             <div class="hidden md:block absolute inset-0 w-full h-full pointer-events-none z-0">
                 <svg class="w-full h-full" viewBox="0 0 1000 400" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
                     <defs>
@@ -1316,104 +1338,103 @@
                             <stop offset="100%" stop-color="#c75ced" stop-opacity="0"/>
                         </linearGradient>
                     </defs>
-
                     <!-- INPUTS (Izquierda) -->
-                    <!-- Doc -->
                     <path d="M 280,75 C 380,75 380,200 440,200" stroke="#e2e8f0" stroke-width="2" class="dark:stroke-gray-700"/>
                     <path d="M 280,75 C 380,75 380,200 440,200" stroke="url(#glow-grad)" stroke-width="4" class="flow-line"/>
-                    <!-- Inv -->
                     <path d="M 280,155 C 380,155 380,200 440,200" stroke="#e2e8f0" stroke-width="2" class="dark:stroke-gray-700"/>
                     <path d="M 280,155 C 380,155 380,200 440,200" stroke="url(#glow-grad)" stroke-width="4" class="flow-line"/>
-                    <!-- Res -->
                     <path d="M 280,240 C 380,240 380,200 440,200" stroke="#e2e8f0" stroke-width="2" class="dark:stroke-gray-700"/>
                     <path d="M 280,240 C 380,240 380,200 440,200" stroke="url(#glow-grad)" stroke-width="4" class="flow-line"/>
-                    <!-- Pagos -->
                     <path d="M 280,325 C 380,325 380,200 440,200" stroke="#e2e8f0" stroke-width="2" class="dark:stroke-gray-700"/>
                     <path d="M 280,325 C 380,325 380,200 440,200" stroke="url(#glow-grad)" stroke-width="4" class="flow-line"/>
 
-                    <!-- OUTPUTS (Derecha - Ramificados) -->
-                    <!-- WhatsApp (Y: 80) -->
+                    <!-- OUTPUTS (Derecha) -->
                     <path d="M 560,200 C 620,200 620,80 720,80" stroke="#e2e8f0" stroke-width="2" class="dark:stroke-gray-700"/>
                     <path d="M 560,200 C 620,200 620,80 720,80" stroke="url(#glow-grad)" stroke-width="4" class="flow-line"/>
-                    <!-- Instagram (Y: 160) -->
                     <path d="M 560,200 C 620,200 620,160 720,160" stroke="#e2e8f0" stroke-width="2" class="dark:stroke-gray-700"/>
                     <path d="M 560,200 C 620,200 620,160 720,160" stroke="url(#glow-grad)" stroke-width="4" class="flow-line"/>
-                    <!-- Facebook (Y: 240) -->
                     <path d="M 560,200 C 620,200 620,240 720,240" stroke="#e2e8f0" stroke-width="2" class="dark:stroke-gray-700"/>
                     <path d="M 560,200 C 620,200 620,240 720,240" stroke="url(#glow-grad)" stroke-width="4" class="flow-line"/>
-                    <!-- Web (Y: 320) -->
                     <path d="M 560,200 C 620,200 620,320 720,320" stroke="#e2e8f0" stroke-width="2" class="dark:stroke-gray-700"/>
                     <path d="M 560,200 C 620,200 620,320 720,320" stroke="url(#glow-grad)" stroke-width="4" class="flow-line"/>
                 </svg>
             </div>
 
-<!-- CARDS IZQUIERDA -->
-<div class="flex flex-col gap-4 w-full md:w-64 relative z-10">
-    <div class="glow-card bg-white dark:bg-darkCard p-4 rounded-xl border border-gray-200 dark:border-gray-700 shadow-md font-medium flex items-center gap-3 text-gray-700 dark:text-gray-200">
-        <svg class="w-6 h-6 text-[#690991] dark:text-[#c75ced]" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" /></svg>
-        <span data-i18n="in-1">Documentos</span>
-    </div>
-    <div class="glow-card bg-white dark:bg-darkCard p-4 rounded-xl border border-gray-200 dark:border-gray-700 shadow-md font-medium flex items-center gap-3 text-gray-700 dark:text-gray-200">
-        <svg class="w-6 h-6 text-[#690991] dark:text-[#c75ced]" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 7.5l-.625 10.632a2.25 2.25 0 01-2.247 2.118H6.622a2.25 2.25 0 01-2.247-2.118L3.75 7.5M10 11.25h4M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z" /></svg>
-        <span data-i18n="in-2">Inventario</span>
-    </div>
-    <div class="glow-card bg-white dark:bg-darkCard p-4 rounded-xl border border-gray-200 dark:border-gray-700 shadow-md font-medium flex items-center gap-3 text-gray-700 dark:text-gray-200">
-        <svg class="w-6 h-6 text-[#690991] dark:text-[#c75ced]" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" /></svg>
-        <span data-i18n="in-3">Reserva</span>
-    </div>
-    <div class="glow-card bg-white dark:bg-darkCard p-4 rounded-xl border border-gray-200 dark:border-gray-700 shadow-md font-medium flex items-center gap-3 text-gray-700 dark:text-gray-200">
-        <svg class="w-6 h-6 text-[#690991] dark:text-[#c75ced]" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-3.75 3h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5z" /></svg>
-        <span data-i18n="in-4">Pagos</span>
-    </div>
-</div>
+            <!-- SISTEMA DE FLUJO VERTICAL (Solo visible en Móvil) -->
+            <div class="block md:hidden absolute inset-0 w-full h-full pointer-events-none z-0 flex justify-center">
+                <!-- Canal base -->
+                <div class="w-1 h-full bg-gray-200 dark:bg-gray-800 relative overflow-hidden rounded-full">
+                    <!-- Rayo de luz -->
+                    <div class="laser-beam absolute top-0 w-full h-1/4 bg-gradient-to-b from-transparent via-[#c75ced] to-transparent shadow-[0_0_15px_#c75ced]"></div>
+                </div>
+            </div>
 
+            <!-- CARDS IZQUIERDA (Ahora en Grid 2x2 en móvil) -->
+            <div class="grid grid-cols-2 md:flex md:flex-col gap-4 w-full md:w-64 relative z-10 px-2 md:px-0">
+                <div class="glow-card bg-white dark:bg-darkCard p-3 md:p-4 rounded-xl border border-gray-200 dark:border-gray-700 font-medium flex flex-col md:flex-row items-center justify-center md:justify-start gap-2 md:gap-3 text-gray-700 dark:text-gray-200 transition-all duration-300 ease-out hover:-translate-y-1 hover:scale-[1.02] hover:shadow-[0_0_15px_rgba(105,9,145,0.4)] active:scale-95 cursor-pointer text-sm md:text-base">
+                    <svg class="w-6 h-6 text-[#690991] dark:text-[#c75ced]" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" /></svg>
+                    <span data-i18n="in-1">Documentos</span>
+                </div>
+                <div class="glow-card bg-white dark:bg-darkCard p-3 md:p-4 rounded-xl border border-gray-200 dark:border-gray-700 font-medium flex flex-col md:flex-row items-center justify-center md:justify-start gap-2 md:gap-3 text-gray-700 dark:text-gray-200 transition-all duration-300 ease-out hover:-translate-y-1 hover:scale-[1.02] hover:shadow-[0_0_15px_rgba(105,9,145,0.4)] active:scale-95 cursor-pointer text-sm md:text-base">
+                    <svg class="w-6 h-6 text-[#690991] dark:text-[#c75ced]" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 7.5l-.625 10.632a2.25 2.25 0 01-2.247 2.118H6.622a2.25 2.25 0 01-2.247-2.118L3.75 7.5M10 11.25h4M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z" /></svg>
+                    <span data-i18n="in-2">Inventario</span>
+                </div>
+                <div class="glow-card bg-white dark:bg-darkCard p-3 md:p-4 rounded-xl border border-gray-200 dark:border-gray-700 font-medium flex flex-col md:flex-row items-center justify-center md:justify-start gap-2 md:gap-3 text-gray-700 dark:text-gray-200 transition-all duration-300 ease-out hover:-translate-y-1 hover:scale-[1.02] hover:shadow-[0_0_15px_rgba(105,9,145,0.4)] active:scale-95 cursor-pointer text-sm md:text-base">
+                    <svg class="w-6 h-6 text-[#690991] dark:text-[#c75ced]" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" /></svg>
+                    <span data-i18n="in-3">Reserva</span>
+                </div>
+                <div class="glow-card bg-white dark:bg-darkCard p-3 md:p-4 rounded-xl border border-gray-200 dark:border-gray-700 font-medium flex flex-col md:flex-row items-center justify-center md:justify-start gap-2 md:gap-3 text-gray-700 dark:text-gray-200 transition-all duration-300 ease-out hover:-translate-y-1 hover:scale-[1.02] hover:shadow-[0_0_15px_rgba(105,9,145,0.4)] active:scale-95 cursor-pointer text-sm md:text-base">
+                    <svg class="w-6 h-6 text-[#690991] dark:text-[#c75ced]" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-3.75 3h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5z" /></svg>
+                    <span data-i18n="in-4">Pagos</span>
+                </div>
+            </div>
 
-<!-- NODO CENTRAL CON TU LOGO COMPLETO -->
-                <div class="relative z-10 p-4 rounded-full">
-                    <div class="w-32 h-32 bg-white dark:bg-darkCard border-2 border-[#690991] rounded-3xl flex items-center justify-center shadow-[0_0_35px_rgba(105,9,145,0.6)] rotate-45 overflow-hidden">
-                        <!-- Contenedor interno que compensa la rotación del rombo para que el logo se vea derecho -->
-                        <div class="-rotate-45 w-20 h-20 flex items-center justify-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 671.14 514.29" class="w-full h-full" preserveAspectRatio="xMidYMid meet">
-                                <defs><style>.cls-1{fill:#690991;}</style></defs>
-                                <g id="OBJECTS">
-                                    <path class="cls-1" d="M238.45,459.23a13.71,13.71,0,0,1-6.58-1.51,10.17,10.17,0,0,1-4.36-4.61,17.6,17.6,0,0,1-1.55-7.86,17.34,17.34,0,0,1,1.66-8.1,10.61,10.61,0,0,1,4.59-4.66,14.51,14.51,0,0,1,6.71-1.51,18.38,18.38,0,0,1,4.17.45,13.67,13.67,0,0,1,3.25,1.11l-1.48,4a27.44,27.44,0,0,0-3-1,11.93,11.93,0,0,0-3-.42,7.6,7.6,0,0,0-4.34,1.15,6.92,6.92,0,0,0-2.59,3.37,15.21,15.21,0,0,0-.86,5.49,14.77,14.77,0,0,0,.85,5.36,7,7,0,0,0,2.52,3.33A7.26,7.26,0,0,0,238.6,455a14.59,14.59,0,0,0,4-.5,17.32,17.32,0,0,0,3.24-1.26v4.38a12.22,12.22,0,0,1-3.17,1.18A18.57,18.57,0,0,1,238.45,459.23Z"/>
-                                    <path class="cls-1" d="M275.36,431.48v27.25h-4l-.7-3.73h-.27a7.62,7.62,0,0,1-2.17,2.35,9.63,9.63,0,0,1-3,1.41,12.89,12.89,0,0,1-3.51.47,12.38,12.38,0,0,1-5.33-1,7,7,0,0,1-3.32-3.23,12.35,12.35,0,0,1-1.12-5.65V431.48h5v17.14a7.32,7.32,0,0,0,1.42,4.92,5.44,5.44,0,0,0,4.34,1.63,7.94,7.94,0,0,0,4.51-1.12,6.15,6.15,0,0,0,2.4-3.29,16.64,16.64,0,0,0,.73-5.31v-14Z"/>
-                                    <path class="cls-1" d="M294.28,431c3.37,0,5.88.74,7.55,2.23s2.5,3.85,2.5,7.07v18.42h-3.57l-1-4h-.2a14.4,14.4,0,0,1-2.37,2.47,8.37,8.37,0,0,1-2.86,1.48,13.61,13.61,0,0,1-3.95.5,10.45,10.45,0,0,1-4.4-.89,6.85,6.85,0,0,1-3-2.68,8.66,8.66,0,0,1-1.1-4.57,7.1,7.1,0,0,1,3.19-6.3q3.18-2.16,9.67-2.36l4.7-.19V440.7c0-2.12-.47-3.62-1.42-4.5a5.66,5.66,0,0,0-4-1.31,13.46,13.46,0,0,0-4,.6,30.06,30.06,0,0,0-3.71,1.45l-1.58-3.61a22.7,22.7,0,0,1,4.39-1.66A19.81,19.81,0,0,1,294.28,431Zm5.12,14.49-3.8.18c-3.16.11-5.37.63-6.65,1.57a4.53,4.53,0,0,0-1.91,3.89,3.76,3.76,0,0,0,1.31,3.19,5.48,5.48,0,0,0,3.46,1,8,8,0,0,0,5.46-1.87A7,7,0,0,0,299.4,448Z"/>
-                                    <path class="cls-1" d="M326.17,431q4.72,0,7.26,2.38T336,441v17.76H331V441.64a7.34,7.34,0,0,0-1.43-4.91,5.58,5.58,0,0,0-4.41-1.64q-4.23,0-5.92,2.5c-1.13,1.66-1.69,4.08-1.69,7.24v13.9h-5V431.48h3.94l.71,3.83h.28a7.9,7.9,0,0,1,2.2-2.4,10,10,0,0,1,3-1.45A12.24,12.24,0,0,1,326.17,431Z"/>
-                                    <path class="cls-1" d="M353.68,459.23a9.89,9.89,0,0,1-8-3.54q-3-3.53-3-10.49t3-10.62a10,10,0,0,1,8.05-3.6,10.92,10.92,0,0,1,3.69.57,9.06,9.06,0,0,1,4.65,3.64h.29c-.08-.52-.17-1.23-.25-2.16s-.13-1.73-.13-2.42V420.24h5v38.49H363.1l-.82-3.78h-.22a9.12,9.12,0,0,1-1.89,2.16,8.56,8.56,0,0,1-2.75,1.55A11.16,11.16,0,0,1,353.68,459.23Zm1.16-4.06q4,0,5.71-2.32t1.69-6.9v-.77q0-4.87-1.6-7.48t-5.85-2.61a5.81,5.81,0,0,0-5.22,2.71,13.69,13.69,0,0,0-1.75,7.5q0,4.76,1.75,7.31A6,6,0,0,0,354.84,455.17Z"/>
-                                    <path class="cls-1" d="M399.34,445.06a18.73,18.73,0,0,1-.88,6,12,12,0,0,1-2.55,4.46,11,11,0,0,1-4,2.77,14.12,14.12,0,0,1-5.31,1,13.33,13.33,0,0,1-5.09-1,11.24,11.24,0,0,1-4-2.77,12.5,12.5,0,0,1-2.6-4.46,18.17,18.17,0,0,1-.91-6,17.4,17.4,0,0,1,1.53-7.64,10.76,10.76,0,0,1,4.39-4.79,13.39,13.39,0,0,1,6.81-1.65,12.85,12.85,0,0,1,6.61,1.66,11.28,11.28,0,0,1,4.43,4.8A16.83,16.83,0,0,1,399.34,445.06Zm-20.26,0a16.07,16.07,0,0,0,.81,5.4,7.07,7.07,0,0,0,2.47,3.48,8.25,8.25,0,0,0,8.6,0,7,7,0,0,0,2.47-3.48,16.36,16.36,0,0,0,.79-5.4,16,16,0,0,0-.79-5.35A6.9,6.9,0,0,0,391,436.3a7.35,7.35,0,0,0-4.34-1.19q-3.92,0-5.73,2.61T379.08,445.06Z"/>
-                                    <path class="cls-1" d="M428.8,459.23a9.91,9.91,0,0,1-8-3.54q-3-3.53-3-10.49t3-10.62a10,10,0,0,1,8.06-3.6,10.86,10.86,0,0,1,3.68.57,9.06,9.06,0,0,1,4.65,3.64h.3c-.08-.52-.17-1.23-.25-2.16s-.13-1.73-.13-2.42V420.24h5v38.49h-3.93l-.82-3.78h-.22a9.59,9.59,0,0,1-1.89,2.16,8.66,8.66,0,0,1-2.75,1.55A11.16,11.16,0,0,1,428.8,459.23Zm1.16-4.06q4,0,5.71-2.32t1.69-6.9v-.77q0-4.87-1.6-7.48t-5.85-2.61a5.82,5.82,0,0,0-5.22,2.71,13.69,13.69,0,0,0-1.75,7.5q0,4.76,1.75,7.31A6,6,0,0,0,430,455.17Z"/>
-                                    <path class="cls-1" d="M453.17,421.16a3.15,3.15,0,0,1,2,.69,2.75,2.75,0,0,1,.85,2.25,2.78,2.78,0,0,1-.85,2.27,3.1,3.1,0,0,1-2,.7,3,3,0,0,1-2-.7,2.81,2.81,0,0,1-.83-2.27,2.77,2.77,0,0,1,.83-2.25A3.07,3.07,0,0,1,453.17,421.16Zm2.45,10.32v27.25h-5V431.48Z"/>
-                                    <path class="cls-1" d="M471.82,470.91q-5.47,0-8.4-2a6.4,6.4,0,0,1-2.93-5.59A6.16,6.16,0,0,1,462.1,459a8.22,8.22,0,0,1,4.5-2.38,4.87,4.87,0,0,1-1.87-1.52,3.75,3.75,0,0,1-.78-2.32,4.21,4.21,0,0,1,.85-2.61,9.6,9.6,0,0,1,2.57-2.14,7.35,7.35,0,0,1-3.47-2.95,8.88,8.88,0,0,1-1.31-4.84,9.61,9.61,0,0,1,1.25-5,8,8,0,0,1,3.6-3.16,13.47,13.47,0,0,1,5.71-1.09c.5,0,1,0,1.54.06s1,.1,1.51.18.86.17,1.16.25h9.4v2.94l-4.85.75a7.65,7.65,0,0,1,1.16,2.22,8.51,8.51,0,0,1,.45,2.82,8.21,8.21,0,0,1-2.83,6.57q-2.83,2.42-7.83,2.41a18.76,18.76,0,0,1-2.35-.19,5.29,5.29,0,0,0-1.61,1.34,2.76,2.76,0,0,0-.54,1.67,1.53,1.53,0,0,0,.48,1.17,3.1,3.1,0,0,0,1.4.65,10.08,10.08,0,0,0,2.22.21h4.75q4.46,0,6.83,1.88a6.58,6.58,0,0,1,2.37,5.49,7.94,7.94,0,0,1-3.76,7.05C480.15,470.08,476.53,470.91,471.82,470.91Zm.17-3.64a19.08,19.08,0,0,0,5.33-.64,7.05,7.05,0,0,0,3.23-1.83,4,4,0,0,0,1.09-2.82,3.28,3.28,0,0,0-.71-2.27,3.65,3.65,0,0,0-2.09-1,18.17,18.17,0,0,0-3.41-.27h-4.5a7.76,7.76,0,0,0-3,.54,4.46,4.46,0,0,0-2,1.57,4.32,4.32,0,0,0-.72,2.54,3.47,3.47,0,0,0,1.77,3.14A9.58,9.58,0,0,0,472,467.27Zm1.09-21.5a5.41,5.41,0,0,0,4.11-1.44,5.88,5.88,0,0,0,1.36-4.15,6.11,6.11,0,0,0-1.39-4.35,5.4,5.4,0,0,0-4.1-1.46,5.26,5.26,0,0,0-4.05,1.5,6.16,6.16,0,0,0-1.4,4.36,5.64,5.64,0,0,0,1.41,4.1A5.44,5.44,0,0,0,473.08,445.77Z"/>
-                                    <path class="cls-1" d="M502.32,431c3.36,0,5.88.74,7.54,2.23s2.5,3.85,2.5,7.07v18.42H508.8l-1-4h-.19a14.43,14.43,0,0,1-2.38,2.47,8.32,8.32,0,0,1-2.85,1.48,13.71,13.71,0,0,1-4,.5,10.41,10.41,0,0,1-4.4-.89,6.8,6.8,0,0,1-3-2.68,8.57,8.57,0,0,1-1.1-4.57,7.1,7.1,0,0,1,3.19-6.3q3.18-2.16,9.67-2.36l4.7-.19V440.7c0-2.12-.48-3.62-1.43-4.5a5.63,5.63,0,0,0-4-1.31,13.53,13.53,0,0,0-4,.6,30.7,30.7,0,0,0-3.71,1.45l-1.58-3.61a23,23,0,0,1,4.39-1.66A19.83,19.83,0,0,1,502.32,431Zm5.12,14.49-3.81.18q-4.72.17-6.64,1.57a4.54,4.54,0,0,0-1.92,3.89,3.78,3.78,0,0,0,1.31,3.19,5.49,5.49,0,0,0,3.47,1,8,8,0,0,0,5.45-1.87,6.94,6.94,0,0,0,2.14-5.53Z"/>
-                                    <path class="cls-1" d="M538.63,451.12a7.44,7.44,0,0,1-1.3,4.46,7.85,7.85,0,0,1-3.77,2.74,17.42,17.42,0,0,1-5.94.91,24.4,24.4,0,0,1-4.94-.43,16.27,16.27,0,0,1-3.76-1.25v-4.4a26.73,26.73,0,0,0,4.18,1.53,17.31,17.31,0,0,0,4.65.67,8.08,8.08,0,0,0,4.61-1,3.18,3.18,0,0,0,1.42-2.74,3,3,0,0,0-.57-1.8,5.92,5.92,0,0,0-2-1.56,37.07,37.07,0,0,0-4.07-1.79,38.07,38.07,0,0,1-4.44-2,7.7,7.7,0,0,1-2.8-2.45,6.45,6.45,0,0,1-1-3.71,6.07,6.07,0,0,1,2.83-5.4,13.38,13.38,0,0,1,7.49-1.87,21.07,21.07,0,0,1,4.66.5,22.61,22.61,0,0,1,4.19,1.38l-1.61,3.84a26.85,26.85,0,0,0-3.66-1.28,14.55,14.55,0,0,0-3.83-.51,7.65,7.65,0,0,0-3.9.82,2.52,2.52,0,0,0-1.35,2.25,2.85,2.85,0,0,0,.63,1.86,6.56,6.56,0,0,0,2.12,1.44c1,.47,2.32,1,4,1.67a32.16,32.16,0,0,1,4.31,2,7.94,7.94,0,0,1,2.81,2.47A6.54,6.54,0,0,1,538.63,451.12Z"/>
-                                    <path class="cls-1" d="M517.17,230.82,620.56,94.91a5.48,5.48,0,0,0-4.37-8.8H536.61a5.47,5.47,0,0,0-4.4,2.21l-59.66,80.2a5.48,5.48,0,0,1-8.84-.05s-26.53-35.94-49.29-67.71c-6.48-9.05-16.38-12-27.42-13.47-21.43-2.86-53.74,1.27-53.86,1.28-193.59,24.5-296.23,135.12-317,158a5.49,5.49,0,0,0,.49,7.83c128.48,111.9,275.62,131.39,345.21,134.45,0,0,33.44.47,39.19-5.87.49-.54,1-1.06,1.43-1.64,6.59-8.79,58.92-79.17,58.92-79.17a5.48,5.48,0,0,1,8.86.08l60.27,84.29A5.48,5.48,0,0,0,535,388.8h76.61a10,10,0,0,0,8-16.07L517.16,237.45A5.49,5.49,0,0,1,517.17,230.82ZM351.73,322.93a5.35,5.35,0,0,1-6.22,1.72l0,0a84.63,84.63,0,0,1-29.27-19.37,89.65,89.65,0,0,1-19.38-30.12A102.31,102.31,0,0,1,289.88,237q0-21.06,6.94-38.33a90.09,90.09,0,0,1,19.38-29.9,84.05,84.05,0,0,1,25.07-17.57c1-.46,2.09-.93,3.16-1.35s2.06-.8,3.11-1.17a5.51,5.51,0,0,1,6.24,1.87l61.67,82.23a5.49,5.49,0,0,1,0,6.62Z"/>
-                                </g>
-                            </svg>
-                        </div>
+            <!-- NODO CENTRAL CON TU LOGO COMPLETO -->
+            <div class="relative z-10 p-4 rounded-full transition-transform duration-500 hover:scale-110 cursor-pointer bg-gray-50 dark:bg-darkBg">
+                <div class="w-28 h-28 md:w-32 md:h-32 bg-white dark:bg-darkCard border-2 border-[#690991] rounded-3xl flex items-center justify-center shadow-[0_0_35px_rgba(105,9,145,0.6)] rotate-45 overflow-hidden">
+                    <div class="-rotate-45 w-16 h-16 md:w-20 md:h-20 flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 671.14 514.29" class="w-full h-full" preserveAspectRatio="xMidYMid meet">
+                            <defs><style>.cls-1{fill:#690991;}</style></defs>
+                            <g id="OBJECTS">
+                                <path class="cls-1" d="M238.45,459.23a13.71,13.71,0,0,1-6.58-1.51,10.17,10.17,0,0,1-4.36-4.61,17.6,17.6,0,0,1-1.55-7.86,17.34,17.34,0,0,1,1.66-8.1,10.61,10.61,0,0,1,4.59-4.66,14.51,14.51,0,0,1,6.71-1.51,18.38,18.38,0,0,1,4.17.45,13.67,13.67,0,0,1,3.25,1.11l-1.48,4a27.44,27.44,0,0,0-3-1,11.93,11.93,0,0,0-3-.42,7.6,7.6,0,0,0-4.34,1.15,6.92,6.92,0,0,0-2.59,3.37,15.21,15.21,0,0,0-.86,5.49,14.77,14.77,0,0,0,.85,5.36,7,7,0,0,0,2.52,3.33A7.26,7.26,0,0,0,238.6,455a14.59,14.59,0,0,0,4-.5,17.32,17.32,0,0,0,3.24-1.26v4.38a12.22,12.22,0,0,1-3.17,1.18A18.57,18.57,0,0,1,238.45,459.23Z"/>
+                                <path class="cls-1" d="M275.36,431.48v27.25h-4l-.7-3.73h-.27a7.62,7.62,0,0,1-2.17,2.35,9.63,9.63,0,0,1-3,1.41,12.89,12.89,0,0,1-3.51.47,12.38,12.38,0,0,1-5.33-1,7,7,0,0,1-3.32-3.23,12.35,12.35,0,0,1-1.12-5.65V431.48h5v17.14a7.32,7.32,0,0,0,1.42,4.92,5.44,5.44,0,0,0,4.34,1.63,7.94,7.94,0,0,0,4.51-1.12,6.15,6.15,0,0,0,2.4-3.29,16.64,16.64,0,0,0,.73-5.31v-14Z"/>
+                                <path class="cls-1" d="M294.28,431c3.37,0,5.88.74,7.55,2.23s2.5,3.85,2.5,7.07v18.42h-3.57l-1-4h-.2a14.4,14.4,0,0,1-2.37,2.47,8.37,8.37,0,0,1-2.86,1.48,13.61,13.61,0,0,1-3.95.5,10.45,10.45,0,0,1-4.4-.89,6.85,6.85,0,0,1-3-2.68,8.66,8.66,0,0,1-1.1-4.57,7.1,7.1,0,0,1,3.19-6.3q3.18-2.16,9.67-2.36l4.7-.19V440.7c0-2.12-.47-3.62-1.42-4.5a5.66,5.66,0,0,0-4-1.31,13.46,13.46,0,0,0-4,.6,30.06,30.06,0,0,0-3.71,1.45l-1.58-3.61a22.7,22.7,0,0,1,4.39-1.66A19.81,19.81,0,0,1,294.28,431Zm5.12,14.49-3.8.18c-3.16.11-5.37.63-6.65,1.57a4.53,4.53,0,0,0-1.91,3.89,3.76,3.76,0,0,0,1.31,3.19,5.48,5.48,0,0,0,3.46,1,8,8,0,0,0,5.46-1.87A7,7,0,0,0,299.4,448Z"/>
+                                <path class="cls-1" d="M326.17,431q4.72,0,7.26,2.38T336,441v17.76H331V441.64a7.34,7.34,0,0,0-1.43-4.91,5.58,5.58,0,0,0-4.41-1.64q-4.23,0-5.92,2.5c-1.13,1.66-1.69,4.08-1.69,7.24v13.9h-5V431.48h3.94l.71,3.83h.28a7.9,7.9,0,0,1,2.2-2.4,10,10,0,0,1,3-1.45A12.24,12.24,0,0,1,326.17,431Z"/>
+                                <path class="cls-1" d="M353.68,459.23a9.89,9.89,0,0,1-8-3.54q-3-3.53-3-10.49t3-10.62a10,10,0,0,1,8.05-3.6,10.92,10.92,0,0,1,3.69.57,9.06,9.06,0,0,1,4.65,3.64h.29c-.08-.52-.17-1.23-.25-2.16s-.13-1.73-.13-2.42V420.24h5v38.49H363.1l-.82-3.78h-.22a9.12,9.12,0,0,1-1.89,2.16,8.56,8.56,0,0,1-2.75,1.55A11.16,11.16,0,0,1,353.68,459.23Zm1.16-4.06q4,0,5.71-2.32t1.69-6.9v-.77q0-4.87-1.6-7.48t-5.85-2.61a5.81,5.81,0,0,0-5.22,2.71,13.69,13.69,0,0,0-1.75,7.5q0,4.76,1.75,7.31A6,6,0,0,0,354.84,455.17Z"/>
+                                <path class="cls-1" d="M399.34,445.06a18.73,18.73,0,0,1-.88,6,12,12,0,0,1-2.55,4.46,11,11,0,0,1-4,2.77,14.12,14.12,0,0,1-5.31,1,13.33,13.33,0,0,1-5.09-1,11.24,11.24,0,0,1-4-2.77,12.5,12.5,0,0,1-2.6-4.46,18.17,18.17,0,0,1-.91-6,17.4,17.4,0,0,1,1.53-7.64,10.76,10.76,0,0,1,4.39-4.79,13.39,13.39,0,0,1,6.81-1.65,12.85,12.85,0,0,1,6.61,1.66,11.28,11.28,0,0,1,4.43,4.8A16.83,16.83,0,0,1,399.34,445.06Zm-20.26,0a16.07,16.07,0,0,0,.81,5.4,7.07,7.07,0,0,0,2.47,3.48,8.25,8.25,0,0,0,8.6,0,7,7,0,0,0,2.47-3.48,16.36,16.36,0,0,0,.79-5.4,16,16,0,0,0-.79-5.35A6.9,6.9,0,0,0,391,436.3a7.35,7.35,0,0,0-4.34-1.19q-3.92,0-5.73,2.61T379.08,445.06Z"/>
+                                <path class="cls-1" d="M428.8,459.23a9.91,9.91,0,0,1-8-3.54q-3-3.53-3-10.49t3-10.62a10,10,0,0,1,8.06-3.6,10.86,10.86,0,0,1,3.68.57,9.06,9.06,0,0,1,4.65,3.64h.3c-.08-.52-.17-1.23-.25-2.16s-.13-1.73-.13-2.42V420.24h5v38.49h-3.93l-.82-3.78h-.22a9.59,9.59,0,0,1-1.89,2.16,8.66,8.66,0,0,1-2.75,1.55A11.16,11.16,0,0,1,428.8,459.23Zm1.16-4.06q4,0,5.71-2.32t1.69-6.9v-.77q0-4.87-1.6-7.48t-5.85-2.61a5.82,5.82,0,0,0-5.22,2.71,13.69,13.69,0,0,0-1.75,7.5q0,4.76,1.75,7.31A6,6,0,0,0,430,455.17Z"/>
+                                <path class="cls-1" d="M453.17,421.16a3.15,3.15,0,0,1,2,.69,2.75,2.75,0,0,1,.85,2.25,2.78,2.78,0,0,1-.85,2.27,3.1,3.1,0,0,1-2,.7,3,3,0,0,1-2-.7,2.81,2.81,0,0,1-.83-2.27,2.77,2.77,0,0,1,.83-2.25A3.07,3.07,0,0,1,453.17,421.16Zm2.45,10.32v27.25h-5V431.48Z"/>
+                                <path class="cls-1" d="M471.82,470.91q-5.47,0-8.4-2a6.4,6.4,0,0,1-2.93-5.59A6.16,6.16,0,0,1,462.1,459a8.22,8.22,0,0,1,4.5-2.38,4.87,4.87,0,0,1-1.87-1.52,3.75,3.75,0,0,1-.78-2.32,4.21,4.21,0,0,1,.85-2.61,9.6,9.6,0,0,1,2.57-2.14,7.35,7.35,0,0,1-3.47-2.95,8.88,8.88,0,0,1-1.31-4.84,9.61,9.61,0,0,1,1.25-5,8,8,0,0,1,3.6-3.16,13.47,13.47,0,0,1,5.71-1.09c.5,0,1,0,1.54.06s1,.1,1.51.18.86.17,1.16.25h9.4v2.94l-4.85.75a7.65,7.65,0,0,1,1.16,2.22,8.51,8.51,0,0,1,.45,2.82,8.21,8.21,0,0,1-2.83,6.57q-2.83,2.42-7.83,2.41a18.76,18.76,0,0,1-2.35-.19,5.29,5.29,0,0,0-1.61,1.34,2.76,2.76,0,0,0-.54,1.67,1.53,1.53,0,0,0,.48,1.17,3.1,3.1,0,0,0,1.4.65,10.08,10.08,0,0,0,2.22.21h4.75q4.46,0,6.83,1.88a6.58,6.58,0,0,1,2.37,5.49,7.94,7.94,0,0,1-3.76,7.05C480.15,470.08,476.53,470.91,471.82,470.91Zm.17-3.64a19.08,19.08,0,0,0,5.33-.64,7.05,7.05,0,0,0,3.23-1.83,4,4,0,0,0,1.09-2.82,3.28,3.28,0,0,0-.71-2.27,3.65,3.65,0,0,0-2.09-1,18.17,18.17,0,0,0-3.41-.27h-4.5a7.76,7.76,0,0,0-3,.54,4.46,4.46,0,0,0-2,1.57,4.32,4.32,0,0,0-.72,2.54,3.47,3.47,0,0,0,1.77,3.14A9.58,9.58,0,0,0,472,467.27Zm1.09-21.5a5.41,5.41,0,0,0,4.11-1.44,5.88,5.88,0,0,0,1.36-4.15,6.11,6.11,0,0,0-1.39-4.35,5.4,5.4,0,0,0-4.1-1.46,5.26,5.26,0,0,0-4.05,1.5,6.16,6.16,0,0,0-1.4,4.36,5.64,5.64,0,0,0,1.41,4.1A5.44,5.44,0,0,0,473.08,445.77Z"/>
+                                <path class="cls-1" d="M502.32,431c3.36,0,5.88.74,7.54,2.23s2.5,3.85,2.5,7.07v18.42H508.8l-1-4h-.19a14.43,14.43,0,0,1-2.38,2.47,8.32,8.32,0,0,1-2.85,1.48,13.71,13.71,0,0,1-4,.5,10.41,10.41,0,0,1-4.4-.89,6.8,6.8,0,0,1-3-2.68,8.57,8.57,0,0,1-1.1-4.57,7.1,7.1,0,0,1,3.19-6.3q3.18-2.16,9.67-2.36l4.7-.19V440.7c0-2.12-.48-3.62-1.43-4.5a5.63,5.63,0,0,0-4-1.31,13.53,13.53,0,0,0-4,.6,30.7,30.7,0,0,0-3.71,1.45l-1.58-3.61a23,23,0,0,1,4.39-1.66A19.83,19.83,0,0,1,502.32,431Zm5.12,14.49-3.81.18q-4.72.17-6.64,1.57a4.54,4.54,0,0,0-1.92,3.89,3.78,3.78,0,0,0,1.31,3.19,5.49,5.49,0,0,0,3.47,1,8,8,0,0,0,5.45-1.87,6.94,6.94,0,0,0,2.14-5.53Z"/>
+                                <path class="cls-1" d="M538.63,451.12a7.44,7.44,0,0,1-1.3,4.46,7.85,7.85,0,0,1-3.77,2.74,17.42,17.42,0,0,1-5.94.91,24.4,24.4,0,0,1-4.94-.43,16.27,16.27,0,0,1-3.76-1.25v-4.4a26.73,26.73,0,0,0,4.18,1.53,17.31,17.31,0,0,0,4.65.67,8.08,8.08,0,0,0,4.61-1,3.18,3.18,0,0,0,1.42-2.74,3,3,0,0,0-.57-1.8,5.92,5.92,0,0,0-2-1.56,37.07,37.07,0,0,0-4.07-1.79,38.07,38.07,0,0,1-4.44-2,7.7,7.7,0,0,1-2.8-2.45,6.45,6.45,0,0,1-1-3.71,6.07,6.07,0,0,1,2.83-5.4,13.38,13.38,0,0,1,7.49-1.87,21.07,21.07,0,0,1,4.66.5,22.61,22.61,0,0,1,4.19,1.38l-1.61,3.84a26.85,26.85,0,0,0-3.66-1.28,14.55,14.55,0,0,0-3.83-.51,7.65,7.65,0,0,0-3.9.82,2.52,2.52,0,0,0-1.35,2.25,2.85,2.85,0,0,0,.63,1.86,6.56,6.56,0,0,0,2.12,1.44c1,.47,2.32,1,4,1.67a32.16,32.16,0,0,1,4.31,2,7.94,7.94,0,0,1,2.81,2.47A6.54,6.54,0,0,1,538.63,451.12Z"/>
+                                <path class="cls-1" d="M517.17,230.82,620.56,94.91a5.48,5.48,0,0,0-4.37-8.8H536.61a5.47,5.47,0,0,0-4.4,2.21l-59.66,80.2a5.48,5.48,0,0,1-8.84-.05s-26.53-35.94-49.29-67.71c-6.48-9.05-16.38-12-27.42-13.47-21.43-2.86-53.74,1.27-53.86,1.28-193.59,24.5-296.23,135.12-317,158a5.49,5.49,0,0,0,.49,7.83c128.48,111.9,275.62,131.39,345.21,134.45,0,0,33.44.47,39.19-5.87.49-.54,1-1.06,1.43-1.64,6.59-8.79,58.92-79.17,58.92-79.17a5.48,5.48,0,0,1,8.86.08l60.27,84.29A5.48,5.48,0,0,0,535,388.8h76.61a10,10,0,0,0,8-16.07L517.16,237.45A5.49,5.49,0,0,1,517.17,230.82ZM351.73,322.93a5.35,5.35,0,0,1-6.22,1.72l0,0a84.63,84.63,0,0,1-29.27-19.37,89.65,89.65,0,0,1-19.38-30.12A102.31,102.31,0,0,1,289.88,237q0-21.06,6.94-38.33a90.09,90.09,0,0,1,19.38-29.9,84.05,84.05,0,0,1,25.07-17.57c1-.46,2.09-.93,3.16-1.35s2.06-.8,3.11-1.17a5.51,5.51,0,0,1,6.24,1.87l61.67,82.23a5.49,5.49,0,0,1,0,6.62Z"/>
+                            </g>
+                        </svg>
                     </div>
                 </div>
+            </div>
 
-
-<!-- CARDS DERECHA -->
-<div class="flex flex-col gap-4 w-full md:w-64 relative z-10">
-    <div class="glow-card bg-white dark:bg-darkCard p-4 rounded-xl border border-gray-200 dark:border-gray-700 shadow-md font-medium flex items-center gap-3 text-gray-700 dark:text-gray-200">
-        <svg class="w-6 h-6 text-[#690991] dark:text-[#c75ced]" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.84 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3c-1.354 0-2.694-.055-4.02-.163a2.115 2.115 0 01-.825-.242m9.345-8.334a2.126 2.126 0 00-.476-.095 48.64 48.64 0 00-8.048 0c-1.131.094-1.976 1.057-1.976 2.192v4.286c0 .837.46 1.58 1.155 1.951m9.345-8.334V6.637c0-1.621-1.152-3.026-2.76-3.235A48.455 48.455 0 0011.25 3c-2.115 0-4.198.137-6.24.402-1.608.209-2.76 1.614-2.76 3.235v6.226c0 1.621 1.152 3.026 2.76 3.235.577.075 1.157.14 1.74.194V21l4.155-4.155" /></svg>
-        <span data-i18n="out-1">WhatsApp</span>
+            <!-- CARDS DERECHA (Ahora en Grid 2x2 en móvil) -->
+            <div class="grid grid-cols-2 md:flex md:flex-col gap-4 w-full md:w-64 relative z-10 px-2 md:px-0">
+                <div class="glow-card bg-white dark:bg-darkCard p-3 md:p-4 rounded-xl border border-gray-200 dark:border-gray-700 font-medium flex flex-col md:flex-row items-center justify-center md:justify-start gap-2 md:gap-3 text-gray-700 dark:text-gray-200 transition-all duration-300 ease-out hover:-translate-y-1 hover:scale-[1.02] hover:shadow-[0_0_15px_rgba(105,9,145,0.4)] active:scale-95 cursor-pointer text-sm md:text-base">
+                    <svg class="w-6 h-6 text-[#690991] dark:text-[#c75ced]" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.84 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3c-1.354 0-2.694-.055-4.02-.163a2.115 2.115 0 01-.825-.242m9.345-8.334a2.126 2.126 0 00-.476-.095 48.64 48.64 0 00-8.048 0c-1.131.094-1.976 1.057-1.976 2.192v4.286c0 .837.46 1.58 1.155 1.951m9.345-8.334V6.637c0-1.621-1.152-3.026-2.76-3.235A48.455 48.455 0 0011.25 3c-2.115 0-4.198.137-6.24.402-1.608.209-2.76 1.614-2.76 3.235v6.226c0 1.621 1.152 3.026 2.76 3.235.577.075 1.157.14 1.74.194V21l4.155-4.155" /></svg>
+                    <span data-i18n="out-1">WhatsApp</span>
+                </div>
+                <div class="glow-card bg-white dark:bg-darkCard p-3 md:p-4 rounded-xl border border-gray-200 dark:border-gray-700 font-medium flex flex-col md:flex-row items-center justify-center md:justify-start gap-2 md:gap-3 text-gray-700 dark:text-gray-200 transition-all duration-300 ease-out hover:-translate-y-1 hover:scale-[1.02] hover:shadow-[0_0_15px_rgba(105,9,145,0.4)] active:scale-95 cursor-pointer text-sm md:text-base">
+                    <svg class="w-6 h-6 text-[#690991] dark:text-[#c75ced]" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6.827 6.175A2.31 2.31 0 015.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 00-1.134-.175 2.31 2.31 0 01-1.64-1.055l-.822-1.316a2.192 2.192 0 00-1.736-1.039 48.774 48.774 0 00-5.232 0 2.192 2.192 0 00-1.736 1.039l-.821 1.316zM12 16.5a4.5 4.5 0 100-9 4.5 4.5 0 000 9z" /></svg>
+                    <span data-i18n="out-2">Instagram</span>
+                </div>
+                <div class="glow-card bg-white dark:bg-darkCard p-3 md:p-4 rounded-xl border border-gray-200 dark:border-gray-700 font-medium flex flex-col md:flex-row items-center justify-center md:justify-start gap-2 md:gap-3 text-gray-700 dark:text-gray-200 transition-all duration-300 ease-out hover:-translate-y-1 hover:scale-[1.02] hover:shadow-[0_0_15px_rgba(105,9,145,0.4)] active:scale-95 cursor-pointer text-sm md:text-base">
+                    <svg class="w-6 h-6 text-[#690991] dark:text-[#c75ced]" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 006 3.75v16.5a2.25 2.25 0 002.25 2.25h7.5A2.25 2.25 0 0018 20.25V3.75a2.25 2.25 0 00-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3" /></svg>
+                    <span data-i18n="out-4">Facebook</span>
+                </div>
+                <div class="glow-card bg-white dark:bg-darkCard p-3 md:p-4 rounded-xl border border-gray-200 dark:border-gray-700 font-medium flex flex-col md:flex-row items-center justify-center md:justify-start gap-2 md:gap-3 text-gray-700 dark:text-gray-200 transition-all duration-300 ease-out hover:-translate-y-1 hover:scale-[1.02] hover:shadow-[0_0_15px_rgba(105,9,145,0.4)] active:scale-95 cursor-pointer text-sm md:text-base">
+                    <svg class="w-6 h-6 text-[#690991] dark:text-[#c75ced]" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418" /></svg>
+                    <span data-i18n="out-3">Sitio web</span>
+                </div>
+            </div>    
+        </div>
     </div>
-    <div class="glow-card bg-white dark:bg-darkCard p-4 rounded-xl border border-gray-200 dark:border-gray-700 shadow-md font-medium flex items-center gap-3 text-gray-700 dark:text-gray-200">
-        <svg class="w-6 h-6 text-[#690991] dark:text-[#c75ced]" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6.827 6.175A2.31 2.31 0 015.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 00-1.134-.175 2.31 2.31 0 01-1.64-1.055l-.822-1.316a2.192 2.192 0 00-1.736-1.039 48.774 48.774 0 00-5.232 0 2.192 2.192 0 00-1.736 1.039l-.821 1.316zM12 16.5a4.5 4.5 0 100-9 4.5 4.5 0 000 9z" /></svg>
-        <span data-i18n="out-2">Instagram</span>
-    </div>
-    <div class="glow-card bg-white dark:bg-darkCard p-4 rounded-xl border border-gray-200 dark:border-gray-700 shadow-md font-medium flex items-center gap-3 text-gray-700 dark:text-gray-200">
-        <svg class="w-6 h-6 text-[#690991] dark:text-[#c75ced]" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 006 3.75v16.5a2.25 2.25 0 002.25 2.25h7.5A2.25 2.25 0 0018 20.25V3.75a2.25 2.25 0 00-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3" /></svg>
-        <span data-i18n="out-4">Facebook</span>
-    </div>
-    <div class="glow-card bg-white dark:bg-darkCard p-4 rounded-xl border border-gray-200 dark:border-gray-700 shadow-md font-medium flex items-center gap-3 text-gray-700 dark:text-gray-200">
-        <svg class="w-6 h-6 text-[#690991] dark:text-[#c75ced]" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418" /></svg>
-        <span data-i18n="out-3">Sitio web</span>
-    </div>
-</div>    
 </section>
     
     
