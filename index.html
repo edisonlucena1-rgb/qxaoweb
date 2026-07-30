@@ -74,23 +74,16 @@
         h1, h2, h3 { font-family: 'Montserrat', sans-serif; }
         .font-mono { font-family: 'Fira Code', monospace; }
         
-        /* Bucle infinito para que el patrón se deslice en diagonal muy lentamente (100s) */
         @keyframes mover-patron {
             0% { background-position: 0 0; }
             100% { background-position: -420px -300px; }
         }
 
-        /* Animación exclusiva para el Hero que solo mueve el patrón y respeta el fondo */
         @keyframes mover-patron-hero {
             0% { background-position: 0 0, center center; }
             100% { background-position: -420px -300px, center center; }
         }
 
-        /* ---------------------------------------------------
-           FONDOS REEMPLAZADOS POR EL PATRÓN DE QXAO
-           --------------------------------------------------- */
-
-        /* Fondo Hero: Color morado base + patrón blanco encima (Opacidad muy sutil) */
         .hero-bg {
             background: 
                 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='84' height='60' viewBox='0 -30.22 42.44 30.22'%3E%3Cpath fill='%23ffffff' fill-opacity='0.02' d='M18.33-5.39c1.6-0.64,2.98-1.55,4.16-2.72c1.18-1.17,2.1-2.53,2.76-4.09c0.66-1.56,0.99-3.26,0.99-5.12c0-1.85-0.33-3.56-0.99-5.12c-0.66-1.56-1.58-2.92-2.76-4.09c-1.18-1.17-2.57-2.08-4.16-2.72c-1.6-0.64-3.33-0.97-5.21-0.97c-1.88,0-3.61,0.32-5.21,0.97c-1.6,0.65-2.98,1.55-4.16,2.72c-1.18,1.17-2.1,2.54-2.76,4.09C0.33-20.88,0-19.17,0-17.32c0,1.85,0.33,3.56,0.99,5.12c0.66,1.56,1.58,2.92,2.76,4.09s2.57,2.08,4.16,2.72c1.6,0.65,3.33,0.97,5.21,0.97C14.99-4.42,16.73-4.74,18.33-5.39z M8.22-6.05C6.71-6.67,5.4-7.53,4.27-8.64s-1.99-2.4-2.61-3.88c-0.62-1.47-0.93-3.08-0.93-4.81s0.31-3.33,0.93-4.81C2.28-23.6,3.15-24.89,4.27-26c1.12-1.11,2.44-1.97,3.95-2.59c1.51-0.62,3.14-0.93,4.9-0.93c1.75,0,3.39,0.31,4.9,0.93c1.51,0.62,2.83,1.49,3.95,2.59c1.12,1.11,1.99,2.4,2.61,3.87c0.62,1.47,0.93,3.08,0.93,4.81s-0.31,3.33-0.93,4.81c-0.62,1.48-1.49,2.77-2.61,3.88s-2.44,1.97-3.95,2.59c-1.51,0.62-3.14,0.93-4.9,0.93C11.37-5.12,9.73-5.43,8.22-6.05z M27.33-2.78l-0.51-0.51c-1.44,1.73-3.2,2.59-5.3,2.59c-0.76,0-1.53-0.15-2.32-0.46c-0.79-0.3-1.6-0.77-2.41-1.39c-0.81-0.62-1.64-1.38-2.46-2.28l-0.95,0.18c0.78,0.8,1.52,1.5,2.21,2.08c0.69,0.59,1.38,1.07,2.05,1.44c0.67,0.38,1.32,0.66,1.95,0.84C20.22-0.09,20.87,0,21.52,0C23.89,0,25.82-0.93,27.33-2.78z M27.2-2.63l7.24-9.35h-0.18l7.24,9.35h0.95l-7.82-9.98l-0.04,0.44l7.31-9.36h-0.88l-6.83,8.77h0.29l-6.83-8.77h-0.91l7.23,9.21L34-12.57l-7.71,9.94H27.2z'/%3E%3C/svg%3E"),
@@ -103,25 +96,21 @@
             overflow: hidden;
         }
 
-        /* Secciones Claras: Patrón morado con opacidad rebajada a 0.025 */
         .bg-grid-light, .bg-cuadricula-animada {
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='84' height='60' viewBox='0 -30.22 42.44 30.22'%3E%3Cpath fill='%23690991' fill-opacity='0.025' d='M18.33-5.39c1.6-0.64,2.98-1.55,4.16-2.72c1.18-1.17,2.1-2.53,2.76-4.09c0.66-1.56,0.99-3.26,0.99-5.12c0-1.85-0.33-3.56-0.99-5.12c-0.66-1.56-1.58-2.92-2.76-4.09c-1.18-1.17-2.57-2.08-4.16-2.72c-1.6-0.64-3.33-0.97-5.21-0.97c-1.88,0-3.61,0.32-5.21,0.97c-1.6,0.65-2.98,1.55-4.16,2.72c-1.18,1.17-2.1,2.54-2.76,4.09C0.33-20.88,0-19.17,0-17.32c0,1.85,0.33,3.56,0.99,5.12c0.66,1.56,1.58,2.92,2.76,4.09s2.57,2.08,4.16,2.72c1.6,0.65,3.33,0.97,5.21,0.97C14.99-4.42,16.73-4.74,18.33-5.39z M8.22-6.05C6.71-6.67,5.4-7.53,4.27-8.64s-1.99-2.4-2.61-3.88c-0.62-1.47-0.93-3.08-0.93-4.81s0.31-3.33,0.93-4.81C2.28-23.6,3.15-24.89,4.27-26c1.12-1.11,2.44-1.97,3.95-2.59c1.51-0.62,3.14-0.93,4.9-0.93c1.75,0,3.39,0.31,4.9,0.93c1.51,0.62,2.83,1.49,3.95,2.59c1.12,1.11,1.99,2.4,2.61,3.87c0.62,1.47,0.93,3.08,0.93,4.81s-0.31,3.33-0.93,4.81c-0.62,1.48-1.49,2.77-2.61,3.88s-2.44,1.97-3.95,2.59c-1.51,0.62-3.14,0.93-4.9,0.93C11.37-5.12,9.73-5.43,8.22-6.05z M27.33-2.78l-0.51-0.51c-1.44,1.73-3.2,2.59-5.3,2.59c-0.76,0-1.53-0.15-2.32-0.46c-0.79-0.3-1.6-0.77-2.41-1.39c-0.81-0.62-1.64-1.38-2.46-2.28l-0.95,0.18c0.78,0.8,1.52,1.5,2.21,2.08c0.69,0.59,1.38,1.07,2.05,1.44c0.67,0.38,1.32,0.66,1.95,0.84C20.22-0.09,20.87,0,21.52,0C23.89,0,25.82-0.93,27.33-2.78z M27.2-2.63l7.24-9.35h-0.18l7.24,9.35h0.95l-7.82-9.98l-0.04,0.44l7.31-9.36h-0.88l-6.83,8.77h0.29l-6.83-8.77h-0.91l7.23,9.21L34-12.57l-7.71,9.94H27.2z'/%3E%3C/svg%3E");
             background-size: 84px 60px;
             animation: mover-patron 100s linear infinite;
         }
 
-        /* Secciones Oscuras: Patrón blanco con opacidad bajada a 0.015 */
         .dark .bg-grid-light, .dark .bg-cuadricula-animada {
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='84' height='60' viewBox='0 -30.22 42.44 30.22'%3E%3Cpath fill='%23ffffff' fill-opacity='0.015' d='M18.33-5.39c1.6-0.64,2.98-1.55,4.16-2.72c1.18-1.17,2.1-2.53,2.76-4.09c0.66-1.56,0.99-3.26,0.99-5.12c0-1.85-0.33-3.56-0.99-5.12c-0.66-1.56-1.58-2.92-2.76-4.09c-1.18-1.17-2.57-2.08-4.16-2.72c-1.6-0.64-3.33-0.97-5.21-0.97c-1.88,0-3.61,0.32-5.21,0.97c-1.6,0.65-2.98,1.55-4.16,2.72c-1.18,1.17-2.1,2.54-2.76,4.09C0.33-20.88,0-19.17,0-17.32c0,1.85,0.33,3.56,0.99,5.12c0.66,1.56,1.58,2.92,2.76,4.09s2.57,2.08,4.16,2.72c1.6,0.65,3.33,0.97,5.21,0.97C14.99-4.42,16.73-4.74,18.33-5.39z M8.22-6.05C6.71-6.67,5.4-7.53,4.27-8.64s-1.99-2.4-2.61-3.88c-0.62-1.47-0.93-3.08-0.93-4.81s0.31-3.33,0.93-4.81C2.28-23.6,3.15-24.89,4.27-26c1.12-1.11,2.44-1.97,3.95-2.59c1.51-0.62,3.14-0.93,4.9-0.93c1.75,0,3.39,0.31,4.9,0.93c1.51,0.62,2.83,1.49,3.95,2.59c1.12,1.11,1.99,2.4,2.61,3.87c0.62,1.47,0.93,3.08,0.93,4.81s-0.31,3.33-0.93,4.81c-0.62,1.48-1.49,2.77-2.61,3.88s-2.44,1.97-3.95,2.59c-1.51,0.62-3.14,0.93-4.9,0.93C11.37-5.12,9.73-5.43,8.22-6.05z M27.33-2.78l-0.51-0.51c-1.44,1.73-3.2,2.59-5.3,2.59c-0.76,0-1.53-0.15-2.32-0.46c-0.79-0.3-1.6-0.77-2.41-1.39c-0.81-0.62-1.64-1.38-2.46-2.28l-0.95,0.18c0.78,0.8,1.52,1.5,2.21,2.08c0.69,0.59,1.38,1.07,2.05,1.44c0.67,0.38,1.32,0.66,1.95,0.84C20.22-0.09,20.87,0,21.52,0C23.89,0,25.82-0.93,27.33-2.78z M27.2-2.63l7.24-9.35h-0.18l7.24,9.35h0.95l-7.82-9.98l-0.04,0.44l7.31-9.36h-0.88l-6.83,8.77h0.29l-6.83-8.77h-0.91l7.23,9.21L34-12.57l-7.71,9.94H27.2z'/%3E%3C/svg%3E");
         }
 
         #three-canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; opacity: 0.25; pointer-events: none; }
         
-        /* Animaciones Scroll */
         .animate-on-scroll { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1); }
         .animate-on-scroll.visible { opacity: 1; transform: translateY(0); }
         
-        /* Efecto Magnético Glow */
         .glow-card { position: relative; overflow: hidden; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
         .glow-card::before {
             content: ''; position: absolute; top: var(--mouse-y, 50%); left: var(--mouse-x, 50%);
@@ -137,12 +126,10 @@
 
         .counter { font-variant-numeric: tabular-nums; }
         
-        /* Scrollbar del chat */
         #chat-messages::-webkit-scrollbar { width: 6px; }
         #chat-messages::-webkit-scrollbar-thumb { background-color: #cbd5e1; border-radius: 10px; }
         .dark #chat-messages::-webkit-scrollbar-thumb { background-color: #475569; }
         
-        /* Calculadora ROI */
         input[type=range] { -webkit-appearance: none; width: 100%; background: transparent; }
         input[type=range]::-webkit-slider-thumb {
             -webkit-appearance: none; height: 24px; width: 24px; border-radius: 50%;
@@ -151,15 +138,12 @@
         input[type=range]::-webkit-slider-runnable-track { width: 100%; height: 8px; cursor: pointer; background: #e2e8f0; border-radius: 4px; }
         .dark input[type=range]::-webkit-slider-runnable-track { background: #334155; }
         
-        /* Cursor de la Terminal */
         .blinking-cursor::after { content: '█'; display: inline-block; animation: blink 1s step-end infinite; color: #4ade80; margin-left: 2px; }
         @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
 
-        /* Animación de flujo morado */
         .flow-line { stroke-dasharray: 20; animation: dash 2s linear infinite; }
         @keyframes dash { to { stroke-dashoffset: -40; } }
 
-        /* --- ESTILOS WIDGET INTERACTIVO --- */
         .font-display { font-family: 'Montserrat', sans-serif; }
 
         .noise::after {
@@ -250,19 +234,50 @@
         .paused-overlay { position: absolute; inset: 0; z-index: 40; display: flex; align-items: center; justify-content: center; background: rgba(7,4,12,0.55); backdrop-filter: blur(2px); opacity: 0; pointer-events: none; transition: opacity .25s ease; border-radius: inherit; }
         .paused-overlay.show { opacity: 1; pointer-events: auto; }
 
-        /* Ocultar scrollbar en el carrusel de testimonios */
         .scrollbar-hide::-webkit-scrollbar { display: none; }
         .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
 
-        /* 🎬 PRELOADER CINEMÁTICO QXAO (Efecto Fly-Through) */
+        /* =========================================
+           🎬 CINEMÁTICA: HERO + PRELOADER PERFECTO
+           ========================================= */
+        
+        /* 1. La entrada del Hero desde el fondo (espera 1s y luego entra) */
+        .hero-cinematic-enter {
+            opacity: 0;
+            transform: scale(0.92) translateY(20px);
+            filter: blur(12px);
+            /* Animación de 1.2s que empieza DESPUÉS de 1 segundo de espera */
+            animation: hero-unveil 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) 1s forwards;
+        }
+
+        @keyframes hero-unveil {
+            0% { opacity: 0; transform: scale(0.92) translateY(20px); filter: blur(12px); }
+            100% { opacity: 1; transform: scale(1) translateY(0); filter: blur(0px); }
+        }
+
+        /* 2. El contenedor del Preloader ya no es negro, el fondo es una capa aparte */
         .no-scroll { overflow: hidden !important; height: 100vh; }
         
         #qxao-preloader {
-            background-color: #030008; /* Void oscuro */
             z-index: 99999;
+            pointer-events: none; /* Evita bloquear clics una vez que se desvanece visualmente */
         }
 
-        /* Resplandor atmosférico de fondo */
+        /* 3. La Capa de Fondo Oscuro: Se hace transparente justo cuando el zoom arranca (60%) */
+        .preloader-bg-layer {
+            position: absolute;
+            inset: 0;
+            background-color: #030008;
+            animation: bg-fly-out 2.2s cubic-bezier(0.5, 0, 0.2, 1) forwards;
+        }
+
+        @keyframes bg-fly-out {
+            0% { opacity: 1; }
+            60% { opacity: 1; } /* Mantiene el negro hasta que arranca el zoom fuerte */
+            100% { opacity: 0; } /* Se vuelve transparente, revelando el Hero detrás */
+        }
+
+        /* 4. Brillo atmosférico: Se desvanece junto con el fondo */
         .ambient-glow {
             position: absolute;
             width: 60vw;
@@ -271,49 +286,43 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            animation: pulse-glow 3s ease-in-out infinite alternate;
+            animation: pulse-glow 1.5s ease-in-out infinite alternate, bg-fly-out 2.2s cubic-bezier(0.5, 0, 0.2, 1) forwards;
         }
 
         @keyframes pulse-glow {
-            0% { opacity: 0.4; transform: translate(-50%, -50%) scale(0.9); }
-            100% { opacity: 0.9; transform: translate(-50%, -50%) scale(1.1); }
+            0% { transform: translate(-50%, -50%) scale(0.9); }
+            100% { transform: translate(-50%, -50%) scale(1.1); }
         }
 
-        /* Contenedor central con zoom extremo */
+        /* 5. El Zoom del Logo (Atraviesa la pantalla) */
         .cine-logo-container {
             opacity: 0;
             transform-origin: center center;
-            /* La magia ocurre aquí: 3.5 segundos con aceleración al final */
-            animation: fly-through 3.5s cubic-bezier(0.5, 0, 0.2, 1) forwards;
+            animation: fly-through 2.2s cubic-bezier(0.5, 0, 0.2, 1) forwards;
             filter: drop-shadow(0 0 25px rgba(105, 9, 145, 0.5));
         }
 
         @keyframes fly-through {
-            0% { opacity: 0; transform: scale(0.5); filter: blur(10px); }
-            20% { opacity: 1; transform: scale(1); filter: blur(0px); }
-            75% { opacity: 1; transform: scale(1.2); filter: blur(0px); } /* Suspenso: se acerca lento... */
-            100% { opacity: 0; transform: scale(25); filter: blur(2px); } /* ¡Boom! Zoom gigante hacia la cámara y desaparece */
-        }
-
-        .preloader-fade-out {
-            opacity: 0 !important;
-            pointer-events: none;
-            transition: opacity 0.5s ease-out; /* Desvanecimiento rápido del fondo negro */
+            0% { opacity: 0; transform: scale(0.6); filter: blur(10px); }
+            15% { opacity: 1; transform: scale(1); filter: blur(0px); }
+            60% { opacity: 1; transform: scale(1.15); filter: blur(0px); } /* Se acerca lento */
+            100% { opacity: 0; transform: scale(35); filter: blur(2px); } /* ¡Boom! Atraviesa */
         }
     </style>
 
 </head>
 <body class="bg-white dark:bg-darkBg text-gray-800 dark:text-gray-100 antialiased no-scroll">
 
-    <!-- PRELOADER CINEMÁTICO QXAO (FLY-THROUGH) -->
-    <div id="qxao-preloader" class="fixed inset-0 flex items-center justify-center transition-opacity">
-        <!-- Brillo de fondo atmosférico -->
-        <div class="ambient-glow pointer-events-none"></div>
+    <!-- PRELOADER CINEMÁTICO QXAO (CON CAPA DE FONDO SEPARADA) -->
+    <div id="qxao-preloader" class="fixed inset-0 flex items-center justify-center">
         
-        <!-- Logo animado (Con tu SVG exacto y letras blancas) -->
+        <!-- Capa de fondo que se desvanece MIENTRAS hace el zoom -->
+        <div class="preloader-bg-layer"></div>
+        <div class="ambient-glow"></div>
+        
+        <!-- Logo animado -->
         <div class="cine-logo-container relative z-10 w-64 md:w-80">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1383.43 502.29">
-                <!-- Se cambió .cls-2 a blanco (#ffffff) solo para que brille en la oscuridad del cine -->
                 <defs><style>.cls-1{fill:#690991;}.cls-2{fill:#ffffff;}</style></defs>
                 <title>Qxao logo</title>
                 <g id="OBJECTS">
@@ -387,28 +396,30 @@
     </div>
 </header>
     
-<!-- HERO CON WIDGET INTERACTIVO Y PARTÍCULAS THREE.JS -->
-<section class="hero-bg pt-32 pb-20 text-white transition-colors duration-300 relative overflow-hidden">
-    
-    <!-- Lienzo de partículas en movimiento (Three.js) -->
-    <canvas id="three-canvas" class="absolute inset-0 pointer-events-none"></canvas>
-    
-    <div class="max-w-6xl mx-auto px-6 relative z-10">
-        <div class="grid md:grid-cols-2 gap-12 items-center mb-16">
+<!-- TU HEADER / NAVBAR VA AQUÍ NORMALMENTE -->
+
+    <!-- HERO CON WIDGET INTERACTIVO Y PARTÍCULAS THREE.JS -->
+    <section class="hero-bg pt-32 pb-20 text-white transition-colors duration-300 relative overflow-hidden">
+        
+        <!-- Lienzo de partículas -->
+        <canvas id="three-canvas" class="absolute inset-0 pointer-events-none"></canvas>
+        
+        <div class="max-w-6xl mx-auto px-6 relative z-10">
             
-            <!-- LADO IZQUIERDO -->
-            <div class="text-left animate-on-scroll">
+            <!-- EL HERO TIENE LA CLASE "hero-cinematic-enter" DIRECTO DESDE EL INICIO -->
+            <div id="hero-content" class="grid md:grid-cols-2 gap-12 items-center mb-16 hero-cinematic-enter">
                 
-                <!-- Etiqueta con cajita iluminada -->
-                <div class="inline-flex items-center gap-2.5 px-4 py-2 rounded-2xl bg-white/10 dark:bg-black/35 border border-white/20 dark:border-purple-500/30 backdrop-blur-md shadow-[0_0_20px_rgba(105,9,145,0.4)] mb-6">
-                    <span class="w-2.5 h-2.5 rounded-full bg-green-400 animate-pulse shadow-[0_0_8px_#4ade80]"></span>
-                    <span data-i18n="hero-tag" class="text-xs font-semibold tracking-wide text-white uppercase font-mono">Agentes IA · Vista previa en vivo</span>
-                </div>
-                
-                <!-- Título -->
-                <h1 id="hero-title" data-i18n="hero-title" class="font-display text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] mb-6 text-white">
-                    Cuando digas.
-                </h1>
+                <!-- LADO IZQUIERDO -->
+                <div class="text-left animate-on-scroll">
+                    
+                    <div class="inline-flex items-center gap-2.5 px-4 py-2 rounded-2xl bg-white/10 dark:bg-black/35 border border-white/20 dark:border-purple-500/30 backdrop-blur-md shadow-[0_0_20px_rgba(105,9,145,0.4)] mb-6">
+                        <span class="w-2.5 h-2.5 rounded-full bg-green-400 animate-pulse shadow-[0_0_8px_#4ade80]"></span>
+                        <span data-i18n="hero-tag" class="text-xs font-semibold tracking-wide text-white uppercase font-mono">Agentes IA · Vista previa en vivo</span>
+                    </div>
+                    
+                    <h1 id="hero-title" data-i18n="hero-title" class="font-display text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] mb-6 text-white">
+                        Cuando digas.
+                    </h1>
                 
                 <!-- Texto Informativo -->
                 <p id="hero-desc" data-i18n="hero-desc" class="text-gray-100 dark:text-gray-200 text-lg md:text-xl max-w-2xl mb-8 leading-relaxed">
@@ -2009,7 +2020,8 @@ const translations = {
     }
 };
 
-let currentLang = 'es';
+// 1. TRADUCCIÓN DE LA PÁGINA
+    let currentLang = 'es';
     const langToggleBtn = document.getElementById('lang-toggle');
 
     function translatePage() {
@@ -2253,7 +2265,7 @@ let currentLang = 'es';
     if(sendChat) sendChat.addEventListener('click', handleSendMessage);
     if(chatInput) chatInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') handleSendMessage(); });
 
-    // 9. WIDGET INTERACTIVO Y PARTÍCULAS THREE.JS (UNIFICADO Y SIN DUPLICADOS)
+    // 9. WIDGET INTERACTIVO Y PARTÍCULAS THREE.JS
     (function(){
         const $ = (id) => document.getElementById(id);
         let paused = false;
@@ -2474,7 +2486,6 @@ let currentLang = 'es';
         setPausedUI();
         loop();
 
-        // Inicialización única de Three.js para las partículas de fondo
         let scene, camera, renderer, particles;
         function initThree() {
             const canvas = document.getElementById('three-canvas');
@@ -2527,42 +2538,35 @@ let currentLang = 'es';
 
         window.addEventListener('load', initThree);
 
-        // SCRIPT PARA EL CARRUSEL DE TESTIMONIOS
-    const scrollTestimonios = document.getElementById('scroll-testimonios');
-    const btnPrevTest = document.getElementById('btn-prev-test');
-    const btnNextTest = document.getElementById('btn-next-test');
+        // 10. CARRUSEL DE TESTIMONIOS
+        const scrollTestimonios = document.getElementById('scroll-testimonios');
+        const btnPrevTest = document.getElementById('btn-prev-test');
+        const btnNextTest = document.getElementById('btn-next-test');
 
-    if(btnPrevTest && btnNextTest && scrollTestimonios) {
-        btnNextTest.addEventListener('click', () => {
-            scrollTestimonios.scrollBy({ left: 424, behavior: 'smooth' }); // 400px (ancho) + 24px (gap)
-        });
-        btnPrevTest.addEventListener('click', () => {
-            scrollTestimonios.scrollBy({ left: -424, behavior: 'smooth' });
-        });
-    }
+        if(btnPrevTest && btnNextTest && scrollTestimonios) {
+            btnNextTest.addEventListener('click', () => {
+                scrollTestimonios.scrollBy({ left: 424, behavior: 'smooth' }); 
+            });
+            btnPrevTest.addEventListener('click', () => {
+                scrollTestimonios.scrollBy({ left: -424, behavior: 'smooth' });
+            });
+        }
+    })(); 
 
-     <!-- SCRIPT DEL PRELOADER QXAO (FLY-THROUGH) -->
-        window.addEventListener('load', () => {
-            const preloader = document.getElementById('qxao-preloader');
+    // 11. SCRIPT DE LIMPIEZA DEL PRELOADER (TOTALMENTE SINCRONIZADO POR CSS)
+    window.addEventListener('load', () => {
+        const preloader = document.getElementById('qxao-preloader');
+        
+        // Esperamos exactamente 2.3 segundos (lo que tarda el CSS en terminar toda la coreografía)
+        setTimeout(() => {
+            // Devolvemos el control al usuario
+            document.body.classList.remove('no-scroll');
             
-            // Espera el momento exacto en que el logo hace el zoom extremo (aprox 3.2s)
-            setTimeout(() => {
-                if(preloader) {
-                    preloader.classList.add('preloader-fade-out');
-                }
-                
-                // Libera el scroll mientras el fondo se desvanece
-                document.body.classList.remove('no-scroll');
-                
-                // Destruye el HTML para liberar memoria
-                setTimeout(() => {
-                    if(preloader) preloader.remove();
-                }, 600); 
-                
-            }, 3200); // Sincronizado con el 100% del keyframe fly-through
-        });
-
-    })();
+            // Borramos el código del preloader para no estorbar clics ni memoria
+            if(preloader) preloader.remove();
+            
+        }, 2300);
+    });
     
 </script>
 </body>
