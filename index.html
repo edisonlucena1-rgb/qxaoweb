@@ -1810,10 +1810,10 @@
     </div>
 </footer>
 
-    <!-- CHATBOT FLOTANTE -->
+  <!-- CHATBOT FLOTANTE -->
     <div class="fixed bottom-6 right-6 z-50 flex flex-col items-end">
         
-        <!-- NUEVA: BURBUJA PROACTIVA -->
+        <!-- BURBUJA PROACTIVA -->
         <div id="qxao-proactive-bubble" class="absolute bottom-[72px] right-0 mb-2 w-64 opacity-0 pointer-events-none translate-y-4 transition-all duration-500 ease-out z-40">
             <div class="relative bg-white dark:bg-darkCard shadow-2xl rounded-2xl rounded-br-sm border border-gray-200 dark:border-gray-700 p-4 cursor-pointer group hover:shadow-[#690991]/20 transition-all" onclick="document.getElementById('chat-toggle').click(); ocultarBurbuja();">
                 
@@ -1835,8 +1835,8 @@
                 </div>
             </div>
         </div>
-        <!-- FIN BURBUJA PROACTIVA -->
 
+        <!-- VENTANA DEL CHAT -->
         <div id="chat-window" class="hidden w-[320px] bg-white dark:bg-darkCard border border-gray-200 dark:border-gray-700 rounded-2xl shadow-2xl mb-4 overflow-hidden flex-col transition-all duration-300 transform origin-bottom-right relative z-50">
             <div class="bg-[#690991] text-white px-4 py-4 flex justify-between items-center shadow-sm z-10">
                 <div class="flex items-center gap-3">
@@ -1865,9 +1865,30 @@
             </div>
         </div>
 
-        <button id="chat-toggle" class="w-14 h-14 bg-[#690991] text-white rounded-full flex items-center justify-center shadow-[0_10px_25px_rgba(105,9,145,0.5)] hover:scale-110 transition-transform duration-300 focus:outline-none relative z-50">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path></svg>
-        </button>
+        <!-- BOTÓN FLOTANTE CON EFECTO RADAR Y NOTIFICACIÓN -->
+        <div class="relative z-50 hover:scale-110 transition-transform duration-300">
+            <style>
+                @keyframes ai-radar {
+                    0% { transform: translate(-50%, -50%) rotate(0deg); opacity: 0; }
+                    5% { opacity: 1; }
+                    20% { opacity: 1; transform: translate(-50%, -50%) rotate(360deg); }
+                    25% { opacity: 0; transform: translate(-50%, -50%) rotate(420deg); }
+                    100% { opacity: 0; transform: translate(-50%, -50%) rotate(420deg); }
+                }
+                .animate-radar { animation: ai-radar 12s linear infinite; }
+            </style>
+
+            <button id="chat-toggle" class="relative w-14 h-14 rounded-full shadow-[0_10px_25px_rgba(105,9,145,0.5)] focus:outline-none group">
+                <div class="absolute inset-0 rounded-full overflow-hidden p-[2px]">
+                    <div class="absolute top-1/2 left-1/2 w-[200%] h-[200%] bg-[conic-gradient(from_0deg,transparent_70%,#c75ced_100%)] animate-radar -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
+                    <div class="relative w-full h-full bg-[#690991] rounded-full"></div>
+                </div>
+                <div class="absolute inset-0 flex items-center justify-center text-white z-10 pointer-events-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path></svg>
+                </div>
+            </button>
+            <span id="chat-badge" class="absolute -top-1 -right-1 w-3.5 h-3.5 bg-red-500 border-2 border-white dark:border-darkCard rounded-full z-20 opacity-0 transition-opacity duration-500 pointer-events-none"></span>
+        </div>
     </div>
 
 <!-- SCRIPT MAESTRO DEL SISTEMA (CORREGIDO Y UNIFICADO) -->
@@ -2274,25 +2295,35 @@ const translations = {
     const sendChat = document.getElementById('send-chat');
     const chatMessages = document.getElementById('chat-messages');
     const proactiveBubble = document.getElementById('qxao-proactive-bubble');
+    const chatBadge = document.getElementById('chat-badge');
 
-    // Lógica para esconder la burbuja proactiva
+    // Lógica para esconder la burbuja proactiva y el puntito rojo
     window.ocultarBurbuja = function() {
         if(proactiveBubble) {
             proactiveBubble.classList.remove('opacity-100', 'translate-y-0', 'pointer-events-auto');
             proactiveBubble.classList.add('opacity-0', 'pointer-events-none', 'translate-y-4');
         }
+        if(chatBadge) {
+            chatBadge.classList.remove('opacity-100');
+            chatBadge.classList.add('opacity-0');
+        }
     };
 
-    // Lanzar burbuja a los 4 segundos (solo si el chat está cerrado)
+    // Lanzar burbuja y puntito rojo a los 4 segundos
     setTimeout(() => {
         if (proactiveBubble && chatWindow.classList.contains('hidden')) {
             proactiveBubble.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-4');
             proactiveBubble.classList.add('opacity-100', 'translate-y-0', 'pointer-events-auto');
+            
+            if(chatBadge) {
+                chatBadge.classList.remove('opacity-0');
+                chatBadge.classList.add('opacity-100');
+            }
         }
     }, 4000);
 
     function toggleChat() {
-        ocultarBurbuja(); // Esconder burbuja si se abre el chat manual
+        ocultarBurbuja(); // Esconder burbuja y noti al abrir chat
         
         if (chatWindow.classList.contains('hidden')) {
             chatWindow.classList.remove('hidden');
@@ -2303,6 +2334,7 @@ const translations = {
             chatWindow.classList.remove('flex');
         }
     }
+    
     if(chatToggle) chatToggle.addEventListener('click', toggleChat);
     if(closeChat) closeChat.addEventListener('click', toggleChat);
 
@@ -2327,6 +2359,7 @@ const translations = {
             chatMessages.scrollTop = chatMessages.scrollHeight;
         }, 1200);
     }
+    
     if(sendChat) sendChat.addEventListener('click', handleSendMessage);
     if(chatInput) chatInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') handleSendMessage(); });
 
