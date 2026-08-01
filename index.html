@@ -245,7 +245,7 @@
             opacity: 0;
             transform: scale(0.92) translateY(20px);
             filter: blur(12px);
-            /* El Hero entra a los 6.5s para sincronizar cuando el preloader hace zoom in */
+            /* El Hero entra a los 6.5s para sincronizar cuando el preloader hace zoom out */
             animation: hero-unveil 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) 6.5s forwards;
         }
 
@@ -265,6 +265,7 @@
             position: absolute;
             inset: 0;
             background-color: #030008;
+            /* Aumentado a 7.5s para dar tiempo a la animación completa */
             animation: bg-fly-out 7.5s cubic-bezier(0.5, 0, 0.2, 1) forwards;
         }
 
@@ -289,38 +290,53 @@
             100% { transform: translate(-50%, -50%) scale(1.1); }
         }
 
-        /* ZOOM Y VUELO DEL LOGO */
+        /* ZOOM Y VUELO DEL LOGO - CENTRADO NATURAL POR FLEXBOX */
         .cine-logo-container {
             transform-origin: center center;
-            /* 7.5s de duración total */
+            /* 7.5s de duración total para no cortar la animación original */
             animation: fly-through 7.5s cubic-bezier(0.5, 0, 0.2, 1) forwards;
             filter: drop-shadow(0 0 25px rgba(105, 9, 145, 0.5));
-            width: 100%;
-            max-width: 700px;
+            width: 85%;
+            max-width: 520px;
         }
 
         @keyframes fly-through {
             0% { transform: scale(0.95); filter: blur(0px); opacity: 1; }
-            80% { transform: scale(1.05); filter: blur(0px); opacity: 1; } /* Espera mientras se dibuja */
-            100% { opacity: 0; transform: scale(35); filter: blur(2px); } /* ¡Atraviesa la pantalla! */
+            80% { transform: scale(1.05); filter: blur(0px); opacity: 1; } 
+            100% { opacity: 0; transform: scale(35); filter: blur(2px); } 
         }
 
-        /* --- ESTILOS VECTORIALES DEL LOGO ANIMADO --- */
-        .logo-wrap { width: 100%; }
+        /* --- ESTILOS VECTORIALES DEL LOGO --- */
+        .logo-lockup {
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            gap: 2%; 
+            width: 100%;
+        }
+
+        /* Proporciones calibradas para que el pez y el texto tengan el mismo alto */
+        .icon-svg-container { width: 42%; flex-shrink: 0; }
+        .text-svg-container { width: 54%; flex-shrink: 0; }
+        
+        .icon-svg-container svg, .text-svg-container svg { width: 100%; height: auto; display: block; overflow: visible; }
         
         .shape {
             fill-opacity: 0;
             stroke-opacity: 1;
             stroke-linejoin: round;
             stroke-linecap: round;
-            stroke-width: 1.5; /* Línea fina y elegante */
+            /* TRUCO ANTI-PARPADEO: Oculta la línea desde CSS antes de que JS actúe */
             stroke-dasharray: 5000;
             stroke-dashoffset: 5000;
         }
+        .icon-svg-container .shape { stroke-width: 4; }
+        .text-svg-container .shape { stroke-width: 2.5; }
         
         .shape.c1 { stroke: var(--primary); }
         .shape.c2 { stroke: #ffffff; }
         
+        /* Tiempos de dibujo y relleno restaurados al original de tu archivo */
         .shape.draw { transition: stroke-dashoffset 1.6s cubic-bezier(.55,.05,.15,1); }
         .shape.fill-in { transition: fill-opacity 1.1s ease, stroke-opacity 1.1s ease 0.15s; fill-opacity: 1; stroke-opacity: 0; }
         
@@ -328,12 +344,14 @@
         .shape.fill-in.c2 { fill: #ffffff; }
 
         .sheen-mask { mix-blend-mode: screen; opacity: 0; }
+        /* El sheen original dura 3.4s */
         .sheen-mask.active { animation: sheenSweep 3.4s ease-in-out forwards; }
         @keyframes sheenSweep {
-            0% { opacity: 0; transform: translateX(-100%) skewX(-18deg); }
+            0% { opacity: 0; transform: translateX(-140%) skewX(-18deg); }
             12%, 45% { opacity: 0.55; }
-            60%, 100% { opacity: 0; transform: translateX(100%) skewX(-18deg); }
+            60%, 100% { opacity: 0; transform: translateX(140%) skewX(-18deg); }
         }
+
     </style>
 
 </head>
@@ -345,43 +363,65 @@
         <div class="preloader-bg-layer"></div>
         <div class="ambient-glow"></div>
         
-        <!-- Contenedor que hace el Zoom masivo -->
-        <div class="cine-logo-container relative z-10 flex justify-center w-[90%] md:w-[700px]">
-            <div class="logo-wrap w-full">
-                <!-- SVG UNIFICADO -->
-                <svg id="qxao-preloader-svg" viewBox="180 80 1200 340" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <linearGradient id="sheenGrad" x1="0" y1="0" x2="1" y2="0">
-                            <stop offset="0%"  stop-color="#ffffff" stop-opacity="0"/>
-                            <stop offset="50%" stop-color="#ffffff" stop-opacity="0.85"/>
-                            <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
-                        </linearGradient>
-                        <clipPath id="logoClip">
-                            <path d="M517.17,230.82,620.56,94.91a5.48,5.48,0,0,0-4.37-8.8H536.61a5.47,5.47,0,0,0-4.4,2.21l-59.66,80.2a5.48,5.48,0,0,1-8.84-.05s-26.53-35.94-49.29-67.71c-6.48-9.05-16.38-12-27.42-13.47-21.43-2.86-53.74,1.27-53.86,1.28-193.59,24.5-296.23,135.12-317,158a5.49,5.49,0,0,0,.49,7.83c128.48,111.9,275.62,131.39,345.21,134.45,0,0,33.44.47,39.19-5.87.49-.54,1-1.06,1.43-1.64,6.59-8.79,58.92-79.17,58.92-79.17a5.48,5.48,0,0,1,8.86.08l60.27,84.29A5.48,5.48,0,0,0,535,388.8h76.61a10,10,0,0,0,8-16.07L517.16,237.45A5.49,5.49,0,0,1,517.17,230.82ZM351.73,322.93a5.35,5.35,0,0,1-6.22,1.72l0,0a84.63,84.63,0,0,1-29.27-19.37,89.65,89.65,0,0,1-19.38-30.12A102.31,102.31,0,0,1,289.88,237q0-21.06,6.94-38.33a90.09,90.09,0,0,1,19.38-29.9,84.05,84.05,0,0,1,25.07-17.57c1-.46,2.09-.93,3.16-1.35s2.06-.8,3.11-1.17a5.51,5.51,0,0,1,6.24,1.87l61.67,82.23a5.49,5.49,0,0,1,0,6.62Z"/>
-                            <g transform="translate(370, 60) scale(1.35)">
+        <div class="cine-logo-container relative z-10">
+            <div class="logo-lockup">
+                
+                <!-- PARTE 1: IMAGOTIPO (CEREBRO / PEZ) -->
+                <div class="icon-svg-container">
+                    <!-- VIEWBOX CORREGIDO: Empieza en 0 para que no ampute el pez -->
+                    <svg viewBox="0 80 630 330" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="sheenGrad1" x1="0" y1="0" x2="1" y2="0">
+                                <stop offset="0%"  stop-color="#ffffff" stop-opacity="0"/>
+                                <stop offset="50%" stop-color="#ffffff" stop-opacity="0.85"/>
+                                <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+                            </linearGradient>
+                            <clipPath id="iconClip">
+                                <path d="M517.17,230.82,620.56,94.91a5.48,5.48,0,0,0-4.37-8.8H536.61a5.47,5.47,0,0,0-4.4,2.21l-59.66,80.2a5.48,5.48,0,0,1-8.84-.05s-26.53-35.94-49.29-67.71c-6.48-9.05-16.38-12-27.42-13.47-21.43-2.86-53.74,1.27-53.86,1.28-193.59,24.5-296.23,135.12-317,158a5.49,5.49,0,0,0,.49,7.83c128.48,111.9,275.62,131.39,345.21,134.45,0,0,33.44.47,39.19-5.87.49-.54,1-1.06,1.43-1.64,6.59-8.79,58.92-79.17,58.92-79.17a5.48,5.48,0,0,1,8.86.08l60.27,84.29A5.48,5.48,0,0,0,535,388.8h76.61a10,10,0,0,0,8-16.07L517.16,237.45A5.49,5.49,0,0,1,517.17,230.82ZM351.73,322.93a5.35,5.35,0,0,1-6.22,1.72l0,0a84.63,84.63,0,0,1-29.27-19.37,89.65,89.65,0,0,1-19.38-30.12A102.31,102.31,0,0,1,289.88,237q0-21.06,6.94-38.33a90.09,90.09,0,0,1,19.38-29.9,84.05,84.05,0,0,1,25.07-17.57c1-.46,2.09-.93,3.16-1.35s2.06-.8,3.11-1.17a5.51,5.51,0,0,1,6.24,1.87l61.67,82.23a5.49,5.49,0,0,1,0,6.62Z"/>
+                            </clipPath>
+                        </defs>
+                        <g id="draw-group-icon">
+                            <path class="shape c1" data-role="brain" d="M517.17,230.82,620.56,94.91a5.48,5.48,0,0,0-4.37-8.8H536.61a5.47,5.47,0,0,0-4.4,2.21l-59.66,80.2a5.48,5.48,0,0,1-8.84-.05s-26.53-35.94-49.29-67.71c-6.48-9.05-16.38-12-27.42-13.47-21.43-2.86-53.74,1.27-53.86,1.28-193.59,24.5-296.23,135.12-317,158a5.49,5.49,0,0,0,.49,7.83c128.48,111.9,275.62,131.39,345.21,134.45,0,0,33.44.47,39.19-5.87.49-.54,1-1.06,1.43-1.64,6.59-8.79,58.92-79.17,58.92-79.17a5.48,5.48,0,0,1,8.86.08l60.27,84.29A5.48,5.48,0,0,0,535,388.8h76.61a10,10,0,0,0,8-16.07L517.16,237.45A5.49,5.49,0,0,1,517.17,230.82ZM351.73,322.93a5.35,5.35,0,0,1-6.22,1.72l0,0a84.63,84.63,0,0,1-29.27-19.37,89.65,89.65,0,0,1-19.38-30.12A102.31,102.31,0,0,1,289.88,237q0-21.06,6.94-38.33a90.09,90.09,0,0,1,19.38-29.9,84.05,84.05,0,0,1,25.07-17.57c1-.46,2.09-.93,3.16-1.35s2.06-.8,3.11-1.17a5.51,5.51,0,0,1,6.24,1.87l61.67,82.23a5.49,5.49,0,0,1,0,6.62Z"/>
+                        </g>
+                        <g clip-path="url(#iconClip)">
+                            <rect class="sheen-mask" x="-100" y="-100" width="900" height="700" fill="url(#sheenGrad1)"></rect>
+                        </g>
+                    </svg>
+                </div>
+
+                <!-- PARTE 2: LOGOTIPO (QXAO TEXTO) -->
+                <div class="text-svg-container">
+                    <!-- VIEWBOX CORREGIDO: Ajustado para que el texto esté centrado -->
+                    <svg viewBox="100 40 630 220" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="sheenGrad2" x1="0" y1="0" x2="1" y2="0">
+                                <stop offset="0%"  stop-color="#ffffff" stop-opacity="0"/>
+                                <stop offset="50%" stop-color="#ffffff" stop-opacity="0.85"/>
+                                <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+                            </linearGradient>
+                            <clipPath id="textClip">
+                                <path d="M210.77,208.59a22.76,22.76,0,0,1-9.7-2.11,31,31,0,0,1-9.23-7,1.59,1.59,0,0,1-.13-.13l.94-.34a86.37,86.37,0,0,0,28.64-17.76,82.35,82.35,0,0,0,26-61,82.35,82.35,0,0,0-26-61,86.4,86.4,0,0,0-28.64-17.77,101,101,0,0,0-36.35-6.31,101.27,101.27,0,0,0-36.23,6.31A86.17,86.17,0,0,0,91.2,59.33a82,82,0,0,0-19,27,83.12,83.12,0,0,0-6.78,33.89,83.17,83.17,0,0,0,6.78,33.9,82.18,82.18,0,0,0,19,27A86.3,86.3,0,0,0,120.07,199a94.63,94.63,0,0,0,18.45,4.9q8.41,8.63,15.56,15a105.63,105.63,0,0,0,18.24,13.33,71.2,71.2,0,0,0,17.88,7.13,82.84,82.84,0,0,0,19.64,2.22q28.74,0,45.81-20.57l-20.1-23.85Q224.33,208.59,210.77,208.59Zm-95.26-69.2a52.07,52.07,0,0,1-3.39-19.17,51.88,51.88,0,0,1,3.39-19.28,44.92,44.92,0,0,1,9.35-14.73,40.39,40.39,0,0,1,14-9.47,48,48,0,0,1,34.83,0,40.26,40.26,0,0,1,14,9.47,45,45,0,0,1,9.36,14.73,52.08,52.08,0,0,1,3.38,19.28,52.28,52.28,0,0,1-3.38,19.17,44.67,44.67,0,0,1-9.36,14.85,40.1,40.1,0,0,1-14,9.46,47.87,47.87,0,0,1-34.83,0,40.23,40.23,0,0,1-14-9.46A44.65,44.65,0,0,1,115.51,139.39Z"/>
                                 <polygon points="389.6 75.34 342.61 75.34 319.28 107.39 296.79 75.34 246.77 75.34 293.63 138.66 245.37 202.04 293.52 202.04 317.75 168.88 340.51 202.04 391.24 202.04 342.86 137.14 389.6 75.34"/>
                                 <path d="M497.25,87.38q-17-14.14-47.81-14.14a120.88,120.88,0,0,0-30,3.85A86.12,86.12,0,0,0,393.57,88l15,30.16a49.34,49.34,0,0,1,15.9-8.07,61.9,61.9,0,0,1,18.46-2.92q14,0,20.46,5.73,5.83,5.2,6.36,14.38H444.53q-19.63,0-32,4.55t-18.36,13.1a34.44,34.44,0,0,0-6,20.22,37,37,0,0,0,5.5,19.87,37.66,37.66,0,0,0,16,14q10.51,5.15,25.71,5.15,16.6,0,26.77-6.67a30.89,30.89,0,0,0,10.64-11.88V202h41.37V131.68Q514.19,101.51,497.25,87.38ZM461,172.47a24.89,24.89,0,0,1-13.21,3.62q-7.71,0-12.15-3.5a12.17,12.17,0,0,1-.12-18.7q4.32-3.51,15.08-3.51h19.17v11A21.08,21.08,0,0,1,461,172.47Z"/>
                                 <path d="M658.89,104.56a62.67,62.67,0,0,0-25.36-23q-16.24-8.28-37-8.29t-36.94,8.29a63.64,63.64,0,0,0-25.36,23q-9.24,14.73-9.24,33.9t9.24,34a64.11,64.11,0,0,0,25.36,23.26q16.14,8.42,36.94,8.42t37-8.42a63.13,63.13,0,0,0,25.36-23.26q9.12-14.85,9.12-34T658.89,104.56Zm-39.27,50.38a24.61,24.61,0,0,1-9.47,10.4,26.42,26.42,0,0,1-13.67,3.51A26,26,0,0,1,583,165.34a25.38,25.38,0,0,1-9.59-10.4,35,35,0,0,1-3.62-16.48q0-9.59,3.62-16.25a25.24,25.24,0,0,1,23-13.68A26.42,26.42,0,0,1,610.15,112a24.94,24.94,0,0,1,9.47,10.17q3.51,6.66,3.51,16.25A36,36,0,0,1,619.62,154.94Z"/>
-                            </g>
-                        </clipPath>
-                    </defs>
-
-                    <g id="draw-group">
-                        <path class="shape c1" data-role="brain" d="M517.17,230.82,620.56,94.91a5.48,5.48,0,0,0-4.37-8.8H536.61a5.47,5.47,0,0,0-4.4,2.21l-59.66,80.2a5.48,5.48,0,0,1-8.84-.05s-26.53-35.94-49.29-67.71c-6.48-9.05-16.38-12-27.42-13.47-21.43-2.86-53.74,1.27-53.86,1.28-193.59,24.5-296.23,135.12-317,158a5.49,5.49,0,0,0,.49,7.83c128.48,111.9,275.62,131.39,345.21,134.45,0,0,33.44.47,39.19-5.87.49-.54,1-1.06,1.43-1.64,6.59-8.79,58.92-79.17,58.92-79.17a5.48,5.48,0,0,1,8.86.08l60.27,84.29A5.48,5.48,0,0,0,535,388.8h76.61a10,10,0,0,0,8-16.07L517.16,237.45A5.49,5.49,0,0,1,517.17,230.82ZM351.73,322.93a5.35,5.35,0,0,1-6.22,1.72l0,0a84.63,84.63,0,0,1-29.27-19.37,89.65,89.65,0,0,1-19.38-30.12A102.31,102.31,0,0,1,289.88,237q0-21.06,6.94-38.33a90.09,90.09,0,0,1,19.38-29.9,84.05,84.05,0,0,1,25.07-17.57c1-.46,2.09-.93,3.16-1.35s2.06-.8,3.11-1.17a5.51,5.51,0,0,1,6.24,1.87l61.67,82.23a5.49,5.49,0,0,1,0,6.62Z"/>
-                        <g transform="translate(370, 60) scale(1.35)">
-                            <polygon class="shape c1" data-role="q" points="389.6 75.34 342.61 75.34 319.28 107.39 296.79 75.34 246.77 75.34 293.63 138.66 245.37 202.04 293.52 202.04 317.75 168.88 340.51 202.04 391.24 202.04 342.86 137.14 389.6 75.34"/>
-                            <path class="shape c2" data-role="xao" d="M497.25,87.38q-17-14.14-47.81-14.14a120.88,120.88,0,0,0-30,3.85A86.12,86.12,0,0,0,393.57,88l15,30.16a49.34,49.34,0,0,1,15.9-8.07,61.9,61.9,0,0,1,18.46-2.92q14,0,20.46,5.73,5.83,5.2,6.36,14.38H444.53q-19.63,0-32,4.55t-18.36,13.1a34.44,34.44,0,0,0-6,20.22,37,37,0,0,0,5.5,19.87,37.66,37.66,0,0,0,16,14q10.51,5.15,25.71,5.15,16.6,0,26.77-6.67a30.89,30.89,0,0,0,10.64-11.88V202h41.37V131.68Q514.19,101.51,497.25,87.38ZM461,172.47a24.89,24.89,0,0,1-13.21,3.62q-7.71,0-12.15-3.5a12.17,12.17,0,0,1-.12-18.7q4.32-3.51,15.08-3.51h19.17v11A21.08,21.08,0,0,1,461,172.47Z"/>
-                            <path class="shape c2" data-role="a" d="M658.89,104.56a62.67,62.67,0,0,0-25.36-23q-16.24-8.28-37-8.29t-36.94,8.29a63.64,63.64,0,0,0-25.36,23q-9.24,14.73-9.24,33.9t9.24,34a64.11,64.11,0,0,0,25.36,23.26q16.14,8.42,36.94,8.42t37-8.42a63.13,63.13,0,0,0,25.36-23.26q9.12-14.85,9.12-34T658.89,104.56Zm-39.27,50.38a24.61,24.61,0,0,1-9.47,10.4,26.42,26.42,0,0,1-13.67,3.51A26,26,0,0,1,583,165.34a25.38,25.38,0,0,1-9.59-10.4,35,35,0,0,1-3.62-16.48q0-9.59,3.62-16.25a25.24,25.24,0,0,1,23-13.68A26.42,26.42,0,0,1,610.15,112a24.94,24.94,0,0,1,9.47,10.17q3.51,6.66,3.51,16.25A36,36,0,0,1,619.62,154.94Z"/>
+                            </clipPath>
+                        </defs>
+                        <g id="draw-group-text">
+                            <path class="shape c1" data-role="q" d="M210.77,208.59a22.76,22.76,0,0,1-9.7-2.11,31,31,0,0,1-9.23-7,1.59,1.59,0,0,1-.13-.13l.94-.34a86.37,86.37,0,0,0,28.64-17.76,82.35,82.35,0,0,0,26-61,82.35,82.35,0,0,0-26-61,86.4,86.4,0,0,0-28.64-17.77,101,101,0,0,0-36.35-6.31,101.27,101.27,0,0,0-36.23,6.31A86.17,86.17,0,0,0,91.2,59.33a82,82,0,0,0-19,27,83.12,83.12,0,0,0-6.78,33.89,83.17,83.17,0,0,0,6.78,33.9,82.18,82.18,0,0,0,19,27A86.3,86.3,0,0,0,120.07,199a94.63,94.63,0,0,0,18.45,4.9q8.41,8.63,15.56,15a105.63,105.63,0,0,0,18.24,13.33,71.2,71.2,0,0,0,17.88,7.13,82.84,82.84,0,0,0,19.64,2.22q28.74,0,45.81-20.57l-20.1-23.85Q224.33,208.59,210.77,208.59Zm-95.26-69.2a52.07,52.07,0,0,1-3.39-19.17,51.88,51.88,0,0,1,3.39-19.28,44.92,44.92,0,0,1,9.35-14.73,40.39,40.39,0,0,1,14-9.47,48,48,0,0,1,34.83,0,40.26,40.26,0,0,1,14,9.47,45,45,0,0,1,9.36,14.73,52.08,52.08,0,0,1,3.38,19.28,52.28,52.28,0,0,1-3.38,19.17,44.67,44.67,0,0,1-9.36,14.85,40.1,40.1,0,0,1-14,9.46,47.87,47.87,0,0,1-34.83,0,40.23,40.23,0,0,1-14-9.46A44.65,44.65,0,0,1,115.51,139.39Z"/>
+                            <!-- LA "X" AHORA TIENE LA CLASE "c1" PARA SER MORADA IGUAL QUE LA Q -->
+                            <polygon class="shape c1" data-role="xao" points="389.6 75.34 342.61 75.34 319.28 107.39 296.79 75.34 246.77 75.34 293.63 138.66 245.37 202.04 293.52 202.04 317.75 168.88 340.51 202.04 391.24 202.04 342.86 137.14 389.6 75.34"/>
+                            <path class="shape c2" data-role="a" d="M497.25,87.38q-17-14.14-47.81-14.14a120.88,120.88,0,0,0-30,3.85A86.12,86.12,0,0,0,393.57,88l15,30.16a49.34,49.34,0,0,1,15.9-8.07,61.9,61.9,0,0,1,18.46-2.92q14,0,20.46,5.73,5.83,5.2,6.36,14.38H444.53q-19.63,0-32,4.55t-18.36,13.1a34.44,34.44,0,0,0-6,20.22,37,37,0,0,0,5.5,19.87,37.66,37.66,0,0,0,16,14q10.51,5.15,25.71,5.15,16.6,0,26.77-6.67a30.89,30.89,0,0,0,10.64-11.88V202h41.37V131.68Q514.19,101.51,497.25,87.38ZM461,172.47a24.89,24.89,0,0,1-13.21,3.62q-7.71,0-12.15-3.5a12.17,12.17,0,0,1-.12-18.7q4.32-3.51,15.08-3.51h19.17v11A21.08,21.08,0,0,1,461,172.47Z"/>
+                            <path class="shape c2" data-role="o" d="M658.89,104.56a62.67,62.67,0,0,0-25.36-23q-16.24-8.28-37-8.29t-36.94,8.29a63.64,63.64,0,0,0-25.36,23q-9.24,14.73-9.24,33.9t9.24,34a64.11,64.11,0,0,0,25.36,23.26q16.14,8.42,36.94,8.42t37-8.42a63.13,63.13,0,0,0,25.36-23.26q9.12-14.85,9.12-34T658.89,104.56Zm-39.27,50.38a24.61,24.61,0,0,1-9.47,10.4,26.42,26.42,0,0,1-13.67,3.51A26,26,0,0,1,583,165.34a25.38,25.38,0,0,1-9.59-10.4,35,35,0,0,1-3.62-16.48q0-9.59,3.62-16.25a25.24,25.24,0,0,1,23-13.68A26.42,26.42,0,0,1,610.15,112a24.94,24.94,0,0,1,9.47,10.17q3.51,6.66,3.51,16.25A36,36,0,0,1,619.62,154.94Z"/>
                         </g>
-                    </g>
-                    <!-- Brillo Unificado -->
-                    <g clip-path="url(#logoClip)">
-                        <rect class="sheen-mask" x="-100" y="0" width="1400" height="500" fill="url(#sheenGrad)"></rect>
-                    </g>
-                </svg>
+                        <g clip-path="url(#textClip)">
+                            <rect class="sheen-mask" x="-100" y="0" width="900" height="240" fill="url(#sheenGrad2)"></rect>
+                        </g>
+                    </svg>
+                </div>
             </div>
         </div>
     </div>
+
     <!-- HEADER / NAVEGACIÓN -->
 <header class="fixed top-0 w-full z-40 transition-all duration-300 bg-white dark:bg-darkBg border-b border-transparent dark:border-gray-800 shadow-sm">
     <nav class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
@@ -2686,11 +2726,14 @@ const translations = {
         }
     })(); 
 
-<!-- SCRIPT DEL PRELOADER ANIMADO -->
+<!-- SCRIPT DEL PRELOADER ANIMADO (TIEMPOS ORIGINALES RESTAURADOS) -->
     (function(){
-        var shapes = Array.prototype.slice.call(document.querySelectorAll('#qxao-preloader-svg .shape'));
+        // Recolectamos todas las formas de AMBOS grupos SVG
+        var shapes = Array.prototype.slice.call(document.querySelectorAll('#qxao-preloader .shape'));
         
+        // Orden estricto de revelado: Cerebro, Q, xao (ahora morada), a, o
         var order = ['brain', 'q', 'xao', 'a', 'o'];
+        
         shapes.sort(function(a,b){
             return order.indexOf(a.getAttribute('data-role')) - order.indexOf(b.getAttribute('data-role'));
         });
@@ -2699,9 +2742,11 @@ const translations = {
             var len;
             try { len = el.getTotalLength(); } catch(e){ len = 5000; }
             
+            // Oculto inmediatamente
             el.style.strokeDasharray = len + ' ' + len;
             el.style.strokeDashoffset = len;
 
+            // Tiempos exactos del archivo original
             var startDelay = 150 + i * 260; 
             var drawDuration = 1600; 
 
@@ -2710,11 +2755,13 @@ const translations = {
                 el.style.strokeDashoffset = '0';
             }, startDelay);
 
+            // Relleno final
             setTimeout(function(){
                 el.classList.add('fill-in');
             }, startDelay + drawDuration + 60);
         });
 
+        // Brillo (sheen) en el tiempo original
         var totalReveal = 150 + shapes.length * 260 + 1600 + 400; 
         setTimeout(function(){
             document.querySelectorAll('#qxao-preloader .sheen-mask').forEach(function(sheen) {
@@ -2722,13 +2769,15 @@ const translations = {
             });
         }, totalReveal);
 
-        // A los 7.5 segundos se quita el bloqueo de scroll y desaparece el nodo del DOM
+        // Destrucción del preloader extendida a 7.5 segundos (7500ms)
+        // Esto permite que se vea TODA la animación (dibujo -> relleno -> brillo -> zoom out)
         setTimeout(function(){
             document.body.classList.remove('no-scroll');
             var preloader = document.getElementById('qxao-preloader');
             if(preloader) preloader.remove();
         }, 7500);
     })();
+    
     </script>
 </body>
 </html>
