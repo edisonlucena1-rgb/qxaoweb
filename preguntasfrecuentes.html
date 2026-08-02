@@ -100,8 +100,8 @@
 <body class="bg-gray-50 text-gray-800 dark:bg-darkBg dark:text-gray-100 transition-colors duration-300 pt-24 flex flex-col min-h-screen">
 
    <!-- HEADER / NAVEGACIÓN GLOBAL -->
-    <header class="fixed top-0 w-full z-40 bg-white/90 dark:bg-darkBg/90 backdrop-blur-md border-b border-gray-100 dark:border-gray-800 shadow-sm transition-colors">
-        <nav class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+    <header id="qxao-header" class="fixed top-0 w-full z-40 transition-all duration-300 bg-white dark:bg-darkBg border-b border-transparent shadow-sm">
+        <nav id="qxao-nav" class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center transition-all duration-300">
             <!-- LOGO QXAO -->
             <a href="index.html" class="flex items-center gap-3 cursor-pointer group">
                 <div class="w-10 h-10 flex items-center justify-center transform group-hover:scale-110 transition-transform">
@@ -127,7 +127,7 @@
                 <a href="index.html#precios" data-i18n="nav-precios" class="text-gray-600 dark:text-gray-300 hover:text-[#690991] dark:hover:text-[#c75ced] transition">Precios</a>
             </div>
             
-            <!-- ACCIONES (Botones Idioma y Tema ahora visibles en Celular y PC) -->
+            <!-- ACCIONES -->
             <div class="flex items-center gap-3 md:gap-4">
                 
                 <!-- Botón Idioma -->
@@ -141,7 +141,7 @@
                     <svg id="theme-toggle-light-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"></path></svg>
                 </button>
 
-                <!-- Botón Login Premium (Oculto en móvil) -->
+                <!-- Botón Login Premium -->
                 <button onclick="window.location.href='login.html'" data-i18n="btn-login" class="hidden md:block bg-[#690991] text-white px-6 py-2.5 rounded-full font-semibold hover:bg-[#4a0066] transition shadow-lg shadow-[#690991]/30">Iniciar Sesión</button>
 
                 <!-- Botón menú hamburguesa -->
@@ -158,7 +158,6 @@
             <a href="index.html#arquitectura" data-i18n="nav-tecnologia" class="block text-gray-700 dark:text-gray-300 font-medium py-2 close-menu">Tecnología</a>
             <a href="index.html#precios" data-i18n="nav-precios" class="block text-gray-700 dark:text-gray-300 font-medium py-2 close-menu">Precios</a>
             <div class="pt-4 border-t border-gray-100 dark:border-gray-700 flex flex-col gap-3">
-                <!-- BOTON INICIAR SESION MÓVIL -->
                 <button onclick="window.location.href='login.html'" data-i18n="btn-login" class="w-full bg-[#690991] text-white px-6 py-3 rounded-full font-semibold hover:bg-[#4a0066] transition shadow-lg shadow-[#690991]/30">Iniciar Sesión</button>
             </div>
         </div>
@@ -765,6 +764,48 @@
             translatePage(); 
             handleScroll();
         });
+
+       // EFECTO DE SCROLL DEL HEADER (VIDRIO Y OCULTAMIENTO)
+        const header = document.getElementById('qxao-header');
+        const nav = document.getElementById('qxao-nav');
+        
+        if (header) {
+            header.style.transition = 'transform 0.6s ease-in-out, background-color 0.3s ease, backdrop-filter 0.3s ease';
+        }
+
+        let lastScrollTop = 0;
+        window.addEventListener('scroll', function() {
+            if (!header) return;
+            
+            let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+            
+            // Fase 1: Efecto Vidrio
+            if (currentScroll > 50) {
+                header.classList.add('backdrop-blur-md', 'bg-white/85', 'dark:bg-darkBg/85', 'shadow-sm');
+                header.classList.remove('bg-white', 'dark:bg-darkBg', 'border-transparent');
+                if (nav) {
+                    nav.classList.remove('py-5');
+                    nav.classList.add('py-2');
+                }
+            } else {
+                header.classList.remove('backdrop-blur-md', 'bg-white/85', 'dark:bg-darkBg/85', 'shadow-sm');
+                header.classList.add('bg-white', 'dark:bg-darkBg', 'border-transparent');
+                if (nav) {
+                    nav.classList.add('py-5');
+                    nav.classList.remove('py-2');
+                }
+            }
+            
+            // Fase 2: Ocultar barra al bajar más de 300px
+            if (currentScroll > lastScrollTop && currentScroll > 300) {
+                header.style.transform = 'translateY(-110%)';
+            } else {
+                header.style.transform = 'translateY(0)';
+            }
+            
+            lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; 
+        });
+       
     </script>
 </body>
 </html>
