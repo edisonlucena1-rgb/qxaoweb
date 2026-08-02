@@ -1583,7 +1583,45 @@
 </section>
     
     
-<!-- SECCIÓN TESTIMONIOS (ENTERPRISE LEVEL - CAROUSEL) -->
+<!-- LIBRERÍA CSS SWIPER -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+<style>
+    /* Estilos del carrusel 3D - CORREGIDOS PARA MÁXIMA SUAVIDAD Y CURVAS */
+    .testimonios-swiper .swiper-slide {
+        width: 320px;
+        height: auto;
+        border-radius: 32px !important; /* Puntas súper redondeadas estilo iOS */
+        overflow: hidden; /* Evita que el contenido vuelva cuadradas las esquinas */
+        /* Sincronizamos el difuminado con la nueva velocidad del carrusel (0.9s) y curva suave */
+        transition: filter 0.9s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    }
+    
+    @media (min-width: 768px) {
+        .testimonios-swiper .swiper-slide {
+            width: 400px; 
+        }
+    }
+    
+    /* Efecto de profundidad: más oscuro y borroso para resaltar el Zoom */
+    .testimonios-swiper .swiper-slide:not(.swiper-slide-active) {
+        filter: blur(3px) brightness(0.4);
+        opacity: 0.3;
+    }
+    
+    /* Inyecta la curva de animación "flotante" a todo el movimiento del carrusel */
+    .testimonios-swiper .swiper-wrapper {
+        transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1) !important;
+    }
+
+    .swiper-pagination-bullet-active {
+        background-color: #690991 !important;
+    }
+    .dark .swiper-pagination-bullet-active {
+        background-color: #c75ced !important;
+    }
+</style>
+
+<!-- SECCIÓN TESTIMONIOS (ENTERPRISE LEVEL - COVERFLOW 3D SUAVE) -->
 <section id="testimonios" class="py-24 bg-gray-50 dark:bg-gray-950 transition-colors overflow-hidden">
     <div class="max-w-7xl mx-auto px-6 relative">
         
@@ -1597,113 +1635,152 @@
         <div class="relative animate-on-scroll">
             
             <!-- Flecha Izquierda -->
-            <button id="btn-prev-test" class="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 -ml-5 w-12 h-12 bg-white dark:bg-darkCard border border-gray-200 dark:border-gray-700 rounded-full items-center justify-center shadow-lg text-gray-600 dark:text-gray-300 hover:text-[#690991] dark:hover:text-[#c75ced] transition z-10 hover:scale-110">
+            <button id="btn-prev-test" class="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 -ml-5 w-12 h-12 bg-white dark:bg-darkCard border border-gray-200 dark:border-gray-700 rounded-full items-center justify-center shadow-lg text-gray-600 dark:text-gray-300 hover:text-[#690991] dark:hover:text-[#c75ced] transition z-20 hover:scale-110">
                 <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" /></svg>
             </button>
 
-            <!-- Contenedor Scrollable -->
-            <div id="scroll-testimonios" class="flex gap-6 overflow-x-auto snap-x snap-mandatory scrollbar-hide py-4 px-2 scroll-smooth">
-                
-                <!-- Card 1: Marcos -->
-                <div class="snap-center shrink-0 w-[85vw] md:w-[400px] group bg-white dark:bg-gray-900 p-8 rounded-3xl border border-gray-100 dark:border-gray-800 hover:border-[#690991] transition-all duration-300 shadow-sm hover:shadow-2xl hover:-translate-y-2 flex flex-col justify-between">
-                    <div>
-                        <div class="text-yellow-400 text-lg mb-4">★★★★★</div>
-                        <p data-i18n="t-quote-1" class="text-gray-600 dark:text-gray-300 mb-8 italic leading-relaxed">"Antes, mis empleados perdían horas respondiendo mensajes y tomando pedidos por WhatsApp en horas pico. Desde que implementamos el agente de Qxao, el sistema atiende a 50 clientes a la vez, confirma las transferencias y manda la orden directo a la cocina. Las ventas subieron un 30% simplemente porque ya no dejamos a nadie en visto."</p>
-                    </div>
-                    <div class="flex items-center gap-4 border-t border-gray-100 dark:border-gray-800 pt-6 mt-auto">
-                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Marcos Silva" class="w-12 h-12 rounded-full object-cover border border-gray-100 dark:border-gray-700 shadow-sm">
+            <!-- Contenedor Swiper 3D -->
+            <div class="swiper testimonios-swiper w-full max-w-5xl mx-auto pb-14 pt-4 px-2">
+                <div class="swiper-wrapper">
+                    
+                    <!-- Card 1: Marcos -->
+                    <div class="swiper-slide bg-white dark:bg-gray-900 p-8 border border-gray-100 dark:border-gray-800 shadow-xl flex flex-col justify-between">
                         <div>
-                            <h4 data-i18n="t-name-1" class="font-bold text-gray-900 dark:text-white">Marcos Silva</h4>
-                            <p data-i18n="t-role-1" class="text-sm text-[#690991] dark:text-[#c75ced]">Dueño, Bistró 77</p>
+                            <div class="text-yellow-400 text-lg mb-4">★★★★★</div>
+                            <p data-i18n="t-quote-1" class="text-gray-600 dark:text-gray-300 mb-8 italic leading-relaxed">"Antes, mis empleados perdían horas respondiendo mensajes y tomando pedidos por WhatsApp en horas pico. Desde que implementamos el agente de Qxao, el sistema atiende a 50 clientes a la vez, confirma las transferencias y manda la orden directo a la cocina. Las ventas subieron un 30% simplemente porque ya no dejamos a nadie en visto."</p>
+                        </div>
+                        <div class="flex items-center gap-4 border-t border-gray-100 dark:border-gray-800 pt-6 mt-auto">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Marcos Silva" class="w-12 h-12 rounded-full object-cover border border-gray-100 dark:border-gray-700 shadow-sm">
+                            <div>
+                                <h4 data-i18n="t-name-1" class="font-bold text-gray-900 dark:text-white">Marcos Silva</h4>
+                                <p data-i18n="t-role-1" class="text-sm text-[#690991] dark:text-[#c75ced]">Dueño, Bistró 77</p>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <!-- Card 2: Valeria -->
-                <div class="snap-center shrink-0 w-[85vw] md:w-[400px] group bg-white dark:bg-gray-900 p-8 rounded-3xl border border-gray-100 dark:border-gray-800 hover:border-[#690991] transition-all duration-300 shadow-sm hover:shadow-2xl hover:-translate-y-2 flex flex-col justify-between">
-                    <div>
-                        <div class="text-yellow-400 text-lg mb-4">★★★★★</div>
-                        <p data-i18n="t-quote-2" class="text-gray-600 dark:text-gray-300 mb-8 italic leading-relaxed">"Escalar nuestra plataforma era una pesadilla por la cantidad de dudas y tickets de soporte de los usuarios. El asistente que nos diseñó Qxao no solo guía a los nuevos registros paso a paso, sino que resuelve el 85% de las incidencias operativas en automático, 24/7. Nos ahorramos el costo de contratar a todo un equipo de call center."</p>
-                    </div>
-                    <div class="flex items-center gap-4 border-t border-gray-100 dark:border-gray-800 pt-6 mt-auto">
-                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Valeria Cárdenas" class="w-12 h-12 rounded-full object-cover border border-gray-100 dark:border-gray-700 shadow-sm">
+                    <!-- Card 2: Valeria -->
+                    <div class="swiper-slide bg-white dark:bg-gray-900 p-8 border border-gray-100 dark:border-gray-800 shadow-xl flex flex-col justify-between">
                         <div>
-                            <h4 data-i18n="t-name-2" class="font-bold text-gray-900 dark:text-white">Valeria Cárdenas</h4>
-                            <p data-i18n="t-role-2" class="text-sm text-[#690991] dark:text-[#c75ced]">CEO, App ServiYa</p>
+                            <div class="text-yellow-400 text-lg mb-4">★★★★★</div>
+                            <p data-i18n="t-quote-2" class="text-gray-600 dark:text-gray-300 mb-8 italic leading-relaxed">"Escalar nuestra plataforma era una pesadilla por la cantidad de dudas y tickets de soporte de los usuarios. El asistente que nos diseñó Qxao no solo guía a los nuevos registros paso a paso, sino que resuelve el 85% de las incidencias operativas en automático, 24/7. Nos ahorramos el costo de contratar a todo un equipo de call center."</p>
+                        </div>
+                        <div class="flex items-center gap-4 border-t border-gray-100 dark:border-gray-800 pt-6 mt-auto">
+                            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Valeria Cárdenas" class="w-12 h-12 rounded-full object-cover border border-gray-100 dark:border-gray-700 shadow-sm">
+                            <div>
+                                <h4 data-i18n="t-name-2" class="font-bold text-gray-900 dark:text-white">Valeria Cárdenas</h4>
+                                <p data-i18n="t-role-2" class="text-sm text-[#690991] dark:text-[#c75ced]">CEO, App ServiYa</p>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <!-- Card 3: Roberto -->
-                <div class="snap-center shrink-0 w-[85vw] md:w-[400px] group bg-white dark:bg-gray-900 p-8 rounded-3xl border border-gray-100 dark:border-gray-800 hover:border-[#690991] transition-all duration-300 shadow-sm hover:shadow-2xl hover:-translate-y-2 flex flex-col justify-between">
-                    <div>
-                        <div class="text-yellow-400 text-lg mb-4">★★★★★</div>
-                        <p data-i18n="t-quote-3" class="text-gray-600 dark:text-gray-300 mb-8 italic leading-relaxed">"Nuestro mayor cuello de botella era buscar información dispersa. Hoy, mi equipo no tiene que abrir tres softwares distintos para armar un reporte de métricas. Le escriben al copiloto de Qxao en nuestro chat interno y, en tres segundos, la IA cruza los datos de facturación y inventario. Transformó por completo nuestra velocidad operativa."</p>
-                    </div>
-                    <div class="flex items-center gap-4 border-t border-gray-100 dark:border-gray-800 pt-6 mt-auto">
-                        <img src="https://randomuser.me/api/portraits/men/68.jpg" alt="Roberto Guzmán" class="w-12 h-12 rounded-full object-cover border border-gray-100 dark:border-gray-700 shadow-sm">
+                    <!-- Card 3: Roberto -->
+                    <div class="swiper-slide bg-white dark:bg-gray-900 p-8 border border-gray-100 dark:border-gray-800 shadow-xl flex flex-col justify-between">
                         <div>
-                            <h4 data-i18n="t-name-3" class="font-bold text-gray-900 dark:text-white">Roberto Guzmán</h4>
-                            <p data-i18n="t-role-3" class="text-sm text-[#690991] dark:text-[#c75ced]">Director Ops, Grupo NovaTech</p>
+                            <div class="text-yellow-400 text-lg mb-4">★★★★★</div>
+                            <p data-i18n="t-quote-3" class="text-gray-600 dark:text-gray-300 mb-8 italic leading-relaxed">"Nuestro mayor cuello de botella era buscar información dispersa. Hoy, mi equipo no tiene que abrir tres softwares distintos para armar un reporte de métricas. Le escriben al copiloto de Qxao en nuestro chat interno y, en tres segundos, la IA cruza los datos de facturación y inventario. Transformó por completo nuestra velocidad operativa."</p>
+                        </div>
+                        <div class="flex items-center gap-4 border-t border-gray-100 dark:border-gray-800 pt-6 mt-auto">
+                            <img src="https://randomuser.me/api/portraits/men/68.jpg" alt="Roberto Guzmán" class="w-12 h-12 rounded-full object-cover border border-gray-100 dark:border-gray-700 shadow-sm">
+                            <div>
+                                <h4 data-i18n="t-name-3" class="font-bold text-gray-900 dark:text-white">Roberto Guzmán</h4>
+                                <p data-i18n="t-role-3" class="text-sm text-[#690991] dark:text-[#c75ced]">Director Ops, Grupo NovaTech</p>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <!-- Card 4: Carlos (NUEVO) -->
-                <div class="snap-center shrink-0 w-[85vw] md:w-[400px] group bg-white dark:bg-gray-900 p-8 rounded-3xl border border-gray-100 dark:border-gray-800 hover:border-[#690991] transition-all duration-300 shadow-sm hover:shadow-2xl hover:-translate-y-2 flex flex-col justify-between">
-                    <div>
-                        <div class="text-yellow-400 text-lg mb-4">★★★★★</div>
-                        <p data-i18n="t-quote-4" class="text-gray-600 dark:text-gray-300 mb-8 italic leading-relaxed">"Las ventas nocturnas siempre se nos escapaban porque no había quién respondiera en la madrugada. Ahora el agente de Qxao califica leads, cierra ventas a las 3 AM y procesa los pagos sin que yo mueva un dedo. Aumentamos la facturación mensual un 40%."</p>
-                    </div>
-                    <div class="flex items-center gap-4 border-t border-gray-100 dark:border-gray-800 pt-6 mt-auto">
-                        <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Carlos Mendoza" class="w-12 h-12 rounded-full object-cover border border-gray-100 dark:border-gray-700 shadow-sm">
+                    <!-- Card 4: Carlos -->
+                    <div class="swiper-slide bg-white dark:bg-gray-900 p-8 border border-gray-100 dark:border-gray-800 shadow-xl flex flex-col justify-between">
                         <div>
-                            <h4 data-i18n="t-name-4" class="font-bold text-gray-900 dark:text-white">Carlos Mendoza</h4>
-                            <p data-i18n="t-role-4" class="text-sm text-[#690991] dark:text-[#c75ced]">Fundador, E-commerce Nova</p>
+                            <div class="text-yellow-400 text-lg mb-4">★★★★★</div>
+                            <p data-i18n="t-quote-4" class="text-gray-600 dark:text-gray-300 mb-8 italic leading-relaxed">"Las ventas nocturnas siempre se nos escapaban porque no había quién respondiera en la madrugada. Ahora el agente de Qxao califica leads, cierra ventas a las 3 AM y procesa los pagos sin que yo mueva un dedo. Aumentamos la facturación mensual un 40%."</p>
+                        </div>
+                        <div class="flex items-center gap-4 border-t border-gray-100 dark:border-gray-800 pt-6 mt-auto">
+                            <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Carlos Mendoza" class="w-12 h-12 rounded-full object-cover border border-gray-100 dark:border-gray-700 shadow-sm">
+                            <div>
+                                <h4 data-i18n="t-name-4" class="font-bold text-gray-900 dark:text-white">Carlos Mendoza</h4>
+                                <p data-i18n="t-role-4" class="text-sm text-[#690991] dark:text-[#c75ced]">Fundador, E-commerce Nova</p>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <!-- Card 5: Andrea (NUEVO) -->
-                <div class="snap-center shrink-0 w-[85vw] md:w-[400px] group bg-white dark:bg-gray-900 p-8 rounded-3xl border border-gray-100 dark:border-gray-800 hover:border-[#690991] transition-all duration-300 shadow-sm hover:shadow-2xl hover:-translate-y-2 flex flex-col justify-between">
-                    <div>
-                        <div class="text-yellow-400 text-lg mb-4">★★★★★</div>
-                        <p data-i18n="t-quote-5" class="text-gray-600 dark:text-gray-300 mb-8 italic leading-relaxed">"Calificar prospectos para propiedades de lujo tomaba días. El Agente IA perfila a los clientes en minutos, agenda las visitas directamente en Google Calendar y nos pasa solo los leads 'calientes' a los asesores. Es una locura la eficiencia que ganamos."</p>
-                    </div>
-                    <div class="flex items-center gap-4 border-t border-gray-100 dark:border-gray-800 pt-6 mt-auto">
-                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Andrea Villalobos" class="w-12 h-12 rounded-full object-cover border border-gray-100 dark:border-gray-700 shadow-sm">
+                    <!-- Card 5: Andrea -->
+                    <div class="swiper-slide bg-white dark:bg-gray-900 p-8 border border-gray-100 dark:border-gray-800 shadow-xl flex flex-col justify-between">
                         <div>
-                            <h4 data-i18n="t-name-5" class="font-bold text-gray-900 dark:text-white">Andrea Villalobos</h4>
-                            <p data-i18n="t-role-5" class="text-sm text-[#690991] dark:text-[#c75ced]">Dir. de Ventas, Inmobiliaria Sur</p>
+                            <div class="text-yellow-400 text-lg mb-4">★★★★★</div>
+                            <p data-i18n="t-quote-5" class="text-gray-600 dark:text-gray-300 mb-8 italic leading-relaxed">"Calificar prospectos para propiedades de lujo tomaba días. El Agente IA perfila a los clientes en minutos, agenda las visitas directamente en Google Calendar y nos pasa solo los leads 'calientes' a los asesores. Es una locura la eficiencia que ganamos."</p>
+                        </div>
+                        <div class="flex items-center gap-4 border-t border-gray-100 dark:border-gray-800 pt-6 mt-auto">
+                            <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Andrea Villalobos" class="w-12 h-12 rounded-full object-cover border border-gray-100 dark:border-gray-700 shadow-sm">
+                            <div>
+                                <h4 data-i18n="t-name-5" class="font-bold text-gray-900 dark:text-white">Andrea Villalobos</h4>
+                                <p data-i18n="t-role-5" class="text-sm text-[#690991] dark:text-[#c75ced]">Dir. de Ventas, Inmobiliaria Sur</p>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <!-- Card 6: Fernando (NUEVO) -->
-                <div class="snap-center shrink-0 w-[85vw] md:w-[400px] group bg-white dark:bg-gray-900 p-8 rounded-3xl border border-gray-100 dark:border-gray-800 hover:border-[#690991] transition-all duration-300 shadow-sm hover:shadow-2xl hover:-translate-y-2 flex flex-col justify-between">
-                    <div>
-                        <div class="text-yellow-400 text-lg mb-4">★★★★★</div>
-                        <p data-i18n="t-quote-6" class="text-gray-600 dark:text-gray-300 mb-8 italic leading-relaxed">"Las cancelaciones de citas nos costaban miles al mes. Qxao automatizó la agenda, los recordatorios 24 horas antes y las reprogramaciones a través de WhatsApp. El ausentismo en la clínica bajó a casi cero y las secretarias ahora pueden respirar."</p>
-                    </div>
-                    <div class="flex items-center gap-4 border-t border-gray-100 dark:border-gray-800 pt-6 mt-auto">
-                        <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="Dr. Fernando Ruiz" class="w-12 h-12 rounded-full object-cover border border-gray-100 dark:border-gray-700 shadow-sm">
+                    <!-- Card 6: Fernando -->
+                    <div class="swiper-slide bg-white dark:bg-gray-900 p-8 border border-gray-100 dark:border-gray-800 shadow-xl flex flex-col justify-between">
                         <div>
-                            <h4 data-i18n="t-name-6" class="font-bold text-gray-900 dark:text-white">Dr. Fernando Ruiz</h4>
-                            <p data-i18n="t-role-6" class="text-sm text-[#690991] dark:text-[#c75ced]">Director Médico, Clínica Vital</p>
+                            <div class="text-yellow-400 text-lg mb-4">★★★★★</div>
+                            <p data-i18n="t-quote-6" class="text-gray-600 dark:text-gray-300 mb-8 italic leading-relaxed">"Las cancelaciones de citas nos costaban miles al mes. Qxao automatizó la agenda, los recordatorios 24 horas antes y las reprogramaciones a través de WhatsApp. El ausentismo en la clínica bajó a casi cero y las secretarias ahora pueden respirar."</p>
+                        </div>
+                        <div class="flex items-center gap-4 border-t border-gray-100 dark:border-gray-800 pt-6 mt-auto">
+                            <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="Dr. Fernando Ruiz" class="w-12 h-12 rounded-full object-cover border border-gray-100 dark:border-gray-700 shadow-sm">
+                            <div>
+                                <h4 data-i18n="t-name-6" class="font-bold text-gray-900 dark:text-white">Dr. Fernando Ruiz</h4>
+                                <p data-i18n="t-role-6" class="text-sm text-[#690991] dark:text-[#c75ced]">Director Médico, Clínica Vital</p>
+                            </div>
                         </div>
                     </div>
-                </div>
 
+                </div>
+                <!-- Paginación (Puntos) -->
+                <div class="swiper-pagination !bottom-0"></div>
             </div>
 
             <!-- Flecha Derecha -->
-            <button id="btn-next-test" class="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 -mr-5 w-12 h-12 bg-white dark:bg-darkCard border border-gray-200 dark:border-gray-700 rounded-full items-center justify-center shadow-lg text-gray-600 dark:text-gray-300 hover:text-[#690991] dark:hover:text-[#c75ced] transition z-10 hover:scale-110">
+            <button id="btn-next-test" class="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 -mr-5 w-12 h-12 bg-white dark:bg-darkCard border border-gray-200 dark:border-gray-700 rounded-full items-center justify-center shadow-lg text-gray-600 dark:text-gray-300 hover:text-[#690991] dark:hover:text-[#c75ced] transition z-20 hover:scale-110">
                 <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
             </button>
 
         </div>
     </div>
 </section>
+
+<!-- LIBRERÍA JS Y SCRIPT DE SWIPER (INICIACIÓN) -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var swiper = new Swiper(".testimonios-swiper", {
+            effect: "coverflow",
+            grabCursor: true,
+            centeredSlides: true,
+            slidesPerView: "auto",
+            loop: true,
+            speed: 900, // <-- CRÍTICO: 900 milisegundos hace que el cambio sea flotante y lento
+            coverflowEffect: {
+                rotate: 0,        
+                stretch: 0,
+                depth: 250,       // <-- Aumentamos la profundidad para que el efecto ZOOM sea más obvio
+                modifier: 2.5,    
+                slideShadows: false, 
+            },
+            navigation: {
+                nextEl: '#btn-next-test', 
+                prevEl: '#btn-prev-test', 
+            },
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            autoplay: {
+                delay: 4000, // Le damos más tiempo a la persona para leer antes de deslizarse sola
+                disableOnInteraction: false,
+            }
+        });
+    });
+</script>
+    
 
 <!-- CALCULADORA DE AHORRO ROI -->
     <section id="roi-calc" class="py-24 bg-white dark:bg-[#151e2f] bg-grid-light transition-colors border-t border-gray-100 dark:border-gray-800">
@@ -2750,21 +2827,7 @@ const translations = {
 
         window.addEventListener('load', initThree);
 
-        // 10. CARRUSEL DE TESTIMONIOS
-        const scrollTestimonios = document.getElementById('scroll-testimonios');
-        const btnPrevTest = document.getElementById('btn-prev-test');
-        const btnNextTest = document.getElementById('btn-next-test');
-
-        if(btnPrevTest && btnNextTest && scrollTestimonios) {
-            btnNextTest.addEventListener('click', () => {
-                scrollTestimonios.scrollBy({ left: 424, behavior: 'smooth' }); 
-            });
-            btnPrevTest.addEventListener('click', () => {
-                scrollTestimonios.scrollBy({ left: -424, behavior: 'smooth' });
-            });
-        }
-    })(); 
-
+       
 <!-- SCRIPT DEL PRELOADER ANIMADO (TIEMPOS ORIGINALES RESTAURADOS) -->
     (function(){
         // Recolectamos todas las formas de AMBOS grupos SVG
