@@ -2274,7 +2274,6 @@ const translations = {
         "w-preview": "Qxao agent preview in action"
     }
 };
-
 // 1. TRADUCCIÓN DE LA PÁGINA
     let currentLang = 'es';
     const langToggleBtn = document.getElementById('lang-toggle');
@@ -2475,7 +2474,7 @@ const translations = {
         setTimeout(typeWriter, 1000);
     }
 
-   // 8. LÓGICA DEL CHATBOT FLOTANTE Y BURBUJA PROACTIVA
+// 8. LÓGICA DEL CHATBOT FLOTANTE Y BURBUJA PROACTIVA
     const chatToggle = document.getElementById('chat-toggle');
     const chatWindow = document.getElementById('chat-window');
     const closeChat = document.getElementById('close-chat');
@@ -2553,7 +2552,8 @@ const translations = {
     
     if(sendChat) sendChat.addEventListener('click', handleSendMessage);
     if(chatInput) chatInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') handleSendMessage(); });
-
+    
+    
     // 9. WIDGET INTERACTIVO Y PARTÍCULAS THREE.JS
     (function(){
         const $ = (id) => document.getElementById(id);
@@ -2827,7 +2827,11 @@ const translations = {
 
         window.addEventListener('load', initThree);
 
-       
+        
+    })(); 
+
+    
+
 <!-- SCRIPT DEL PRELOADER ANIMADO (TIEMPOS ORIGINALES RESTAURADOS) -->
     (function(){
         // Recolectamos todas las formas de AMBOS grupos SVG
@@ -2879,9 +2883,9 @@ const translations = {
             if(preloader) preloader.remove();
         }, 7500);
     })();
-     </script>
+ </script>
 
-    <!-- SCRIPT DE LA BARRA (VIDRIO PRIMERO, SE OCULTA DESPUÉS Y MÁS SUAVE) -->
+<!-- SCRIPT DE LA BARRA (VIDRIO PRIMERO, SE OCULTA DESPUÉS Y MÁS SUAVE) -->
 <script>
     const header = document.getElementById('qxao-header');
     const nav = document.getElementById('qxao-nav');
@@ -2927,5 +2931,5 @@ const translations = {
         lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; 
     });
 </script>
-</body>
+     </body>
 </html>
