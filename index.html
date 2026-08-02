@@ -423,35 +423,31 @@
     </div>
 
 <!-- HEADER / NAVEGACIÓN -->
-<header class="fixed top-0 w-full z-40 transition-all duration-300 bg-white dark:bg-darkBg border-b border-transparent dark:border-gray-800 shadow-sm">
-    <nav class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+<!-- Mantenemos tus IDs y clases originales para scroll y estilos -->
+<header id="qxao-header" class="fixed top-0 w-full z-40 transition-all duration-300 bg-white dark:bg-darkBg border-b border-transparent shadow-sm">
+    <nav id="qxao-nav" class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center transition-all duration-300">
         
         <!-- LOGO QXAO UNIFICADO -->
-        <!-- Ajusta el "w-36 md:w-44" si lo quieres más grande o más pequeño -->
+        <!-- Insertado responsivamente dentro de tu enlace original -->
         <a href="/" class="block w-36 md:w-44 flex-shrink-0 transition-transform hover:scale-105">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1382.99 506.24" class="w-full h-auto">
                 <g id="OBJECTS">
                     <!-- Q (Morado Qxao) -->
-                    <path class="fill-[#690991]" d="M853.72,356.62a22.9,22.9,0,0,1-9.7-2.1,31.2,31.2,0,0,1-9.24-7l-.12-.14c.31-.11.63-.21.94-.33a86.24,86.24,0,0,0,28.64-17.77,84.05,84.05,0,0,0,0-122,86.24,86.24,0,0,0-28.64-17.77,107.51,107.51,0,0,0-72.58,0,86.3,86.3,0,0,0-28.87,17.88,82.18,82.18,0,0,0-19,27,88.12,88.12,0,0,0,0,67.79,82,82,0,0,0,19,27A86.17,86.17,0,0,0,763,347a94.63,94.63,0,0,0,18.45,4.9q8.41,8.61,15.56,15a105.35,105.35,0,0,0,18.23,13.32,70.66,70.66,0,0,0,17.89,7.13,82.82,82.82,0,0,0,19.63,2.22q28.76,0,45.82-20.57l-20.1-23.84Q867.28,356.62,853.72,356.62Zm-95.26-69.19a56.24,56.24,0,0,1,0-38.46,45,45,0,0,1,9.35-14.72,40.16,40.16,0,0,1,14-9.47,48,48,0,0,1,34.83,0,40.21,40.21,0,0,1,14,9.47A44.82,44.82,0,0,1,840,249a56.24,56.24,0,0,1,0,38.46,44.54,44.54,0,0,1-9.35,14.84,40.21,40.21,0,0,1-14,9.47,48,48,0,0,1-34.83,0,40.16,40.16,0,0,1-14-9.47A44.7,44.7,0,0,1,758.46,287.43Z"/>
-                    
+                    <path class="fill-[#690991]" d="M853.72,356.62a22.9,22.9,0,0,1-9.7-2.1,31.2,31.2,0,0,1-9.24-7l-.12-.14c.31-.11.63-.21.94-.33a86.24,86.24,0,0,0,28.64-17.77,84.05,84.05,0,0,0,0-122,86.24,86.24,0,0,0-28.64-17.77,107.51,107.51,0,0,0-72.58,0,86.3,86.3,0,0,0-28.87,17.88,82.18,82.18,0,0,0-19,27,88.12,88.12,0,0,0,0,67.79,82,82,0,0,0,19,27A86.17,86.17,0,0,0,763,347a94.63,94.63,0,0,0,18.45,4.9q8.41,8.61,15.56,15a105.35,105.35,0,0,0,18.23,13.32,70.66,70.66,0,0,0,17.89,7.13,82.82,82.82,0,0,0,19.63,2.22q28.76,0,45.82-20.57l-20.1-23.84Q867.28,356.62,853.72,356.62Zm-95.26-69.19a56.24,56.24,0,0,1,0-38.46,45,45,0,0,1,9.35-14.72,40.16,40.16,0,0,1,14-9.47,48,48,0,0,1,34.83,0,40.21,40.21,0,0,1,14,9.47A44.82,44.82,0,0,1,840,249a56.24,56.24,0,0,1,0,38.46,44.54,44.54,0,0,1-9.35,14.84,40.21,40.21,0,0,1-14,9.47,48,48,0,0,1-34.83,0,40.16,40.16,0,0,1-14,9.47A44.7,44.7,0,0,1,758.46,287.43Z"/>
                     <!-- X (Morado Qxao) -->
                     <polygon class="fill-[#690991]" points="1032.55 223.38 985.56 223.38 962.23 255.42 939.74 223.38 889.72 223.38 936.57 286.7 888.31 350.08 936.47 350.08 960.7 316.91 983.46 350.08 1034.18 350.08 985.81 285.18 1032.55 223.38"/>
-                    
                     <!-- a (Gris de día, Blanco de noche) -->
                     <path class="fill-[#5e5e5e] dark:fill-white transition-colors duration-300" d="M1140.2,235.41q-17-14.13-47.81-14.14a120.84,120.84,0,0,0-30,3.86A85.87,85.87,0,0,0,1036.52,236l15,30.15a49.33,49.33,0,0,1,15.9-8.06,61.58,61.58,0,0,1,18.46-2.92q14,0,20.46,5.72,5.84,5.22,6.35,14.38h-25.17q-19.63,0-32,4.56t-18.35,13.09a34.44,34.44,0,0,0-6,20.22,36.94,36.94,0,0,0,5.5,19.87,37.68,37.68,0,0,0,16,14q10.51,5.13,25.71,5.14,16.61,0,26.77-6.66a30.92,30.92,0,0,0,10.64-11.89v16.45h41.37V279.71Q1157.14,249.56,1140.2,235.41ZM1104,320.51a25,25,0,0,1-13.21,3.62q-7.71,0-12.15-3.51a11.28,11.28,0,0,1-4.44-9.35,11.41,11.41,0,0,1,4.32-9.35q4.32-3.51,15.08-3.51h19.17v11A21.14,21.14,0,0,1,1104,320.51Z"/>
-                    
                     <!-- o (Gris de día, Blanco de noche) -->
                     <path class="fill-[#5e5e5e] dark:fill-white transition-colors duration-300" d="M1301.84,252.6a62.6,62.6,0,0,0-25.36-23q-16.26-8.3-37-8.3t-36.94,8.3a63.57,63.57,0,0,0-25.36,23q-9.24,14.72-9.24,33.89t9.24,34a64.16,64.16,0,0,0,25.36,23.25q16.13,8.43,36.94,8.42t37-8.42a63.17,63.17,0,0,0,25.36-23.25q9.12-14.85,9.12-34T1301.84,252.6ZM1262.57,303a24.64,24.64,0,0,1-9.47,10.41,26.51,26.51,0,0,1-13.67,3.5,26.12,26.12,0,0,1-13.45-3.5A25.39,25.39,0,0,1,1216.4,303a34.92,34.92,0,0,1-3.62-16.48q0-9.58,3.62-16.24a25.6,25.6,0,0,1,9.58-10.17,26,26,0,0,1,13.45-3.51,26.42,26.42,0,0,1,13.67,3.51,24.82,24.82,0,0,1,9.47,10.17q3.51,6.66,3.51,16.24A35.92,35.92,0,0,1,1262.57,303Z"/>
-                    
                     <!-- Cerebro/Pez (Morado Qxao) -->
                     <path class="fill-[#690991]" d="M590.54,286,693.92,150a5.48,5.48,0,0,0-4.36-8.8H610a5.47,5.47,0,0,0-4.39,2.21l-59.66,80.21a5.49,5.49,0,0,1-8.84,0s-26.53-35.94-49.29-67.71c-6.49-9.05-16.39-12-27.42-13.48-21.43-2.86-53.74,1.27-53.86,1.29-193.59,24.49-296.23,135.12-317,158a5.49,5.49,0,0,0,.49,7.83C218.49,421.41,365.63,440.9,435.22,444c0,0,33.43.46,39.19-5.88.49-.53,1-1.06,1.43-1.64,6.59-8.78,58.92-79.17,58.92-79.17a5.48,5.48,0,0,1,8.86.08l60.27,84.3a5.48,5.48,0,0,0,4.46,2.29H685a10,10,0,0,0,8-16.07L590.53,292.59A5.49,5.49,0,0,1,590.54,286ZM425.1,378.06a5.32,5.32,0,0,1-6.22,1.72l0,0a84.4,84.4,0,0,1-29.27-19.37,89.45,89.45,0,0,1-19.38-30.11,108.59,108.59,0,0,1,0-76.45,90.08,90.08,0,0,1,19.38-29.91,83.9,83.9,0,0,1,25.07-17.56c1-.47,2.08-.93,3.15-1.36s2.07-.8,3.12-1.16a5.48,5.48,0,0,1,6.23,1.87l61.67,82.23a5.46,5.46,0,0,1,0,6.61Z"/>
                 </g>
             </svg>
         </a>
 
-        <!-- ... AQUÍ SIGUE EL RESTO DE TUS ENLACES DEL MENÚ (Servicios, Tecnología, etc.) ... -->
-        
         <!-- ENLACES DESKTOP -->
+        <!-- Mantenemos tu bloque original que se oculta en móvil (hidden md:flex) -->
         <div class="hidden md:flex gap-8 text-sm font-medium">
             <a href="#servicios" data-i18n="nav-servicios" class="hover:text-[#690991] dark:hover:text-[#c75ced] transition">Servicios</a>
             <a href="#arquitectura" data-i18n="nav-tecnologia" class="hover:text-[#690991] dark:hover:text-[#c75ced] transition">Tecnología</a>
@@ -459,7 +455,8 @@
             <a href="#precios" data-i18n="nav-precios" class="hover:text-[#690991] dark:hover:text-[#c75ced] transition">Precios</a>
         </div>
         
-        <!-- ACCIONES (Botones Idioma y Tema ahora visibles en Celular y PC) -->
+        <!-- ACCIONES -->
+        <!-- Mantenemos tu bloque de acciones (idioma y tema siempre visibles, login oculto en móvil, hamburguesa visible en móvil) -->
         <div class="flex items-center gap-3 md:gap-4">
             
             <!-- BOTÓN BILINGÜE ES / EN -->
@@ -473,19 +470,20 @@
                 <svg id="theme-toggle-light-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"></path></svg>
             </button>
 
-            <!-- BOTON INICIAR SESION (Morado sólido - SOLO visible en PC, en móvil estará en el menú) -->
+            <!-- BOTON INICIAR SESION (SOLO visible en PC: hidden md:block) -->
             <button onclick="window.location.href='login.html'" data-i18n="btn-login" class="hidden md:block bg-[#690991] text-white px-6 py-2.5 rounded-full font-semibold hover:bg-[#4a0066] transition shadow-lg shadow-[#690991]/30">
                 Iniciar Sesión
             </button>
 
-            <!-- Botón menú hamburguesa (SOLO MÓVIL) -->
+            <!-- Botón menú hamburguesa (SOLO MÓVIL: block md:hidden) -->
+            <!-- Recuperado e intacto -->
             <button id="menu-btn" class="block md:hidden text-gray-700 dark:text-gray-200 focus:outline-none ml-1" aria-label="Abrir menú">
                 <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
             </button>
         </div>
     </nav>
 
-    <!-- MENU MOVIL DESPLEGABLE -->
+    <!-- MENU MOVIL DESPLEGABLE (Recuperado e intacto con todas sus clases responsivas originales) -->
     <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-darkCard border-t border-gray-100 dark:border-gray-800 px-6 py-6 space-y-4 shadow-xl">
         <a href="#servicios" data-i18n="nav-servicios" class="block text-gray-700 dark:text-gray-300 font-medium py-2 close-menu">Servicios</a>
         <a href="#arquitectura" data-i18n="nav-tecnologia" class="block text-gray-700 dark:text-gray-300 font-medium py-2 close-menu">Tecnología</a>
@@ -499,6 +497,7 @@
         </div>
     </div>
 </header>
+
     
 <!-- TU HEADER / NAVBAR VA AQUÍ NORMALMENTE -->
 
@@ -2785,7 +2784,53 @@ const translations = {
             if(preloader) preloader.remove();
         }, 7500);
     })();
+     </script>
+
+    <!-- SCRIPT DE LA BARRA (VIDRIO PRIMERO, SE OCULTA DESPUÉS Y MÁS SUAVE) -->
+<script>
+    const header = document.getElementById('qxao-header');
+    const nav = document.getElementById('qxao-nav');
     
-    </script>
+    // Le inyectamos una animación más lenta y fluida (0.6s) para que no sea un golpe brusco
+    if (header) {
+        header.style.transition = 'transform 0.6s ease-in-out, background-color 0.3s ease, backdrop-filter 0.3s ease';
+    }
+
+    let lastScrollTop = 0;
+    window.addEventListener('scroll', function() {
+        if (!header) return;
+        
+        let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+        
+        // FASE 1: EFECTO VIDRIO Y ENCOGER (Se activa rápido, a los 50px)
+        if (currentScroll > 50) {
+            header.classList.add('backdrop-blur-md', 'bg-white/85', 'dark:bg-darkBg/85', 'shadow-sm');
+            header.classList.remove('bg-white', 'dark:bg-darkBg', 'border-transparent');
+            if (nav) {
+                nav.classList.remove('py-5');
+                nav.classList.add('py-2');
+            }
+        } else {
+            // Estando en el tope, es sólida y normal
+            header.classList.remove('backdrop-blur-md', 'bg-white/85', 'dark:bg-darkBg/85', 'shadow-sm');
+            header.classList.add('bg-white', 'dark:bg-darkBg', 'border-transparent');
+            if (nav) {
+                nav.classList.add('py-5');
+                nav.classList.remove('py-2');
+            }
+        }
+        
+        // FASE 2: OCULTAR (Solo si bajas MÁS de 300px)
+        if (currentScroll > lastScrollTop && currentScroll > 300) {
+            // Se esconde suavemente hacia arriba
+            header.style.transform = 'translateY(-110%)';
+        } else {
+            // Si subes un poco el dedo/mouse, reaparece suavemente
+            header.style.transform = 'translateY(0)';
+        }
+        
+        lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; 
+    });
+</script>
 </body>
 </html>
