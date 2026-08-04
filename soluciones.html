@@ -118,6 +118,21 @@
         details > summary::-webkit-details-marker { display: none; }
         details[open] summary ~ * { animation: sweep .3s ease-in-out; }
         @keyframes sweep { 0% {opacity: 0; transform: translateY(-10px)} 100% {opacity: 1; transform: translateY(0)} }
+
+        /* Scrollbar general */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #f1f5f9; }
+.dark ::-webkit-scrollbar-track { background: #0f172a; }
+::-webkit-scrollbar-thumb { background-color: #cbd5e1; border-radius: 10px; }
+.dark ::-webkit-scrollbar-thumb { background-color: #334155; }
+::-webkit-scrollbar-thumb:hover { background-color: #690991; }
+
+/* Scrollbar específica del chat flotante (más delgada) */
+#chat-messages::-webkit-scrollbar { width: 6px; }
+#chat-messages::-webkit-scrollbar-thumb { background-color: #cbd5e1; border-radius: 10px; }
+.dark #chat-messages::-webkit-scrollbar-thumb { background-color: #475569; }
+
+        
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800 dark:bg-darkBg dark:text-gray-100 transition-colors duration-300 pt-24 flex flex-col min-h-screen">
