@@ -366,14 +366,14 @@
 .dark #chat-messages::-webkit-scrollbar-thumb { background-color: #475569; }
 
 
-        /* =========================================
+/* =========================================
    ANIMACIÓN BOTÓN CAMIÓN (ORIGINAL STELLA)
    Adaptado a colores Qxao
    ========================================= */
 .order {
   --primary: #690991;       /* Morado Qxao */
   --primary-light: #c583f0; /* Morado Claro (Ventana) */
-  --dark: #1e293b;          /* Fondo del botón (Carretera) */
+  --dark: #090E17;          /* Fondo del botón (Carretera) - Súper oscuro para no camuflarse */
   --grey-dark: #3F4656;
   --grey: #6C7486;
   --grey-light: #CDD9ED;
@@ -400,7 +400,12 @@
   -webkit-mask-image: -webkit-radial-gradient(white, black);
   -webkit-tap-highlight-color: transparent;
   overflow: hidden;
-  transition: transform 0.3s ease, background 0.3s ease;
+  transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Le damos un "trazo" sutil al botón principal SOLO en modo oscuro para que resalte y tenga límites definidos */
+.dark .order:not(.secondary) {
+  box-shadow: 0 0 0 1.5px rgba(197, 131, 240, 0.4), 0 0 15px rgba(105, 9, 145, 0.4) !important;
 }
 
 /* Variantes Secundarias (Starter y Enterprise) */
@@ -418,8 +423,7 @@
   color: var(--primary-light);
 }
 .order.secondary.animate {
-  background: var(--dark); /* Se vuelve oscuro al animar para ver la carretera */
-  border-color: transparent;
+  background: var(--dark); /* Se vuelve oscuro al animar para ver la carretera, MANTIENE el trazo */
 }
 .order.secondary.animate .default {
   color: var(--white);
