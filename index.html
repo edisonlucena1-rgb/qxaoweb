@@ -2207,15 +2207,15 @@
         
         <!-- TOGGLE MENSUAL / ANUAL -->
         <div class="flex justify-center items-center gap-4 mt-8 mb-12 animate-on-scroll">
-            <span id="label-mensual" class="font-semibold text-gray-900 dark:text-white transition-colors">Mensual</span>
+            <span id="label-mensual" data-i18n="price-monthly" class="font-semibold text-gray-900 dark:text-white transition-colors">Mensual</span>
             
             <button id="billing-toggle" class="relative inline-flex h-8 w-16 items-center rounded-full bg-gray-300 dark:bg-gray-700 transition-colors focus:outline-none focus:ring-2 focus:ring-[#690991] dark:focus:ring-[#c75ced] focus:ring-offset-2 dark:focus:ring-offset-darkBg">
                 <span id="toggle-knob" class="inline-block h-6 w-6 transform rounded-full bg-white transition-transform translate-x-1 shadow-md"></span>
             </button>
             
             <span id="label-anual" class="font-semibold text-gray-500 dark:text-gray-400 transition-colors flex items-center gap-2">
-                Anual 
-                <span class="text-[10px] bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 px-2 py-0.5 rounded-full font-bold uppercase tracking-wide border border-green-200 dark:border-green-800/50">
+                <span data-i18n="price-annual">Anual</span> 
+                <span data-i18n="price-save-badge" class="text-[10px] bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 px-2 py-0.5 rounded-full font-bold uppercase tracking-wide border border-green-200 dark:border-green-800/50">
                     -20%
                 </span>
             </span>
@@ -2225,17 +2225,17 @@
             
             <!-- Plan 1: Básico -->
             <div onclick="if(event.target.closest('.order')) return; window.location.href='planes.html'" class="glow-card bg-white dark:bg-darkCard border border-gray-200 dark:border-gray-700 rounded-3xl p-8 text-center shadow-sm flex flex-col h-full cursor-pointer hover:border-[#690991] transition-all group">
-                <h3 class="text-2xl font-semibold dark:text-white">Básico</h3>
+                <h3 data-i18n="plan-basic" class="text-2xl font-semibold dark:text-white">Básico</h3>
                 <p class="text-5xl font-bold my-4 dark:text-white">
                     $<span data-base-price="35" data-anual="29" class="price-value transition-opacity duration-300">35</span>
                     <span class="text-base font-normal text-gray-500 dark:text-gray-400 billing-period transition-opacity duration-300">/mes</span>
                 </p>
-                <p class="text-xs text-gray-500 mb-4">+ $45 Setup (Único)</p>
+                <p data-i18n="setup-1" class="text-xs text-gray-500 mb-4">+ $45 Setup (Único)</p>
                 <ul class="text-left space-y-3 mb-8 text-gray-600 dark:text-gray-400 flex-1">
-                    <li>✓ IA Conversacional GPT-4o</li>
-                    <li>✓ Protocolo "Pase de Gol"</li>
-                    <li>✓ Memoria Contextual (Redis)</li>
-                    <li>✓ Filtros Anti-Spam y Hackeo</li>
+                    <li data-i18n="p1-f1">✓ IA Conversacional GPT-4o</li>
+                    <li data-i18n="p1-f2">✓ Protocolo "Pase de Gol"</li>
+                    <li data-i18n="p1-f3">✓ Memoria Contextual (Redis)</li>
+                    <li data-i18n="p1-f4">✓ Filtros Anti-Spam y Hackeo</li>
                 </ul>
                 
                 <!-- BOTÓN 1 (Borde) -->
@@ -2261,17 +2261,17 @@
 
             <!-- Plan 2: Avanzado -->
             <div onclick="if(event.target.closest('.order')) return; window.location.href='planes.html'" class="glow-card bg-white dark:bg-darkCard border border-gray-200 dark:border-gray-700 rounded-3xl p-8 text-center shadow-sm flex flex-col h-full cursor-pointer hover:border-[#690991] transition-all group">
-                <h3 class="text-2xl font-semibold dark:text-white">Avanzado</h3>
+                <h3 data-i18n="plan-adv" class="text-2xl font-semibold dark:text-white">Avanzado</h3>
                 <p class="text-5xl font-bold my-4 dark:text-white">
                     $<span data-base-price="79" data-anual="69" class="price-value transition-opacity duration-300">79</span>
                     <span class="text-base font-normal text-gray-500 dark:text-gray-400 billing-period transition-opacity duration-300">/mes</span>
                 </p>
-                <p class="text-xs text-gray-500 mb-4">+ $99 Setup (Único)</p>
+                <p data-i18n="setup-2" class="text-xs text-gray-500 mb-4">+ $99 Setup (Único)</p>
                 <ul class="text-left space-y-3 mb-8 text-gray-600 dark:text-gray-400 flex-1">
-                    <li>✓ Base de Datos Permanente</li>
-                    <li>✓ Transcripción de Audios</li>
-                    <li>✓ Herramientas Dinámicas</li>
-                    <li>✓ Lead Scoring Automático</li>
+                    <li data-i18n="p2-f1">✓ Base de Datos Permanente</li>
+                    <li data-i18n="p2-f2">✓ Transcripción de Audios</li>
+                    <li data-i18n="p2-f3">✓ Herramientas Dinámicas</li>
+                    <li data-i18n="p2-f4">✓ Lead Scoring Automático</li>
                 </ul>
                 
                 <!-- BOTÓN 2 (Borde) -->
@@ -2296,24 +2296,24 @@
             </div>
 
             <!-- Plan 3: Plus+ (Destacado) -->
-            <div onclick="if(event.target.closest('.order')) return; window.location.href='planes.html'" class="bg-white dark:bg-darkCard border-2 border-[#690991] dark:border-[#c75ced] rounded-3xl p-8 text-center relative shadow-xl transform xl:-translate-y-4 flex flex-col h-full cursor-pointer transition-all hover:shadow-[0_0_20px_rgba(105,9,145,0.3)]">
+            <div onclick="if(event.target.closest('.order')) return; window.location.href='planes.html'" class="bg-white dark:bg-darkCard border-2 border-[#690991] dark:border-[#c75ced] rounded-3xl p-8 text-center relative shadow-xl transform xl:-translate-y-4 flex flex-col h-full cursor-pointer transition-all hover:shadow-[0_0_20px_rgba(105,9,145,0.3)] group">
                 <span data-i18n="price-pop" class="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#690991] dark:bg-[#c75ced] text-white dark:text-gray-900 px-6 py-1 rounded-full text-sm font-bold shadow-md uppercase tracking-wider">Más Popular</span>
                 <h3 class="text-2xl font-semibold dark:text-white">Plus+</h3>
                 <p class="text-5xl font-bold my-4 text-[#690991] dark:text-[#c75ced]">
                     $<span data-base-price="149" data-anual="129" class="price-value transition-opacity duration-300">149</span>
                     <span class="text-base font-normal text-gray-500 dark:text-gray-400 billing-period transition-opacity duration-300">/mes</span>
                 </p>
-                <p class="text-xs text-gray-500 mb-4">+ $180 Setup (Único)</p>
+                <p data-i18n="setup-3" class="text-xs text-gray-500 mb-4">+ $180 Setup (Único)</p>
                 <ul class="text-left space-y-3 mb-8 text-gray-600 dark:text-gray-400 flex-1">
-                    <li>✓ Notas de Voz IA Nativas</li>
-                    <li>✓ Integración de Pagos</li>
-                    <li>✓ Follow-Up Automático</li>
-                    <li>✓ Rate Limiting Anti-DDoS</li>
+                    <li data-i18n="p3-f1">✓ Notas de Voz IA Nativas</li>
+                    <li data-i18n="p3-f2">✓ Integración de Pagos</li>
+                    <li data-i18n="p3-f3">✓ Follow-Up Automático</li>
+                    <li data-i18n="p3-f4">✓ Rate Limiting Anti-DDoS</li>
                 </ul>
                 
                 <!-- BOTÓN 3 (Sólido oscuro) -->
                 <button class="order mt-auto shadow-[0_0_15px_rgba(105,9,145,0.4)]">
-                    <span class="default text-sm">Comenzar Ahora</span>
+                    <span class="default" data-i18n="price-btn2">Comenzar Ahora</span>
                     <span class="success">¡Procesado!
                         <svg viewbox="0 0 12 10">
                             <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
@@ -2340,7 +2340,7 @@
                 <div class="absolute -top-10 -right-10 w-32 h-32 bg-[#c75ced] rounded-full mix-blend-multiply filter blur-[40px] opacity-40 dark:opacity-20 group-hover:opacity-60 transition-opacity duration-500 pointer-events-none"></div>
                 <div class="absolute -bottom-10 -left-10 w-32 h-32 bg-[#690991] rounded-full mix-blend-multiply filter blur-[40px] opacity-30 dark:opacity-20 group-hover:opacity-60 transition-opacity duration-500 pointer-events-none"></div>
 
-                <h3 class="text-2xl font-semibold text-gray-900 dark:text-white relative z-10 flex items-center justify-center gap-2">
+                <h3 data-i18n="plan-ent" class="text-2xl font-semibold text-gray-900 dark:text-white relative z-10 flex items-center justify-center gap-2">
                     <svg class="w-5 h-5 text-[#690991] dark:text-[#c75ced]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" /></svg>
                     Enterprise
                 </h3>
@@ -2348,19 +2348,19 @@
                     $<span data-base-price="399" data-anual="319" class="price-value transition-opacity duration-300">399</span>
                     <span class="text-base font-normal text-gray-500 dark:text-gray-400 billing-period transition-opacity duration-300">/mes</span>
                 </p>
-                <p class="text-xs text-gray-500 mb-6 font-medium relative z-10">+ $500 Setup (Único)</p>
+                <p data-i18n="setup-4" class="text-xs text-gray-500 mb-6 font-medium relative z-10">+ $500 Setup (Único)</p>
 
                 <ul class="text-left space-y-3 mb-8 text-sm text-gray-600 dark:text-gray-400 flex-1 relative z-10">
-                    <li class="flex items-start gap-2"><span class="text-[#690991] dark:text-[#c75ced] font-bold">✓</span> Búsqueda Vectorial RAG</li>
-                    <li class="flex items-start gap-2"><span class="text-[#690991] dark:text-[#c75ced] font-bold">✓</span> Clonación de Voz</li>
-                    <li class="flex items-start gap-2"><span class="text-[#690991] dark:text-[#c75ced] font-bold">✓</span> Sincronización CRM Sync</li>
-                    <li class="flex items-start gap-2 font-bold text-gray-900 dark:text-white"><span class="text-[#690991] dark:text-[#c75ced]">✓</span> 100% Add-ons Incluidos</li>
+                    <li data-i18n="p4-f1" class="flex items-start gap-2"><span class="text-[#690991] dark:text-[#c75ced] font-bold">✓</span> Búsqueda Vectorial RAG</li>
+                    <li data-i18n="p4-f2" class="flex items-start gap-2"><span class="text-[#690991] dark:text-[#c75ced] font-bold">✓</span> Clonación de Voz</li>
+                    <li data-i18n="p4-f3" class="flex items-start gap-2"><span class="text-[#690991] dark:text-[#c75ced] font-bold">✓</span> Sincronización CRM Sync</li>
+                    <li data-i18n="p4-f4" class="flex items-start gap-2 font-bold text-gray-900 dark:text-white"><span class="text-[#690991] dark:text-[#c75ced]">✓</span> 100% Add-ons Incluidos</li>
                 </ul>
                 
                 <!-- BOTÓN 4 (Sólido oscuro para que el camión se vea perfecto) -->
                 <button class="order mt-auto shadow-[0_10px_20px_rgba(105,9,145,0.2)] relative z-10">
                     <span class="default text-sm text-white" data-i18n="price-btn3">Contactar Ventas</span>
-                    <span class="success">¡Procesado!
+                    <span class="success">¡Enviado!
                         <svg viewbox="0 0 12 10">
                             <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
                         </svg>
@@ -2623,8 +2623,40 @@ const translations = {
         "roi-human": "Costo Estimado Equipo Humano",
         "roi-ai": "Costo Promedio con Agente Qxao",
         "roi-save": "Ahorro Mensual Proyectado",
-        "price-title": "Planes Flexibles", "price-pop": "Más Popular",
-        "price-btn1": "Elegir Plan", "price-btn2": "Comenzar Ahora", "price-btn3": "Contactar Ventas",
+        
+        /* NUEVOS TEXTOS DE PRECIOS AÑADIDOS A CONTINUACIÓN */
+        "price-title": "Planes Flexibles", 
+        "price-pop": "Más Popular",
+        "price-monthly": "Mensual",
+        "price-annual": "Anual",
+        "price-save-badge": "-20%",
+        "plan-basic": "Básico",
+        "plan-adv": "Avanzado",
+        "plan-ent": "Enterprise",
+        "setup-1": "+ $45 Setup (Único)",
+        "setup-2": "+ $99 Setup (Único)",
+        "setup-3": "+ $180 Setup (Único)",
+        "setup-4": "+ $500 Setup (Único)",
+        "p1-f1": "✓ IA Conversacional GPT-4o",
+        "p1-f2": "✓ Protocolo \"Pase de Gol\"",
+        "p1-f3": "✓ Memoria Contextual (Redis)",
+        "p1-f4": "✓ Filtros Anti-Spam y Hackeo",
+        "p2-f1": "✓ Base de Datos Permanente",
+        "p2-f2": "✓ Transcripción de Audios",
+        "p2-f3": "✓ Herramientas Dinámicas",
+        "p2-f4": "✓ Lead Scoring Automático",
+        "p3-f1": "✓ Notas de Voz IA Nativas",
+        "p3-f2": "✓ Integración de Pagos",
+        "p3-f3": "✓ Follow-Up Automático",
+        "p3-f4": "✓ Rate Limiting Anti-DDoS",
+        "p4-f1": "✓ Búsqueda Vectorial RAG",
+        "p4-f2": "✓ Clonación de Voz",
+        "p4-f3": "✓ Sincronización CRM Sync",
+        "p4-f4": "✓ 100% Add-ons Incluidos",
+        "price-btn1": "Elegir Plan", 
+        "price-btn2": "Comenzar Ahora", 
+        "price-btn3": "Contactar Ventas",
+
         "foot-desc": "Inteligencia Artificial Conversacional para empresas.",
         "foot-desc-text": "Transformamos tu negocio con Agentes de IA. Automatizamos tus ventas, atención al cliente y gestión de inventario 24/7. Sin pausas, sin errores.",
         "nav-integrations": "Integraciones", "nav-faq": "Preguntas Frecuentes", "nav-success": "Casos de Éxito", "nav-blog": "Blog",
@@ -2651,30 +2683,20 @@ const translations = {
         "faq-cta-title": "¿Tienes dudas a nivel corporativo?",
         "faq-cta-desc": "Hemos recopilado las 33 preguntas más exigentes de nuestros clientes empresariales sobre seguridad, integraciones y retorno de inversión.",
         "faq-cta-btn": "Ir al Centro de Preguntas Frecuentes",
-        /* Widget Interactivo (ES) */
-        "w-connect-btn": "Conectar",
-        "w-sources-title": "Conectar fuentes",
+        "w-connect-btn": "Conectar", "w-sources-title": "Conectar fuentes",
         "w-doc": "Documentos", "w-doc-sub": "Base de conocimiento",
         "w-inv": "Inventario", "w-inv-sub": "Catálogo de productos",
         "w-citas": "Citas", "w-citas-sub": "Google Calendar",
-        "w-next": "Siguiente",
-        "w-train-title": "Entrenar agente",
+        "w-next": "Siguiente", "w-train-title": "Entrenar agente",
         "w-t1": "Seguimientos automáticos", "w-t2": "Escalada a humano",
-        "w-deploy-btn": "Desplegar",
-        "w-deploy-title": "Desplegar",
-        "w-webchat": "Web Chat",
-        "w-deploy-status": "Publicando agente en Instagram…",
-        "w-msg-1": "Quiero agendar una cita.",
-        "w-msg-2": "¡Claro! Selecciona un horario 📅",
-        "w-msg-3": "Mañana 10:00", "w-msg-4": "14:00",
-        "w-wa-on": "en línea · WhatsApp",
-        "w-msg-5": "Quiero hacer un pedido.",
-        "w-msg-6": "¡Perfecto! Aquí tienes tu enlace de pago 💳",
+        "w-deploy-btn": "Desplegar", "w-deploy-title": "Desplegar",
+        "w-webchat": "Web Chat", "w-deploy-status": "Publicando agente en Instagram…",
+        "w-msg-1": "Quiero agendar una cita.", "w-msg-2": "¡Claro! Selecciona un horario 📅",
+        "w-msg-3": "Mañana 10:00", "w-msg-4": "14:00", "w-wa-on": "en línea · WhatsApp",
+        "w-msg-5": "Quiero hacer un pedido.", "w-msg-6": "¡Perfecto! Aquí tienes tu enlace de pago 💳",
         "w-total": "Total", "w-pay": "Pagar",
-        "w-success-title": "¡Felicitaciones!",
-        "w-success-sub": "120 leads convertidos este mes.",
-        "w-paused": "En pausa",
-        "w-preview": "Vista previa del agente Qxao en acción"
+        "w-success-title": "¡Felicitaciones!", "w-success-sub": "120 leads convertidos este mes.",
+        "w-paused": "En pausa", "w-preview": "Vista previa del agente Qxao en acción"
     },
     en: {
         "hero-tag": "AI Agents · Live Preview",
@@ -2718,8 +2740,40 @@ const translations = {
         "roi-human": "Estimated Human Team Cost",
         "roi-ai": "Average Cost with Qxao Agent",
         "roi-save": "Projected Monthly Savings",
-        "price-title": "Flexible Plans", "price-pop": "Most Popular",
-        "price-btn1": "Choose Plan", "price-btn2": "Start Now", "price-btn3": "Contact Sales",
+        
+        /* NUEVOS TEXTOS DE PRECIOS AÑADIDOS A CONTINUACIÓN */
+        "price-title": "Flexible Plans", 
+        "price-pop": "Most Popular",
+        "price-monthly": "Monthly",
+        "price-annual": "Annually",
+        "price-save-badge": "-20%",
+        "plan-basic": "Basic",
+        "plan-adv": "Advanced",
+        "plan-ent": "Enterprise",
+        "setup-1": "+ $45 Setup (One-time)",
+        "setup-2": "+ $99 Setup (One-time)",
+        "setup-3": "+ $180 Setup (One-time)",
+        "setup-4": "+ $500 Setup (One-time)",
+        "p1-f1": "✓ Conversational AI GPT-4o",
+        "p1-f2": "✓ \"Pase de Gol\" Protocol",
+        "p1-f3": "✓ Contextual Memory (Redis)",
+        "p1-f4": "✓ Anti-Spam & Hack Filters",
+        "p2-f1": "✓ Permanent Database",
+        "p2-f2": "✓ Audio Transcription",
+        "p2-f3": "✓ Dynamic Tools",
+        "p2-f4": "✓ Automatic Lead Scoring",
+        "p3-f1": "✓ Native AI Voice Notes",
+        "p3-f2": "✓ Payment Integration",
+        "p3-f3": "✓ Automatic Follow-Up",
+        "p3-f4": "✓ Anti-DDoS Rate Limiting",
+        "p4-f1": "✓ Vectorial RAG Search",
+        "p4-f2": "✓ Voice Cloning",
+        "p4-f3": "✓ CRM Sync Integration",
+        "p4-f4": "✓ 100% Add-ons Included",
+        "price-btn1": "Choose Plan", 
+        "price-btn2": "Start Now", 
+        "price-btn3": "Contact Sales",
+
         "foot-desc": "Conversational Artificial Intelligence for enterprises.",
         "foot-desc-text": "We transform your business with AI Agents. We automate your sales, customer support, and inventory management 24/7. No pauses, no mistakes.",
         "nav-integrations": "Integrations", "nav-faq": "FAQ", "nav-success": "Success Stories", "nav-blog": "Blog",
@@ -2746,30 +2800,20 @@ const translations = {
         "faq-cta-title": "Have corporate-level questions?",
         "faq-cta-desc": "We have compiled the 33 most demanding questions from our enterprise clients regarding security, integrations, and ROI.",
         "faq-cta-btn": "Go to the FAQ Center",
-        /* Interactive Widget (EN) */
-        "w-connect-btn": "Connect",
-        "w-sources-title": "Connect sources",
+        "w-connect-btn": "Connect", "w-sources-title": "Connect sources",
         "w-doc": "Documents", "w-doc-sub": "Knowledge base",
         "w-inv": "Inventory", "w-inv-sub": "Product catalog",
         "w-citas": "Appointments", "w-citas-sub": "Google Calendar",
-        "w-next": "Next",
-        "w-train-title": "Train agent",
+        "w-next": "Next", "w-train-title": "Train agent",
         "w-t1": "Automatic follow-ups", "w-t2": "Human escalation",
-        "w-deploy-btn": "Deploy",
-        "w-deploy-title": "Deploy",
-        "w-webchat": "Web Chat",
-        "w-deploy-status": "Publishing agent on Instagram…",
-        "w-msg-1": "I want to schedule an appointment.",
-        "w-msg-2": "Sure! Select a time slot 📅",
-        "w-msg-3": "Tomorrow 10:00", "w-msg-4": "14:00",
-        "w-wa-on": "online · WhatsApp",
-        "w-msg-5": "I want to place an order.",
-        "w-msg-6": "Perfect! Here is your payment link 💳",
+        "w-deploy-btn": "Deploy", "w-deploy-title": "Deploy",
+        "w-webchat": "Web Chat", "w-deploy-status": "Publishing agent on Instagram…",
+        "w-msg-1": "I want to schedule an appointment.", "w-msg-2": "Sure! Select a time slot 📅",
+        "w-msg-3": "Tomorrow 10:00", "w-msg-4": "14:00", "w-wa-on": "online · WhatsApp",
+        "w-msg-5": "I want to place an order.", "w-msg-6": "Perfect! Here is your payment link 💳",
         "w-total": "Total", "w-pay": "Pay",
-        "w-success-title": "Congratulations!",
-        "w-success-sub": "120 leads converted this month.",
-        "w-paused": "Paused",
-        "w-preview": "Qxao agent preview in action"
+        "w-success-title": "Congratulations!", "w-success-sub": "120 leads converted this month.",
+        "w-paused": "Paused", "w-preview": "Qxao agent preview in action"
     }
 };
 // 1. TRADUCCIÓN DE LA PÁGINA
