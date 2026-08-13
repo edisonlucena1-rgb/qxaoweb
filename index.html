@@ -2227,7 +2227,7 @@
             <div onclick="if(event.target.closest('.order')) return; window.location.href='planes.html'" class="glow-card bg-white dark:bg-darkCard border border-gray-200 dark:border-gray-700 rounded-3xl p-8 text-center shadow-sm flex flex-col h-full cursor-pointer hover:border-[#690991] transition-all group">
                 <h3 class="text-2xl font-semibold dark:text-white">Básico</h3>
                 <p class="text-5xl font-bold my-4 dark:text-white">
-                    $<span data-base-price="35" class="price-value transition-opacity duration-300">35</span>
+                    $<span data-base-price="35" data-anual="29" class="price-value transition-opacity duration-300">35</span>
                     <span class="text-base font-normal text-gray-500 dark:text-gray-400 billing-period transition-opacity duration-300">/mes</span>
                 </p>
                 <p class="text-xs text-gray-500 mb-4">+ $45 Setup (Único)</p>
@@ -2263,7 +2263,7 @@
             <div onclick="if(event.target.closest('.order')) return; window.location.href='planes.html'" class="glow-card bg-white dark:bg-darkCard border border-gray-200 dark:border-gray-700 rounded-3xl p-8 text-center shadow-sm flex flex-col h-full cursor-pointer hover:border-[#690991] transition-all group">
                 <h3 class="text-2xl font-semibold dark:text-white">Avanzado</h3>
                 <p class="text-5xl font-bold my-4 dark:text-white">
-                    $<span data-base-price="79" class="price-value transition-opacity duration-300">79</span>
+                    $<span data-base-price="79" data-anual="69" class="price-value transition-opacity duration-300">79</span>
                     <span class="text-base font-normal text-gray-500 dark:text-gray-400 billing-period transition-opacity duration-300">/mes</span>
                 </p>
                 <p class="text-xs text-gray-500 mb-4">+ $99 Setup (Único)</p>
@@ -2300,7 +2300,7 @@
                 <span data-i18n="price-pop" class="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#690991] dark:bg-[#c75ced] text-white dark:text-gray-900 px-6 py-1 rounded-full text-sm font-bold shadow-md uppercase tracking-wider">Más Popular</span>
                 <h3 class="text-2xl font-semibold dark:text-white">Plus+</h3>
                 <p class="text-5xl font-bold my-4 text-[#690991] dark:text-[#c75ced]">
-                    $<span data-base-price="149" class="price-value transition-opacity duration-300">149</span>
+                    $<span data-base-price="149" data-anual="129" class="price-value transition-opacity duration-300">149</span>
                     <span class="text-base font-normal text-gray-500 dark:text-gray-400 billing-period transition-opacity duration-300">/mes</span>
                 </p>
                 <p class="text-xs text-gray-500 mb-4">+ $180 Setup (Único)</p>
@@ -2313,7 +2313,7 @@
                 
                 <!-- BOTÓN 3 (Sólido oscuro) -->
                 <button class="order mt-auto shadow-[0_0_15px_rgba(105,9,145,0.4)]">
-                    <span class="default" data-i18n="price-btn2">Comenzar Ahora</span>
+                    <span class="default text-sm">Comenzar Ahora</span>
                     <span class="success">¡Procesado!
                         <svg viewbox="0 0 12 10">
                             <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
@@ -2332,26 +2332,35 @@
                 </button>
             </div>
 
-            <!-- Plan 4: Enterprise -->
-            <div onclick="if(event.target.closest('.order')) return; window.location.href='planes.html'" class="glow-card bg-gray-900 dark:bg-black border border-gray-800 rounded-3xl p-8 text-center shadow-lg flex flex-col h-full cursor-pointer relative overflow-hidden group">
-                <div class="absolute inset-0 bg-gradient-to-br from-[#690991]/20 to-transparent opacity-50"></div>
-                <h3 class="text-2xl font-semibold text-white relative z-10">Enterprise</h3>
-                <p class="text-5xl font-bold my-4 text-white relative z-10">
-                    $<span data-base-price="399" class="price-value transition-opacity duration-300">399</span>
-                    <span class="text-base font-normal text-gray-400 billing-period transition-opacity duration-300">/mes</span>
+            <!-- Plan 4: Enterprise (Premium Glassmorphism) -->
+            <div onclick="if(event.target.closest('.order')) return; window.location.href='planes.html'" class="glow-card bg-white dark:bg-darkCard border border-purple-100 dark:border-gray-700 rounded-3xl p-8 text-center flex flex-col h-full cursor-pointer transition-all hover:shadow-[0_0_30px_rgba(105,9,145,0.2)] relative overflow-hidden group">
+                
+                <!-- Fondo Premium sutil y orbes de luz -->
+                <div class="absolute inset-0 bg-gradient-to-b from-transparent to-[#690991]/5 dark:to-[#c75ced]/10 pointer-events-none"></div>
+                <div class="absolute -top-10 -right-10 w-32 h-32 bg-[#c75ced] rounded-full mix-blend-multiply filter blur-[40px] opacity-40 dark:opacity-20 group-hover:opacity-60 transition-opacity duration-500 pointer-events-none"></div>
+                <div class="absolute -bottom-10 -left-10 w-32 h-32 bg-[#690991] rounded-full mix-blend-multiply filter blur-[40px] opacity-30 dark:opacity-20 group-hover:opacity-60 transition-opacity duration-500 pointer-events-none"></div>
+
+                <h3 class="text-2xl font-semibold text-gray-900 dark:text-white relative z-10 flex items-center justify-center gap-2">
+                    <svg class="w-5 h-5 text-[#690991] dark:text-[#c75ced]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" /></svg>
+                    Enterprise
+                </h3>
+                <p class="text-5xl font-bold my-4 text-gray-900 dark:text-white relative z-10">
+                    $<span data-base-price="399" data-anual="319" class="price-value transition-opacity duration-300">399</span>
+                    <span class="text-base font-normal text-gray-500 dark:text-gray-400 billing-period transition-opacity duration-300">/mes</span>
                 </p>
-                <p class="text-xs text-gray-400 mb-4 relative z-10">+ $500 Setup (Único)</p>
-                <ul class="text-left space-y-3 mb-8 text-gray-300 flex-1 relative z-10">
-                    <li><span class="text-green-400">✓</span> Búsqueda Vectorial RAG</li>
-                    <li><span class="text-green-400">✓</span> Clonación de Voz</li>
-                    <li><span class="text-green-400">✓</span> Sincronización CRM Sync</li>
-                    <li class="font-bold text-white"><span class="text-green-400">✓</span> 100% Add-ons Incluidos</li>
+                <p class="text-xs text-gray-500 mb-6 font-medium relative z-10">+ $500 Setup (Único)</p>
+
+                <ul class="text-left space-y-3 mb-8 text-sm text-gray-600 dark:text-gray-400 flex-1 relative z-10">
+                    <li class="flex items-start gap-2"><span class="text-[#690991] dark:text-[#c75ced] font-bold">✓</span> Búsqueda Vectorial RAG</li>
+                    <li class="flex items-start gap-2"><span class="text-[#690991] dark:text-[#c75ced] font-bold">✓</span> Clonación de Voz</li>
+                    <li class="flex items-start gap-2"><span class="text-[#690991] dark:text-[#c75ced] font-bold">✓</span> Sincronización CRM Sync</li>
+                    <li class="flex items-start gap-2 font-bold text-gray-900 dark:text-white"><span class="text-[#690991] dark:text-[#c75ced]">✓</span> 100% Add-ons Incluidos</li>
                 </ul>
                 
-                <!-- BOTÓN 4 (Borde - adaptado a Enterprise) -->
-                <button class="order secondary mt-auto relative z-10 group-hover:border-white group-hover:bg-white/10">
-                    <span class="default text-white" data-i18n="price-btn3">Contactar Ventas</span>
-                    <span class="success">¡Enviado!
+                <!-- BOTÓN 4 (Sólido oscuro para que el camión se vea perfecto) -->
+                <button class="order mt-auto shadow-[0_10px_20px_rgba(105,9,145,0.2)] relative z-10">
+                    <span class="default text-sm text-white" data-i18n="price-btn3">Contactar Ventas</span>
+                    <span class="success">¡Procesado!
                         <svg viewbox="0 0 12 10">
                             <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
                         </svg>
@@ -2372,7 +2381,6 @@
         </div>
     </div>
 </section>
-    
 
 <!-- SECCIÓN LLAMADO A LA ACCIÓN A FAQ -->
     <section class="py-16 bg-white dark:bg-[#151e2f] border-t border-gray-100 dark:border-gray-800 transition-colors text-center relative overflow-hidden">
