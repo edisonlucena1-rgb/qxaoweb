@@ -2202,7 +2202,7 @@
     
 <!-- PRECIOS CON GLOW EFECT Y TOGGLE DINÁMICO -->
 <section id="precios" class="py-24 bg-gray-50 dark:bg-darkBg transition-colors relative z-10">
-    <div class="max-w-6xl mx-auto px-6">
+    <div class="max-w-7xl mx-auto px-6">
         <h2 data-i18n="price-title" class="text-4xl font-bold text-center mb-4 text-[#690991] dark:text-[#c75ced] animate-on-scroll">Planes Flexibles</h2>
         
         <!-- TOGGLE MENSUAL / ANUAL -->
@@ -2221,22 +2221,25 @@
             </span>
         </div>
 
-        <div class="grid md:grid-cols-3 gap-8 mt-8">
-            <!-- Plan Starter -->
-            <div class="glow-card bg-white dark:bg-darkCard border border-gray-200 dark:border-gray-700 rounded-3xl p-8 text-center shadow-sm flex flex-col h-full">
-                <h3 class="text-2xl font-semibold dark:text-white">Starter</h3>
+        <div class="grid md:grid-cols-2 xl:grid-cols-4 gap-8 mt-8">
+            
+            <!-- Plan 1: Básico -->
+            <div onclick="if(event.target.closest('.order')) return; window.location.href='planes.html'" class="glow-card bg-white dark:bg-darkCard border border-gray-200 dark:border-gray-700 rounded-3xl p-8 text-center shadow-sm flex flex-col h-full cursor-pointer hover:border-[#690991] transition-all group">
+                <h3 class="text-2xl font-semibold dark:text-white">Básico</h3>
                 <p class="text-5xl font-bold my-4 dark:text-white">
-                    $<span data-base-price="49" class="price-value transition-opacity duration-300">49</span>
+                    $<span data-base-price="35" class="price-value transition-opacity duration-300">35</span>
                     <span class="text-base font-normal text-gray-500 dark:text-gray-400 billing-period transition-opacity duration-300">/mes</span>
                 </p>
+                <p class="text-xs text-gray-500 mb-4">+ $45 Setup (Único)</p>
                 <ul class="text-left space-y-3 mb-8 text-gray-600 dark:text-gray-400 flex-1">
-                    <li>✓ 1 Agente IA</li>
-                    <li>✓ 500 conversaciones/mes</li>
-                    <li>✓ Integración básica</li>
+                    <li>✓ IA Conversacional GPT-4o</li>
+                    <li>✓ Protocolo "Pase de Gol"</li>
+                    <li>✓ Memoria Contextual (Redis)</li>
+                    <li>✓ Filtros Anti-Spam y Hackeo</li>
                 </ul>
                 
                 <!-- BOTÓN 1 (Borde) -->
-                <button class="order secondary mt-auto">
+                <button class="order secondary mt-auto group-hover:border-[#690991] group-hover:bg-[#690991]/5">
                     <span class="default" data-i18n="price-btn1">Elegir Plan</span>
                     <span class="success">¡Procesado!
                         <svg viewbox="0 0 12 10">
@@ -2256,21 +2259,59 @@
                 </button>
             </div>
 
-            <!-- Plan Professional (Destacado) -->
-            <div class="bg-white dark:bg-darkCard border-2 border-[#690991] dark:border-[#c75ced] rounded-3xl p-8 text-center relative shadow-xl transform md:-translate-y-4 flex flex-col h-full">
-                <span data-i18n="price-pop" class="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#690991] dark:bg-[#c75ced] text-white dark:text-gray-900 px-6 py-1 rounded-full text-sm font-bold shadow-md">Más Popular</span>
-                <h3 class="text-2xl font-semibold dark:text-white">Professional</h3>
+            <!-- Plan 2: Avanzado -->
+            <div onclick="if(event.target.closest('.order')) return; window.location.href='planes.html'" class="glow-card bg-white dark:bg-darkCard border border-gray-200 dark:border-gray-700 rounded-3xl p-8 text-center shadow-sm flex flex-col h-full cursor-pointer hover:border-[#690991] transition-all group">
+                <h3 class="text-2xl font-semibold dark:text-white">Avanzado</h3>
                 <p class="text-5xl font-bold my-4 dark:text-white">
+                    $<span data-base-price="79" class="price-value transition-opacity duration-300">79</span>
+                    <span class="text-base font-normal text-gray-500 dark:text-gray-400 billing-period transition-opacity duration-300">/mes</span>
+                </p>
+                <p class="text-xs text-gray-500 mb-4">+ $99 Setup (Único)</p>
+                <ul class="text-left space-y-3 mb-8 text-gray-600 dark:text-gray-400 flex-1">
+                    <li>✓ Base de Datos Permanente</li>
+                    <li>✓ Transcripción de Audios</li>
+                    <li>✓ Herramientas Dinámicas</li>
+                    <li>✓ Lead Scoring Automático</li>
+                </ul>
+                
+                <!-- BOTÓN 2 (Borde) -->
+                <button class="order secondary mt-auto group-hover:border-[#690991] group-hover:bg-[#690991]/5">
+                    <span class="default" data-i18n="price-btn1">Elegir Plan</span>
+                    <span class="success">¡Procesado!
+                        <svg viewbox="0 0 12 10">
+                            <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                        </svg>
+                    </span>
+                    <div class="box"></div>
+                    <div class="truck">
+                        <div class="back"></div>
+                        <div class="front">
+                            <div class="window"></div>
+                        </div>
+                        <div class="light top"></div>
+                        <div class="light bottom"></div>
+                    </div>
+                    <div class="lines"></div>
+                </button>
+            </div>
+
+            <!-- Plan 3: Plus+ (Destacado) -->
+            <div onclick="if(event.target.closest('.order')) return; window.location.href='planes.html'" class="bg-white dark:bg-darkCard border-2 border-[#690991] dark:border-[#c75ced] rounded-3xl p-8 text-center relative shadow-xl transform xl:-translate-y-4 flex flex-col h-full cursor-pointer transition-all hover:shadow-[0_0_20px_rgba(105,9,145,0.3)]">
+                <span data-i18n="price-pop" class="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#690991] dark:bg-[#c75ced] text-white dark:text-gray-900 px-6 py-1 rounded-full text-sm font-bold shadow-md uppercase tracking-wider">Más Popular</span>
+                <h3 class="text-2xl font-semibold dark:text-white">Plus+</h3>
+                <p class="text-5xl font-bold my-4 text-[#690991] dark:text-[#c75ced]">
                     $<span data-base-price="149" class="price-value transition-opacity duration-300">149</span>
                     <span class="text-base font-normal text-gray-500 dark:text-gray-400 billing-period transition-opacity duration-300">/mes</span>
                 </p>
+                <p class="text-xs text-gray-500 mb-4">+ $180 Setup (Único)</p>
                 <ul class="text-left space-y-3 mb-8 text-gray-600 dark:text-gray-400 flex-1">
-                    <li>✓ Agentes ilimitados</li>
-                    <li>✓ Conversaciones ilimitadas</li>
-                    <li>✓ Integración CRM completa</li>
+                    <li>✓ Notas de Voz IA Nativas</li>
+                    <li>✓ Integración de Pagos</li>
+                    <li>✓ Follow-Up Automático</li>
+                    <li>✓ Rate Limiting Anti-DDoS</li>
                 </ul>
                 
-                <!-- BOTÓN 2 (Sólido oscuro) -->
+                <!-- BOTÓN 3 (Sólido oscuro) -->
                 <button class="order mt-auto shadow-[0_0_15px_rgba(105,9,145,0.4)]">
                     <span class="default" data-i18n="price-btn2">Comenzar Ahora</span>
                     <span class="success">¡Procesado!
@@ -2291,20 +2332,26 @@
                 </button>
             </div>
 
-            <!-- Plan Enterprise -->
-            <div class="glow-card bg-white dark:bg-darkCard border border-gray-200 dark:border-gray-700 rounded-3xl p-8 text-center shadow-sm flex flex-col h-full">
-                <h3 class="text-2xl font-semibold dark:text-white">Enterprise</h3>
-                <p class="text-5xl font-bold my-4 dark:text-white">Custom</p>
-                <ul class="text-left space-y-3 mb-8 text-gray-600 dark:text-gray-400 flex-1">
-                    <li>✓ Todo lo de Professional</li>
-                    <li>✓ Servidor Autohospedado</li>
-                    <li>✓ Soporte 24/7 de Partners</li>
+            <!-- Plan 4: Enterprise -->
+            <div onclick="if(event.target.closest('.order')) return; window.location.href='planes.html'" class="glow-card bg-gray-900 dark:bg-black border border-gray-800 rounded-3xl p-8 text-center shadow-lg flex flex-col h-full cursor-pointer relative overflow-hidden group">
+                <div class="absolute inset-0 bg-gradient-to-br from-[#690991]/20 to-transparent opacity-50"></div>
+                <h3 class="text-2xl font-semibold text-white relative z-10">Enterprise</h3>
+                <p class="text-5xl font-bold my-4 text-white relative z-10">
+                    $<span data-base-price="399" class="price-value transition-opacity duration-300">399</span>
+                    <span class="text-base font-normal text-gray-400 billing-period transition-opacity duration-300">/mes</span>
+                </p>
+                <p class="text-xs text-gray-400 mb-4 relative z-10">+ $500 Setup (Único)</p>
+                <ul class="text-left space-y-3 mb-8 text-gray-300 flex-1 relative z-10">
+                    <li><span class="text-green-400">✓</span> Búsqueda Vectorial RAG</li>
+                    <li><span class="text-green-400">✓</span> Clonación de Voz</li>
+                    <li><span class="text-green-400">✓</span> Sincronización CRM Sync</li>
+                    <li class="font-bold text-white"><span class="text-green-400">✓</span> 100% Add-ons Incluidos</li>
                 </ul>
                 
-                <!-- BOTÓN 3 (Borde) -->
-                <button class="order secondary mt-auto">
-                    <span class="default" data-i18n="price-btn3">Contactar Ventas</span>
-                    <span class="success">¡Procesado!
+                <!-- BOTÓN 4 (Borde - adaptado a Enterprise) -->
+                <button class="order secondary mt-auto relative z-10 group-hover:border-white group-hover:bg-white/10">
+                    <span class="default text-white" data-i18n="price-btn3">Contactar Ventas</span>
+                    <span class="success">¡Enviado!
                         <svg viewbox="0 0 12 10">
                             <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
                         </svg>
@@ -2321,6 +2368,7 @@
                     <div class="lines"></div>
                 </button>
             </div>
+
         </div>
     </div>
 </section>
@@ -3373,7 +3421,7 @@ const translations = {
         lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; 
     });
 
-    // =========================================================================
+// =========================================================================
 // SCRIPT DE PRECIOS DINÁMICOS Y ANIMACIÓN DE BOTONES
 // =========================================================================
 document.addEventListener("DOMContentLoaded", () => {
