@@ -2200,180 +2200,138 @@
         </div>
     </section>
     
-<!-- PRECIOS CON GLOW EFECT Y TOGGLE DINÁMICO -->
+<!-- PRECIOS CON GLOW EFECT Y TOGGLE DE 3 OPCIONES -->
 <section id="precios" class="py-24 bg-gray-50 dark:bg-darkBg transition-colors relative z-10">
     <div class="max-w-7xl mx-auto px-6">
         <h2 data-i18n="price-title" class="text-4xl font-bold text-center mb-4 text-[#690991] dark:text-[#c75ced] animate-on-scroll">Planes Flexibles</h2>
         
-        <!-- TOGGLE MENSUAL / ANUAL -->
-        <div class="flex justify-center items-center gap-4 mt-8 mb-12 animate-on-scroll">
-            <span id="label-mensual" data-i18n="price-monthly" class="font-semibold text-gray-900 dark:text-white transition-colors">Mensual</span>
-            
-            <button id="billing-toggle" class="relative inline-flex h-8 w-16 items-center rounded-full bg-gray-300 dark:bg-gray-700 transition-colors focus:outline-none focus:ring-2 focus:ring-[#690991] dark:focus:ring-[#c75ced] focus:ring-offset-2 dark:focus:ring-offset-darkBg">
-                <span id="toggle-knob" class="inline-block h-6 w-6 transform rounded-full bg-white transition-transform translate-x-1 shadow-md"></span>
-            </button>
-            
-            <span id="label-anual" class="font-semibold text-gray-500 dark:text-gray-400 transition-colors flex items-center gap-2">
-                <span data-i18n="price-annual">Anual</span> 
-                <span data-i18n="price-save-badge" class="text-[10px] bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 px-2 py-0.5 rounded-full font-bold uppercase tracking-wide border border-green-200 dark:border-green-800/50">
-                    -20%
-                </span>
-            </span>
+        <!-- TOGGLE MENSUAL / TRIMESTRAL / ANUAL (Nuevo Diseño Animado) -->
+        <div class="flex justify-center items-center mt-8 mb-12 animate-on-scroll">
+            <div class="relative inline-flex bg-white dark:bg-darkCard p-1.5 rounded-full shadow-sm border border-gray-200 dark:border-gray-700">
+                <!-- Botón 1 Mes -->
+                <button id="btn-mensual" class="relative z-10 px-5 sm:px-6 py-2.5 rounded-full text-sm font-bold bg-[#690991] text-white shadow-[0_0_15px_rgba(105,9,145,0.4)] transform scale-105 transition-all duration-300">
+                    <span data-i18n="price-1month">1 Mes</span>
+                </button>
+                
+                <!-- Botón 3 Meses -->
+                <button id="btn-trimestral" class="relative z-10 px-5 sm:px-6 py-2.5 rounded-full text-sm font-bold text-gray-500 hover:text-gray-900 dark:hover:text-white transition-all duration-300 hover:bg-gray-100 dark:hover:bg-gray-800 flex items-center gap-1.5 hover:-translate-y-0.5">
+                    <span data-i18n="price-3months">3 Meses</span>
+                    <span class="text-[10px] bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 px-2 py-0.5 rounded-full tracking-wide font-black transition-colors">
+                        -12%
+                    </span>
+                </button>
+
+                <!-- Botón 1 Año -->
+                <button id="btn-anual" class="relative z-10 px-5 sm:px-6 py-2.5 rounded-full text-sm font-bold text-gray-500 hover:text-gray-900 dark:hover:text-white transition-all duration-300 hover:bg-gray-100 dark:hover:bg-gray-800 flex items-center gap-1.5 hover:-translate-y-0.5">
+                    <span data-i18n="price-1year">1 Año</span>
+                    <span class="text-[10px] bg-[#690991]/10 text-[#690991] dark:bg-[#c75ced]/20 dark:text-[#c75ced] px-2 py-0.5 rounded-full tracking-wide font-black transition-colors">
+                        -30%
+                    </span>
+                </button>
+            </div>
         </div>
 
         <div class="grid md:grid-cols-2 xl:grid-cols-4 gap-8 mt-8">
             
             <!-- Plan 1: Básico -->
             <div onclick="if(event.target.closest('.order')) return; window.location.href='planes.html'" class="glow-card bg-white dark:bg-darkCard border border-gray-200 dark:border-gray-700 rounded-3xl p-8 text-center shadow-sm flex flex-col h-full cursor-pointer hover:border-[#690991] transition-all group">
-                <h3 data-i18n="plan-basic" class="text-2xl font-semibold dark:text-white">Básico</h3>
-                <p class="text-5xl font-bold my-4 dark:text-white">
-                    $<span data-base-price="35" data-anual="29" class="price-value transition-opacity duration-300">35</span>
-                    <span class="text-base font-normal text-gray-500 dark:text-gray-400 billing-period transition-opacity duration-300">/mes</span>
+                <h3 data-i18n="plan-basic" class="text-2xl font-bold dark:text-white">Básico</h3>
+                <p class="text-5xl font-black my-4 dark:text-white">
+                    $<span data-mensual="60" data-trimestral="48" data-anual="42" class="price-value transition-opacity duration-300">60</span>
+                    <span data-i18n="price-per-month" class="text-base font-normal text-gray-500 dark:text-gray-400 billing-period transition-opacity duration-300">/mes</span>
                 </p>
-                <p data-i18n="setup-1" class="text-xs text-gray-500 mb-4">+ $45 Setup (Único)</p>
-                <ul class="text-left space-y-3 mb-8 text-gray-600 dark:text-gray-400 flex-1">
+                <ul class="text-left space-y-3 mb-8 text-sm text-gray-600 dark:text-gray-400 flex-1 mt-6 font-medium">
                     <li data-i18n="p1-f1">✓ IA Conversacional GPT-4o</li>
                     <li data-i18n="p1-f2">✓ Protocolo "Pase de Gol"</li>
                     <li data-i18n="p1-f3">✓ Memoria Contextual (Redis)</li>
                     <li data-i18n="p1-f4">✓ Filtros Anti-Spam y Hackeo</li>
                 </ul>
                 
-                <!-- BOTÓN 1 (Borde) -->
                 <button class="order secondary mt-auto group-hover:border-[#690991] group-hover:bg-[#690991]/5">
-                    <span class="default" data-i18n="price-btn1">Elegir Plan</span>
-                    <span class="success">¡Procesado!
-                        <svg viewbox="0 0 12 10">
-                            <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
-                        </svg>
-                    </span>
+                    <span class="default font-bold" data-i18n="price-btn1">Elegir Plan</span>
+                    <span class="success">¡Procesado! <svg viewbox="0 0 12 10"><polyline points="1.5 6 4.5 9 10.5 1"></polyline></svg></span>
                     <div class="box"></div>
-                    <div class="truck">
-                        <div class="back"></div>
-                        <div class="front">
-                            <div class="window"></div>
-                        </div>
-                        <div class="light top"></div>
-                        <div class="light bottom"></div>
-                    </div>
+                    <div class="truck"><div class="back"></div><div class="front"><div class="window"></div></div><div class="light top"></div><div class="light bottom"></div></div>
                     <div class="lines"></div>
                 </button>
             </div>
 
             <!-- Plan 2: Avanzado -->
             <div onclick="if(event.target.closest('.order')) return; window.location.href='planes.html'" class="glow-card bg-white dark:bg-darkCard border border-gray-200 dark:border-gray-700 rounded-3xl p-8 text-center shadow-sm flex flex-col h-full cursor-pointer hover:border-[#690991] transition-all group">
-                <h3 data-i18n="plan-adv" class="text-2xl font-semibold dark:text-white">Avanzado</h3>
-                <p class="text-5xl font-bold my-4 dark:text-white">
-                    $<span data-base-price="79" data-anual="69" class="price-value transition-opacity duration-300">79</span>
-                    <span class="text-base font-normal text-gray-500 dark:text-gray-400 billing-period transition-opacity duration-300">/mes</span>
+                <h3 data-i18n="plan-adv" class="text-2xl font-bold dark:text-white">Avanzado</h3>
+                <p class="text-5xl font-black my-4 dark:text-white">
+                    $<span data-mensual="112" data-trimestral="89.60" data-anual="78.40" class="price-value transition-opacity duration-300">112</span>
+                    <span data-i18n="price-per-month" class="text-base font-normal text-gray-500 dark:text-gray-400 billing-period transition-opacity duration-300">/mes</span>
                 </p>
-                <p data-i18n="setup-2" class="text-xs text-gray-500 mb-4">+ $99 Setup (Único)</p>
-                <ul class="text-left space-y-3 mb-8 text-gray-600 dark:text-gray-400 flex-1">
+                <ul class="text-left space-y-3 mb-8 text-sm text-gray-600 dark:text-gray-400 flex-1 mt-6 font-medium">
                     <li data-i18n="p2-f1">✓ Base de Datos Permanente</li>
                     <li data-i18n="p2-f2">✓ Transcripción de Audios</li>
                     <li data-i18n="p2-f3">✓ Herramientas Dinámicas</li>
                     <li data-i18n="p2-f4">✓ Lead Scoring Automático</li>
                 </ul>
                 
-                <!-- BOTÓN 2 (Borde) -->
                 <button class="order secondary mt-auto group-hover:border-[#690991] group-hover:bg-[#690991]/5">
-                    <span class="default" data-i18n="price-btn1">Elegir Plan</span>
-                    <span class="success">¡Procesado!
-                        <svg viewbox="0 0 12 10">
-                            <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
-                        </svg>
-                    </span>
+                    <span class="default font-bold" data-i18n="price-btn1">Elegir Plan</span>
+                    <span class="success">¡Procesado! <svg viewbox="0 0 12 10"><polyline points="1.5 6 4.5 9 10.5 1"></polyline></svg></span>
                     <div class="box"></div>
-                    <div class="truck">
-                        <div class="back"></div>
-                        <div class="front">
-                            <div class="window"></div>
-                        </div>
-                        <div class="light top"></div>
-                        <div class="light bottom"></div>
-                    </div>
+                    <div class="truck"><div class="back"></div><div class="front"><div class="window"></div></div><div class="light top"></div><div class="light bottom"></div></div>
                     <div class="lines"></div>
                 </button>
             </div>
 
-            <!-- Plan 3: Plus+ (Destacado) -->
+            <!-- Plan 3: Plus+ (Destacado - CINTA PEQUEÑA) -->
             <div onclick="if(event.target.closest('.order')) return; window.location.href='planes.html'" class="bg-white dark:bg-darkCard border-2 border-[#690991] dark:border-[#c75ced] rounded-3xl p-8 text-center relative shadow-xl transform xl:-translate-y-4 flex flex-col h-full cursor-pointer transition-all hover:shadow-[0_0_20px_rgba(105,9,145,0.3)] group">
-                <span data-i18n="price-pop" class="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#690991] dark:bg-[#c75ced] text-white dark:text-gray-900 px-6 py-1 rounded-full text-sm font-bold shadow-md uppercase tracking-wider">Más Popular</span>
-                <h3 class="text-2xl font-semibold dark:text-white">Plus+</h3>
-                <p class="text-5xl font-bold my-4 text-[#690991] dark:text-[#c75ced]">
-                    $<span data-base-price="149" data-anual="129" class="price-value transition-opacity duration-300">149</span>
-                    <span class="text-base font-normal text-gray-500 dark:text-gray-400 billing-period transition-opacity duration-300">/mes</span>
+                <span data-i18n="price-pop" class="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-[#690991] to-[#c75ced] text-white px-4 py-1 rounded-full text-[10px] font-bold shadow-md uppercase tracking-widest z-20 whitespace-nowrap">Más Popular</span>
+                
+                <h3 data-i18n="plan-plus" class="text-2xl font-bold dark:text-white mt-2">Plus+</h3>
+                <p class="text-5xl font-black my-4 text-[#690991] dark:text-[#c75ced]">
+                    $<span data-mensual="179" data-trimestral="143.20" data-anual="125.30" class="price-value transition-opacity duration-300">179</span>
+                    <span data-i18n="price-per-month" class="text-base font-normal text-gray-500 dark:text-gray-400 billing-period transition-opacity duration-300">/mes</span>
                 </p>
-                <p data-i18n="setup-3" class="text-xs text-gray-500 mb-4">+ $180 Setup (Único)</p>
-                <ul class="text-left space-y-3 mb-8 text-gray-600 dark:text-gray-400 flex-1">
+                <ul class="text-left space-y-3 mb-8 text-sm text-gray-600 dark:text-gray-400 flex-1 mt-6 font-medium">
                     <li data-i18n="p3-f1">✓ Notas de Voz IA Nativas</li>
                     <li data-i18n="p3-f2">✓ Integración de Pagos</li>
                     <li data-i18n="p3-f3">✓ Follow-Up Automático</li>
                     <li data-i18n="p3-f4">✓ Rate Limiting Anti-DDoS</li>
                 </ul>
                 
-                <!-- BOTÓN 3 (Sólido oscuro) -->
                 <button class="order mt-auto shadow-[0_0_15px_rgba(105,9,145,0.4)]">
-                    <span class="default" data-i18n="price-btn2">Comenzar Ahora</span>
-                    <span class="success">¡Procesado!
-                        <svg viewbox="0 0 12 10">
-                            <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
-                        </svg>
-                    </span>
+                    <span class="default font-bold text-white" data-i18n="price-btn2">Comenzar Ahora</span>
+                    <span class="success">¡Procesado! <svg viewbox="0 0 12 10"><polyline points="1.5 6 4.5 9 10.5 1"></polyline></svg></span>
                     <div class="box"></div>
-                    <div class="truck">
-                        <div class="back"></div>
-                        <div class="front">
-                            <div class="window"></div>
-                        </div>
-                        <div class="light top"></div>
-                        <div class="light bottom"></div>
-                    </div>
+                    <div class="truck"><div class="back"></div><div class="front"><div class="window"></div></div><div class="light top"></div><div class="light bottom"></div></div>
                     <div class="lines"></div>
                 </button>
             </div>
 
-            <!-- Plan 4: Enterprise (Premium Glassmorphism) -->
-            <div onclick="if(event.target.closest('.order')) return; window.location.href='planes.html'" class="glow-card bg-white dark:bg-darkCard border border-purple-100 dark:border-gray-700 rounded-3xl p-8 text-center flex flex-col h-full cursor-pointer transition-all hover:shadow-[0_0_30px_rgba(105,9,145,0.2)] relative overflow-hidden group">
+            <!-- Plan 4: Enterprise (TORNASOL / GLASSMORPHISM) -->
+            <div onclick="if(event.target.closest('.order')) return; window.location.href='planes.html'" class="relative bg-white/60 dark:bg-[#1a1027]/60 backdrop-blur-xl border border-white/50 dark:border-[#c75ced]/30 rounded-3xl p-8 text-center shadow-[0_8px_30px_rgb(105,9,145,0.1)] flex flex-col h-full cursor-pointer transition-all hover:-translate-y-2 hover:shadow-[0_15px_40px_rgba(105,9,145,0.25)] overflow-hidden group">
                 
-                <!-- Fondo Premium sutil y orbes de luz -->
-                <div class="absolute inset-0 bg-gradient-to-b from-transparent to-[#690991]/5 dark:to-[#c75ced]/10 pointer-events-none"></div>
-                <div class="absolute -top-10 -right-10 w-32 h-32 bg-[#c75ced] rounded-full mix-blend-multiply filter blur-[40px] opacity-40 dark:opacity-20 group-hover:opacity-60 transition-opacity duration-500 pointer-events-none"></div>
-                <div class="absolute -bottom-10 -left-10 w-32 h-32 bg-[#690991] rounded-full mix-blend-multiply filter blur-[40px] opacity-30 dark:opacity-20 group-hover:opacity-60 transition-opacity duration-500 pointer-events-none"></div>
+                <!-- Orbes Tornasol / Iridescent -->
+                <div class="absolute -top-12 -right-12 w-48 h-48 bg-gradient-to-br from-[#c75ced] to-[#00d0ff] rounded-full filter blur-[40px] opacity-30 group-hover:opacity-50 transition-opacity duration-500 pointer-events-none"></div>
+                <div class="absolute -bottom-12 -left-12 w-48 h-48 bg-gradient-to-tr from-[#690991] to-[#ff5f56] rounded-full filter blur-[40px] opacity-20 group-hover:opacity-40 transition-opacity duration-500 pointer-events-none"></div>
 
-                <h3 data-i18n="plan-ent" class="text-2xl font-semibold text-gray-900 dark:text-white relative z-10 flex items-center justify-center gap-2">
-                    <svg class="w-5 h-5 text-[#690991] dark:text-[#c75ced]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" /></svg>
+                <h3 data-i18n="plan-ent" class="text-2xl font-bold text-gray-900 dark:text-white relative z-10 flex items-center justify-center gap-2 mt-2">
+                    <svg class="w-6 h-6 text-[#690991] dark:text-[#c75ced]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" /></svg>
                     Enterprise
                 </h3>
-                <p class="text-5xl font-bold my-4 text-gray-900 dark:text-white relative z-10">
-                    $<span data-base-price="399" data-anual="319" class="price-value transition-opacity duration-300">399</span>
-                    <span class="text-base font-normal text-gray-500 dark:text-gray-400 billing-period transition-opacity duration-300">/mes</span>
+                <p class="text-5xl font-black my-4 text-gray-900 dark:text-white relative z-10">
+                    $<span data-mensual="415" data-trimestral="332" data-anual="290.50" class="price-value transition-opacity duration-300">415</span>
+                    <span data-i18n="price-per-month" class="text-base font-medium text-gray-500 dark:text-gray-400 billing-period transition-opacity duration-300">/mes</span>
                 </p>
-                <p data-i18n="setup-4" class="text-xs text-gray-500 mb-6 font-medium relative z-10">+ $500 Setup (Único)</p>
 
-                <ul class="text-left space-y-3 mb-8 text-sm text-gray-600 dark:text-gray-400 flex-1 relative z-10">
+                <ul class="text-left space-y-3 mb-8 text-sm text-gray-700 dark:text-gray-300 flex-1 relative z-10 mt-6 font-medium">
                     <li data-i18n="p4-f1" class="flex items-start gap-2"><span class="text-[#690991] dark:text-[#c75ced] font-bold">✓</span> Búsqueda Vectorial RAG</li>
                     <li data-i18n="p4-f2" class="flex items-start gap-2"><span class="text-[#690991] dark:text-[#c75ced] font-bold">✓</span> Clonación de Voz</li>
                     <li data-i18n="p4-f3" class="flex items-start gap-2"><span class="text-[#690991] dark:text-[#c75ced] font-bold">✓</span> Sincronización CRM Sync</li>
                     <li data-i18n="p4-f4" class="flex items-start gap-2 font-bold text-gray-900 dark:text-white"><span class="text-[#690991] dark:text-[#c75ced]">✓</span> 100% Add-ons Incluidos</li>
                 </ul>
                 
-                <!-- BOTÓN 4 (Sólido oscuro para que el camión se vea perfecto) -->
                 <button class="order mt-auto shadow-[0_10px_20px_rgba(105,9,145,0.2)] relative z-10">
-                    <span class="default text-sm text-white" data-i18n="price-btn3">Contactar Ventas</span>
-                    <span class="success">¡Enviado!
-                        <svg viewbox="0 0 12 10">
-                            <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
-                        </svg>
-                    </span>
+                    <span class="default text-sm text-white font-bold" data-i18n="price-btn3">Contactar Ventas</span>
+                    <span class="success">¡Enviado! <svg viewbox="0 0 12 10"><polyline points="1.5 6 4.5 9 10.5 1"></polyline></svg></span>
                     <div class="box"></div>
-                    <div class="truck">
-                        <div class="back"></div>
-                        <div class="front">
-                            <div class="window"></div>
-                        </div>
-                        <div class="light top"></div>
-                        <div class="light bottom"></div>
-                    </div>
+                    <div class="truck"><div class="back"></div><div class="front"><div class="window"></div></div><div class="light top"></div><div class="light bottom"></div></div>
                     <div class="lines"></div>
                 </button>
             </div>
@@ -2627,11 +2585,13 @@ const translations = {
         /* NUEVOS TEXTOS DE PRECIOS AÑADIDOS A CONTINUACIÓN */
         "price-title": "Planes Flexibles", 
         "price-pop": "Más Popular",
-        "price-monthly": "Mensual",
-        "price-annual": "Anual",
-        "price-save-badge": "-20%",
+        "price-1month": "1 Mes",
+        "price-3months": "3 Meses",
+        "price-1year": "1 Año",
+        "price-per-month": "/mes",
         "plan-basic": "Básico",
         "plan-adv": "Avanzado",
+        "plan-plus": "Plus+",
         "plan-ent": "Enterprise",
         "setup-1": "+ $45 Setup (Único)",
         "setup-2": "+ $99 Setup (Único)",
@@ -2744,11 +2704,13 @@ const translations = {
         /* NUEVOS TEXTOS DE PRECIOS AÑADIDOS A CONTINUACIÓN */
         "price-title": "Flexible Plans", 
         "price-pop": "Most Popular",
-        "price-monthly": "Monthly",
-        "price-annual": "Annually",
-        "price-save-badge": "-20%",
+        "price-1month": "1 Month",
+        "price-3months": "3 Months",
+        "price-1year": "1 Year",
+        "price-per-month": "/mo",
         "plan-basic": "Basic",
         "plan-adv": "Advanced",
+        "plan-plus": "Plus+",
         "plan-ent": "Enterprise",
         "setup-1": "+ $45 Setup (One-time)",
         "setup-2": "+ $99 Setup (One-time)",
@@ -2816,6 +2778,7 @@ const translations = {
         "w-paused": "Paused", "w-preview": "Qxao agent preview in action"
     }
 };
+
 // 1. TRADUCCIÓN DE LA PÁGINA
     let currentLang = 'es';
     const langToggleBtn = document.getElementById('lang-toggle');
@@ -3478,64 +3441,53 @@ const translations = {
 // =========================================================================
 document.addEventListener("DOMContentLoaded", () => {
     
-    // --- 1. LÓGICA DEL TOGGLE MENSUAL / ANUAL ---
-    const toggleBtn = document.getElementById('billing-toggle');
-    const toggleKnob = document.getElementById('toggle-knob');
-    const labelMensual = document.getElementById('label-mensual');
-    const labelAnual = document.getElementById('label-anual');
+    // --- 1. LÓGICA DEL TOGGLE MENSUAL / TRIMESTRAL / ANUAL ---
+    const btnMensual = document.getElementById('btn-mensual');
+    const btnTrimestral = document.getElementById('btn-trimestral');
+    const btnAnual = document.getElementById('btn-anual');
     const priceValues = document.querySelectorAll('.price-value');
-    const billingPeriods = document.querySelectorAll('.billing-period');
 
-    let isAnnual = false;
-    const discountRate = 0.20; 
+    function updatePricing(period) {
+        // Clases activas e inactivas para el nuevo diseño de botones
+        const activeClasses = ['bg-[#690991]', 'text-white', 'shadow-[0_0_15px_rgba(105,9,145,0.4)]', 'scale-105'];
+        const inactiveClasses = ['text-gray-500', 'hover:text-gray-900', 'dark:hover:text-white', 'hover:bg-gray-100', 'dark:hover:bg-gray-800'];
 
-    if (toggleBtn) {
-        toggleBtn.addEventListener('click', () => {
-            isAnnual = !isAnnual;
+        // Reiniciar todos
+        [btnMensual, btnTrimestral, btnAnual].forEach(btn => {
+            if(!btn) return;
+            btn.classList.remove(...activeClasses);
+            btn.classList.add(...inactiveClasses);
+        });
+
+        // Activar el correspondiente
+        let activeBtn = period === 'mensual' ? btnMensual : period === 'trimestral' ? btnTrimestral : btnAnual;
+        if(activeBtn) {
+            activeBtn.classList.remove(...inactiveClasses);
+            activeBtn.classList.add(...activeClasses);
+        }
+
+        // Animación de precios
+        priceValues.forEach(el => {
+            el.style.opacity = '0';
             
-            if (isAnnual) {
-                toggleKnob.classList.replace('translate-x-1', 'translate-x-9');
-                toggleBtn.classList.replace('bg-gray-300', 'bg-[#690991]');
-                toggleBtn.classList.replace('dark:bg-gray-700', 'dark:bg-[#c75ced]');
-                labelMensual.classList.replace('text-gray-900', 'text-gray-500');
-                labelMensual.classList.replace('dark:text-white', 'dark:text-gray-400');
-                labelAnual.classList.replace('text-gray-500', 'text-gray-900');
-                labelAnual.classList.replace('dark:text-gray-400', 'dark:text-white');
-            } else {
-                toggleKnob.classList.replace('translate-x-9', 'translate-x-1');
-                toggleBtn.classList.replace('bg-[#690991]', 'bg-gray-300');
-                toggleBtn.classList.replace('dark:bg-[#c75ced]', 'dark:bg-gray-700');
-                labelMensual.classList.replace('text-gray-500', 'text-gray-900');
-                labelMensual.classList.replace('dark:text-gray-400', 'dark:text-white');
-                labelAnual.classList.replace('text-gray-900', 'text-gray-500');
-                labelAnual.classList.replace('dark:text-white', 'dark:text-gray-400');
-            }
-
-            priceValues.forEach(el => {
-                const basePrice = parseFloat(el.getAttribute('data-base-price'));
-                el.style.opacity = '0';
-                
-                setTimeout(() => {
-                    if (isAnnual) {
-                        el.textContent = Math.round((basePrice * 12) * (1 - discountRate));
-                    } else {
-                        el.textContent = basePrice;
-                    }
-                    el.style.opacity = '1';
-                }, 150); 
-            });
-
-            billingPeriods.forEach(el => {
-                el.style.opacity = '0';
-                setTimeout(() => {
-                    el.textContent = isAnnual ? '/año' : '/mes';
-                    el.style.opacity = '1';
-                }, 150);
-            });
+            setTimeout(() => {
+                let val = el.getAttribute(`data-${period}`);
+                if(val.includes('.')) {
+                    val = parseFloat(val).toFixed(2);
+                }
+                el.textContent = val;
+                el.style.opacity = '1';
+            }, 150); 
         });
     }
 
-    // --- 2. LÓGICA DE ANIMACIÓN DEL CAMIÓN (ORIGINAL STELLA - VANILLA JS) ---
+    if (btnMensual && btnTrimestral && btnAnual) {
+        btnMensual.addEventListener('click', () => updatePricing('mensual'));
+        btnTrimestral.addEventListener('click', () => updatePricing('trimestral'));
+        btnAnual.addEventListener('click', () => updatePricing('anual'));
+    }
+
+    // --- 2. LÓGICA DE ANIMACIÓN DEL CAMIÓN ---
     const orderBtns = document.querySelectorAll('.order');
 
     orderBtns.forEach(button => {
@@ -3545,7 +3497,6 @@ document.addEventListener("DOMContentLoaded", () => {
             if (!button.classList.contains('animate')) {
                 button.classList.add('animate');
                 
-                // Temporizador original de 10 segundos
                 setTimeout(() => {
                     button.classList.remove('animate');
                 }, 10000);
