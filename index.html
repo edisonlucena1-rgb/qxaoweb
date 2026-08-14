@@ -2179,7 +2179,7 @@
                     <!-- CAJITA MORADA CON TEXTO EXPLICATIVO -->
                     <div class="bg-[#690991] text-white px-4 py-2 rounded-full shadow-md flex items-center gap-2">
                         <span id="roi-consultas" class="font-black text-lg sm:text-xl">5,000</span>
-                        <span class="text-[10px] sm:text-xs font-medium text-white/80 uppercase tracking-wide">chats / mes</span>
+                        <span data-i18n="roi-chats-label" class="text-[10px] sm:text-xs font-medium text-white/80 uppercase tracking-wide">chats / mes</span>
                     </div>
                 </div>
                 
@@ -2601,14 +2601,14 @@ const translations = {
         "use-1-t": "PISA 62 (Gastronomía)", "use-1-d": "Agente que automatiza pedidos y consultas del menú, conectado a bases de datos para actualizar inventario y confirmar pagos.",
         "use-2-t": "Tigrito (Marketplaces)", "use-2-d": "Asistente de soporte para plataformas de trabajos rápidos, facilitando a los usuarios publicar tareas y gestionar incidencias.",
         "use-3-t": "Gestión Interna", "use-3-d": "Copiloto corporativo que se conecta con sistemas internos, cruza datos de distintas áreas y asiste a los empleados diariamente.",
-        "roi-title": "Calcula tu ROI de Automatización",
-        "roi-desc": "Descubre cuánto ahorras al mes delegando el volumen operativo a Qxao.",
-        "roi-queries": "Consultas y gestiones mensuales",
-        "roi-human": "Costo Estimado Equipo Humano",
-        "roi-ai": "Costo Promedio con Agente Qxao",
-        "roi-save": "Ahorro Mensual Proyectado",
+        "roi-title": "Calcula tu Ahorro Real",
+        "roi-desc": "Descubre cuánto dinero ahorras delegando la atención de tu negocio a Qxao en lugar de contratar más personal.",
+        "roi-queries": "Volumen de atención:",
+        "roi-human": "Costo Empleados",
+        "roi-ai": "Inversión Qxao",
+        "roi-save": "Dinero que ahorras al mes",
+        "roi-chats-label": "chats / mes",
         
-        /* NUEVOS TEXTOS DE PRECIOS AÑADIDOS A CONTINUACIÓN */
         "price-title": "Planes Flexibles", 
         "price-pop": "Más Popular",
         "price-1month": "1 Mes",
@@ -2663,7 +2663,7 @@ const translations = {
         "t-name-1": "Marcos Silva", "t-role-1": "Dueño, Bistró 77", "t-quote-1": "Antes, mis empleados perdían horas respondiendo mensajes y tomando pedidos por WhatsApp en horas pico. Desde que implementamos el agente de Qxao, el sistema atiende a 50 clientes a la vez, confirma las transferencias y manda la orden directo a la cocina. Las ventas subieron un 30% simplemente porque ya no dejamos a nadie en visto.",
         "t-name-2": "Valeria Cárdenas", "t-role-2": "CEO, App ServiYa", "t-quote-2": "Escalar nuestra plataforma era una pesadilla por la cantidad de dudas y tickets de soporte de los usuarios. El asistente que nos diseñó Qxao no solo guía a los nuevos registros paso a paso, sino que resuelve el 85% de las incidencias operativas en automático, 24/7. Nos ahorramos el costo de contratar a todo un equipo de call center.",
         "t-name-3": "Roberto Guzmán", "t-role-3": "Director de Operaciones, Grupo NovaTech", "t-quote-3": "Nuestro mayor cuello de botella era buscar información dispersa. Hoy, mi equipo no tiene que abrir tres softwares distintos para armar un reporte de métricas. Le escriben al copiloto de Qxao en nuestro chat interno y, en tres segundos, la IA cruza los datos de facturación y inventario. Transformó por completo nuestra velocidad operativa.",
-        "t-name-4": "Carlos Mendoza", "t-role-4": "Fundador, E-commerce Nova", "t-quote-4": "\"Las ventas nocturnas siempre se nos escapaban porque no había quién respondiera en la madrugada. Ahora el agente de Qxao califica leads, cierra ventas a las 3 AM y procesa los pagos sin que yo mueva un dedo. Aumentamos la facturación mensual un 40%.\"",
+        "t-name-4": "Carlos Mendoza", "t-role-4": "Founder, E-commerce Nova", "t-quote-4": "\"Las ventas nocturnas siempre se nos escapaban porque no había quién respondiera en la madrugada. Ahora el agente de Qxao califica leads, cierra ventas a las 3 AM y procesa los pagos sin que yo mueva un dedo. Aumentamos la facturación mensual un 40%.\"",
         "t-name-5": "Andrea Villalobos", "t-role-5": "Dir. de Ventas, Inmobiliaria Sur", "t-quote-5": "\"Calificar prospectos para propiedades de lujo tomaba días. El Agente IA perfila a los clientes en minutos, agenda las visitas directamente en Google Calendar y nos pasa solo los leads 'calientes' a los asesores. Es una locura la eficiencia que ganamos.\"",
         "t-name-6": "Dr. Fernando Ruiz", "t-role-6": "Director Médico, Clínica Vital", "t-quote-6": "\"Las cancelaciones de citas nos costaban miles al mes. Qxao automatizó la agenda, los recordatorios 24 horas antes y las reprogramaciones a través de WhatsApp. El ausentismo en la clínica bajó a casi cero y las secretarias ahora pueden respirar.\"",
         "faq-cta-title": "¿Tienes dudas a nivel corporativo?",
@@ -2720,14 +2720,15 @@ const translations = {
         "use-1-t": "PISA 62 (Gastronomy)", "use-1-d": "Agent automating orders and menu queries, connected to databases to update inventory and confirm payments.",
         "use-2-t": "Tigrito (Marketplaces)", "use-2-d": "Support assistant for rapid job platforms, helping users post tasks and manage incidents.",
         "use-3-t": "Internal Mgmt", "use-3-d": "Corporate copilot connecting to internal systems, crossing data from different areas to assist employees.",
-        "roi-title": "Calculate Your Automation ROI",
-        "roi-desc": "Discover how much you save monthly by delegating operational volume to Qxao.",
-        "roi-queries": "Monthly queries and tasks",
-        "roi-human": "Estimated Human Team Cost",
-        "roi-ai": "Average Cost with Qxao Agent",
-        "roi-save": "Projected Monthly Savings",
         
-        /* NUEVOS TEXTOS DE PRECIOS AÑADIDOS A CONTINUACIÓN */
+        "roi-title": "Calculate Your Real Savings",
+        "roi-desc": "Discover how much money you save by delegating customer service to Qxao instead of hiring more staff.",
+        "roi-queries": "Support volume:",
+        "roi-human": "Employee Cost",
+        "roi-ai": "Qxao Investment",
+        "roi-save": "Money saved per month",
+        "roi-chats-label": "chats / mo",
+        
         "price-title": "Flexible Plans", 
         "price-pop": "Most Popular",
         "price-1month": "1 Month",
@@ -2931,65 +2932,73 @@ const translations = {
     window.addEventListener('scroll', handleScroll);
     window.addEventListener('load', handleScroll);
 
-    // =========================================================================
-// SCRIPT DE LA CALCULADORA DE ROI (LÓGICA REAL Y RESPONSIVA)
 // =========================================================================
-    const slider = document.getElementById('roi-slider');
-    const outConsultas = document.getElementById('roi-consultas');
-    const outHumano = document.getElementById('roi-humano');
-    const outAgentes = document.getElementById('roi-agentes');
-    const outIA = document.getElementById('roi-ia');
-    const outPlanRec = document.getElementById('roi-plan-rec');
-    const outAhorro = document.getElementById('roi-ahorro');
+// SCRIPT DE LA CALCULADORA DE ROI (AHORA 100% BILINGÜE)
+// =========================================================================
+const slider = document.getElementById('roi-slider');
+const outConsultas = document.getElementById('roi-consultas');
+const outHumano = document.getElementById('roi-humano');
+const outAgentes = document.getElementById('roi-agentes');
+const outIA = document.getElementById('roi-ia');
+const outPlanRec = document.getElementById('roi-plan-rec');
+const outAhorro = document.getElementById('roi-ahorro');
 
-    if (slider) {
-        function formatCurrency(value) {
-            return '$' + value.toLocaleString('en-US', {minimumFractionDigits: 0, maximumFractionDigits: 0});
-        }
+function formatCurrency(value) {
+    return '$' + value.toLocaleString('en-US', {minimumFractionDigits: 0, maximumFractionDigits: 0});
+}
 
-        function calculateROI() {
-            const queries = parseInt(slider.value);
-            outConsultas.textContent = queries.toLocaleString('en-US');
+function calculateROI() {
+    if (!slider) return;
+    
+    const queries = parseInt(slider.value);
+    outConsultas.textContent = queries.toLocaleString('en-US');
 
-            // 1. Costo Humano: 1 asesor maneja ~1,200 chats/mes. Costo base estimado: $400 USD/mes.
-            const humanCapacity = 1200; 
-            const costPerHuman = 400; 
-            const requiredHumans = Math.ceil(queries / humanCapacity);
-            const totalHumanCost = requiredHumans * costPerHuman;
+    // Costo Humano Estimado
+    const humanCapacity = 1200; 
+    const costPerHuman = 400; 
+    const requiredHumans = Math.ceil(queries / humanCapacity);
+    const totalHumanCost = requiredHumans * costPerHuman;
 
-            // 2. Costo Qxao: Atado a los precios reales mensuales
-            let qxaoCost = 0;
-            let planName = "";
+    // Costo IA y Plan
+    let qxaoCost = 0;
+    let planNameES = "";
+    let planNameEN = "";
 
-            if (queries <= 2000) {
-                qxaoCost = 60; 
-                planName = "Básico";
-            } else if (queries <= 7000) {
-                qxaoCost = 112; 
-                planName = "Avanzado";
-            } else if (queries <= 15000) {
-                qxaoCost = 179; 
-                planName = "Plus+";
-            } else {
-                qxaoCost = 415; 
-                planName = "Enterprise";
-            }
-
-            // 3. Ahorro Total
-            const savings = totalHumanCost - qxaoCost;
-
-            // 4. Inyectar al HTML con lenguaje simplificado
-            outHumano.textContent = formatCurrency(totalHumanCost);
-            outAgentes.textContent = `Sueldo de ~${requiredHumans} persona${requiredHumans > 1 ? 's' : ''}`;
-            outIA.textContent = formatCurrency(qxaoCost);
-            outPlanRec.textContent = `Plan sugerido: ${planName}`;
-            outAhorro.textContent = formatCurrency(savings);
-        }
-
-        slider.addEventListener('input', calculateROI);
-        calculateROI(); // Llamada inicial para fijar los números al cargar la página
+    if (queries <= 2000) {
+        qxaoCost = 60; planNameES = "Básico"; planNameEN = "Basic";
+    } else if (queries <= 7000) {
+        qxaoCost = 112; planNameES = "Avanzado"; planNameEN = "Advanced";
+    } else if (queries <= 15000) {
+        qxaoCost = 179; planNameES = "Plus+"; planNameEN = "Plus+";
+    } else {
+        qxaoCost = 415; planNameES = "Enterprise"; planNameEN = "Enterprise";
     }
 
+    const planName = currentLang === 'en' ? planNameEN : planNameES;
+
+    // TEXTOS DINÁMICOS BILINGÜES
+    const textAgentes = currentLang === 'en' ? `Salary of ~${requiredHumans} person${requiredHumans > 1 ? 's' : ''}` : `Sueldo de ~${requiredHumans} persona${requiredHumans > 1 ? 's' : ''}`;
+    const textPlan = currentLang === 'en' ? `Suggested Plan: ${planName}` : `Plan sugerido: ${planName}`;
+
+    outHumano.textContent = formatCurrency(totalHumanCost);
+    if(outAgentes) outAgentes.textContent = textAgentes;
+    outIA.textContent = formatCurrency(qxaoCost);
+    if(outPlanRec) outPlanRec.textContent = textPlan;
+    outAhorro.textContent = formatCurrency(totalHumanCost - qxaoCost);
+}
+
+if (slider) {
+    slider.addEventListener('input', calculateROI);
+    calculateROI(); // Inicializar valores
+}
+
+// Escuchar el clic del botón de idioma para actualizar la calculadora al instante
+const roiLangToggleBtn = document.getElementById('lang-toggle');
+if (roiLangToggleBtn) {
+    roiLangToggleBtn.addEventListener('click', () => {
+        setTimeout(calculateROI, 50); // Se actualiza la calculadora una fracción de segundo después del clic
+    });
+}
 
 // 8. LÓGICA DEL CHATBOT FLOTANTE Y BURBUJA PROACTIVA
     const chatToggle = document.getElementById('chat-toggle');
