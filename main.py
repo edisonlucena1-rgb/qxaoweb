@@ -51,6 +51,11 @@ def mostrar_inicio():
 def mostrar_index_directo():
     return FileResponse("index.html")
 
+# 🔥 AQUÍ ESTÁ LA LÍNEA NUEVA QUE FALTABA 🔥
+@app.get("/planes.html")
+def mostrar_planes():
+    return FileResponse("planes.html")
+
 @app.get("/login.html")
 def mostrar_login():
     return FileResponse("login.html")
