@@ -1,0 +1,1485 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Qxao - Propuesta Comercial y Ecosistema de Planes detallado.">
+    <title>Qxao | Planes y Precios Detallados</title>
+
+    <!-- FAVICON -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 671.14 514.29'><path fill='%23690991' d='M517.17,230.82,620.56,94.91a5.48,5.48,0,0,0-4.37-8.8H536.61a5.47,5.47,0,0,0-4.4,2.21l-59.66,80.2a5.48,5.48,0,0,1-8.84-.05s-26.53-35.94-49.29-67.71c-6.48-9.05-16.38-12-27.42-13.47-21.43-2.86-53.74,1.27-53.86,1.28-193.59,24.5-296.23,135.12-317,158a5.49,5.49,0,0,0,.49,7.83c128.48,111.9,275.62,131.39,345.21,134.45,0,0,33.44.47,39.19-5.87.49-.54,1-1.06,1.43-1.64,6.59-8.79,58.92-79.17,58.92-79.17a5.48,5.48,0,0,1,8.86.08l60.27,84.29A5.48,5.48,0,0,0,535,388.8h76.61a10,10,0,0,0,8-16.07L517.16,237.45A5.49,5.49,0,0,1,517.17,230.82ZM351.73,322.93a5.35,5.35,0,0,1-6.22,1.72l0,0a84.63,84.63,0,0,1-29.27-19.37,89.65,89.65,0,0,1-19.38-30.12A102.31,102.31,0,0,1,289.88,237q0-21.06,6.94-38.33a90.09,90.09,0,0,1,19.38-29.9,84.05,84.05,0,0,1,25.07-17.57c1-.46,2.09-.93,3.16-1.35s2.06-.8,3.11-1.17a5.51,5.51,0,0,1,6.24,1.87l61.67,82.23a5.49,5.49,0,0,1,0,6.62Z'/></svg>">
+
+    <!-- LIBRERÍAS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;500;600&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+
+    <!-- CONFIGURACIÓN TAILWIND -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#690991',
+                        darkBg: '#0f172a',
+                        darkCard: '#1e293b'
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- ESTILOS GLOBALES MAESTROS -->
+    <style>
+        :root { 
+            --primary: #690991; 
+            --qxao-glow: #c583f0;
+        }
+        body { 
+            cursor: url("data:image/svg+xml,%3Csvg width='24' height='24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4 2v16l4-4 3 7 2-1-3-7h5L4 2z' fill='black' stroke='%23690991' stroke-width='1.5' stroke-linejoin='round'/%3E%3C/svg%3E"), auto;
+            font-family: 'Open Sans', system-ui, sans-serif; 
+        }
+        a, button, [onclick] { cursor: pointer; }
+        h1, h2, h3, h4, h5 { font-family: 'Montserrat', sans-serif; }
+
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f5f9; }
+        .dark ::-webkit-scrollbar-track { background: #0f172a; }
+        ::-webkit-scrollbar-thumb { background-color: #cbd5e1; border-radius: 10px; }
+        .dark ::-webkit-scrollbar-thumb { background-color: #334155; }
+        ::-webkit-scrollbar-thumb:hover { background-color: #690991; }
+
+        @keyframes mover-patron {
+            0% { background-position: 0 0; }
+            100% { background-position: -420px -300px; }
+        }
+
+        .bg-grid-light {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='84' height='60' viewBox='0 -30.22 42.44 30.22'%3E%3Cpath fill='%23690991' fill-opacity='0.025' d='M18.33-5.39c1.6-0.64,2.98-1.55,4.16-2.72c1.18-1.17,2.1-2.53,2.76-4.09c0.66-1.56,0.99-3.26,0.99-5.12c0-1.85-0.33-3.56-0.99-5.12c-0.66-1.56-1.58-2.92-2.76-4.09c-1.18-1.17-2.57-2.08-4.16-2.72c-1.6-0.64-3.33-0.97-5.21-0.97c-1.88,0-3.61,0.32-5.21,0.97c-1.6,0.65-2.98,1.55-4.16,2.72c-1.18,1.17-2.1,2.54-2.76,4.09C0.33-20.88,0-19.17,0-17.32c0,1.85,0.33,3.56,0.99,5.12c0.66,1.56,1.58,2.92,2.76,4.09s2.57,2.08,4.16,2.72c1.6,0.65,3.33,0.97,5.21,0.97C14.99-4.42,16.73-4.74,18.33-5.39z M8.22-6.05C6.71-6.67,5.4-7.53,4.27-8.64s-1.99-2.4-2.61-3.88c-0.62-1.47-0.93-3.08-0.93-4.81s0.31-3.33,0.93-4.81C2.28-23.6,3.15-24.89,4.27-26c1.12-1.11,2.44-1.97,3.95-2.59c1.51-0.62,3.14-0.93,4.9-0.93c1.75,0,3.39,0.31,4.9,0.93c1.51,0.62,2.83,1.49,3.95,2.59c1.12,1.11,1.99,2.4,2.61,3.87c0.62,1.47,0.93,3.08,0.93,4.81s-0.31,3.33-0.93,4.81c-0.62,1.48-1.49,2.77-2.61,3.88s-2.44,1.97-3.95,2.59c-1.51,0.62-3.14,0.93-4.9,0.93C11.37-5.12,9.73-5.43,8.22-6.05z M27.33-2.78l-0.51-0.51c-1.44,1.73-3.2,2.59-5.3,2.59c-0.76,0-1.53-0.15-2.32-0.46c-0.79-0.3-1.6-0.77-2.41-1.39c-0.81-0.62-1.64-1.38-2.46-2.28l-0.95,0.18c0.78,0.8,1.52,1.5,2.21,2.08c0.69,0.59,1.38,1.07,2.05,1.44c0.67,0.38,1.32,0.66,1.95,0.84C20.22-0.09,20.87,0,21.52,0C23.89,0,25.82-0.93,27.33-2.78z M27.2-2.63l7.24-9.35h-0.18l7.24,9.35h0.95l-7.82-9.98l-0.04,0.44l7.31-9.36h-0.88l-6.83,8.77h0.29l-6.83-8.77h-0.91l7.23,9.21L34-12.57l-7.71,9.94H27.2z'/%3E%3C/svg%3E");
+            background-size: 84px 60px;
+            animation: mover-patron 100s linear infinite;
+        }
+
+        .dark .bg-grid-light {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='84' height='60' viewBox='0 -30.22 42.44 30.22'%3E%3Cpath fill='%23ffffff' fill-opacity='0.015' d='M18.33-5.39c1.6-0.64,2.98-1.55,4.16-2.72c1.18-1.17,2.1-2.53,2.76-4.09c0.66-1.56,0.99-3.26,0.99-5.12c0-1.85-0.33-3.56-0.99-5.12c-0.66-1.56-1.58-2.92-2.76-4.09c-1.18-1.17-2.57-2.08-4.16-2.72c-1.6-0.64-3.33-0.97-5.21-0.97c-1.88,0-3.61,0.32-5.21,0.97c-1.6,0.65-2.98,1.55-4.16,2.72-1.18,1.17-2.1,2.54-2.76,4.09C0.33-20.88,0-19.17,0-17.32c0,1.85,0.33,3.56,0.99,5.12c0.66,1.56,1.58,2.92,2.76,4.09s2.57,2.08,4.16,2.72c1.6,0.65,3.33,0.97,5.21,0.97C14.99-4.42,16.73-4.74,18.33-5.39z M8.22-6.05C6.71-6.67,5.4-7.53,4.27-8.64s-1.99-2.4-2.61-3.88c-0.62-1.47-0.93-3.08-0.93-4.81s0.31-3.33,0.93-4.81C2.28-23.6,3.15-24.89,4.27-26c1.12-1.11,2.44-1.97,3.95-2.59c1.51-0.62,3.14-0.93,4.9-0.93c1.75,0,3.39,0.31,4.9,0.93c1.51,0.62,2.83,1.49,3.95,2.59c1.12,1.11,1.99,2.4,2.61,3.87c0.62,1.47,0.93,3.08,0.93,4.81s-0.31,3.33-0.93,4.81c-0.62,1.48-1.49,2.77-2.61,3.88s-2.44,1.97-3.95,2.59c-1.51,0.62-3.14,0.93-4.9,0.93C11.37-5.12,9.73-5.43,8.22-6.05z M27.33-2.78l-0.51-0.51c-1.44,1.73-3.2,2.59-5.3,2.59c-0.76,0-1.53-0.15-2.32-0.46c-0.79-0.3-1.6-0.77-2.41-1.39c-0.81-0.62-1.64-1.38-2.46-2.28l-0.95,0.18c0.78,0.8,1.52,1.5,2.21,2.08c0.69,0.59,1.38,1.07,2.05,1.44c0.67,0.38,1.32,0.66,1.95,0.84C20.22-0.09,20.87,0,21.52,0C23.89,0,25.82-0.93,27.33-2.78z M27.2-2.63l7.24-9.35h-0.18l7.24,9.35h0.95l-7.82-9.98l-0.04,0.44l7.31-9.36h-0.88l-6.83,8.77h0.29l-6.83-8.77h-0.91l7.23,9.21L34-12.57l-7.71,9.94H27.2z'/%3E%3C/svg%3E");
+        }
+
+        .animate-on-scroll { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1); }
+        .animate-on-scroll.visible { opacity: 1; transform: translateY(0); }
+        
+        .glow-card { position: relative; overflow: hidden; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+        .glow-card::before {
+            content: ''; position: absolute; top: var(--mouse-y, 50%); left: var(--mouse-x, 50%);
+            transform: translate(-50%, -50%); width: 500px; height: 500px;
+            background: radial-gradient(circle, rgba(105, 9, 145, 0.08) 0%, transparent 60%);
+            opacity: 0; transition: opacity 0.3s; pointer-events: none; z-index: 0;
+        }
+        .dark .glow-card::before { background: radial-gradient(circle, rgba(199, 92, 237, 0.12) 0%, transparent 60%); }
+        .glow-card:hover::before { opacity: 1; }
+        .glow-card > * { position: relative; z-index: 1; }
+
+        /* Efecto Glassmorphism Premium */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .dark .glass-card {
+            background: rgba(30, 41, 59, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* Lógica para que los badges "-12%" y "-30%" cambien de color cuando el botón está activo */
+        .discount-badge { transition: all 0.3s ease; }
+        .active .discount-badge { background-color: rgba(255, 255, 255, 0.25) !important; color: white !important; }
+        
+        /* Botón de camión de Stella */
+        .order {
+          --primary: #690991;       
+          --primary-light: #c583f0; 
+          --dark: #090E17;          
+          --grey-dark: #3F4656;
+          --grey: #6C7486;
+          --grey-light: #CDD9ED;
+          --white: #FFF;
+          --green: #22c55e;         
+          --sand: #eab308;          
+          --sand-light: #fde047;
+
+          -webkit-appearance: none;
+          -moz-appearance: none;
+          appearance: none;
+          border: 0;
+          background: var(--dark);
+          position: relative;
+          height: 63px;
+          width: 100%;
+          max-width: 260px; 
+          margin: 0 auto;
+          display: block;
+          padding: 0;
+          outline: none;
+          cursor: pointer;
+          border-radius: 32px;
+          -webkit-mask-image: -webkit-radial-gradient(white, black);
+          -webkit-tap-highlight-color: transparent;
+          overflow: hidden;
+          transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .dark .order:not(.secondary) {
+          box-shadow: 0 0 0 1.5px rgba(197, 131, 240, 0.4), 0 0 15px rgba(105, 9, 145, 0.4) !important;
+        }
+
+        .order.secondary {
+          background: transparent;
+          border: 2px solid var(--primary);
+        }
+        .dark .order.secondary {
+          border-color: var(--primary-light);
+        }
+        .order.secondary .default {
+          color: var(--primary);
+        }
+        .dark .order.secondary .default {
+          color: var(--primary-light);
+        }
+        .order.secondary.animate {
+          background: var(--dark);
+        }
+        .order.secondary.animate .default {
+          color: var(--white);
+        }
+
+        .order span {
+          --o: 1;
+          position: absolute;
+          left: 0;
+          right: 0;
+          text-align: center;
+          top: 19px;
+          line-height: 24px;
+          color: var(--white);
+          font-size: 16px;
+          font-weight: 700;
+          opacity: var(--o);
+          transition: opacity 0.3s ease;
+        }
+        .order span.default {
+          transition-delay: 0.3s;
+        }
+        .order span.success {
+          --offset: 16px;
+          --o: 0;
+        }
+        .order span.success svg {
+          width: 14px;
+          height: 12px;
+          display: inline-block;
+          vertical-align: top;
+          fill: none;
+          margin: 7px 0 0 4px;
+          stroke: var(--green);
+          stroke-width: 2;
+          stroke-linecap: round;
+          stroke-linejoin: round;
+          stroke-dasharray: 16px;
+          stroke-dashoffset: var(--offset);
+          transition: stroke-dashoffset 0.3s ease;
+        }
+        .order:active {
+          transform: scale(0.96);
+        }
+        .order .lines {
+          opacity: 0;
+          position: absolute;
+          height: 3px;
+          background: var(--white);
+          border-radius: 2px;
+          width: 6px;
+          top: 30px;
+          left: 100%;
+          box-shadow: 15px 0 0 var(--white), 30px 0 0 var(--white), 45px 0 0 var(--white), 60px 0 0 var(--white), 75px 0 0 var(--white), 90px 0 0 var(--white), 105px 0 0 var(--white), 120px 0 0 var(--white), 135px 0 0 var(--white), 150px 0 0 var(--white), 165px 0 0 var(--white), 180px 0 0 var(--white), 195px 0 0 var(--white), 210px 0 0 var(--white), 225px 0 0 var(--white), 240px 0 0 var(--white), 255px 0 0 var(--white), 270px 0 0 var(--white), 285px 0 0 var(--white), 300px 0 0 var(--white), 315px 0 0 var(--white), 330px 0 0 var(--white);
+        }
+        .order .back,
+        .order .box {
+          --start: var(--white);
+          --stop: var(--grey-light);
+          border-radius: 2px;
+          background: linear-gradient(var(--start), var(--stop));
+          position: absolute;
+        }
+        .order .truck {
+          width: 60px;
+          height: 41px;
+          left: 100%;
+          z-index: 1;
+          top: 11px;
+          position: absolute;
+          transform: translateX(24px);
+        }
+        .order .truck:before, .order .truck:after {
+          --r: -90deg;
+          content: "";
+          height: 2px;
+          width: 20px;
+          right: 58px;
+          position: absolute;
+          display: block;
+          background: var(--white);
+          border-radius: 1px;
+          transform-origin: 100% 50%;
+          transform: rotate(var(--r));
+        }
+        .order .truck:before {
+          top: 4px;
+        }
+        .order .truck:after {
+          --r: 90deg;
+          bottom: 4px;
+        }
+        .order .truck .back {
+          left: 0;
+          top: 0;
+          width: 60px;
+          height: 41px;
+          z-index: 1;
+        }
+        .order .truck .front {
+          overflow: hidden;
+          position: absolute;
+          border-radius: 2px 9px 9px 2px;
+          width: 26px;
+          height: 41px;
+          left: 60px;
+        }
+        .order .truck .front:before, .order .truck .front:after {
+          content: "";
+          position: absolute;
+          display: block;
+        }
+        .order .truck .front:before {
+          height: 13px;
+          width: 2px;
+          left: 0;
+          top: 14px;
+          background: linear-gradient(var(--grey), var(--grey-dark));
+        }
+        .order .truck .front:after {
+          border-radius: 2px 9px 9px 2px;
+          background: var(--primary);
+          width: 24px;
+          height: 41px;
+          right: 0;
+        }
+        .order .truck .front .window {
+          overflow: hidden;
+          border-radius: 2px 8px 8px 2px;
+          background: var(--primary-light);
+          transform: perspective(4px) rotateY(3deg);
+          width: 22px;
+          height: 41px;
+          position: absolute;
+          left: 2px;
+          top: 0;
+          z-index: 1;
+          transform-origin: 0 50%;
+        }
+        .order .truck .front .window:before, .order .truck .front .window:after {
+          content: "";
+          position: absolute;
+          right: 0;
+        }
+        .order .truck .front .window:before {
+          top: 0;
+          bottom: 0;
+          width: 14px;
+          background: var(--dark);
+        }
+        .order .truck .front .window:after {
+          width: 14px;
+          top: 7px;
+          height: 4px;
+          position: absolute;
+          background: rgba(255, 255, 255, 0.14);
+          transform: skewY(14deg);
+          box-shadow: 0 7px 0 rgba(255, 255, 255, 0.14);
+        }
+        .order .truck .light {
+          width: 3px;
+          height: 8px;
+          left: 83px;
+          transform-origin: 100% 50%;
+          position: absolute;
+          border-radius: 2px;
+          transform: scaleX(0.8);
+          background: #f0dc5f;
+        }
+        .order .truck .light:before {
+          content: "";
+          height: 4px;
+          width: 7px;
+          opacity: 0;
+          transform: perspective(2px) rotateY(-15deg) scaleX(0.94);
+          position: absolute;
+          transform-origin: 0 50%;
+          left: 3px;
+          top: 50%;
+          margin-top: -2px;
+          background: linear-gradient(90deg, #f0dc5f, rgba(240, 220, 95, 0.7), rgba(240, 220, 95, 0));
+        }
+        .order .truck .light.top {
+          top: 4px;
+        }
+        .order .truck .light.bottom {
+          bottom: 4px;
+        }
+        .order .box {
+          --start: var(--sand-light);
+          --stop: var(--sand);
+          width: 21px;
+          height: 21px;
+          right: 100%;
+          top: 21px;
+        }
+        .order .box:before, .order .box:after {
+          content: "";
+          top: 10px;
+          position: absolute;
+          left: 0;
+          right: 0;
+        }
+        .order .box:before {
+          height: 3px;
+          margin-top: -1px;
+          background: rgba(0, 0, 0, 0.1);
+        }
+        .order .box:after {
+          height: 1px;
+          background: rgba(0, 0, 0, 0.15);
+        }
+        .order.animate .default {
+          --o: 0;
+          transition-delay: 0s;
+        }
+        .order.animate .success {
+          --offset: 0;
+          --o: 1;
+          transition-delay: 7s;
+        }
+        .order.animate .success svg {
+          transition-delay: 7.3s;
+        }
+        .order.animate .truck {
+          animation: truck 10s ease forwards;
+        }
+        .order.animate .truck:before {
+          animation: door1 2.4s ease forwards 0.3s;
+        }
+        .order.animate .truck:after {
+          animation: door2 2.4s ease forwards 0.6s;
+        }
+        .order.animate .truck .light:before, .order.animate .truck .light:after {
+          animation: light 10s ease forwards;
+        }
+        .order.animate .box {
+          animation: box 10s ease forwards;
+        }
+        .order.animate .lines {
+          animation: lines 10s ease forwards;
+        }
+
+        @keyframes truck {
+          10%, 30% { transform: translateX(-164px); }
+          40% { transform: translateX(-104px); }
+          60% { transform: translateX(-224px); }
+          75%, 100% { transform: translateX(24px); }
+        }
+        @keyframes lines {
+          0%, 30% { opacity: 0; transform: scaleY(0.7) translateX(0); }
+          35%, 65% { opacity: 1; }
+          70% { opacity: 0; }
+          100% { transform: scaleY(0.7) translateX(-400px); }
+        }
+        @keyframes light {
+          0%, 30% { opacity: 0; transform: perspective(2px) rotateY(-15deg) scaleX(0.88); }
+          40%, 100% { opacity: 1; transform: perspective(2px) rotateY(-15deg) scaleX(0.94); }
+        }
+        @keyframes door1 {
+          30%, 50% { transform: rotate(32deg); }
+        }
+        @keyframes door2 {
+          30%, 50% { transform: rotate(-32deg); }
+        }
+        @keyframes box {
+          8%, 10% { transform: translateX(40px); opacity: 1; }
+          25% { transform: translateX(112px); opacity: 1; }
+          26% { transform: translateX(112px); opacity: 0; }
+          27%, 100% { transform: translateX(0px); opacity: 0; }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 dark:bg-darkBg dark:text-gray-100 transition-colors duration-300 pt-24 flex flex-col min-h-screen">
+
+    <!-- HEADER / NAVEGACIÓN GLOBAL -->
+    <header id="qxao-header" class="fixed top-0 w-full z-40 transition-all duration-300 bg-white/90 dark:bg-darkBg/90 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 shadow-sm">
+        <nav id="qxao-nav" class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center transition-all duration-300">
+            
+            <!-- LOGO QXAO UNIFICADO Y RESPONSIVO -->
+            <a href="index.html" class="block w-36 md:w-44 flex-shrink-0 transition-transform hover:scale-105">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1382.99 506.24" class="w-full h-auto">
+                    <g id="OBJECTS">
+                        <!-- Q (Morado Qxao) -->
+                        <path class="fill-[#690991] dark:fill-[#c75ced] transition-colors" d="M853.72,356.62a22.9,22.9,0,0,1-9.7-2.1,31.2,31.2,0,0,1-9.24-7l-.12-.14c.31-.11.63-.21.94-.33a86.24,86.24,0,0,0,28.64-17.77,84.05,84.05,0,0,0,0-122,86.24,86.24,0,0,0-28.64-17.77,107.51,107.51,0,0,0-72.58,0,86.3,86.3,0,0,0-28.87,17.88,82.18,82.18,0,0,0-19,27,88.12,88.12,0,0,0,0,67.79,82,82,0,0,0,19,27A86.17,86.17,0,0,0,763,347a94.63,94.63,0,0,0,18.45,4.9q8.41,8.61,15.56,15a105.35,105.35,0,0,0,18.23,13.32,70.66,70.66,0,0,0,17.89,7.13,82.82,82.82,0,0,0,19.63,2.22q28.76,0,45.82-20.57l-20.1-23.84Q867.28,356.62,853.72,356.62Zm-95.26-69.19a56.24,56.24,0,0,1,0-38.46,45,45,0,0,1,9.35-14.72,40.16,40.16,0,0,1,14-9.47,48,48,0,0,1,34.83,0,40.21,40.21,0,0,1,14,9.47A44.82,44.82,0,0,1,840,249a56.24,56.24,0,0,1,0,38.46,44.54,44.54,0,0,1-9.35,14.84,40.21,40.21,0,0,1-14,9.47,48,48,0,0,1-34.83,0,40.16,40.16,0,0,1-14,9.47A44.7,44.7,0,0,1,758.46,287.43Z"/>
+                        <!-- X (Morado Qxao) -->
+                        <polygon class="fill-[#690991] dark:fill-[#c75ced] transition-colors" points="1032.55 223.38 985.56 223.38 962.23 255.42 939.74 223.38 889.72 223.38 936.57 286.7 888.31 350.08 936.47 350.08 960.7 316.91 983.46 350.08 1034.18 350.08 985.81 285.18 1032.55 223.38"/>
+                        <!-- a (Gris de día, Blanco de noche) -->
+                        <path class="fill-[#5e5e5e] dark:fill-white transition-colors duration-300" d="M1140.2,235.41q-17-14.13-47.81-14.14a120.84,120.84,0,0,0-30,3.86A85.87,85.87,0,0,0,1036.52,236l15,30.15a49.33,49.33,0,0,1,15.9-8.06,61.58,61.58,0,0,1,18.46-2.92q14,0,20.46,5.72,5.84,5.22,6.35,14.38h-25.17q-19.63,0-32,4.56t-18.35,13.09a34.44,34.44,0,0,0-6,20.22,36.94,36.94,0,0,0,5.5,19.87,37.68,37.68,0,0,0,16,14q10.51,5.13,25.71,5.14,16.61,0,26.77-6.66a30.92,30.92,0,0,0,10.64-11.89v16.45h41.37V279.71Q1157.14,249.56,1140.2,235.41ZM1104,320.51a25,25,0,0,1-13.21,3.62q-7.71,0-12.15-3.51a11.28,11.28,0,0,1-4.44-9.35,11.41,11.41,0,0,1,4.32-9.35q4.32-3.51,15.08-3.51h19.17v11A21.14,21.14,0,0,1,1104,320.51Z"/>
+                        <!-- o (Gris de día, Blanco de noche) -->
+                        <path class="fill-[#5e5e5e] dark:fill-white transition-colors duration-300" d="M1301.84,252.6a62.6,62.6,0,0,0-25.36-23q-16.26-8.3-37-8.3t-36.94,8.3a63.57,63.57,0,0,0-25.36,23q-9.24,14.72-9.24,33.89t9.24,34a64.16,64.16,0,0,0,25.36,23.25q16.13,8.43,36.94,8.42t37-8.42a63.17,63.17,0,0,0,25.36-23.25q9.12-14.85,9.12-34T1301.84,252.6ZM1262.57,303a24.64,24.64,0,0,1-9.47,10.41,26.51,26.51,0,0,1-13.67,3.5,26.12,26.12,0,0,1-13.45-3.5A25.39,25.39,0,0,1,1216.4,303a34.92,34.92,0,0,1-3.62-16.48q0-9.58,3.62-16.24a25.6,25.6,0,0,1,9.58-10.17,26,26,0,0,1,13.45-3.51,26.42,26.42,0,0,1,13.67,3.51,24.82,24.82,0,0,1,9.47,10.17q3.51,6.66,3.51,16.24A35.92,35.92,0,0,1,1262.57,303Z"/>
+                        <!-- Cerebro/Pez (Morado Qxao) -->
+                        <path class="fill-[#690991] dark:fill-[#c75ced] transition-colors" d="M590.54,286,693.92,150a5.48,5.48,0,0,0-4.36-8.8H610a5.47,5.47,0,0,0-4.39,2.21l-59.66,80.21a5.49,5.49,0,0,1-8.84,0s-26.53-35.94-49.29-67.71c-6.49-9.05-16.39-12-27.42-13.48-21.43-2.86-53.74,1.27-53.86,1.29-193.59,24.49-296.23,135.12-317,158a5.49,5.49,0,0,0,.49,7.83C218.49,421.41,365.63,440.9,435.22,444c0,0,33.43.46,39.19-5.88.49-.53,1-1.06,1.43-1.64,6.59-8.78,58.92-79.17,58.92-79.17a5.48,5.48,0,0,1,8.86.08l60.27,84.3a5.48,5.48,0,0,0,4.46,2.29H685a10,10,0,0,0,8-16.07L590.53,292.59A5.49,5.49,0,0,1,590.54,286ZM425.1,378.06a5.32,5.32,0,0,1-6.22,1.72l0,0a84.4,84.4,0,0,1-29.27-19.37,89.45,89.45,0,0,1-19.38-30.11,108.59,108.59,0,0,1,0-76.45,90.08,90.08,0,0,1,19.38-29.91,83.9,83.9,0,0,1,25.07-17.56c1-.47,2.08-.93,3.15-1.36s2.07-.8,3.12-1.16a5.48,5.48,0,0,1,6.23,1.87l61.67,82.23a5.46,5.46,0,0,1,0,6.61Z"/>
+                    </g>
+                </svg>
+            </a>
+            
+            <!-- ENLACES DESKTOP -->
+            <div class="hidden md:flex gap-8 text-sm font-medium items-center">
+                <a href="index.html" data-i18n="nav-back" class="text-gray-600 dark:text-gray-300 hover:text-[#690991] dark:hover:text-[#c75ced] transition mr-4">← Volver al Inicio</a>
+                <a href="#precios" data-i18n="nav-precios" class="text-[#690991] dark:text-[#c75ced] transition">Precios Detallados</a>
+            </div>
+            
+            <!-- ACCIONES -->
+            <div class="flex items-center gap-3 md:gap-4">
+                <button id="lang-toggle" class="text-xs font-bold text-gray-500 dark:text-gray-400 hover:text-[#690991] dark:hover:text-white transition-colors px-2 py-1.5 rounded border border-gray-200 dark:border-gray-700 bg-white dark:bg-darkCard shadow-sm">
+                    ES <span class="opacity-40">|</span> EN
+                </button>
+                <button id="theme-toggle" class="text-gray-500 dark:text-gray-400 hover:text-[#690991] dark:hover:text-white focus:outline-none transition-colors mr-2">
+                    <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+                    <svg id="theme-toggle-light-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"></path></svg>
+                </button>
+                <button onclick="window.location.href='login.html'" data-i18n="btn-login" class="hidden md:block bg-[#690991] text-white px-6 py-2.5 rounded-full font-semibold hover:bg-[#4a0066] transition shadow-lg shadow-[#690991]/30">Iniciar Sesión</button>
+                <button id="menu-btn" class="block md:hidden text-gray-700 dark:text-gray-200 focus:outline-none ml-1">
+                    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                </button>
+            </div>
+        </nav>
+        
+        <!-- MENU MÓVIL DESPLEGABLE -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-darkCard px-6 py-6 space-y-4 shadow-xl border-t border-gray-100 dark:border-gray-800">
+            <a href="index.html" data-i18n="nav-back" class="block text-gray-600 dark:text-gray-300 font-medium py-2 close-menu">← Volver al Inicio</a>
+            <a href="#precios" data-i18n="nav-precios" class="block text-[#690991] dark:text-[#c75ced] font-bold py-2 close-menu">Precios Detallados</a>
+            <div class="pt-4 border-t border-gray-100 dark:border-gray-700 flex flex-col gap-3">
+                <button onclick="window.location.href='login.html'" data-i18n="btn-login" class="w-full bg-[#690991] text-white px-6 py-3 rounded-full font-semibold hover:bg-[#4a0066] transition shadow-lg shadow-[#690991]/30">Iniciar Sesión</button>
+            </div>
+        </div>
+    </header>
+
+
+    <!-- ========================================== -->
+    <!-- ÁREA DE CONTENIDO PRINCIPAL: PLANES        -->
+    <!-- ========================================== -->
+    <main class="flex-grow w-full relative overflow-hidden bg-white dark:bg-[#151e2f] bg-grid-light transition-colors pb-24">
+        
+        <div class="max-w-6xl mx-auto px-6 pt-16 relative z-10">
+            
+            <!-- HEADER DE SECCIÓN -->
+            <div class="text-center animate-on-scroll mb-10">
+                <span data-i18n="page-tag" class="inline-block px-4 py-1.5 rounded-full bg-[#690991]/10 text-[#690991] dark:bg-[#c75ced]/10 dark:text-[#c75ced] font-bold text-xs tracking-wider uppercase mb-4 border border-[#690991]/20">Propuesta Comercial</span>
+                <h1 data-i18n="page-title" class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">Ecosistema de Planes Qxao</h1>
+                <p data-i18n="page-subtitle" class="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto text-lg">Descubre en detalle cada beneficio técnico y comercial que integraremos en la operativa de tu empresa.</p>
+            </div>
+
+            <!-- BOTONES TOGGLE MENSUAL/TRIMESTRAL/ANUAL -->
+            <div class="flex justify-center items-center mt-6 mb-12 animate-on-scroll">
+                <div class="relative inline-flex bg-gray-200/60 dark:bg-gray-800/80 p-1.5 rounded-full shadow-inner border border-gray-300/50 dark:border-gray-700/50 backdrop-blur-sm">
+                    <!-- Botón 1 Mes -->
+                    <button id="btn-mensual" class="price-toggle-btn relative z-10 px-5 sm:px-6 py-2.5 rounded-full text-sm font-bold text-gray-500 hover:text-gray-900 dark:hover:text-white transition-all duration-300 hover:bg-gray-100 dark:hover:bg-gray-700/50">
+                        <span data-i18n="price-1month">1 Mes</span>
+                    </button>
+                    <!-- Botón 3 Meses -->
+                    <button id="btn-trimestral" class="price-toggle-btn relative z-10 px-5 sm:px-6 py-2.5 rounded-full text-sm font-bold text-gray-500 hover:text-gray-900 dark:hover:text-white transition-all duration-300 hover:bg-gray-100 dark:hover:bg-gray-700/50 flex items-center gap-1.5 hover:-translate-y-0.5">
+                        <span data-i18n="price-3months">3 Meses</span>
+                        <span class="discount-badge text-[10px] bg-[#690991]/10 text-[#690991] dark:bg-[#c75ced]/20 dark:text-[#c75ced] px-2 py-0.5 rounded-full tracking-wide font-black transition-colors">-12%</span>
+                    </button>
+                    <!-- Botón 1 Año (ACTIVO POR DEFECTO) -->
+                    <button id="btn-anual" class="price-toggle-btn active relative z-10 px-5 sm:px-6 py-2.5 rounded-full text-sm font-bold bg-[#690991] text-white shadow-[0_0_15px_rgba(105,9,145,0.4)] transform scale-105 transition-all duration-300 flex items-center gap-1.5 hover:-translate-y-0.5">
+                        <span data-i18n="price-1year">1 Año</span>
+                        <span class="discount-badge text-[10px] bg-white/20 text-white px-2 py-0.5 rounded-full tracking-wide font-black transition-colors">-30%</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- DESGLOSE DE PLANES (LISTADO VERTICAL DETALLADO) -->
+            <div id="precios" class="space-y-12 animate-on-scroll">
+                
+                <!-- PLAN 1: BÁSICO -->
+                <div class="glow-card glass-card rounded-[2rem] overflow-hidden flex flex-col md:flex-row items-stretch shadow-lg">
+                    <!-- Izquierda: Precios -->
+                    <div class="w-full md:w-1/3 bg-gray-50 dark:bg-darkCard p-8 md:p-10 border-b md:border-b-0 md:border-r border-gray-200 dark:border-gray-700 flex flex-col justify-center">
+                        <div class="w-12 h-12 rounded-2xl bg-[#690991]/10 flex items-center justify-center mb-4">
+                            <svg class="w-6 h-6 text-[#690991] dark:text-[#c75ced]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+                        </div>
+                        <h3 data-i18n="plan1-name" class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Plan Básico Qxao</h3>
+                        <p class="text-4xl font-black text-[#690991] dark:text-[#c75ced] my-2">
+                            $<span data-mensual="60" data-trimestral="48" data-anual="42" class="price-value transition-opacity duration-300">42</span>
+                            <span class="text-lg font-medium text-gray-500 dark:text-gray-400">USD / mes</span>
+                        </p>
+                        <p data-i18n="plan1-setup" class="text-sm font-bold text-green-700 dark:text-green-400 mb-8 mt-4 bg-green-100 dark:bg-green-900/30 py-2 px-4 rounded-lg inline-block text-center border border-green-200 dark:border-green-800">Setup: $0 (Gratis)</p>
+                        <button class="order secondary mt-auto group-hover:border-[#690991] group-hover:bg-[#690991]/5">
+                            <span class="default font-bold" data-i18n="price-btn1">Elegir Plan</span>
+                            <span class="success">¡Procesado! <svg viewbox="0 0 12 10"><polyline points="1.5 6 4.5 9 10.5 1"></polyline></svg></span>
+                            <div class="box"></div>
+                            <div class="truck"><div class="back"></div><div class="front"><div class="window"></div></div><div class="light top"></div><div class="light bottom"></div></div>
+                            <div class="lines"></div>
+                        </button>
+                    </div>
+                    <!-- Derecha: Beneficios -->
+                    <div class="w-full md:w-2/3 p-8 md:p-10">
+                        <h4 data-i18n="title-ben" class="font-bold text-lg mb-6 text-gray-900 dark:text-white uppercase tracking-wide border-b border-gray-200 dark:border-gray-700 pb-2">Beneficios Comerciales</h4>
+                        <ul class="space-y-6">
+                            <li>
+                                <h5 data-i18n="p1-t1" class="font-bold text-gray-800 dark:text-gray-200 flex items-center gap-2 mb-1"><svg class="w-5 h-5 text-[#690991] dark:text-[#c75ced]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg> Vendedor IA con Protocolo "Pase de Gol"</h5>
+                                <p data-i18n="p1-d1" class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"><strong class="text-gray-800 dark:text-gray-300">Atención Instantánea 24/7:</strong> Responde en menos de 5s usando GPT-4o-mini.<br><strong class="text-gray-800 dark:text-gray-300">Cierre Automatizado:</strong> Guía al pedido, pide datos y transfiere a un humano (Pase de Gol).</p>
+                            </li>
+                            <li>
+                                <h5 data-i18n="p1-t2" class="font-bold text-gray-800 dark:text-gray-200 flex items-center gap-2 mb-1"><svg class="w-5 h-5 text-[#690991] dark:text-[#c75ced]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" /></svg> Interacción Natural y Humana</h5>
+                                <p data-i18n="p1-d2" class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"><strong class="text-gray-800 dark:text-gray-300">Memoria Contextual (Redis):</strong> Recuerda los últimos 4 mensajes del cliente.<br><strong class="text-gray-800 dark:text-gray-300">Demora Proporcionada:</strong> Simula 4s de escritura humana antes de responder.</p>
+                            </li>
+                            <li>
+                                <h5 data-i18n="p1-t3" class="font-bold text-gray-800 dark:text-gray-200 flex items-center gap-2 mb-1"><svg class="w-5 h-5 text-[#690991] dark:text-[#c75ced]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg> Protección de Marca y Seguridad</h5>
+                                <p data-i18n="p1-d3" class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"><strong class="text-gray-800 dark:text-gray-300">Desconexión Automática (2h):</strong> El bot se apaga si piden un asesor o se activa el Pase de Gol.<br><strong class="text-gray-800 dark:text-gray-300">Anti-Spam & Anti-Prompt Injection:</strong> Bloquea intentos de hackeo de IA y suspende a usuarios tras 6 mensajes seguidos.</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- PLAN 2: AVANZADO -->
+                <div class="glow-card glass-card rounded-[2rem] overflow-hidden flex flex-col md:flex-row items-stretch shadow-lg border-2 border-[#690991] dark:border-[#c75ced]">
+                    <!-- Izquierda: Precios -->
+                    <div class="w-full md:w-1/3 bg-[#690991]/5 dark:bg-[#c75ced]/5 p-8 md:p-10 border-b md:border-b-0 md:border-r border-[#690991]/20 flex flex-col justify-center relative">
+                        <span data-i18n="price-pop" class="absolute top-0 left-1/2 -translate-x-1/2 bg-[#690991] dark:bg-[#c75ced] text-white dark:text-gray-900 px-4 py-1 rounded-b-lg text-xs font-bold shadow-md uppercase tracking-wider">Más Popular</span>
+                        <div class="w-12 h-12 rounded-2xl bg-[#690991]/10 flex items-center justify-center mb-4 mt-2">
+                            <svg class="w-6 h-6 text-[#690991] dark:text-[#c75ced]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" /></svg>
+                        </div>
+                        <h3 data-i18n="plan2-name" class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Plan Avanzado</h3>
+                        <p class="text-4xl font-black text-[#690991] dark:text-[#c75ced] my-2">
+                            $<span data-mensual="112" data-trimestral="89.60" data-anual="78.40" class="price-value transition-opacity duration-300">78.40</span>
+                            <span class="text-lg font-medium text-gray-500 dark:text-gray-400">USD / mes</span>
+                        </p>
+                        <p data-i18n="plan2-setup" class="text-sm font-bold text-green-700 dark:text-green-400 mb-8 mt-4 bg-green-100 dark:bg-green-900/30 py-2 px-4 rounded-lg inline-block text-center border border-green-200 dark:border-green-800 shadow-sm">Setup: $0 (Gratis)</p>
+                        <button class="order secondary mt-auto group-hover:border-[#690991] group-hover:bg-[#690991]/5">
+                            <span class="default font-bold" data-i18n="price-btn1">Elegir Plan</span>
+                            <span class="success">¡Procesado! <svg viewbox="0 0 12 10"><polyline points="1.5 6 4.5 9 10.5 1"></polyline></svg></span>
+                            <div class="box"></div>
+                            <div class="truck"><div class="back"></div><div class="front"><div class="window"></div></div><div class="light top"></div><div class="light bottom"></div></div>
+                            <div class="lines"></div>
+                        </button>
+                    </div>
+                    <!-- Derecha: Beneficios -->
+                    <div class="w-full md:w-2/3 p-8 md:p-10">
+                        <h4 data-i18n="title-ben" class="font-bold text-lg mb-6 text-gray-900 dark:text-white uppercase tracking-wide border-b border-gray-200 dark:border-gray-700 pb-2">Beneficios Comerciales</h4>
+                        <ul class="space-y-6">
+                            <li>
+                                <h5 data-i18n="p2-t1" class="font-bold text-gray-800 dark:text-gray-200 flex items-center gap-2 mb-1"><svg class="w-5 h-5 text-[#690991] dark:text-[#c75ced]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" /></svg> Transcripción de Notas de Voz (Whisper)</h5>
+                                <p data-i18n="p2-d1" class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">Procesa audios en milisegundos con <code class="bg-gray-100 dark:bg-gray-800 px-1 rounded">whisper-large-v3</code> y responde al contenido como si fuera texto.</p>
+                            </li>
+                            <li>
+                                <h5 data-i18n="p2-t2" class="font-bold text-gray-800 dark:text-gray-200 flex items-center gap-2 mb-1"><svg class="w-5 h-5 text-[#690991] dark:text-[#c75ced]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /></svg> Herramientas Dinámicas (Function Calling)</h5>
+                                <p data-i18n="p2-d2" class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"><strong class="text-gray-800 dark:text-gray-300">Consultas en Vivo:</strong> Consulta sub-flujos para obtener precios, disponibilidad e inventario actualizado.<br><strong class="text-gray-800 dark:text-gray-300">Ejecución de Acciones:</strong> Registra solicitudes directamente en el sistema.</p>
+                            </li>
+                            <li>
+                                <h5 data-i18n="p2-t3" class="font-bold text-gray-800 dark:text-gray-200 flex items-center gap-2 mb-1"><svg class="w-5 h-5 text-[#690991] dark:text-[#c75ced]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" /></svg> Memoria Persistente (PostgreSQL) y Lead Scoring</h5>
+                                <p data-i18n="p2-d3" class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"><strong class="text-gray-800 dark:text-gray-300">Memoria Permanente:</strong> Guarda el historial de chats y el seguimiento del embudo.<br><strong class="text-gray-800 dark:text-gray-300">Lead Scoring Invisible:</strong> Califica la intención de compra del usuario sin ralentizar WhatsApp.</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- PLAN 3: PLUS+ -->
+                <div class="glow-card glass-card rounded-[2rem] overflow-hidden flex flex-col md:flex-row items-stretch shadow-lg">
+                    <!-- Izquierda: Precios -->
+                    <div class="w-full md:w-1/3 bg-gray-50 dark:bg-darkCard p-8 md:p-10 border-b md:border-b-0 md:border-r border-gray-200 dark:border-gray-700 flex flex-col justify-center">
+                        <div class="w-12 h-12 rounded-2xl bg-[#690991]/10 flex items-center justify-center mb-4">
+                            <svg class="w-6 h-6 text-[#690991] dark:text-[#c75ced]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.383a14.406 14.406 0 01-3 0M14.25 18v-.192c0-.983.658-1.820 1.508-2.316a7.5 7.5 0 10-7.516 0c.85.496 1.508 1.333 1.508 2.316V18" /></svg>
+                        </div>
+                        <h3 data-i18n="plan3-name" class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Plan Plus+</h3>
+                        <p class="text-4xl font-black text-[#690991] dark:text-[#c75ced] my-2">
+                            $<span data-mensual="179" data-trimestral="143.20" data-anual="125.30" class="price-value transition-opacity duration-300">125.30</span>
+                            <span class="text-lg font-medium text-gray-500 dark:text-gray-400">USD / mes</span>
+                        </p>
+                        <p data-i18n="plan3-setup" class="text-sm font-bold text-green-700 dark:text-green-400 mb-8 mt-4 bg-green-100 dark:bg-green-900/30 py-2 px-4 rounded-lg inline-block text-center border border-green-200 dark:border-green-800">Setup: $0 (Gratis)</p>
+                        <button class="order mt-auto shadow-[0_0_15px_rgba(105,9,145,0.4)]">
+                            <span class="default font-bold text-white" data-i18n="price-btn2">Comenzar Ahora</span>
+                            <span class="success">¡Procesado! <svg viewbox="0 0 12 10"><polyline points="1.5 6 4.5 9 10.5 1"></polyline></svg></span>
+                            <div class="box"></div>
+                            <div class="truck"><div class="back"></div><div class="front"><div class="window"></div></div><div class="light top"></div><div class="light bottom"></div></div>
+                            <div class="lines"></div>
+                        </button>
+                    </div>
+                    <!-- Derecha: Beneficios -->
+                    <div class="w-full md:w-2/3 p-8 md:p-10">
+                        <h4 data-i18n="title-ben" class="font-bold text-lg mb-6 text-gray-900 dark:text-white uppercase tracking-wide border-b border-gray-200 dark:border-gray-700 pb-2">Beneficios Comerciales</h4>
+                        <ul class="space-y-6">
+                            <li>
+                                <h5 data-i18n="p3-t1" class="font-bold text-gray-800 dark:text-gray-200 flex items-center gap-2 mb-1"><svg class="w-5 h-5 text-[#690991] dark:text-[#c75ced]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" /></svg> Generación de Notas de Voz Reales & Spintax</h5>
+                                <p data-i18n="p3-d1" class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">Convierte respuestas de texto en audios nativos de WhatsApp (OpenAI TTS). El motor Spintax varía automáticamente los saludos para dar una sensación orgánica y fluida.</p>
+                            </li>
+                            <li>
+                                <h5 data-i18n="p3-t2" class="font-bold text-gray-800 dark:text-gray-200 flex items-center gap-2 mb-1"><svg class="w-5 h-5 text-[#690991] dark:text-[#c75ced]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" /></svg> Pasarela e Integración de Pagos y Follow-Up</h5>
+                                <p data-i18n="p3-d2" class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">Gestiona cobros directo en el chat (Pago Móvil, Zelle, Binance, Stripe) y <strong class='text-gray-800 dark:text-gray-300'>recontacta automáticamente</strong> a clientes inactivos para recuperar ventas perdidas.</p>
+                            </li>
+                            <li>
+                                <h5 data-i18n="p3-t3" class="font-bold text-gray-800 dark:text-gray-200 flex items-center gap-2 mb-1"><svg class="w-5 h-5 text-[#690991] dark:text-[#c75ced]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636" /></svg> Rate Limiting Anti-DDoS</h5>
+                                <p data-i18n="p3-d3" class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">Límite inteligente de 50 mensajes por usuario. Protege el sistema contra saturaciones de tráfico devolviendo código HTTP 429 sin malgastar saldo de IA.</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- PLAN 4: ENTERPRISE (DISEÑO CRISTAL TORNASOLADO) -->
+                <div class="relative bg-white/60 dark:bg-[#1a1027]/60 backdrop-blur-xl border border-white/50 dark:border-[#c75ced]/30 rounded-[2rem] shadow-[0_8px_30px_rgb(105,9,145,0.1)] flex flex-col md:flex-row items-stretch transition-all hover:-translate-y-1 hover:shadow-[0_15px_40px_rgba(105,9,145,0.25)] overflow-hidden group">
+                    
+                    <!-- Orbes Tornasol / Iridescent -->
+                    <div class="absolute -top-12 -right-12 w-48 h-48 bg-gradient-to-br from-[#c75ced] to-[#00d0ff] rounded-full filter blur-[40px] opacity-30 group-hover:opacity-50 transition-opacity duration-500 pointer-events-none"></div>
+                    <div class="absolute -bottom-12 -left-12 w-48 h-48 bg-gradient-to-tr from-[#690991] to-[#ff5f56] rounded-full filter blur-[40px] opacity-20 group-hover:opacity-40 transition-opacity duration-500 pointer-events-none"></div>
+
+                    <!-- Izquierda: Precios -->
+                    <div class="w-full md:w-1/3 p-8 md:p-10 border-b md:border-b-0 md:border-r border-gray-300/50 dark:border-gray-700/50 flex flex-col justify-center relative z-10">
+                        <div class="w-12 h-12 rounded-2xl bg-[#c75ced]/20 flex items-center justify-center mb-4 border border-[#c75ced]/30">
+                            <svg class="w-6 h-6 text-[#690991] dark:text-[#c75ced]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" /></svg>
+                        </div>
+                        <h3 data-i18n="plan4-name" class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Enterprise Qxao</h3>
+                        <p class="text-4xl font-black text-gray-900 dark:text-white my-2">
+                            $<span data-mensual="415" data-trimestral="332" data-anual="290.50" class="price-value transition-opacity duration-300">290.50</span>
+                            <span class="text-lg font-medium text-gray-500 dark:text-gray-400">USD / mes</span>
+                        </p>
+                        <p data-i18n="plan4-setup" class="text-sm font-bold text-green-700 dark:text-green-400 mb-8 mt-4 bg-green-100/50 dark:bg-green-900/30 py-2 px-4 rounded-lg inline-block text-center border border-green-200 dark:border-green-800 backdrop-blur-sm">Setup: $0 (Gratis)</p>
+                        <button class="order mt-auto shadow-[0_10px_20px_rgba(105,9,145,0.2)] relative z-10">
+                            <span class="default text-sm text-white font-bold" data-i18n="price-btn3">Contactar Ventas</span>
+                            <span class="success">¡Enviado! <svg viewbox="0 0 12 10"><polyline points="1.5 6 4.5 9 10.5 1"></polyline></svg></span>
+                            <div class="box"></div>
+                            <div class="truck"><div class="back"></div><div class="front"><div class="window"></div></div><div class="light top"></div><div class="light bottom"></div></div>
+                            <div class="lines"></div>
+                        </button>
+                    </div>
+                    <!-- Derecha: Beneficios -->
+                    <div class="w-full md:w-2/3 p-8 md:p-10 relative z-10">
+                        <h4 data-i18n="title-ben" class="font-bold text-lg mb-6 text-gray-900 dark:text-white uppercase tracking-wide border-b border-gray-300/50 dark:border-gray-700/50 pb-2">Beneficios Comerciales</h4>
+                        <ul class="space-y-6">
+                            <li>
+                                <h5 data-i18n="p4-t1" class="font-bold text-gray-800 dark:text-gray-200 flex items-center gap-2 mb-1"><svg class="w-5 h-5 text-[#690991] dark:text-[#c75ced]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg> Búsqueda Vectorial (RAG) y Pinecone</h5>
+                                <p data-i18n="p4-d1" class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">El bot consulta manuales de 500+ páginas y catálogos extensos con precisión exacta mediante integración con <code class="bg-white/50 dark:bg-gray-800/50 px-1 rounded text-[#690991] dark:text-[#c75ced]">text-embedding-3-small</code>.</p>
+                            </li>
+                            <li>
+                                <h5 data-i18n="p4-t2" class="font-bold text-gray-800 dark:text-gray-200 flex items-center gap-2 mb-1"><svg class="w-5 h-5 text-[#690991] dark:text-[#c75ced]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" /></svg> Clonación de Voz Ultrarrealista</h5>
+                                <p data-i18n="p4-d2" class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">Conexión a API de ElevenLabs. Los audios responden con la voz exacta del dueño, gerente o locutor de la marca logrando un nivel de hiper-personalización.</p>
+                            </li>
+                            <li>
+                                <h5 data-i18n="p4-t3" class="font-bold text-gray-800 dark:text-gray-200 flex items-center gap-2 mb-1"><svg class="w-5 h-5 text-[#690991] dark:text-[#c75ced]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" /></svg> Resiliencia, CRM Sync & Auditoría de Costos</h5>
+                                <p data-i18n="p4-d3" class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">Global Error Handler (99.9% uptime). Recontacta clientes masivamente, audita en tiempo real el costo exacto por token de cada chat y sincroniza prospectos bidireccionalmente con tu CRM.</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- SECCIÓN MÓDULOS ADD-ONS -->
+            <div class="mt-24 mb-16 animate-on-scroll">
+                <div class="text-center mb-10">
+                    <h2 data-i18n="addon-title" class="text-3xl font-bold text-gray-900 dark:text-white mb-3">Módulos Add-ons "A la Carta"</h2>
+                    <p data-i18n="addon-desc" class="text-gray-600 dark:text-gray-400">Agrega funciones extra a tu plan Básico, Avanzado o Plus+. <br><strong class="text-[#690991] dark:text-[#c75ced]">¡Totalmente INCLUIDOS ($0) en Enterprise!</strong></p>
+                </div>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+                    <!-- Addon 1 -->
+                    <div class="bg-white dark:bg-darkCard p-5 rounded-2xl border border-gray-200 dark:border-gray-700 shadow-sm hover:border-[#690991] dark:hover:border-[#c75ced] transition-colors">
+                        <div class="flex justify-between items-start mb-3">
+                            <span data-i18n="add-p1" class="text-[#690991] dark:text-[#c75ced] font-bold text-sm">+$20 USD</span>
+                            <span data-i18n="add-badge" class="bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400 text-[9px] px-2 py-0.5 rounded font-bold uppercase">$0 en Enterprise</span>
+                        </div>
+                        <h4 data-i18n="add-t1" class="font-bold text-gray-900 dark:text-white text-sm mb-2 leading-tight">Recordatorios Automáticos (CRON)</h4>
+                        <p data-i18n="add-d1" class="text-xs text-gray-500 dark:text-gray-400">Elimina inasistencias y confirma asistencia a citas automáticas.</p>
+                    </div>
+                    <!-- Addon 2 -->
+                    <div class="bg-white dark:bg-darkCard p-5 rounded-2xl border border-gray-200 dark:border-gray-700 shadow-sm hover:border-[#690991] dark:hover:border-[#c75ced] transition-colors">
+                        <div class="flex justify-between items-start mb-3">
+                            <span data-i18n="add-p2" class="text-[#690991] dark:text-[#c75ced] font-bold text-sm">+$35 USD</span>
+                            <span data-i18n="add-badge" class="bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400 text-[9px] px-2 py-0.5 rounded font-bold uppercase">$0 en Enterprise</span>
+                        </div>
+                        <h4 data-i18n="add-t2" class="font-bold text-gray-900 dark:text-white text-sm mb-2 leading-tight">Envíos Masivos (Broadcasting)</h4>
+                        <p data-i18n="add-d2" class="text-xs text-gray-500 dark:text-gray-400">Envía promociones masivas a tu BD sin riesgo de baneo.</p>
+                    </div>
+                    <!-- Addon 3 -->
+                    <div class="bg-white dark:bg-darkCard p-5 rounded-2xl border border-gray-200 dark:border-gray-700 shadow-sm hover:border-[#690991] dark:hover:border-[#c75ced] transition-colors">
+                        <div class="flex justify-between items-start mb-3">
+                            <span data-i18n="add-p3" class="text-[#690991] dark:text-[#c75ced] font-bold text-sm">+$25 USD</span>
+                            <span data-i18n="add-badge" class="bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400 text-[9px] px-2 py-0.5 rounded font-bold uppercase">$0 en Enterprise</span>
+                        </div>
+                        <h4 data-i18n="add-t3" class="font-bold text-gray-900 dark:text-white text-sm mb-2 leading-tight">Verificación de Pagos (Pasarela)</h4>
+                        <p data-i18n="add-d3" class="text-xs text-gray-500 dark:text-gray-400">Valida y confirma capturas de transferencias automáticamente.</p>
+                    </div>
+                    <!-- Addon 4 -->
+                    <div class="bg-white dark:bg-darkCard p-5 rounded-2xl border border-gray-200 dark:border-gray-700 shadow-sm hover:border-[#690991] dark:hover:border-[#c75ced] transition-colors">
+                        <div class="flex justify-between items-start mb-3">
+                            <span data-i18n="add-p4" class="text-[#690991] dark:text-[#c75ced] font-bold text-sm">+$30 USD</span>
+                            <span data-i18n="add-badge" class="bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400 text-[9px] px-2 py-0.5 rounded font-bold uppercase">$0 en Enterprise</span>
+                        </div>
+                        <h4 data-i18n="add-t4" class="font-bold text-gray-900 dark:text-white text-sm mb-2 leading-tight">Integración con CRM (HubSpot, Sheets)</h4>
+                        <p data-i18n="add-d4" class="text-xs text-gray-500 dark:text-gray-400">Sincroniza datos de prospectos en tiempo real con ventas.</p>
+                    </div>
+                    <!-- Addon 5 -->
+                    <div class="bg-white dark:bg-darkCard p-5 rounded-2xl border border-gray-200 dark:border-gray-700 shadow-sm hover:border-[#690991] dark:hover:border-[#c75ced] transition-colors">
+                        <div class="flex justify-between items-start mb-3">
+                            <span data-i18n="add-p5" class="text-[#690991] dark:text-[#c75ced] font-bold text-sm">+$25 USD</span>
+                            <span data-i18n="add-badge" class="bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400 text-[9px] px-2 py-0.5 rounded font-bold uppercase">$0 en Enterprise</span>
+                        </div>
+                        <h4 data-i18n="add-t5" class="font-bold text-gray-900 dark:text-white text-sm mb-2 leading-tight">Chat de Voz Directo</h4>
+                        <p data-i18n="add-d5" class="text-xs text-gray-500 dark:text-gray-400">Transforma respuestas de texto en audios fluidos.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MATRIZ COMPARATIVA GIGANTE -->
+            <div class="mt-20 animate-on-scroll">
+                <div class="text-center mb-8">
+                    <h2 data-i18n="matrix-title" class="text-3xl font-bold text-[#690991] dark:text-[#c75ced] mb-2">Cuadro Comparativo de Planes</h2>
+                    <p data-i18n="matrix-desc" class="text-gray-600 dark:text-gray-400">Revisa qué funciones exactas se incluyen en cada suscripción base.</p>
+                </div>
+                
+                <div class="overflow-x-auto bg-white dark:bg-darkCard rounded-3xl border border-gray-200 dark:border-gray-700 shadow-xl">
+                    <table class="w-full text-left border-collapse min-w-[800px]">
+                        <thead>
+                            <tr class="bg-gray-100 dark:bg-gray-800/50">
+                                <th data-i18n="th-func" class="p-4 md:p-5 font-bold text-gray-900 dark:text-white border-b border-r border-gray-200 dark:border-gray-700 w-1/3">Característica / Función</th>
+                                <th data-i18n="plan-basic" class="p-4 md:p-5 font-bold text-center text-gray-900 dark:text-white border-b border-r border-gray-200 dark:border-gray-700 w-1/6">Básico</th>
+                                <th data-i18n="plan-adv" class="p-4 md:p-5 font-bold text-center text-[#690991] dark:text-[#c75ced] border-b border-r border-gray-200 dark:border-gray-700 w-1/6">Avanzado</th>
+                                <th data-i18n="plan3-name" class="p-4 md:p-5 font-bold text-center text-gray-900 dark:text-white border-b border-r border-gray-200 dark:border-gray-700 w-1/6">Plus+</th>
+                                <!-- HEADER ENTERPRISE CORREGIDO: DEGRADADO PREMIUM -->
+                                <th data-i18n="plan-ent" class="p-4 md:p-5 font-bold text-center text-white border-b border-gray-200 dark:border-gray-700 w-1/6 bg-gradient-to-br from-[#690991] to-[#4a0066] shadow-sm">Enterprise</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-sm text-gray-700 dark:text-gray-300">
+                            <!-- Motor IA -->
+                            <tr class="border-b border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
+                                <td data-i18n="mat-1" class="p-4 md:p-5 border-r border-gray-200 dark:border-gray-700 font-medium">Motor de IA (GPT-4o-mini) y Respuestas 24/7</td>
+                                <td class="p-4 md:p-5 text-center border-r border-gray-200 dark:border-gray-700 text-green-500">✅</td>
+                                <td class="p-4 md:p-5 text-center border-r border-gray-200 dark:border-gray-700 text-green-500">✅</td>
+                                <td class="p-4 md:p-5 text-center border-r border-gray-200 dark:border-gray-700 text-green-500">✅</td>
+                                <!-- CELDAS ENTERPRISE CORREGIDAS: TONO MORADO SUAVE -->
+                                <td class="p-4 md:p-5 text-center text-green-500 bg-[#690991]/5 dark:bg-[#c75ced]/5">✅</td>
+                            </tr>
+                            <!-- Memoria Contextual -->
+                            <tr class="border-b border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
+                                <td data-i18n="mat-2" class="p-4 md:p-5 border-r border-gray-200 dark:border-gray-700 font-medium">Memoria Contextual Básica (Redis)</td>
+                                <td class="p-4 md:p-5 text-center border-r border-gray-200 dark:border-gray-700 text-green-500">✅</td>
+                                <td class="p-4 md:p-5 text-center border-r border-gray-200 dark:border-gray-700 text-green-500">✅</td>
+                                <td class="p-4 md:p-5 text-center border-r border-gray-200 dark:border-gray-700 text-green-500">✅</td>
+                                <td class="p-4 md:p-5 text-center text-green-500 bg-[#690991]/5 dark:bg-[#c75ced]/5">✅</td>
+                            </tr>
+                            <!-- Pase de Gol -->
+                            <tr class="border-b border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
+                                <td data-i18n="mat-3" class="p-4 md:p-5 border-r border-gray-200 dark:border-gray-700 font-medium">Protocolo "Pase de Gol" (Cierre manual)</td>
+                                <td class="p-4 md:p-5 text-center border-r border-gray-200 dark:border-gray-700 text-green-500">✅</td>
+                                <td class="p-4 md:p-5 text-center border-r border-gray-200 dark:border-gray-700 text-green-500">✅</td>
+                                <td class="p-4 md:p-5 text-center border-r border-gray-200 dark:border-gray-700 text-green-500">✅</td>
+                                <td class="p-4 md:p-5 text-center text-green-500 bg-[#690991]/5 dark:bg-[#c75ced]/5">✅</td>
+                            </tr>
+                            <!-- Anti Spam -->
+                            <tr class="border-b border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
+                                <td data-i18n="mat-4" class="p-4 md:p-5 border-r border-gray-200 dark:border-gray-700 font-medium">Protección Anti-Spam y Anti-Hackeo</td>
+                                <td class="p-4 md:p-5 text-center border-r border-gray-200 dark:border-gray-700 text-green-500">✅</td>
+                                <td class="p-4 md:p-5 text-center border-r border-gray-200 dark:border-gray-700 text-green-500">✅</td>
+                                <td class="p-4 md:p-5 text-center border-r border-gray-200 dark:border-gray-700 text-green-500">✅</td>
+                                <td class="p-4 md:p-5 text-center text-green-500 bg-[#690991]/5 dark:bg-[#c75ced]/5">✅</td>
+                            </tr>
+                            <!-- PostgreSQL -->
+                            <tr class="border-b border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
+                                <td data-i18n="mat-5" class="p-4 md:p-5 border-r border-gray-200 dark:border-gray-700 font-medium">Memoria Permanente y Base de Datos (PostgreSQL)</td>
+                                <td class="p-4 md:p-5 text-center border-r border-gray-200 dark:border-gray-700 opacity-30 text-red-500">❌</td>
+                                <td class="p-4 md:p-5 text-center border-r border-gray-200 dark:border-gray-700 text-green-500">✅</td>
+                                <td class="p-4 md:p-5 text-center border-r border-gray-200 dark:border-gray-700 text-green-500">✅</td>
+                                <td class="p-4 md:p-5 text-center text-green-500 bg-[#690991]/5 dark:bg-[#c75ced]/5">✅</td>
+                            </tr>
+                            <!-- Whisper -->
+                            <tr class="border-b border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
+                                <td data-i18n="mat-6" class="p-4 md:p-5 border-r border-gray-200 dark:border-gray-700 font-medium">Transcripción de Audios del Cliente (Whisper)</td>
+                                <td class="p-4 md:p-5 text-center border-r border-gray-200 dark:border-gray-700 opacity-30 text-red-500">❌</td>
+                                <td class="p-4 md:p-5 text-center border-r border-gray-200 dark:border-gray-700 text-green-500">✅</td>
+                                <td class="p-4 md:p-5 text-center border-r border-gray-200 dark:border-gray-700 text-green-500">✅</td>
+                                <td class="p-4 md:p-5 text-center text-green-500 bg-[#690991]/5 dark:bg-[#c75ced]/5">✅</td>
+                            </tr>
+                            <!-- Herramientas -->
+                            <tr class="border-b border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
+                                <td data-i18n="mat-7" class="p-4 md:p-5 border-r border-gray-200 dark:border-gray-700 font-medium">Herramientas Dinámicas (Function Calling)</td>
+                                <td class="p-4 md:p-5 text-center border-r border-gray-200 dark:border-gray-700 opacity-30 text-red-500">❌</td>
+                                <td class="p-4 md:p-5 text-center border-r border-gray-200 dark:border-gray-700 text-green-500">✅</td>
+                                <td class="p-4 md:p-5 text-center border-r border-gray-200 dark:border-gray-700 text-green-500">✅</td>
+                                <td class="p-4 md:p-5 text-center text-green-500 bg-[#690991]/5 dark:bg-[#c75ced]/5">✅</td>
+                            </tr>
+                            <!-- Lead Scoring -->
+                            <tr class="border-b border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
+                                <td data-i18n="mat-8" class="p-4 md:p-5 border-r border-gray-200 dark:border-gray-700 font-medium">Calificación de Clientes (Lead Scoring)</td>
+                                <td class="p-4 md:p-5 text-center border-r border-gray-200 dark:border-gray-700 opacity-30 text-red-500">❌</td>
+                                <td class="p-4 md:p-5 text-center border-r border-gray-200 dark:border-gray-700 text-green-500">✅</td>
+                                <td class="p-4 md:p-5 text-center border-r border-gray-200 dark:border-gray-700 text-green-500">✅</td>
+                                <td class="p-4 md:p-5 text-center text-green-500 bg-[#690991]/5 dark:bg-[#c75ced]/5">✅</td>
+                            </tr>
+                            <!-- Notas de Voz -->
+                            <tr class="border-b border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
+                                <td data-i18n="mat-9" class="p-4 md:p-5 border-r border-gray-200 dark:border-gray-700 font-medium">Respuestas con Notas de Voz Nativas (TTS)</td>
+                                <td class="p-4 md:p-5 text-center border-r border-gray-200 dark:border-gray-700 opacity-30 text-red-500">❌</td>
+                                <td class="p-4 md:p-5 text-center border-r border-gray-200 dark:border-gray-700 opacity-30 text-red-500">❌</td>
+                                <td data-i18n="mat-9-p" class="p-4 md:p-5 text-center border-r border-gray-200 dark:border-gray-700 font-bold text-gray-900 dark:text-white">✅ (OpenAI)</td>
+                                <td data-i18n="mat-9-e" class="p-4 md:p-5 text-center font-bold text-[#690991] dark:text-[#c75ced] bg-[#690991]/5 dark:bg-[#c75ced]/5">✅ (ElevenLabs)</td>
+                            </tr>
+                            <!-- Pagos -->
+                            <tr class="border-b border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
+                                <td data-i18n="mat-10" class="p-4 md:p-5 border-r border-gray-200 dark:border-gray-700 font-medium">Pasarela de Pagos (Pago Móvil, Binance, Zelle)</td>
+                                <td class="p-4 md:p-5 text-center border-r border-gray-200 dark:border-gray-700 opacity-30 text-red-500">❌</td>
+                                <td class="p-4 md:p-5 text-center border-r border-gray-200 dark:border-gray-700 opacity-30 text-red-500">❌</td>
+                                <td class="p-4 md:p-5 text-center border-r border-gray-200 dark:border-gray-700 text-green-500">✅</td>
+                                <td class="p-4 md:p-5 text-center text-green-500 bg-[#690991]/5 dark:bg-[#c75ced]/5">✅</td>
+                            </tr>
+                            <!-- Follow-up -->
+                            <tr class="border-b border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
+                                <td data-i18n="mat-11" class="p-4 md:p-5 border-r border-gray-200 dark:border-gray-700 font-medium">Re-contacto Automático (Follow-up)</td>
+                                <td class="p-4 md:p-5 text-center border-r border-gray-200 dark:border-gray-700 opacity-30 text-red-500">❌</td>
+                                <td class="p-4 md:p-5 text-center border-r border-gray-200 dark:border-gray-700 opacity-30 text-red-500">❌</td>
+                                <td class="p-4 md:p-5 text-center border-r border-gray-200 dark:border-gray-700 text-green-500">✅</td>
+                                <td class="p-4 md:p-5 text-center text-green-500 bg-[#690991]/5 dark:bg-[#c75ced]/5">✅</td>
+                            </tr>
+                            <!-- DDoS -->
+                            <tr class="border-b border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
+                                <td data-i18n="mat-12" class="p-4 md:p-5 border-r border-gray-200 dark:border-gray-700 font-medium">Límite Anti-Saturación (Rate Limiting)</td>
+                                <td class="p-4 md:p-5 text-center border-r border-gray-200 dark:border-gray-700 opacity-30 text-red-500">❌</td>
+                                <td class="p-4 md:p-5 text-center border-r border-gray-200 dark:border-gray-700 opacity-30 text-red-500">❌</td>
+                                <td class="p-4 md:p-5 text-center border-r border-gray-200 dark:border-gray-700 text-green-500">✅</td>
+                                <td class="p-4 md:p-5 text-center text-green-500 bg-[#690991]/5 dark:bg-[#c75ced]/5">✅</td>
+                            </tr>
+                            <!-- RAG -->
+                            <tr class="border-b border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
+                                <td data-i18n="mat-13" class="p-4 md:p-5 border-r border-gray-200 dark:border-gray-700 font-medium">Búsqueda en Documentos Extensos (RAG Vectorial)</td>
+                                <td class="p-4 md:p-5 text-center border-r border-gray-200 dark:border-gray-700 opacity-30 text-red-500">❌</td>
+                                <td class="p-4 md:p-5 text-center border-r border-gray-200 dark:border-gray-700 opacity-30 text-red-500">❌</td>
+                                <td class="p-4 md:p-5 text-center border-r border-gray-200 dark:border-gray-700 opacity-30 text-red-500">❌</td>
+                                <td class="p-4 md:p-5 text-center text-green-500 bg-[#690991]/5 dark:bg-[#c75ced]/5">✅</td>
+                            </tr>
+                            <!-- Clonacion Voz -->
+                            <tr class="border-b border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
+                                <td data-i18n="mat-14" class="p-4 md:p-5 border-r border-gray-200 dark:border-gray-700 font-medium">Clonación de Voz Ultrarrealista</td>
+                                <td class="p-4 md:p-5 text-center border-r border-gray-200 dark:border-gray-700 opacity-30 text-red-500">❌</td>
+                                <td class="p-4 md:p-5 text-center border-r border-gray-200 dark:border-gray-700 opacity-30 text-red-500">❌</td>
+                                <td class="p-4 md:p-5 text-center border-r border-gray-200 dark:border-gray-700 opacity-30 text-red-500">❌</td>
+                                <td class="p-4 md:p-5 text-center text-green-500 bg-[#690991]/5 dark:bg-[#c75ced]/5">✅</td>
+                            </tr>
+                            <!-- CRM Sync -->
+                            <tr class="border-b border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
+                                <td data-i18n="mat-15" class="p-4 md:p-5 border-r border-gray-200 dark:border-gray-700 font-medium">Sincronización Directa con CRM Corporativo</td>
+                                <td class="p-4 md:p-5 text-center border-r border-gray-200 dark:border-gray-700 opacity-30 text-red-500">❌</td>
+                                <td class="p-4 md:p-5 text-center border-r border-gray-200 dark:border-gray-700 opacity-30 text-red-500">❌</td>
+                                <td class="p-4 md:p-5 text-center border-r border-gray-200 dark:border-gray-700 opacity-30 text-red-500">❌</td>
+                                <td class="p-4 md:p-5 text-center text-green-500 bg-[#690991]/5 dark:bg-[#c75ced]/5">✅</td>
+                            </tr>
+                            <!-- Add-ons -->
+                            <tr class="hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
+                                <td data-i18n="mat-16" class="p-4 md:p-5 border-r border-gray-200 dark:border-gray-700 font-bold text-[#690991] dark:text-[#c75ced]">Módulos Add-ons (Recordatorios, Envíos Masivos)</td>
+                                <td data-i18n="mat-extra" class="p-4 md:p-5 text-center border-r border-gray-200 dark:border-gray-700 font-medium text-gray-500">Pago Extra</td>
+                                <td data-i18n="mat-extra" class="p-4 md:p-5 text-center border-r border-gray-200 dark:border-gray-700 font-medium text-gray-500">Pago Extra</td>
+                                <td data-i18n="mat-extra" class="p-4 md:p-5 text-center border-r border-gray-200 dark:border-gray-700 font-medium text-gray-500">Pago Extra</td>
+                                <td data-i18n="mat-inc" class="p-4 md:p-5 text-center font-bold text-white bg-green-500 dark:bg-green-600 rounded-br-2xl shadow-inner">✅ 100% INCLUIDOS</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+    <!-- ========================================== -->
+    <!-- FIN DEL ÁREA DE CONTENIDO PRINCIPAL        -->
+    <!-- ========================================== -->
+
+    <!-- FOOTER GLOBAL PERSONALIZADO -->
+<footer class="bg-gray-900 border-t border-gray-800 text-white py-16 transition-colors mt-auto relative z-20">
+    <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-12 gap-10">
+        
+        <!-- Columna 1: Marca, Descripción y Redes -->
+        <div class="md:col-span-5 pr-0 md:pr-8">
+            <div class="mb-6 w-48">
+                <a href="index.html" class="block cursor-pointer hover:opacity-80 transition-opacity">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1383.43 502.29" class="w-full h-auto" fill="white">
+                        <title>Qxao logo</title>
+                        <g id="OBJECTS">
+                            <path d="M832.9,305.26a22.91,22.91,0,0,1-9.7-2.11,31.17,31.17,0,0,1-9.23-7l-.12-.14c.31-.11.63-.21.94-.33a86.19,86.19,0,0,0,28.63-17.77,84,84,0,0,0,0-122,86.35,86.35,0,0,0-28.63-17.77,107.54,107.54,0,0,0-72.59,0A86.26,86.26,0,0,0,713.33,156a82.12,82.12,0,0,0-19.05,27,88.12,88.12,0,0,0,0,67.79,82.33,82.33,0,0,0,19.05,27,86.4,86.4,0,0,0,28.87,17.88,94.73,94.73,0,0,0,18.46,4.9q8.4,8.61,15.56,15a106,106,0,0,0,18.23,13.33A71.35,71.35,0,0,0,812.33,336,83.42,83.42,0,0,0,832,338.22q28.75,0,45.82-20.57L857.68,293.8Q846.46,305.25,832.9,305.26Zm-95.26-69.2a56.36,56.36,0,0,1,0-38.45A44.78,44.78,0,0,1,747,182.88a40.26,40.26,0,0,1,14-9.47,48,48,0,0,1,34.83,0,40.39,40.39,0,0,1,14,9.47,44.92,44.92,0,0,1,9.35,14.73,56.21,56.21,0,0,1,0,38.45,44.5,44.5,0,0,1-9.35,14.84,40.12,40.12,0,0,1-14,9.47,48,48,0,0,1-34.83,0,40,40,0,0,1-14-9.47A44.36,44.36,0,0,1,737.64,236.06Z"/>
+                            <polygon points="1011.74 172.01 964.75 172.01 941.41 204.05 918.93 172.01 868.9 172.01 915.76 235.33 867.5 298.71 915.66 298.71 939.88 265.55 962.64 298.71 1013.37 298.71 964.99 233.81 1011.74 172.01"/>
+                            <path d="M1119.38,184.05q-17-14.15-47.8-14.15a120.84,120.84,0,0,0-30,3.86,85.9,85.9,0,0,0-25.83,10.87l15,30.16a49.19,49.19,0,0,1,15.89-8.07A61.91,61.91,0,0,1,1065,203.8q14,0,20.45,5.73c3.9,3.47,6,8.27,6.36,14.37h-25.17q-19.64,0-32,4.56t-18.35,13.09a34.47,34.47,0,0,0-6,20.22,37.07,37.07,0,0,0,5.49,19.88,37.63,37.63,0,0,0,16,14q10.52,5.15,25.71,5.14,16.59,0,26.77-6.66A31,31,0,0,0,1095,282.27v16.44h41.38V228.35Q1136.33,198.19,1119.38,184.05Zm-36.23,85.09a24.92,24.92,0,0,1-13.21,3.62q-7.71,0-12.16-3.5a12.17,12.17,0,0,1-.11-18.71q4.32-3.5,15.07-3.5h19.17v11A21.17,21.17,0,0,1,1083.15,269.14Z"/>
+                            <path d="M1281,201.23a62.7,62.7,0,0,0-25.37-23q-16.25-8.3-37.05-8.3t-36.93,8.3a63.67,63.67,0,0,0-25.37,23q-9.24,14.73-9.23,33.9t9.23,34a64.14,64.14,0,0,0,25.37,23.26q16.13,8.42,36.93,8.41t37.05-8.41A63.16,63.16,0,0,0,1281,269.14q9.12-14.85,9.11-34T1281,201.23Zm-39.27,50.38a24.67,24.67,0,0,1-9.47,10.4,26.46,26.46,0,0,1-13.68,3.51,26,26,0,0,1-13.44-3.51,25.36,25.36,0,0,1-9.58-10.4,35,35,0,0,1-3.63-16.48q0-9.58,3.63-16.25a25.21,25.21,0,0,1,23-13.68,26.46,26.46,0,0,1,13.68,3.51,25,25,0,0,1,9.47,10.17q3.49,6.68,3.5,16.25A36.08,36.08,0,0,1,1241.76,251.61Z"/>
+                            <path d="M859.37,379.19a13.79,13.79,0,0,1-6.57-1.5,10.26,10.26,0,0,1-4.37-4.62,17.59,17.59,0,0,1-1.55-7.85,17.4,17.4,0,0,1,1.66-8.1,10.56,10.56,0,0,1,4.59-4.66,14.39,14.39,0,0,1,6.71-1.51,18.4,18.4,0,0,1,4.17.44,14.72,14.72,0,0,1,3.26,1.11l-1.49,4a24.81,24.81,0,0,0-3-1,11.87,11.87,0,0,0-3-.42,7.62,7.62,0,0,0-4.34,1.15,7,7,0,0,0-2.59,3.38,15.36,15.36,0,0,0-.86,5.49,14.81,14.81,0,0,0,.85,5.36,6.94,6.94,0,0,0,2.53,3.32,7.2,7.2,0,0,0,4.16,1.14,14.59,14.59,0,0,0,4-.5,16,16,0,0,0,3.24-1.26v4.38a11.82,11.82,0,0,1-3.16,1.19A19.39,19.39,0,0,1,859.37,379.19Z"/>
+                            <path d="M896.28,351.44V378.7h-4l-.69-3.73h-.27a7.74,7.74,0,0,1-2.18,2.34,9.88,9.88,0,0,1-3,1.42,12.89,12.89,0,0,1-3.51.46,12.42,12.42,0,0,1-5.33-1,7.05,7.05,0,0,1-3.31-3.23,12.34,12.34,0,0,1-1.13-5.65V351.44h5v17.14a7.33,7.33,0,0,0,1.42,4.93,5.49,5.49,0,0,0,4.34,1.63,8,8,0,0,0,4.52-1.13,6.22,6.22,0,0,0,2.4-3.29,16.91,16.91,0,0,0,.73-5.3v-14Z"/>
+                            <path d="M915.21,351q5,0,7.54,2.24c1.67,1.49,2.5,3.85,2.5,7.06V378.7h-3.56l-1-4h-.2a13.69,13.69,0,0,1-2.37,2.47,8.39,8.39,0,0,1-2.86,1.49,13.62,13.62,0,0,1-3.94.49,10.34,10.34,0,0,1-4.41-.89,6.85,6.85,0,0,1-3-2.68,8.63,8.63,0,0,1-1.1-4.56,7.14,7.14,0,0,1,3.19-6.31q3.19-2.16,9.68-2.35l4.7-.2v-1.53c0-2.13-.48-3.63-1.43-4.51a5.64,5.64,0,0,0-4-1.31,13.52,13.52,0,0,0-4,.61,29.13,29.13,0,0,0-3.71,1.45l-1.58-3.61a22.07,22.07,0,0,1,4.39-1.66A19.41,19.41,0,0,1,915.21,351Zm5.12,14.5-3.81.17c-3.15.12-5.37.64-6.64,1.57a4.55,4.55,0,0,0-1.92,3.9,3.77,3.77,0,0,0,1.31,3.19,5.54,5.54,0,0,0,3.46,1,8,8,0,0,0,5.46-1.87,6.94,6.94,0,0,0,2.14-5.52Z"/>
+                            <path d="M947.09,351q4.73,0,7.26,2.37t2.54,7.62V378.7H952V361.61a7.25,7.25,0,0,0-1.43-4.91,5.52,5.52,0,0,0-4.4-1.65q-4.23,0-5.93,2.5c-1.13,1.67-1.69,4.08-1.69,7.25v13.9h-5V351.44h3.93l.72,3.83h.27a8.27,8.27,0,0,1,2.2-2.4,9.69,9.69,0,0,1,3-1.44A12.29,12.29,0,0,1,947.09,351Z"/>
+                            <path d="M974.6,379.19a9.9,9.9,0,0,1-8-3.53q-3-3.54-3-10.49t3-10.63a10,10,0,0,1,8.05-3.59,11.18,11.18,0,0,1,3.69.56,9.69,9.69,0,0,1,2.73,1.51,9.18,9.18,0,0,1,1.92,2.13h.3c-.09-.51-.17-1.23-.25-2.15s-.13-1.73-.13-2.43V340.21h5V378.7H984l-.81-3.78H983a9.12,9.12,0,0,1-1.89,2.16,8.49,8.49,0,0,1-2.74,1.54A11,11,0,0,1,974.6,379.19Zm1.16-4.05q4,0,5.7-2.33c1.12-1.55,1.68-3.85,1.7-6.9v-.77c0-3.24-.53-5.74-1.6-7.48s-3-2.61-5.85-2.61a5.81,5.81,0,0,0-5.22,2.71,13.75,13.75,0,0,0-1.75,7.51q0,4.74,1.75,7.31A6,6,0,0,0,975.76,375.14Z"/>
+                            <path d="M1020.26,365a18.84,18.84,0,0,1-.88,6,12.07,12.07,0,0,1-2.54,4.45,11.06,11.06,0,0,1-4,2.77,14,14,0,0,1-5.32.95,13.18,13.18,0,0,1-5.09-.95,11.12,11.12,0,0,1-4-2.77,12.46,12.46,0,0,1-2.6-4.45,18.27,18.27,0,0,1-.91-6,17.36,17.36,0,0,1,1.53-7.63,10.9,10.9,0,0,1,4.39-4.8,13.43,13.43,0,0,1,6.82-1.64,12.93,12.93,0,0,1,6.6,1.65,11.33,11.33,0,0,1,4.43,4.8A16.76,16.76,0,0,1,1020.26,365ZM1000,365a16.09,16.09,0,0,0,.81,5.41,7.12,7.12,0,0,0,13.54,0,16.38,16.38,0,0,0,.79-5.41,15.9,15.9,0,0,0-.79-5.34,6.92,6.92,0,0,0-2.46-3.42,7.33,7.33,0,0,0-4.34-1.18q-3.91,0-5.73,2.61T1000,365Z"/>
+                            <path d="M1049.72,379.19a9.9,9.9,0,0,1-8-3.53q-3-3.54-3-10.49t3-10.63a10,10,0,0,1,8.06-3.59,11.08,11.08,0,0,1,3.68.56,9.61,9.61,0,0,1,2.74,1.51,9.37,9.37,0,0,1,1.91,2.13h.3c-.08-.51-.17-1.23-.25-2.15s-.12-1.73-.12-2.43V340.21h5V378.7h-3.93l-.82-3.78h-.22a9.59,9.59,0,0,1-1.89,2.16,8.64,8.64,0,0,1-2.75,1.54A10.87,10.87,0,0,1,1049.72,379.19Zm1.17-4.05c2.68,0,4.59-.78,5.7-2.33s1.68-3.85,1.69-6.9v-.77c0-3.24-.53-5.74-1.59-7.48s-3-2.61-5.85-2.61a5.81,5.81,0,0,0-5.22,2.71,13.75,13.75,0,0,0-1.76,7.51q0,4.74,1.76,7.31A6,6,0,0,0,1050.89,375.14Z"/>
+                            <path d="M1074.09,341.13a3.15,3.15,0,0,1,2,.69,2.72,2.72,0,0,1,.85,2.25,2.76,2.76,0,0,1-.85,2.26,3.11,3.11,0,0,1-2,.71,3,3,0,0,1-2-.71,2.82,2.82,0,0,1-.83-2.26,2.78,2.78,0,0,1,.83-2.25A3.07,3.07,0,0,1,1074.09,341.13Zm2.45,10.31V378.7h-5V351.44Z"/>
+                            <path d="M1092.74,390.87q-5.46,0-8.4-2a6.41,6.41,0,0,1-2.93-5.59A6.2,6.2,0,0,1,1083,379a8.16,8.16,0,0,1,4.5-2.39,4.85,4.85,0,0,1-1.87-1.52,3.69,3.69,0,0,1-.77-2.31,4.11,4.11,0,0,1,.85-2.61,9.36,9.36,0,0,1,2.56-2.14,7.37,7.37,0,0,1-3.47-3,8.84,8.84,0,0,1-1.31-4.83,9.59,9.59,0,0,1,1.25-5,8,8,0,0,1,3.6-3.17,13.48,13.48,0,0,1,5.72-1.09q.74,0,1.53.06c.53,0,1,.11,1.51.19a9.73,9.73,0,0,1,1.16.25h9.4v2.94l-4.85.74a8,8,0,0,1,1.17,2.23,8.78,8.78,0,0,1,.44,2.82,8.14,8.14,0,0,1-2.83,6.56q-2.83,2.42-7.83,2.42a18.79,18.79,0,0,1-2.35-.2,5.17,5.17,0,0,0-1.61,1.35,2.73,2.73,0,0,0-.54,1.67,1.51,1.51,0,0,0,.48,1.16,3,3,0,0,0,1.4.66,10.08,10.08,0,0,0,2.22.21h4.75c3,0,5.25.62,6.83,1.88a6.59,6.59,0,0,1,2.38,5.49,8,8,0,0,1-3.77,7Q1099.82,390.88,1092.74,390.87Zm.17-3.64a18.72,18.72,0,0,0,5.33-.64,7,7,0,0,0,3.23-1.83,4,4,0,0,0,1.09-2.82,3.25,3.25,0,0,0-.7-2.26,3.75,3.75,0,0,0-2.09-1.06,18.36,18.36,0,0,0-3.42-.27h-4.5a7.79,7.79,0,0,0-3,.55,4.45,4.45,0,0,0-2,1.57,4.29,4.29,0,0,0-.72,2.53,3.49,3.49,0,0,0,1.77,3.15A9.71,9.71,0,0,0,1092.91,387.23Zm1.09-21.49a5.37,5.37,0,0,0,4.11-1.45,5.79,5.79,0,0,0,1.36-4.14,6.11,6.11,0,0,0-1.39-4.36,5.4,5.4,0,0,0-4.1-1.46,5.26,5.26,0,0,0-4,1.5,6.2,6.2,0,0,0-1.39,4.37,5.61,5.61,0,0,0,1.41,4.09A5.36,5.36,0,0,0,1094,365.74Z"/>
+                            <path d="M1123.24,351c3.36,0,5.88.75,7.54,2.24s2.5,3.85,2.5,7.06V378.7h-3.56l-1-4h-.2a13.73,13.73,0,0,1-2.38,2.47,8.25,8.25,0,0,1-2.85,1.49,13.69,13.69,0,0,1-3.95.49,10.26,10.26,0,0,1-4.4-.89,6.74,6.74,0,0,1-3-2.68,8.53,8.53,0,0,1-1.1-4.56,7.12,7.12,0,0,1,3.19-6.31q3.2-2.16,9.67-2.35l4.7-.2v-1.53c0-2.13-.48-3.63-1.42-4.51a5.66,5.66,0,0,0-4-1.31,13.47,13.47,0,0,0-4,.61,28.7,28.7,0,0,0-3.72,1.45l-1.58-3.61a22.31,22.31,0,0,1,4.39-1.66A19.41,19.41,0,0,1,1123.24,351Zm5.12,14.5-3.81.17q-4.72.18-6.64,1.57a4.55,4.55,0,0,0-1.92,3.9,3.8,3.8,0,0,0,1.31,3.19,5.57,5.57,0,0,0,3.47,1,8,8,0,0,0,5.45-1.87,6.91,6.91,0,0,0,2.14-5.52Z"/>
+                            <path d="M1159.55,371.08a7.45,7.45,0,0,1-1.3,4.47,7.77,7.77,0,0,1-3.77,2.73,17.15,17.15,0,0,1-5.93.91,24.43,24.43,0,0,1-5-.43,15.81,15.81,0,0,1-3.76-1.25v-4.4a25.18,25.18,0,0,0,4.18,1.53,16.92,16.92,0,0,0,4.65.67,8.15,8.15,0,0,0,4.61-1,3.21,3.21,0,0,0,1.43-2.75,3,3,0,0,0-.57-1.79,6.08,6.08,0,0,0-2-1.56,33.31,33.31,0,0,0-4.06-1.79,38.19,38.19,0,0,1-4.44-2,7.92,7.92,0,0,1-2.81-2.45,6.47,6.47,0,0,1-1-3.71,6.09,6.09,0,0,1,2.84-5.41,13.41,13.41,0,0,1,7.48-1.86,21.08,21.08,0,0,1,4.66.49,21.91,21.91,0,0,1,4.19,1.39l-1.6,3.83a26.08,26.08,0,0,0-3.67-1.27,14.55,14.55,0,0,0-3.83-.51,7.55,7.55,0,0,0-3.9.82,2.5,2.5,0,0,0-1.34,2.25,2.75,2.75,0,0,0-.63,1.85,6.24,6.24,0,0,0,2.11,1.45c1,.47,2.33,1,4,1.67a33.7,33.7,0,0,1,4.32,1.95,8,8,0,0,1,2.8,2.48A6.49,6.49,0,0,1,1159.55,371.08Z"/>
+                        </g>
+                    </svg>
+                </a>
+            </div>
+            
+            <div class="text-gray-400 leading-relaxed mb-8">
+                <span class="text-white font-bold mb-2 block text-lg" data-i18n="hero-title">Cuando digas.</span>
+                <span data-i18n="foot-desc-text">Transformamos tu negocio con Agentes de IA. Automatizamos tus ventas, atención al cliente y gestión de inventario 24/7. Sin pausas, sin errores.</span>
+            </div>
+            
+            <div class="flex items-center gap-4">
+                <!-- AQUI VAN TUS ICONOS DE REDES SOCIALES -->
+            </div>
+        </div>
+
+        <!-- Columna 2: Producto -->
+        <div class="md:col-span-2">
+            <h4 data-i18n="head-product" class="font-bold mb-6 text-white text-lg tracking-wide">Producto</h4>
+            <ul class="space-y-3 text-gray-400 font-medium text-sm">
+                <li><a href="index.html#servicios" data-i18n="nav-servicios" class="hover:text-[#c75ced] transition-colors">Servicios</a></li>
+                <li><a href="index.html#arquitectura" data-i18n="nav-tecnologia" class="hover:text-[#c75ced] transition-colors">Tecnología</a></li>
+                <li><a href="index.html#precios" data-i18n="nav-precios" class="hover:text-[#c75ced] transition-colors">Precios</a></li>
+                <li><a href="index.html#integraciones" data-i18n="nav-integrations" class="hover:text-[#c75ced] transition-colors">Integraciones</a></li>
+                <li><a href="preguntasfrecuentes.html" data-i18n="nav-faq" class="hover:text-[#c75ced] transition-colors">Preguntas Frecuentes</a></li>
+                <li><a href="index.html#testimonios" data-i18n="nav-success" class="hover:text-[#c75ced] transition-colors">Casos de Éxito</a></li>
+            </ul>
+        </div>
+
+        <!-- Columna 3: Empresa -->
+        <div class="md:col-span-2">
+            <h4 data-i18n="head-company" class="font-bold mb-6 text-white text-lg tracking-wide">Empresa</h4>
+            <ul class="space-y-3 text-gray-400 font-medium text-sm">
+                <li><a href="#" data-i18n="foot-about" class="hover:text-[#c75ced] transition-colors">Sobre nosotros</a></li>
+                <li><a href="#" data-i18n="foot-mission" class="hover:text-[#c75ced] transition-colors">Nuestra Misión</a></li>
+                <li><a href="#" data-i18n="foot-partners" class="hover:text-[#c75ced] transition-colors">Partners</a></li>
+                <li><a href="#" data-i18n="foot-contact" class="hover:text-[#c75ced] transition-colors">Contacto</a></li>
+            </ul>
+        </div>
+
+        <!-- Columna 4: Legal -->
+        <div class="md:col-span-3">
+            <h4 data-i18n="head-legal" class="font-bold mb-6 text-white text-lg tracking-wide">Legal</h4>
+            <ul class="space-y-3 text-gray-400 font-medium text-sm">
+                <li><a href="#" data-i18n="foot-terms" class="hover:text-[#c75ced] transition-colors">Términos y Condiciones</a></li>
+                <li><a href="#" data-i18n="foot-privacy" class="hover:text-[#c75ced] transition-colors">Política de Privacidad</a></li>
+                <li><a href="#" data-i18n="foot-cookies" class="hover:text-[#c75ced] transition-colors">Política de Cookies</a></li>
+                <li><a href="#" data-i18n="foot-dpa" class="hover:text-[#c75ced] transition-colors">Acuerdo de Datos (DPA)</a></li>
+                <li><a href="#" data-i18n="foot-security" class="hover:text-[#c75ced] transition-colors">Seguridad y Cumplimiento</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Línea inferior -->
+    <div class="max-w-7xl mx-auto px-6 mt-16 pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center gap-4">
+        <div class="text-gray-500 text-sm font-medium" data-i18n="foot-copyright">
+            © 2026 Qxao. Todos los derechos reservados.
+        </div>
+        
+        <div class="flex items-center gap-4 text-sm text-gray-400 font-medium">
+            <a href="mailto:hola@qxao.com" class="hover:text-white transition-colors">hola@qxao.com</a>
+            <span class="text-gray-700">•</span>
+            <span class="flex items-center gap-2">
+                &#x1F1FB;&#x1F1EA; <span data-i18n="foot-designed">Diseñado para el mundo</span>
+            </span>
+        </div>
+    </div>
+</footer>
+
+<!-- CHATBOT FLOTANTE -->
+<div class="fixed bottom-6 right-6 z-50 flex flex-col items-end">
+    
+    <div id="chat-window" class="hidden w-[320px] bg-white dark:bg-darkCard border border-gray-200 dark:border-gray-700 rounded-2xl shadow-2xl mb-4 overflow-hidden flex-col transition-all duration-300 transform origin-bottom-right relative z-50">
+        <div class="bg-[#690991] text-white px-4 py-4 flex justify-between items-center shadow-sm z-10">
+            <div class="flex items-center gap-3">
+                <div class="w-2.5 h-2.5 bg-green-400 rounded-full animate-pulse shadow-[0_0_8px_#4ade80]"></div>
+                <div>
+                    <span data-i18n="chat-bot" class="font-semibold block text-sm tracking-wide">Asistente Qxao</span>
+                    <span data-i18n="chat-on" class="text-[10px] text-white/70 uppercase tracking-widest">En línea</span>
+                </div>
+            </div>
+            <button id="close-chat" class="text-white hover:text-gray-300 focus:outline-none transition">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+        </div>
+        
+        <div id="chat-messages" class="p-4 h-72 overflow-y-auto bg-gray-50 dark:bg-darkBg flex flex-col gap-3 text-sm transition-colors">
+            <div data-i18n="chat-msg" class="bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 text-gray-700 dark:text-gray-200 p-3 rounded-2xl rounded-tl-sm self-start max-w-[85%] shadow-sm">
+                ¡Hola! 👋 Soy el agente de demostración de Qxao.<br><br>Estoy programado con estrictos guardrails. ¿En qué te puedo ayudar hoy?
+            </div>
+        </div>
+        
+        <div class="p-3 bg-white dark:bg-darkCard border-t border-gray-100 dark:border-gray-700 flex gap-2 items-center transition-colors">
+            <input id="chat-input" data-i18n="chat-ph" type="text" class="flex-1 px-4 py-2 bg-gray-100 dark:bg-gray-800 border-transparent rounded-full focus:ring-2 focus:ring-[#690991] dark:text-white outline-none text-sm transition" placeholder="Escribe un mensaje...">
+            <button id="send-chat" class="bg-[#690991] text-white p-2.5 rounded-full hover:bg-[#4a0066] transition flex-shrink-0 shadow-md">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path></svg>
+            </button>
+        </div>
+    </div>
+
+    <!-- BURBUJA PROACTIVA -->
+    <div id="qxao-proactive-bubble" class="absolute bottom-16 right-0 md:right-16 mb-2 mr-2 w-64 bg-white dark:bg-darkCard border border-gray-200 dark:border-gray-700 shadow-xl rounded-2xl p-4 flex gap-3 transform scale-95 opacity-0 translate-y-2 pointer-events-none transition-all duration-500 z-40">
+        <button onclick="ocultarBurbuja()" class="absolute top-2 right-2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+        <div class="w-10 h-10 bg-[#690991] rounded-full flex items-center justify-center flex-shrink-0 text-white shadow-md">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path></svg>
+        </div>
+        <div>
+            <p data-i18n="bubble-title" class="text-sm font-bold text-gray-900 dark:text-white mb-1">Agente Qxao</p>
+            <p data-i18n="bubble-msg" class="text-xs text-gray-600 dark:text-gray-400 leading-snug cursor-pointer hover:text-[#690991] transition-colors" onclick="toggleChat()">¡Hola! 👋 ¿Necesitas ayuda para automatizar tus ventas? Habla conmigo.</p>
+        </div>
+    </div>
+
+    <!-- BOTON RADAR -->
+    <div class="relative z-50 hover:scale-110 transition-transform duration-300">
+        <style>
+            @keyframes ai-radar {
+                0% { transform: translate(-50%, -50%) rotate(0deg); opacity: 0; }
+                5% { opacity: 1; }
+                20% { opacity: 1; transform: translate(-50%, -50%) rotate(360deg); }
+                25% { opacity: 0; transform: translate(-50%, -50%) rotate(420deg); }
+                100% { opacity: 0; transform: translate(-50%, -50%) rotate(420deg); }
+            }
+            .animate-radar { animation: ai-radar 12s linear infinite; }
+        </style>
+        <button id="chat-toggle" class="relative w-14 h-14 rounded-full shadow-[0_10px_25px_rgba(105,9,145,0.5)] focus:outline-none group">
+            <div class="absolute inset-0 rounded-full overflow-hidden p-[2px]">
+                <div class="absolute top-1/2 left-1/2 w-[200%] h-[200%] bg-[conic-gradient(from_0deg,transparent_70%,#c75ced_100%)] animate-radar -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
+                <div class="relative w-full h-full bg-[#690991] rounded-full"></div>
+            </div>
+            <div class="absolute inset-0 flex items-center justify-center text-white z-10 pointer-events-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path></svg>
+            </div>
+        </button>
+        <span id="chat-badge" class="absolute -top-1 -right-1 w-3.5 h-3.5 bg-red-500 border-2 border-white dark:border-darkCard rounded-full z-20 opacity-0 transition-opacity duration-500 pointer-events-none"></span>
+    </div>
+</div>
+
+<!-- SCRIPT MAESTRO GLOBAL CON TRADUCCIONES DETALLADAS -->
+<script>
+    const pageTranslations = {
+        es: {
+            "page-tag": "Propuesta Comercial", "page-title": "Ecosistema de Planes Qxao", "page-subtitle": "Descubre en detalle cada beneficio técnico y comercial que integraremos en la operativa de tu empresa.",
+            "plan1-name": "Plan Básico Qxao", "plan1-opt": "(Opción de $48 Trimestral o $42 Anual)", "plan1-setup": "Setup: $0 (Gratis)", "btn-contact": "Contratar Plan",
+            "title-ben": "Beneficios Comerciales",
+            "p1-t1": "<svg class='w-5 h-5 text-[#690991] dark:text-[#c75ced]' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M13 10V3L4 14h7v7l9-11h-7z' /></svg> Vendedor IA con Protocolo \"Pase de Gol\"", 
+            "p1-d1": "<strong class='text-gray-800 dark:text-gray-300'>Atención Instantánea 24/7:</strong> Responde en menos de 5s usando GPT-4o-mini.<br><strong class='text-gray-800 dark:text-gray-300'>Cierre Automatizado:</strong> Guía al pedido, pide datos y transfiere a un humano (Pase de Gol).",
+            "p1-t2": "<svg class='w-5 h-5 text-[#690991] dark:text-[#c75ced]' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z' /></svg> Interacción Natural y Humana", 
+            "p1-d2": "<strong class='text-gray-800 dark:text-gray-300'>Memoria Contextual (Redis):</strong> Recuerda los últimos 4 mensajes del cliente.<br><strong class='text-gray-800 dark:text-gray-300'>Demora Proporcionada:</strong> Simula 4s de escritura humana antes de responder.",
+            "p1-t3": "<svg class='w-5 h-5 text-[#690991] dark:text-[#c75ced]' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z' /></svg> Protección de Marca y Seguridad", 
+            "p1-d3": "<strong class='text-gray-800 dark:text-gray-300'>Desconexión Automática (2h):</strong> El bot se apaga si piden un asesor o se activa el Pase de Gol.<br><strong class='text-gray-800 dark:text-gray-300'>Anti-Spam & Anti-Prompt Injection:</strong> Bloquea intentos de hackeo de IA y suspende a usuarios tras 6 mensajes seguidos.",
+            
+            "plan2-name": "Plan Avanzado", "plan2-opt": "(Opción de $89.60 Trimestral o $78.40 Anual)", "plan2-setup": "Setup: $0 (Gratis)",
+            "p2-t1": "<svg class='w-5 h-5 text-[#690991] dark:text-[#c75ced]' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z' /></svg> Transcripción de Notas de Voz (Whisper)", 
+            "p2-d1": "Procesa audios en milisegundos con <code class='bg-gray-100 dark:bg-gray-800 px-1 rounded'>whisper-large-v3</code> y responde al contenido como si fuera texto.",
+            "p2-t2": "<svg class='w-5 h-5 text-[#690991] dark:text-[#c75ced]' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z' /><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M15 12a3 3 0 11-6 0 3 3 0 016 0z' /></svg> Herramientas Dinámicas (Function Calling)", 
+            "p2-d2": "<strong class='text-gray-800 dark:text-gray-300'>Consultas en Vivo:</strong> Consulta sub-flujos para obtener precios, disponibilidad e inventario actualizado.<br><strong class='text-gray-800 dark:text-gray-300'>Ejecución de Acciones:</strong> Registra solicitudes directamente en el sistema.",
+            "p2-t3": "<svg class='w-5 h-5 text-[#690991] dark:text-[#c75ced]' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4' /></svg> Memoria Persistente (PostgreSQL) y Lead Scoring", 
+            "p2-d3": "<strong class='text-gray-800 dark:text-gray-300'>Memoria Permanente:</strong> Guarda el historial de chats y el seguimiento del embudo.<br><strong class='text-gray-800 dark:text-gray-300'>Lead Scoring Invisible:</strong> Califica la intención de compra del usuario sin ralentizar WhatsApp.",
+            
+            "plan3-name": "Plan Plus+", "plan3-opt": "(Opción de $143.20 Trimestral o $125.30 Anual)", "plan3-setup": "Setup: $0 (Gratis)",
+            "p3-t1": "<svg class='w-5 h-5 text-[#690991] dark:text-[#c75ced]' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z' /></svg> Generación de Notas de Voz Reales & Spintax", 
+            "p3-d1": "Convierte respuestas de texto en audios nativos de WhatsApp (OpenAI TTS). El motor Spintax varía automáticamente los saludos para dar una sensación orgánica y fluida.",
+            "p3-t2": "<svg class='w-5 h-5 text-[#690991] dark:text-[#c75ced]' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z' /></svg> Pasarela e Integración de Pagos y Follow-Up", 
+            "p3-d2": "Gestiona cobros directo en el chat (Pago Móvil, Zelle, Binance, Stripe) y <strong class='text-gray-800 dark:text-gray-300'>recontacta automáticamente</strong> a clientes inactivos para recuperar ventas perdidas.",
+            "p3-t3": "<svg class='w-5 h-5 text-[#690991] dark:text-[#c75ced]' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636' /></svg> Rate Limiting Anti-DDoS", 
+            "p3-d3": "Límite inteligente de 50 mensajes por usuario. Protege el sistema contra saturaciones de tráfico devolviendo código HTTP 429 sin malgastar saldo de IA.",
+            
+            "plan4-name": "Enterprise Qxao", "plan4-opt": "(Opción de $332 Trimestral o $290.50 Anual)", "plan4-setup": "Setup: $0 (Gratis)", "btn-contact-ent": "Contactar Ventas",
+            "p4-t1": "<svg class='w-5 h-5 text-[#c75ced]' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z' /></svg> Búsqueda Vectorial (RAG) y Pinecone", 
+            "p4-d1": "El bot consulta manuales de 500+ páginas y catálogos extensos con precisión exacta mediante integración con <code class='bg-gray-800 px-1 rounded text-[#c75ced]'>text-embedding-3-small</code>.",
+            "p4-t2": "<svg class='w-5 h-5 text-[#c75ced]' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z' /></svg> Clonación de Voz Ultrarrealista", 
+            "p4-d2": "Conexión a API de ElevenLabs. Los audios responden con la voz exacta del dueño, gerente o locutor de la marca logrando un nivel de hiper-personalización.",
+            "p4-t3": "<svg class='w-5 h-5 text-[#c75ced]' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15' /></svg> Resiliencia, CRM Sync & Auditoría de Costos", 
+            "p4-d3": "Global Error Handler (99.9% uptime). Recontacta clientes masivamente, audita en tiempo real el costo exacto por token de cada chat y sincroniza prospectos bidireccionalmente con tu CRM.",
+
+            "addon-title": "Módulos Add-ons 'A la Carta'", "addon-desc": "Agrega funciones extra a tu plan Básico, Avanzado o Plus+. <br><strong class='text-[#690991] dark:text-[#c75ced]'>¡Totalmente INCLUIDOS ($0) en Enterprise!</strong>",
+            "add-badge": "$0 en Enterprise",
+            "add-p1": "+$20 USD / mes", "add-t1": "Recordatorios Automáticos (CRON)", "add-d1": "Elimina inasistencias y confirma asistencia a citas automáticas 24h antes.",
+            "add-p2": "+$35 USD / mes", "add-t2": "Envíos Masivos (Broadcasting)", "add-d2": "Envía promociones masivas a tu base de datos sin riesgo de baneo.",
+            "add-p3": "+$25 USD / mes", "add-t3": "Verificación de Pagos (Pasarela)", "add-d3": "Valida y confirma capturas de transferencias bancarias o pago móvil automáticamente.",
+            "add-p4": "+$30 USD / mes", "add-t4": "Integración con CRM (HubSpot, Sheets)", "add-d4": "Sincroniza datos de prospectos en tiempo real con el equipo de ventas.",
+            "add-p5": "+$25 USD / mes", "add-t5": "Módulo de Chat de Voz Directo", "add-d5": "Transforma respuestas de texto generadas por la IA en audios fluidos de WhatsApp.",
+            
+            "matrix-title": "Cuadro Comparativo de Planes", "matrix-desc": "Revisa qué funciones exactas se incluyen en cada suscripción base.",
+            "th-func": "Característica / Función",
+            "mat-1": "Motor de IA (GPT-4o-mini) y Respuestas 24/7",
+            "mat-2": "Memoria Contextual Básica (Redis)",
+            "mat-3": "Protocolo \"Pase de Gol\" (Cierre manual)",
+            "mat-4": "Protección Anti-Spam y Anti-Hackeo",
+            "mat-5": "Memoria Permanente y Base de Datos (PostgreSQL)",
+            "mat-6": "Transcripción de Audios del Cliente (Whisper)",
+            "mat-7": "Herramientas Dinámicas (Function Calling)",
+            "mat-8": "Calificación de Clientes (Lead Scoring)",
+            "mat-9": "Respuestas con Notas de Voz Nativas (TTS)", "mat-9-p": "✅ (OpenAI)", "mat-9-e": "✅ (ElevenLabs)",
+            "mat-10": "Pasarela de Pagos (Pago Móvil, Binance, Zelle)",
+            "mat-11": "Re-contacto Automático (Follow-up)",
+            "mat-12": "Límite Anti-Saturación (Rate Limiting)",
+            "mat-13": "Búsqueda en Documentos Extensos (RAG Vectorial)",
+            "mat-14": "Clonación de Voz Ultrarrealista",
+            "mat-15": "Sincronización Directa con CRM Corporativo",
+            "mat-16": "Módulos Add-ons (Recordatorios, Envíos Masivos)", "mat-extra": "Pago Extra", "mat-inc": "✅ 100% INCLUIDOS",
+            "bubble-title": "Agente Qxao",
+            "bubble-msg": "¡Hola! 👋 ¿Necesitas ayuda para automatizar tus ventas? Habla conmigo."
+        },
+        en: {
+            "page-tag": "Commercial Proposal", "page-title": "Qxao Plans Ecosystem", "page-subtitle": "Discover in detail every technical and commercial benefit we will integrate into your company's operations.",
+            "plan1-name": "Basic Plan Qxao", "plan1-opt": "($48 Quarterly or $42 Annual option)", "plan1-setup": "Setup: $0 (Free)", "btn-contact": "Choose Plan",
+            "title-ben": "Commercial Benefits",
+            "p1-t1": "<svg class='w-5 h-5 text-[#690991] dark:text-[#c75ced]' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M13 10V3L4 14h7v7l9-11h-7z' /></svg> Intelligent AI Seller with \"Pase de Gol\" Protocol", 
+            "p1-d1": "<strong class='text-gray-800 dark:text-gray-300'>Instant 24/7 Support:</strong> Replies in under 5s using GPT-4o-mini.<br><strong class='text-gray-800 dark:text-gray-300'>Automated Closing:</strong> Guides orders, requests data, and transfers to a human.",
+            "p1-t2": "<svg class='w-5 h-5 text-[#690991] dark:text-[#c75ced]' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z' /></svg> Natural and Human Interaction", 
+            "p1-d2": "<strong class='text-gray-800 dark:text-gray-300'>Contextual Memory (Redis):</strong> Remembers the client's last 4 messages.<br><strong class='text-gray-800 dark:text-gray-300'>Proportional Delay:</strong> Simulates 4s of typing before replying.",
+            "p1-t3": "<svg class='w-5 h-5 text-[#690991] dark:text-[#c75ced]' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z' /></svg> Brand Protection and Security", 
+            "p1-d3": "<strong class='text-gray-800 dark:text-gray-300'>Auto-Disconnect (2h):</strong> Bot turns off if an advisor is requested.<br><strong class='text-gray-800 dark:text-gray-300'>Anti-Spam & Anti-Hack:</strong> Blocks Prompt Injection attempts and ignores audios requesting text.",
+            
+            "plan2-name": "Advanced Plan", "plan2-opt": "($89.60 Quarterly or $78.40 Annual option)", "plan2-setup": "Setup: $0 (Free)",
+            "p2-t1": "<svg class='w-5 h-5 text-[#690991] dark:text-[#c75ced]' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z' /></svg> Voice Note Transcription (Whisper)", 
+            "p2-d1": "Processes audio in milliseconds with <code class='bg-gray-100 dark:bg-gray-800 px-1 rounded'>whisper-large-v3</code> and responds to the content as plain text.",
+            "p2-t2": "<svg class='w-5 h-5 text-[#690991] dark:text-[#c75ced]' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z' /><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M15 12a3 3 0 11-6 0 3 3 0 016 0z' /></svg> Dynamic Tools (Function Calling)", 
+            "p2-d2": "<strong class='text-gray-800 dark:text-gray-300'>Live Queries:</strong> Checks sub-flows for updated prices, availability, and inventory.<br><strong class='text-gray-800 dark:text-gray-300'>Action Execution:</strong> Registers requests directly into your system.",
+            "p2-t3": "<svg class='w-5 h-5 text-[#690991] dark:text-[#c75ced]' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4' /></svg> Persistent Memory (PostgreSQL) & Lead Scoring", 
+            "p2-d3": "<strong class='text-gray-800 dark:text-gray-300'>Permanent Memory:</strong> Saves complete chat history and funnel tracking.<br><strong class='text-gray-800 dark:text-gray-300'>Invisible Lead Scoring:</strong> Scores user purchase intent without slowing down WhatsApp.",
+            
+            "plan3-name": "Plus+ Plan", "plan3-opt": "($143.20 Quarterly or $125.30 Annual option)", "plan3-setup": "Setup: $0 (Free)",
+            "p3-t1": "<svg class='w-5 h-5 text-[#690991] dark:text-[#c75ced]' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z' /></svg> Real Voice Note Generation & Spintax", 
+            "p3-d1": "Converts text responses into native WhatsApp audios (OpenAI TTS). The Spintax engine automatically varies greetings for an organic feel.",
+            "p3-t2": "<svg class='w-5 h-5 text-[#690991] dark:text-[#c75ced]' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z' /></svg> Payment Gateway & Follow-Up Integration", 
+            "p3-d2": "Manages payments directly in chat (Zelle, Binance, Stripe) and <strong class='text-gray-800 dark:text-gray-300'>automatically re-contacts</strong> inactive clients to recover lost sales.",
+            "p3-t3": "<svg class='w-5 h-5 text-[#690991] dark:text-[#c75ced]' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636' /></svg> Anti-DDoS Rate Limiting", 
+            "p3-d3": "Smart limit of 50 messages per user. Protects the system against traffic saturation by returning HTTP 429 without wasting AI balance.",
+            
+            "plan4-name": "Enterprise Qxao", "plan4-opt": "($332 Quarterly or $290.50 Annual option)", "plan4-setup": "Setup: $0 (Free)", "btn-contact-ent": "Contact Sales",
+            "p4-t1": "<svg class='w-5 h-5 text-[#c75ced]' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z' /></svg> Vector Search (RAG) and Pinecone", 
+            "p4-d1": "The bot queries 500+ page manuals and extensive catalogs with exact precision via <code class='bg-gray-800 px-1 rounded text-[#c75ced]'>text-embedding-3-small</code> integration.",
+            "p4-t2": "<svg class='w-5 h-5 text-[#c75ced]' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z' /></svg> Ultra-realistic Voice Cloning", 
+            "p4-d2": "ElevenLabs API connection. Audios respond with the exact voice of the owner, manager, or brand spokesperson.",
+            "p4-t3": "<svg class='w-5 h-5 text-[#c75ced]' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15' /></svg> Resilience, CRM Sync & Cost Auditing", 
+            "p4-d3": "Global Error Handler (99.9% uptime). Mass re-contacts clients, real-time auditing of exact token costs per chat, and bidirectional CRM sync.",
+
+            "addon-title": "Add-on Modules 'A la Carte'", "addon-desc": "Add extra features to your Basic, Advanced, or Plus+ plan. <br><strong class='text-[#690991] dark:text-[#c75ced]'>Totally INCLUDED ($0) in Enterprise!</strong>",
+            "add-badge": "$0 on Enterprise",
+            "add-p1": "+$20 USD / month", "add-t1": "Automatic Reminders (CRON)", "add-d1": "Eliminates no-shows and confirms attendance to automated appointments 24h prior.",
+            "add-p2": "+$35 USD / month", "add-t2": "Mass Messaging (Broadcasting)", "add-d2": "Send mass promotions to your database without risking bans.",
+            "add-p3": "+$25 USD / month", "add-t3": "Payment Verification (Gateway)", "add-d3": "Validates and confirms bank transfer screenshots automatically.",
+            "add-p4": "+$30 USD / month", "add-t4": "CRM Integration (HubSpot, Sheets)", "add-d4": "Syncs prospect data in real-time with the sales team.",
+            "add-p5": "+$25 USD / month", "add-t5": "Direct Voice Chat Module", "add-d5": "Transforms AI-generated text responses into fluid WhatsApp audios.",
+            
+            "matrix-title": "Plan Comparison Matrix", "matrix-desc": "Review the exact features included in each base subscription.",
+            "th-func": "Feature / Function",
+            "mat-1": "AI Engine (GPT-4o-mini) and 24/7 Responses",
+            "mat-2": "Basic Contextual Memory (Redis)",
+            "mat-3": "Protocol \"Pase de Gol\" (Manual closing)",
+            "mat-4": "Anti-Spam & Anti-Hack Protection",
+            "mat-5": "Permanent Memory & Database (PostgreSQL)",
+            "mat-6": "Client Audio Transcription (Whisper)",
+            "mat-7": "Dynamic Tools (Function Calling)",
+            "mat-8": "Client Qualification (Lead Scoring)",
+            "mat-9": "Responses with Native Voice Notes (TTS)", "mat-9-p": "✅ (OpenAI)", "mat-9-e": "✅ (ElevenLabs)",
+            "mat-10": "Payment Gateway (Binance, Zelle, Stripe)",
+            "mat-11": "Automatic Re-contact (Follow-up)",
+            "mat-12": "Anti-Saturation Limit (Rate Limiting)",
+            "mat-13": "Extensive Document Search (Vectorial RAG)",
+            "mat-14": "Ultra-realistic Voice Cloning",
+            "mat-15": "Direct Sync with Corporate CRM",
+            "mat-16": "Add-on Modules (Reminders, Broadcasts)", "mat-extra": "Extra Cost", "mat-inc": "✅ 100% INCLUDED",
+            "bubble-title": "Qxao Agent",
+            "bubble-msg": "Hello! 👋 Need help automating your sales? Chat with me."
+        }
+    };
+
+    // EL RESTO DEL SCRIPT ORIGINAL
+    const globalTranslations = {
+        es: {
+            "nav-back": "← Volver al Inicio", "nav-servicios": "Servicios", "nav-tecnologia": "Tecnología", "nav-precios": "Precios Detallados", "btn-login": "Iniciar Sesión",
+            "price-pop": "Más Popular", "foot-copyright": "© 2026 Qxao. Todos los derechos reservados.", "foot-designed": "Diseñado para el mundo",
+            "chat-bot": "Asistente Qxao", "chat-on": "En línea", "chat-ph": "Escribe un mensaje...",
+            "chat-msg": "¡Hola! 👋 Soy el agente de demostración de Qxao.<br><br>Estoy programado con estrictos guardrails. ¿En qué te puedo ayudar hoy?",
+            "head-product": "Producto", "head-company": "Empresa", "head-legal": "Legal",
+            "nav-integrations": "Integraciones", "nav-faq": "Preguntas Frecuentes", "nav-success": "Casos de Éxito", "nav-blog": "Blog",
+            "foot-about": "Sobre nosotros", "foot-mission": "Nuestra Misión", "foot-partners": "Partners", "foot-contact": "Contacto",
+            "foot-terms": "Términos y Condiciones", "foot-privacy": "Política de Privacidad", "foot-cookies": "Política de Cookies", 
+            "foot-dpa": "Acuerdo de Datos (DPA)", "foot-security": "Seguridad y Cumplimiento"
+        },
+        en: {
+            "nav-back": "← Back to Home", "nav-servicios": "Services", "nav-tecnologia": "Technology", "nav-precios": "Detailed Pricing", "btn-login": "Login",
+            "price-pop": "Most Popular", "foot-copyright": "© 2026 Qxao. All rights reserved.", "foot-designed": "Designed for the world",
+            "chat-bot": "Qxao Assistant", "chat-on": "Online", "chat-ph": "Type a message...",
+            "chat-msg": "Hello! 👋 I'm the Qxao demo agent.<br><br>I'm programmed with strict guardrails. How can I help you today?",
+            "head-product": "Product", "head-company": "Company", "head-legal": "Legal",
+            "nav-integrations": "Integrations", "nav-faq": "FAQ", "nav-success": "Success Stories", "nav-blog": "Blog",
+            "foot-about": "About us", "foot-mission": "Our Mission", "foot-partners": "Partners", "foot-contact": "Contact",
+            "foot-terms": "Terms and Conditions", "foot-privacy": "Privacy Policy", "foot-cookies": "Cookie Policy", 
+            "foot-dpa": "Data Processing (DPA)", "foot-security": "Security & Compliance"
+        }
+    };
+
+    let currentLang = 'es';
+    const langToggleBtn = document.getElementById('lang-toggle');
+
+    function translatePage() {
+        const dict = { ...globalTranslations[currentLang], ...pageTranslations[currentLang] };
+        
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            if (dict[key]) {
+                if (key === "chat-ph") el.placeholder = dict[key];
+                else el.innerHTML = dict[key];
+            }
+        });
+    }
+
+    if (langToggleBtn) {
+        langToggleBtn.addEventListener('click', () => {
+            currentLang = currentLang === 'es' ? 'en' : 'es';
+            langToggleBtn.innerHTML = currentLang === 'es' ? 'ES <span class="opacity-40">|</span> EN' : '<span class="opacity-40">ES |</span> EN';
+            translatePage();
+        });
+    }
+
+    // DARK MODE TOGGLE
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+    const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+
+    if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark');
+        if(themeToggleLightIcon) themeToggleLightIcon.classList.remove('hidden');
+    } else {
+        document.documentElement.classList.remove('dark');
+        if(themeToggleDarkIcon) themeToggleDarkIcon.classList.remove('hidden');
+    }
+
+    if(themeToggleBtn) {
+        themeToggleBtn.addEventListener('click', function() {
+            if(themeToggleDarkIcon) themeToggleDarkIcon.classList.toggle('hidden');
+            if(themeToggleLightIcon) themeToggleLightIcon.classList.toggle('hidden');
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('color-theme', 'light');
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('color-theme', 'dark');
+            }
+        });
+    }
+
+    // MENÚ MÓVIL
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const closeLinks = document.querySelectorAll('.close-menu');
+
+    if(menuBtn && mobileMenu) {
+        menuBtn.addEventListener('click', () => { mobileMenu.classList.toggle('hidden'); });
+        closeLinks.forEach(link => { link.addEventListener('click', () => { mobileMenu.classList.add('hidden'); }); });
+    }
+
+    // EFECTO MAGNÉTICO (GLOW)
+    document.querySelectorAll('.glow-card').forEach(card => {
+        card.addEventListener('mousemove', e => {
+            const rect = card.getBoundingClientRect();
+            card.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
+            card.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
+        });
+    });
+
+    // ANIMACIONES FADE IN AL HACER SCROLL
+    function handleScroll() {
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            const elRect = el.getBoundingClientRect();
+            if (elRect.top <= window.innerHeight * 0.8) {
+                el.classList.add('visible');
+            }
+        });
+    }
+    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('load', handleScroll);
+
+    // EFECTO DE SCROLL DEL HEADER
+    const header = document.getElementById('qxao-header');
+    const nav = document.getElementById('qxao-nav');
+    
+    if (header) {
+        header.style.transition = 'transform 0.6s ease-in-out, background-color 0.3s ease, backdrop-filter 0.3s ease';
+    }
+
+    let lastScrollTop = 0;
+    window.addEventListener('scroll', function() {
+        if (!header) return;
+        let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+        if (currentScroll > 50) {
+            header.classList.add('backdrop-blur-md', 'bg-white/85', 'dark:bg-darkBg/85', 'shadow-sm');
+            header.classList.remove('bg-white', 'dark:bg-darkBg', 'border-transparent');
+            if (nav) { nav.classList.remove('py-5'); nav.classList.add('py-2'); }
+        } else {
+            header.classList.remove('backdrop-blur-md', 'bg-white/85', 'dark:bg-darkBg/85', 'shadow-sm');
+            header.classList.add('bg-white', 'dark:bg-darkBg', 'border-transparent');
+            if (nav) { nav.classList.add('py-5'); nav.classList.remove('py-2'); }
+        }
+        if (currentScroll > lastScrollTop && currentScroll > 300) {
+            header.style.transform = 'translateY(-110%)';
+        } else {
+            header.style.transform = 'translateY(0)';
+        }
+        lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; 
+    });
+
+    // LÓGICA DEL CHATBOT FLOTANTE Y BURBUJA
+    const chatToggle = document.getElementById('chat-toggle');
+    const chatWindow = document.getElementById('chat-window');
+    const closeChat = document.getElementById('close-chat');
+    const chatInput = document.getElementById('chat-input');
+    const sendChat = document.getElementById('send-chat');
+    const chatMessages = document.getElementById('chat-messages');
+    const proactiveBubble = document.getElementById('qxao-proactive-bubble');
+    const chatBadge = document.getElementById('chat-badge');
+
+    // Lógica para esconder la burbuja proactiva
+    window.ocultarBurbuja = function() {
+        if(proactiveBubble) {
+            proactiveBubble.classList.remove('opacity-100', 'scale-100', 'translate-y-0', 'pointer-events-auto');
+            proactiveBubble.classList.add('opacity-0', 'scale-95', 'pointer-events-none', 'translate-y-2');
+        }
+        if(chatBadge) {
+            chatBadge.classList.remove('opacity-100');
+            chatBadge.classList.add('opacity-0');
+        }
+    };
+
+    // LANZAR BURBUJA CON EFECTO ZOOM Y SUAVE A LOS 20 SEGUNDOS
+    setTimeout(() => {
+        if (proactiveBubble && chatWindow && chatWindow.classList.contains('hidden')) {
+            proactiveBubble.style.transition = 'all 0.5s cubic-bezier(0.16, 1, 0.3, 1)';
+            proactiveBubble.classList.remove('opacity-0', 'scale-95', 'pointer-events-none', 'translate-y-2');
+            proactiveBubble.classList.add('opacity-100', 'scale-100', 'translate-y-0', 'pointer-events-auto');
+            if(chatBadge) {
+                chatBadge.classList.remove('opacity-0');
+                chatBadge.classList.add('opacity-100');
+            }
+        }
+    }, 20000); 
+
+    function toggleChat() {
+        ocultarBurbuja(); 
+        if (chatWindow.classList.contains('hidden')) {
+            chatWindow.classList.remove('hidden');
+            chatWindow.classList.add('flex');
+            setTimeout(() => chatInput.focus(), 100);
+        } else {
+            chatWindow.classList.add('hidden');
+            chatWindow.classList.remove('flex');
+        }
+    }
+    if(chatToggle) chatToggle.addEventListener('click', toggleChat);
+    if(closeChat) closeChat.addEventListener('click', toggleChat);
+
+    function handleSendMessage() {
+        if(!chatInput) return;
+        const text = chatInput.value.trim();
+        if (!text) return;
+
+        const userMsg = document.createElement('div');
+        userMsg.className = 'bg-[#690991] text-white p-3 rounded-2xl rounded-tr-sm self-end max-w-[85%] shadow-sm break-words mt-2';
+        userMsg.textContent = text;
+        chatMessages.appendChild(userMsg);
+        
+        chatInput.value = '';
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+
+        setTimeout(() => {
+            const botMsg = document.createElement('div');
+            botMsg.className = 'bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 text-gray-700 dark:text-gray-200 p-3 rounded-2xl rounded-tl-sm self-start max-w-[85%] shadow-sm mt-2';
+            botMsg.textContent = "Entendido. Para darte detalles específicos de planes, ¿podrías indicarme a qué sector pertenece tu empresa?";
+            chatMessages.appendChild(botMsg);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }, 1200);
+    }
+    if(sendChat) sendChat.addEventListener('click', handleSendMessage);
+    if(chatInput) chatInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') handleSendMessage(); });
+
+// =========================================================================
+// SCRIPT DE PRECIOS DINÁMICOS Y ANIMACIÓN DE BOTONES
+// =========================================================================
+document.addEventListener("DOMContentLoaded", () => {
+    
+    // --- 1. LÓGICA DEL TOGGLE MENSUAL / TRIMESTRAL / ANUAL ---
+    const btnMensual = document.getElementById('btn-mensual');
+    const btnTrimestral = document.getElementById('btn-trimestral');
+    const btnAnual = document.getElementById('btn-anual');
+    const priceValues = document.querySelectorAll('.price-value');
+
+    function updatePricing(period) {
+        // Clases activas e inactivas para el nuevo diseño de botones
+        const activeClasses = ['bg-[#690991]', 'text-white', 'shadow-[0_0_15px_rgba(105,9,145,0.4)]', 'scale-105', 'active'];
+        const inactiveClasses = ['text-gray-500', 'hover:text-gray-900', 'dark:hover:text-white', 'hover:bg-gray-100', 'dark:hover:bg-gray-700/50'];
+
+        // Reiniciar todos
+        [btnMensual, btnTrimestral, btnAnual].forEach(btn => {
+            if(!btn) return;
+            btn.classList.remove(...activeClasses);
+            btn.classList.add(...inactiveClasses);
+        });
+
+        // Activar el botón presionado
+        let activeBtn = period === 'mensual' ? btnMensual : period === 'trimestral' ? btnTrimestral : btnAnual;
+        if(activeBtn) {
+            activeBtn.classList.remove(...inactiveClasses);
+            activeBtn.classList.add(...activeClasses);
+        }
+
+        // Actualizar los textos de los precios con efecto Fade
+        priceValues.forEach(el => {
+            el.style.opacity = '0'; 
+            
+            setTimeout(() => {
+                let val = el.getAttribute(`data-${period}`);
+                // Forzar formato con dos decimales si trae decimales
+                if(val && val.includes('.')) {
+                    val = parseFloat(val).toFixed(2);
+                }
+                el.textContent = val;
+                el.style.opacity = '1'; 
+            }, 150); 
+        });
+    }
+
+    if (btnMensual && btnTrimestral && btnAnual) {
+        btnMensual.addEventListener('click', () => updatePricing('mensual'));
+        btnTrimestral.addEventListener('click', () => updatePricing('trimestral'));
+        btnAnual.addEventListener('click', () => updatePricing('anual'));
+    }
+
+    // --- 2. LÓGICA DE ANIMACIÓN DEL CAMIÓN (ORIGINAL STELLA) ---
+    const orderBtns = document.querySelectorAll('.order');
+
+    orderBtns.forEach(button => {
+        button.addEventListener('click', e => {
+            e.preventDefault();
+            
+            if (!button.classList.contains('animate')) {
+                button.classList.add('animate');
+                
+                // Temporizador original de 10 segundos
+                setTimeout(() => {
+                    button.classList.remove('animate');
+                }, 10000);
+            }
+        });
+    });
+
+});
+</script>
+</body>
+</html>
